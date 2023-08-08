@@ -17,7 +17,7 @@ const Security = () => {
                   The security and oversight your IT team needs
                </h1>
 
-               <div className="space-x-4">
+               <div className="space-x-4 mt-5">
                   <div className="flex">
                      <BsCheck2 className="text-blue-500 text-5xl" />
                      <div className="mt-2 ml-5">
@@ -62,11 +62,14 @@ const Security = () => {
                   </div>
                </div>
 
-               <span className="flex items-center mt-6">
-                  <Link href="/" className="text-blue-600 text-[19px]">
+               <span className="flex items-center mt-6 font-semibold text-blue-600 hover:text-slate-800">
+                  <Link
+                     href="/"
+                     className="text-[19px]"
+                  >
                      Learn more
                   </Link>
-                  <BsArrowRightShort className="text-blue-600 text-3xl" />
+                  <BsArrowRightShort className="text-3xl cursor-pointer" />
                </span>
             </div>
          </div>
