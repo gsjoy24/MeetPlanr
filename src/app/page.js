@@ -3,7 +3,8 @@ import Featured from "@/Featured/Featured";
 import PricingPlan from "@/PricingPlan/PricingPlan";
 import Security from "@/security/app";
 import Counting from "@/Counting/Information";
-import Review from "@/Components/Review/page";
+import Review from "@/Components/Review";
+
 
 const Home = () => {
 	return (
