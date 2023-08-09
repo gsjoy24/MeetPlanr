@@ -4,20 +4,6 @@ import Container from "@/components/container";
 import React from "react";
 import { FaCalendarAlt, FaCalendarCheck, FaDatabase, FaLink, FaMoneyCheckAlt, FaRegEnvelope } from "react-icons/fa";
 const Featured = () => {
-   return (
-      <section className="" style={{ marginTop: "64px", marginBottom: "64px" }}>
-         <Container>
-            <SectionTitle title={"Features"}></SectionTitle>
-         </Container>
-         <div className=""></div>
-      </section>
-   );
-    const features = [
-        {
-            title: 'Calendar',
-            details: 'The calendar feature is the backbone of our platform, allowing users to set their availability and view upcoming interview appointments. Users can sync their schedules with popular calendar services like Google Calendar, ensuring a seamless integration with their existing commitments.'
-        }
-    ]
     return (
         <section
             className=""
