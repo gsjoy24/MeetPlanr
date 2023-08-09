@@ -7,7 +7,7 @@ const Review = () => {
 
     return (
         <>
-            <div className='mx-auto max-w-screen-2xl'>
+            <div className='max-w-[2520px] mx-auto xl:px-16 md:px-10 sm:px-2 px-4'>
                 <div>
                     <h1 className='text-center text-3xl font-bold my-5 '>Happy clients Says </h1>
 
@@ -16,8 +16,8 @@ const Review = () => {
                 </div>
                 <div className="carousel w-full ">
 
-                    <div id="slide1" className="carousel-item relative w-full">
-                        <div className='grid lg:grid-cols-3  mx-auto grid-cols-1 2xl:gap-10  lg:gap-6'>
+                    <div  className="carousel-item relative w-full">
+                        <div id="slide1" className='grid lg:grid-cols-3  mx-auto grid-cols-1 2xl:gap-10  gap-6'>
                             <div>
 
                                 <a
@@ -171,7 +171,7 @@ const Review = () => {
                         </div>
                     </div>
                     <div id="slide2" className="carousel-item relative w-full">
-                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center gap-6'>
+                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center 2xl:gap-10  gap-6'>
                             <div>
 
                                 <a
@@ -323,7 +323,7 @@ const Review = () => {
                         </div>
                     </div>
                     <div id="slide3" className="carousel-item relative w-full">
-                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center gap-6'>
+                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center 2xl:gap-10  gap-6'>
                             <div>
 
                                 <a
@@ -475,7 +475,7 @@ const Review = () => {
                         </div>
                     </div>
                     <div id="slide4" className="carousel-item relative w-full">
-                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center gap-6'>
+                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center 2xl:gap-10  gap-6'>
                             <div>
 
                                 <a
