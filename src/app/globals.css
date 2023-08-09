@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/*==================== Featured section ===============================*/
+.ft_btn{
+    @apply bg-[#465AF7] w-fit h-fit mx-auto text-white px-8 py-4 rounded-lg mt-6
+}
