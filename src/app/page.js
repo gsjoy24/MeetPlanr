@@ -16,7 +16,6 @@ const Home = () => {
 				<PricingPlan></PricingPlan>
 			</div>
 
-
 		</div>
 	);
 }
