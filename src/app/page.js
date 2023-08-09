@@ -1,10 +1,15 @@
-export default function Home() {
+import Featured from "@/Featured/Featured";
+import Security from "@/security/app";
+
+const Home = () => {
 	return (
-		<div className="h-[100vh] w-full flex justify-center items-center">
+		<div className="">
 			<div>
-				<h1 className="text-4xl">Developing MeetPlanr</h1>
-				<p className="text-right text-sm mt-2">web coders</p>
+				<Featured></Featured>
+        		<Security></Security>
 			</div>
 		</div>
 	);
 }
+
+export default Home;
