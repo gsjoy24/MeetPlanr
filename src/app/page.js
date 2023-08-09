@@ -7,8 +7,8 @@ const Home = () => {
 		<div className="">
 			<div>
 				<Featured></Featured>
-        <Security></Security>
-        <PricingPlan></PricingPlan>
+        		<Security></Security>
+        		<PricingPlan></PricingPlan>
 			</div>
 		</div>
 	);
