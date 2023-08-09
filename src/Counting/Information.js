@@ -10,9 +10,9 @@ const Information = () => {
   const [totalVideos, setTotalVideos] = useState(0);
   const initialCount = 0;
   const finalStudentCount = 200000 ;
-  const finalTeacherCount = 200000;
-  const finalTestimonialCount = 200000;
-  const finalVideoCount = 200000;
+  const finalTeacherCount = 81000;
+  const finalTestimonialCount = 100000;
+  const finalVideoCount = 5000000;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,55 +64,97 @@ const Information = () => {
   }, []);
 
   return (
-   <Container>
-     <div className="flex flex-col items-center justify-center md:flex-row md:gap-4 mb-20 -mt-8 ">
-    <div id="count-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div className="p-8">
-        <div className="text-center md:text-left">
-          <h1 className="text-sm text-center mb-3 mt-3">Businesses trust Sign 
-                    In Scheduling with their appointments worldwide</h1>
-          <div className="text-4xl text-center font-bold text-black">
-            <CountUp start={initialCount} end={activeStudents} duration={5} formattingFn={(value) => `${(value / 1000).toFixed(0)} K`} />
-          </div>
-          <p className="text-gray-500 mt-4 font-light"></p>
-        </div>
+    
+    <Container>
+       <h1 className="text-2xl font-bold mb-6 text-center">Global Trust</h1>
+      <div className="flex flex-col items-center justify-center md:flex-row md:gap-4 mb-20 -mt-8">
+       
       </div>
-
-      <div className="p-8">
-        <div className="text-center md:text-left">
-          <h1 className="text-sm text-center mb-3 mt-3">Businesses trust Sign 
-                    In Scheduling with their appointments worldwide</h1>
-          <div className="text-4xl text-center font-bold text-black">
-            <CountUp start={initialCount} end={activeTeachers} duration={5} formattingFn={(value) => `${(value / 1000).toFixed(0)} K`}/>
+    <div className="flex flex-col items-center justify-center md:flex-row md:gap-4 mb-20 -mt-8 ">
+      <div
+        id="count-section"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+      >
+        <div className="p-8 shadow-lg rounded-lg bg-white">
+          <div className="text-center md:text-left">
+            
+            <div className="text-4xl text-center font-bold text-[#465AF7]">
+              <CountUp
+                start={initialCount}
+                end={activeStudents}
+                duration={5}
+                formattingFn={(value) => `${(value / 1000).toFixed(0)}K`}
+              />
+            </div>
+            <div>
+            <h1 className="text-sm text-center mb-3 mt-3">
+              Businesses trust Sign In Scheduling with their appointments worldwide
+            </h1>
+            </div>
+            <p className="text-gray-500 mt-4 font-light"></p>
           </div>
-          
         </div>
-      </div>
 
-      <div className="p-8">
-        <div className="text-center md:text-left">
-          <h1 className="text-sm text-center mb-3 mt-3">Businesses trust Sign 
-                    In Scheduling with their appointments worldwide</h1>
-          <div className="text-4xl text-center font-bold text-black">
-            <CountUp start={initialCount} end={testimonials} duration={5} formattingFn={(value) => `${(value / 1000).toFixed(0)} K`}/>
+        <div className="p-8 shadow-lg rounded-lg bg-white">
+          <div className="text-center md:text-left">
+            
+            <div className="text-4xl text-center font-bold text-[#465AF7]">
+              <CountUp
+                start={initialCount}
+                end={activeTeachers}
+                duration={5}
+                formattingFn={(value) => `${(value / 1000).toFixed(0)}%`}
+              />
+            </div>
+            <div>
+            <h1 className="text-sm text-center mb-3 mt-3">
+            of our surveyed users recommend our software
+            </h1>
+            </div>
           </div>
-          
         </div>
-      </div>
 
-      <div className="p-8">
-        <div className="text-center md:text-left">
-          <h1 className="text-sm text-center mb-3 mt-3">Businesses trust Sign 
-                    In Scheduling with their appointments worldwide</h1>
-          <div className="text-4xl text-center font-bold text-black">
-            <CountUp start={initialCount} end={totalVideos} duration={5} formattingFn={(value) => `${(value / 1000).toFixed(0)} K`}  />
+        <div className="p-8 shadow-lg rounded-lg bg-white">
+          <div className="text-center md:text-left">
+           
+            <div className="text-4xl text-center font-bold text-[#465AF7]">
+              <CountUp
+                start={initialCount}
+                end={testimonials}
+                duration={5}
+                formattingFn={(value) => `${(value / 1000).toFixed(0)}+`}
+              />
+              
+            </div>
+            <div>
+              <h1 className="text-sm text-center mb-3 mt-3">
+            features available from scheduling to reminders and reporting
+            </h1>
+              </div>
           </div>
-          
+        </div>
+
+        <div className="p-8 shadow-lg rounded-lg bg-white">
+          <div className="text-center md:text-left">
+           
+            <div className="text-4xl text-center font-bold text-[#465AF7]">
+              <CountUp
+                start={initialCount}
+                end={totalVideos}
+                duration={5}
+                formattingFn={(value) => `${(value / 1000).toFixed(0)}+`}
+              />
+            </div>
+            <div>
+            <h1 className="text-sm text-center mb-3 mt-3">
+            integrations including native, Zapier and API
+            </h1>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-   </Container>
+  </Container>
   
 
   );
