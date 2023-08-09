@@ -1,6 +1,6 @@
 import React from 'react';
 
-const shered = () => {
+const loading = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const shered = () => {
     );
 };
 
-export default shered;
+export default loading;
