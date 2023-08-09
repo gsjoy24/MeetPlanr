@@ -1,15 +1,24 @@
+
+import Featured from "@/Featured/Featured";
+import PricingPlan from "@/PricingPlan/PricingPlan";
+import Security from "@/security/app";
+import Counting from "@/Counting/Information";
 import Review from "@/Components/Review/page";
 
-
-export default function Home() {
+const Home = () => {
 	return (
 		<div className="">
 			<div>
-				<h1 className="text-4xl">Developing MeetPlanr</h1>
-				<p className="text-right text-sm mt-2">web coders</p>
+				<Featured></Featured>
+				<Counting></Counting>
+				<Security></Security>
+				<PricingPlan></PricingPlan>
+				<Review />
 			</div>
 
-			<Review />
+
 		</div>
 	);
 }
+
+export default Home;
