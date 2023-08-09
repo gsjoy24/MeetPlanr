@@ -1,4 +1,5 @@
 import Featured from "@/Featured/Featured";
+import PricingPlan from "@/PricingPlan/PricingPlan";
 import Security from "@/security/app";
 
 const Home = () => {
@@ -6,7 +7,8 @@ const Home = () => {
 		<div className="">
 			<div>
 				<Featured></Featured>
-        		<Security></Security>
+        <Security></Security>
+        <PricingPlan></PricingPlan>
 			</div>
 		</div>
 	);
