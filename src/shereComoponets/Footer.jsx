@@ -21,7 +21,7 @@ const Footer = () => {
     </div>
   </div> 
   <div>
-    <p>Copyright © 2023 - All right reserved by MeetPlanr</p>
+    <p>Copyright © 2023 - All right reserved by MeetPlanr hi</p>
   </div>
 </footer>
         </Container>
