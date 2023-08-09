@@ -1,5 +1,6 @@
-import Container from "@/components/Container";
+
 import SectionTitle from "@/components/SectionTitle";
+import Container from "@/components/container";
 import Link from "next/link";
 
 const PricingPlan = () => {

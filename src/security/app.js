@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/container";
 import Image from "next/image";
 import sectionImage from "../../public/security.png";
 import { BsCheck2, BsArrowRightShort } from "react-icons/bs";
