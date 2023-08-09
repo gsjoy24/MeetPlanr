@@ -1,4 +1,5 @@
-import Review from "./Components/Review/page";
+import Review from "@/Components/Review/page";
+
 
 export default function Home() {
 	return (
