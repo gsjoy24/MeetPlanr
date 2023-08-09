@@ -8,6 +8,9 @@ import { poppins } from '@/components/fonts'
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      {/* <head>
+        <link ref={`icon`} href='./favicon.ico'/>
+      </head> */}
       <body className={poppins.className}>{children}</body>
     </html>
   ) 
