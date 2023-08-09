@@ -6,6 +6,7 @@ export const metadata = {
 }
 import { poppins } from '@/components/fonts'
 import Navbar from '@/shereComoponets/Navbar'
+import Footer from '@/shereComoponets/Footer'
 
 export default function RootLayout({ children }) {
   return (
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
       <body className={poppins.className}>
         <Navbar></Navbar>
         {children}
+        <Footer></Footer>
       </body>
     </html>
   ) 
