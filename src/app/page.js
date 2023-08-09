@@ -1,3 +1,4 @@
+
 import Banner from "@/Banner/Banner";
 import Featured from "@/Featured/Featured";
 import PricingPlan from "@/PricingPlan/PricingPlan";
@@ -11,9 +12,11 @@ const Home = () => {
 				<Banner></Banner>
 				<Featured></Featured>
 				<Counting></Counting>
-        		<Security></Security>
-        		<PricingPlan></PricingPlan>
+				<Security></Security>
+				<PricingPlan></PricingPlan>
 			</div>
+
+
 		</div>
 	);
 }
