@@ -1,30 +1,31 @@
 import Image from "next/image";
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
-import img1 from "../public/img1.jpg";
-import img2 from "../public/img7.jpg";
-import img3 from "../public/img8.jpg";
-import img4 from "../public/img3.jpg";
-import img5 from "../public/img9.jpg";
-import img6 from "../public/img4.jpg";
-import img7 from "../public/img5.jpg";
-import img8 from "../public/img6.jpg";
-import img9 from "../public/img11.jpg";
-import img10 from "../public/img10.jpg";
-import img11 from "../public/img2.jpg";
-import img12 from "../public/img12.jpg";
-import SectionTitle from "./components/SectionTitle";
+import img1 from "../assets/review-image/img1.jpg";
+import img2 from "../assets/review-image/img2.jpg";
+import img3 from "../assets/review-image/img3.jpg";
+import img4 from "../assets/review-image/img5.jpg";
+import img5 from "../assets/review-image/img6.jpg";
+import img6 from "../assets/review-image/img7.jpg";
+import img7 from "../assets/review-image/img8.jpg";
+import img8 from "../assets/review-image/img9.jpg";
+import img9 from "../assets/review-image/img10.jpg";
+import img10 from "../assets/review-image/img11.jpg";
+import img11 from "../assets/review-image/img12.jpg";
+import img12 from "../assets/review-image/img4.jpg";
+import SectionTitle from "../components/SectionTitle";
+import Container from "@/components/container";
 
 const Review = () => {
     return (
-        <>
-            <div className="max-w-[2520px] mx-auto xl:px-16 md:px-10 sm:px-2 px-4">
+        <Container>
+            <div className="" style={{ marginTop: "64px", marginBottom: "64px" }}>
                 <div>
                     <SectionTitle title={"Happy clients Says"}></SectionTitle>
                 </div>
-                <div className="carousel w-full">
-                    <div className="carousel-item relative w-full">
-                        <div id="slide1" className="grid lg:grid-cols-3  mx-auto grid-cols-1 2xl:gap-10  gap-8" >
+                <div className="carousel w-full py-10">
+                    <div id="slide1" className="carousel-item relative w-full">
+                        <div className="grid lg:grid-cols-3  mx-auto grid-cols-1 2xl:gap-10 gap-8" >
                             <div>
                                 <a href="#">
                                     <div className="card border bg-base-100 shadow-xl">
@@ -510,7 +511,7 @@ const Review = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </Container>
     );
 };
 
