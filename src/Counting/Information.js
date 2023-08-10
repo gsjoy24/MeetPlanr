@@ -74,8 +74,8 @@ const Information = () => {
       <div style={{ marginTop: "90px", marginBottom: "90px" }}>
         <SectionTitle title={"Global Trust"}></SectionTitle>
         <div className="flex flex-col items-center justify-center md:flex-row md:gap-4 mb-20 -mt-8 ">
-          <div id="count-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" >
-            <div className="p-8 border shadow-lg rounded-lg bg-white">
+          <div id="count-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" >
+            <div className="p-8 border-2 shadow-lg rounded-lg bg-white">
               <div className="text-center md:text-left">
                 
                 <div className="text-4xl text-center font-bold text-[#465AF7]">
@@ -95,7 +95,7 @@ const Information = () => {
               </div>
             </div>
 
-            <div className="p-8 border shadow-lg rounded-lg bg-white">
+            <div className="p-8 border-2 shadow-lg rounded-lg bg-white">
               <div className="text-center md:text-left">
                 
                 <div className="text-4xl text-center font-bold text-[#465AF7]">
@@ -114,7 +114,7 @@ const Information = () => {
               </div>
             </div>
 
-            <div className="p-8 border shadow-lg rounded-lg bg-white">
+            <div className="p-8 border-2 shadow-lg rounded-lg bg-white">
               <div className="text-center md:text-left">
               
                 <div className="text-4xl text-center font-bold text-[#465AF7]">
@@ -134,7 +134,7 @@ const Information = () => {
               </div>
             </div>
 
-            <div className="p-8 border shadow-lg rounded-lg bg-white">
+            <div className="p-8 border-2 shadow-lg rounded-lg bg-white">
               <div className="text-center md:text-left">
               
                 <div className="text-4xl text-center font-bold text-[#465AF7]">
