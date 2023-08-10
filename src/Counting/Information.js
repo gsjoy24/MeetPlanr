@@ -13,10 +13,10 @@ const Information = () => {
   const finalTeacherCount = 81000;
   const finalTestimonialCount = 100000;
   const finalVideoCount = 5000000;
-  const finalStudentCount = 200000;
-  const finalTeacherCount = 200000;
-  const finalTestimonialCount = 200000;
-  const finalVideoCount = 200000;
+ 
+ 
+  
+
 
   useEffect(() => {
     const handleScroll = () => {
