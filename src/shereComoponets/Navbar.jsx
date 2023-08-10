@@ -21,17 +21,17 @@ const Navbar = () => {
     return (
         <Container>
             <div>
-                <nav className='flex lg:grid lg:grid-cols-5 justify-between items-center'>
-                    <h1 className='text-4xl lg:col-span-2 jm-shadow'><Link href="/"><span className='font-serif text-5xl text-blue-e '>J</span>m <span className='font-serif text-5xl text-blue-e'>J</span>ob <span className='font-serif text-5xl text-blue-e'>P</span>ortal</Link></h1>
+                <nav className='flex lg:grid lg:grid-cols-5 justify-between items-center py-6 px-4 border-b-2  border-s-black '>
+                    <h1 className='text-4xl font-bold text-[#465AF7]  text-blue-e lg:col-span-2 jm-shadow mx-2'><Link href="/">MeetPlanr</Link></h1>
 
                     <div className={`jm_nav ${open ? "w-4/5 md:w-1/2 p-5" : "w-0"}`}>
-                        <ul className='flex flex-col lg:flex-row gap-3 lg:gap-x-7'>
-                            <li><Link href="/" className={({ isActive }) => isActive ? "text-blue-e" : "" }>Home</Link></li>
-                            <li><Link className={({ isActive }) => isActive ? "text-blue-e" : "" } href="/statistics">Statistics</Link></li>
-                            <li><Link className={({ isActive }) => isActive ? "text-blue-e" : "" } href="/applied">Applied Jobs</Link></li>
+                        <ul className='flex font-bold flex-col lg:flex-row gap-3 lg:gap-x-7'>
+                            <li><Link href="/" className={({ isActive }) => isActive ? "text-blue-e" : "" }>Product</Link></li>
+                            <li><Link className={({ isActive }) => isActive ? "text-blue-e" : "" } href="/statistics">Solutions</Link></li>
+                            <li><Link className={({ isActive }) => isActive ? "text-blue-e" : "" } href="/applied">Pricing</Link></li>
                             <li><Link className={({ isActive }) => isActive ? "text-blue-e" : "" } href="/blogs">Blog</Link></li>
                         </ul>
-                        <button className='btn-primary mt-10 lg:mt-0'>Star Applying</button>
+                        <button className='btn bg-[#465AF7] text-white mx-2 px-6 mt-10 lg:mt-0'>Login</button>
                     </div>
                     <button onClick={() => setOpen(!open)} className='block lg:hidden'>{open ? <FaTimes/> : <FaBars/>}</button>
                 </nav>
