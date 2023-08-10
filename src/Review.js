@@ -1,18 +1,18 @@
 import Image from 'next/image';
 import React from 'react';
 import { AiFillStar } from 'react-icons/ai';
-import img1 from '../../public/img1.jpg'
-import img2 from '../../public/img7.jpg'
-import img3 from '../../public/img8.jpg'
-import img4 from '../../public/img3.jpg'
-import img5 from '../../public/img9.jpg'
-import img6 from '../../public/img4.jpg'
-import img7 from '../../public/img5.jpg'
-import img8 from '../../public/img6.jpg'
-import img9 from '../../public/img11.jpg'
-import img10 from '../../public/img10.jpg'
-import img11 from '../../public/img2.jpg'
-import img12 from '../../public/img12.jpg'
+import img1 from '../public/img1.jpg'
+import img2 from '../public/img7.jpg'
+import img3 from '../public/img8.jpg'
+import img4 from '../public/img3.jpg'
+import img5 from '../public/img9.jpg'
+import img6 from '../public/img4.jpg'
+import img7 from '../public/img5.jpg'
+import img8 from '../public/img6.jpg'
+import img9 from '../public/img11.jpg'
+import img10 from '../public/img10.jpg'
+import img11 from '../public/img2.jpg'
+import img12 from '../public/img12.jpg'
 
 const Review = () => {
 
@@ -28,7 +28,7 @@ const Review = () => {
                 <div className="carousel w-full ">
 
                     <div  className="carousel-item relative w-full">
-                        <div id="slide1" className='grid lg:grid-cols-3  mx-auto grid-cols-1 2xl:gap-10  gap-6'>
+                        <div id="slide1" className='grid lg:grid-cols-3  mx-auto grid-cols-1 2xl:gap-10  gap-8'>
                             <div>
 
                                 <a
@@ -177,12 +177,12 @@ const Review = () => {
 
                         </div>
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide4" className="lg:w-8 text-primary btn btn-circle">❮</a>
-                            <a href="#slide2" className="lg:w-8 text-primary btn btn-circle">❯</a>
+                            <a href="#slide4" className="lg:w-6 text-primary btn btn-circle">❮</a>
+                            <a href="#slide2" className="lg:w-6 text-primary btn btn-circle">❯</a>
                         </div>
                     </div>
                     <div id="slide2" className="carousel-item relative w-full">
-                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center 2xl:gap-10  gap-6'>
+                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center 2xl:gap-10  gap-8'>
                             <div>
 
                                 <a
@@ -329,12 +329,12 @@ const Review = () => {
 
                         </div>
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide1" className="lg:w-8 text-primary btn btn-circle">❮</a>
-                            <a href="#slide3" className="lg:w-8 text-primary btn btn-circle">❯</a>
+                            <a href="#slide1" className="lg:w-6 text-primary btn btn-circle">❮</a>
+                            <a href="#slide3" className="lg:w-6 text-primary btn btn-circle">❯</a>
                         </div>
                     </div>
                     <div id="slide3" className="carousel-item relative w-full">
-                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center 2xl:gap-10  gap-6'>
+                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center 2xl:gap-10  gap-8'>
                             <div>
 
                                 <a
@@ -481,12 +481,12 @@ const Review = () => {
 
                         </div>
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide2" className="lg:w-8 text-primary btn btn-circle">❮</a>
-                            <a href="#slide4" className="lg:w-8 text-primary btn btn-circle">❯</a>
+                            <a href="#slide2" className="lg:w-6 text-primary btn btn-circle">❮</a>
+                            <a href="#slide4" className="lg:w-6 text-primary btn btn-circle">❯</a>
                         </div>
                     </div>
                     <div id="slide4" className="carousel-item relative w-full">
-                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center 2xl:gap-10  gap-6'>
+                        <div className='grid lg:grid-cols-3 mx-auto grid-cols-1 px-5 justify-center items-center 2xl:gap-10  gap-8'>
                             <div>
 
                                 <a
@@ -632,8 +632,8 @@ const Review = () => {
 
                         </div>
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide3" className="lg:w-8 text-primary btn btn-circle">❮</a>
-                            <a href="#slide1" className="lg:w-8 text-primary btn btn-circle">❯</a>
+                            <a href="#slide3" className="lg:w-6 text-primary btn btn-circle">❮</a>
+                            <a href="#slide1" className="lg:w-6 text-primary btn btn-circle">❯</a>
                         </div>
                     </div>
                 </div>

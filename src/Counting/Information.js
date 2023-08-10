@@ -9,7 +9,7 @@ const Information = () => {
   const [testimonials, setTestimonials] = useState(0);
   const [totalVideos, setTotalVideos] = useState(0);
   const initialCount = 0;
-  const finalStudentCount = 200000 ;
+  const finalStudentCount = 200000;
   const finalTeacherCount = 200000;
   const finalTestimonialCount = 200000;
   const finalVideoCount = 200000;
