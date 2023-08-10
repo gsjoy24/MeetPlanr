@@ -1,12 +1,9 @@
 
 import Featured from "@/Featured/Featured";
 import PricingPlan from "@/PricingPlan/PricingPlan";
-import Security from "@/security/app";
 import Counting from "@/Counting/Information";
 import Banner from "@/Banner/Banner";
-import Review from "@/Review";
-
-
+import Review from "@/Review/Review";
 
 const Home = () => {
 	return (
@@ -14,10 +11,10 @@ const Home = () => {
 			<div>
 				<Banner />
 				<Featured></Featured>
+				
 				<Counting></Counting>
-				<Security></Security>
 				<PricingPlan></PricingPlan>
-				<Review />
+				<Review ></Review>
 			</div>
 
 		</div>
