@@ -10,20 +10,6 @@ const PricingPlan = () => {
             <SectionTitle title={"Pricing Plan"}></SectionTitle>
 
             <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-               {/* <div className="card shadow-md border rounded-md mx-auto">
-                  <div className="card-body items-center text-center">
-                     <h2 className="text-2xl font-semibold">Basic</h2>
-                     <h3 className="text-3xl font-bold">Free</h3>
-                     <div className="card-actions mt-5">
-                        <Link
-                           href="/"
-                           className="btn bg-[#465af7] hover:bg-sky-950 text-white text-[17px] px-9"
-                        >
-                           Sign Up
-                        </Link>
-                     </div>
-                  </div>
-               </div> */}
 
                <div className="border shadow-md rounded-md p-5 text-center grid">
                   <h2 className="text-2xl font-medium mt-2">Basic</h2>
