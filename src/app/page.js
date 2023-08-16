@@ -7,16 +7,12 @@ import Review from "@/Review/Review";
 
 const Home = () => {
 	return (
-		<div className="">
-			<div>
-				<Banner />
-				<Featured></Featured>
-				
-				<Counting></Counting>
-				<PricingPlan></PricingPlan>
-				<Review ></Review>
-			</div>
-
+		<div>
+			<Banner />
+			<Featured></Featured>
+			<Counting></Counting>
+			<PricingPlan></PricingPlan>
+			<Review ></Review>
 		</div>
 	);
 }
