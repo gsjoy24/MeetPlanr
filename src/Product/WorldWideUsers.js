@@ -20,7 +20,7 @@ const WorldWideUsers = () => {
           <div className="flex items-center space-x-16">
               <Image src={img1} alt="docs image" className="w-auto h-full"></Image>
               <Image src={img2} alt="docs image" className="w-auto h-full"></Image>
-              <Image src={img3} alt="docs image" className="w-auto h-full"></Image>
+              <Image src={img3} alt="docs image" className="w-60 h-full"></Image>
               <Image src={img4} alt="docs image" className="w-auto h-full"></Image>
               <Image src={img5} alt="docs image" className="w-auto h-full"></Image>
               <Image src={img6} alt="docs image" className="w-auto h-full"></Image>
