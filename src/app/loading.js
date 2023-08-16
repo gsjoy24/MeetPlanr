@@ -1,11 +1,13 @@
-import React from 'react';
+'use client';
+import Lottie from 'lottie-react';
+import loadingAnimation from '../assets/loading.json';
 
-const loading = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+const Loading = () => {
+	return (
+		<div className="max-w-sm mx-auto overflow-hidden">
+			<Lottie animationData={loadingAnimation} />
+		</div>
+	);
 };
 
-export default loading;
+export default Loading;
