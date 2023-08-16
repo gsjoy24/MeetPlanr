@@ -15,7 +15,8 @@ const WorldWideUsers = () => {
         <p className="text-4xl font-bold text-[#0B3558] lg:w-[680px] mx-auto text-center mb-10">
            Scheduling automation for more than{" "}
            <span className="text-[#465AF7]">20 million</span> users worldwide
-        </p>
+      </p>
+      
         <marquee behavior="" direction="">
           <div className="flex items-center space-x-16">
               <Image src={img1} alt="docs image" className="w-auto h-full"></Image>
