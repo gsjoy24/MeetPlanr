@@ -39,7 +39,7 @@ const UserDocs = () => {
                       people can book time with you in one click.
                    </p>
                 </div>
-                <div data-aos="zoom-in" className="">
+                <div data-aos="zoom-in" data-aos-duration="800" className="">
                    <Image src={img1} alt="docs image"></Image>
                 </div>
              </div>
@@ -59,12 +59,8 @@ const UserDocs = () => {
                       around scheduling requirements.
                    </p>
                 </div>
-                <div className="md:order-1" data-aos="zoom-in">
-                   <Image
-                      data-aos="zoom-in"
-                      src={img2}
-                      alt="docs image"
-                   ></Image>
+                <div className="md:order-1" data-aos="zoom-in" data-aos-duration="800">
+                   <Image src={img2} alt="docs image"></Image>
                 </div>
              </div>
              <div className="grid gap-10 md:grid-cols-2 items-center my-10">
@@ -82,12 +78,8 @@ const UserDocs = () => {
                       platforms!
                    </p>
                 </div>
-                <div className="" data-aos="zoom-in">
-                   <Image
-                      data-aos="zoom-in"
-                      src={img3}
-                      alt="docs image"
-                   ></Image>
+                <div className="" data-aos="zoom-in" data-aos-duration="800">
+                   <Image src={img3} alt="docs image"></Image>
                 </div>
              </div>
              <div className="grid gap-16 md:grid-cols-2 items-center my-10">
@@ -104,9 +96,8 @@ const UserDocs = () => {
                       IT-oriented features.
                    </p>
                 </div>
-                <div className="md:order-1" data-aos="zoom-in">
+                <div className="md:order-1" data-aos="zoom-in" data-aos-duration="800">
                    <Image
-                      data-aos="zoom-in"
                       src={img4}
                       alt="docs image"
                    ></Image>

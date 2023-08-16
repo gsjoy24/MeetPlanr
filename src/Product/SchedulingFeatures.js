@@ -26,7 +26,7 @@ const SchedulingFeatures = () => {
               </button>
            </div>
 
-           <div className="mt-16 mb-20">
+           <div className="mt-16 mb-20" data-aos="fade-up" data-aos-duration="800">
               <Image src={img1} alt="Scheduling image"></Image>
            </div>
         </div>
