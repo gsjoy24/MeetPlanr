@@ -1,7 +1,8 @@
+"use client"
 /* eslint-disable react/no-unescaped-entities */
 import SectionTitle from "@/components/SectionTitle";
 import Container from "@/components/container";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaCalendarAlt, FaCalendarCheck, FaDatabase, FaLink, FaMoneyCheckAlt, FaRegEnvelope } from "react-icons/fa";
 const Featured = () => {
     return (
