@@ -3,18 +3,6 @@ import Container from "@/components/container";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars,FaTimes } from 'react-icons/fa';
-/*
-Requirements
-*1. must be Tailwind
- 2. paste this code in index.css 
-
-.jm_nav{
-    @apply block lg:flex justify-between lg:col-span-3 items-center absolute lg:static lg:w-auto top-0 left-0 overflow-hidden h-screen lg:h-auto duration-500 bg-[#fff] lg:bg-[transparent] lg:p-0 z-50
-  }
-  3. use react icons or if you want to use any icons replaced the bar icon and times icon in line of 33.
-*/
-
-
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
