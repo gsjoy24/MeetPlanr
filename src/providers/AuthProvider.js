@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
 
 	// login user with email and password
 	const loginWithEmail = (email, password) => {
+		setLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 

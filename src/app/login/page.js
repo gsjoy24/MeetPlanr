@@ -1,6 +1,6 @@
 'use client';
 import Container from '@/components/container';
-import signUpAnimation from '../../assets/signup.json';
+import signUpAnimation from '../../assets/register.json';
 import Lottie from 'lottie-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -11,7 +11,7 @@ import { UserAuth } from '@/providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 
-const signUp = () => {
+const LoginPage = () => {
 	const router = useRouter();
 	const [showPass, setShowPass] = useState(false);
 	const [error, setError] = useState('');
@@ -22,20 +22,17 @@ const signUp = () => {
 		reset
 	} = useForm();
 
-	const { loading, setLoading, createUser, updateUserProfile } = UserAuth();
+	const { loading, setLoading, loginWithEmail } = UserAuth();
 
 	const onSubmit = (formData) => {
-		const { name, email, password, photoURL } = formData;
+		const { email, password } = formData;
 
-		createUser(email, password)
+		loginWithEmail(email, password)
 			.then((data) => {
-				updateUserProfile(name, photoURL).then(() => {
-					console.log('profile updated');
-				});
-
+				console.log(data.user);
 				reset();
 				setLoading(false);
-				toast.success('Successfully signed up!');
+				toast.success('Successfully logged in!');
 				router.push('/');
 			})
 			.catch((err) => {
@@ -47,52 +44,17 @@ const signUp = () => {
 
 	return (
 		<Container>
-			<div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
-				<div className="max-w-lg h-64 -mt-12 mb-8 md:m-auto md:h-auto ">
+			<div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center lg:py-20">
+				<div className="max-w-lg md:min-w-[400px] lg:min-w-[600px] mb-8 md:m-auto mx-auto md:h-auto ">
 					<Lottie animationData={signUpAnimation} />
 				</div>
 				<form className="md:p-12" onSubmit={handleSubmit(onSubmit)}>
-					<h2 className="text-3xl font-bold text-center mb-8">Sign Up Now</h2>
-					{/* name */}
-					<div>
-						<label className="label">
-							<span className="label-text">What is your name?</span>
-						</label>
-						<input
-							className="input input-bordered focus:outline-none w-full text-sm"
-							type="text"
-							placeholder="Name"
-							{...register('name', { required: true })}
-						/>
-						{errors.name?.type === 'required' && (
-							<p className="text-xs text-red-500 flex items-center gap-2 pt-2 ml-1" role="alert">
-								<BiSolidErrorAlt size={17} /> <span>Name is required!</span>
-							</p>
-						)}
-					</div>
-
-					{/* photoURL */}
-					<div>
-						<label className="label">
-							<span className="label-text">Your online photo URL</span>
-						</label>
-						<input
-							className="input input-bordered focus:outline-none w-full text-sm"
-							type="text"
-							placeholder="Photo URL"
-							{...register('photoURL', { required: true })}
-						/>
-						{errors.photoURL?.type === 'required' && (
-							<p className="text-xs text-red-500 flex items-center gap-2 pt-2 ml-1" role="alert">
-								<BiSolidErrorAlt size={17} /> <span>Photo URL is required!</span>
-							</p>
-						)}
-					</div>
+					<h2 className="text-3xl font-bold text-center mb-8">Login Now</h2>
 
 					{/* email */}
 					<div>
 						<label className="label">
-							<span className="label-text">What is your email?</span>
+							<span className="label-text">Enter your email</span>
 						</label>
 						<input
 							className="input input-bordered focus:outline-none w-full text-sm"
@@ -110,15 +72,14 @@ const signUp = () => {
 					{/* password */}
 					<div className="relative">
 						<label className="label">
-							<span className="label-text">Create a new password</span>
+							<span className="label-text">Enter your password</span>
 						</label>
 						<input
 							className="input input-bordered focus:outline-none w-full text-sm"
 							type={showPass ? 'text' : 'password'}
 							placeholder="Password"
 							{...register('password', {
-								required: 'Password is required',
-								minLength: { value: 6, message: 'Password must be at least 6 characters' }
+								required: 'Password is required'
 							})}
 							autoComplete="current-password"
 						/>
@@ -142,12 +103,13 @@ const signUp = () => {
 						className="bg-[#465AF7] hover:bg-sky-950 duration-200 text-white py-2 w-full rounded-lg mt-6"
 						type={loading ? 'button' : 'submit'}
 					>
-						{loading ? 'Please wait' : 'Sign Up'}
+						{loading ? 'Please wait' : 'Login'}
 					</button>
+
 					<p className="text-xs mt-3">
-						<span>Already have an account?</span>
-						<Link className="text-[#465AF7] ml-2" href="/login">
-							Login Now!
+						<span>New here?</span>
+						<Link className="text-[#465AF7] ml-2" href="/sign-up">
+							Sign Up Now!
 						</Link>
 					</p>
 				</form>
@@ -156,4 +118,4 @@ const signUp = () => {
 	);
 };
 
-export default signUp;
+export default LoginPage;

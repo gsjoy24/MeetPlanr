@@ -1,8 +1,9 @@
 "use client"
+import Button from "@/common/Button";
 import Container from "@/components/container";
 import Link from "next/link";
 import React, { useState } from "react";
-import { FaBars,FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -10,7 +11,7 @@ const Navbar = () => {
         <Container>
             <div>
                 <nav className='flex lg:grid lg:grid-cols-5 justify-between items-center py-6 px-4 border-b-2  border-s-black '>
-                    <h1 className='text-4xl font-bold text-[#465AF7]  text-blue-e lg:col-span-2 jm-shadow mx-2'><Link href="/">MeetPlanr</Link></h1>
+                    <h1 className='text-4xl font-bold text-[#465AF7] text-blue-e lg:col-span-2 jm-shadow mx-2'><Link href="/">MeetPlanr</Link></h1>
 
                     <div className={`jm_nav ${open ? "w-4/5 md:w-1/2 p-5" : "w-0"}`}>
                         <ul className='flex font-bold flex-col lg:flex-row gap-3 lg:gap-x-7'>
@@ -19,10 +20,11 @@ const Navbar = () => {
                             <li><Link href="/statistics">Solutions</Link></li>
                             <li><Link href="/applied">Pricing</Link></li>
                             <li><Link href="/blogs">Blog</Link></li>
+                            <li><Link href="/sign-up">Sign Up</Link></li>
                         </ul>
-                        <button className='btn bg-[#465AF7] text-white mx-2 px-6 mt-10 lg:mt-0'>Login</button>
+                        <Link href='/login' ><Button>Login</Button></Link>
                     </div>
-                    <button onClick={() => setOpen(!open)} className='block lg:hidden'>{open ? <FaTimes/> : <FaBars/>}</button>
+                    <button onClick={() => setOpen(!open)} className='block lg:hidden'>{open ? <FaTimes /> : <FaBars />}</button>
                 </nav>
             </div>
         </Container>
