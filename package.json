@@ -27,6 +27,7 @@
     "react-id-swiper": "^4.0.0",
     "react-player": "^2.12.0",
     "react-slick": "^0.29.0",
+    "react-tabs": "^6.0.2",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.7.20",
     "swiper": "^10.1.0",
