@@ -4,7 +4,7 @@ import WorldWideUsers from '@/Product/WorldWideUsers';
 import Container from '@/components/container';
 import React from 'react';
 
-const page = () => {
+const Product = () => {
     return (
         <Container>
             <SchedulingFeatures></SchedulingFeatures>
@@ -14,4 +14,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Product;

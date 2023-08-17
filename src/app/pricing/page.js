@@ -2,15 +2,9 @@ import PricingSection from "@/Pricing/PricingSection";
 
 const Pricing = () => {
     return (
-
-        <>
-
-            <PricingSection />
-
-
-        </>
-
-
+      <>
+        <PricingSection />
+      </>
     )
 }
 export default Pricing;
