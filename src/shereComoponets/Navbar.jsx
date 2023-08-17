@@ -20,7 +20,7 @@ const Navbar = () => {
                             <li><Link href="/pricing">Pricing</Link></li>
                             <li><Link href="/blogs">Blog</Link></li>
                         </ul>
-                        <button className='btn bg-[#465AF7] text-white px-6 mt-10 lg:mt-0'>Login</button>
+              <button className='btn bg-[#465AF7] hover:bg-sky-950 text-white px-6 mt-10 lg:mt-0'>Login</button>
                     </div>
                     <button onClick={() => setOpen(!open)} className='block lg:hidden'>{open ? <FaTimes/> : <FaBars/>}</button>
                 </nav>
