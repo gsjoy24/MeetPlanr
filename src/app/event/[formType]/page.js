@@ -10,7 +10,31 @@ const page = ({params}) => {
     const [method,setMethod] = useState(null);
     const [action,setAction] = useState(false);
     console.log(params);
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = async (data) => {
+        try {
+            const response = await fetch('/api/scheduling', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            });
+      
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+      
+            const responseData = await response.json();
+            if (responseData.insertedId) {
+              alert('Scheduling Added');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while posting data');
+          }
+        
+    }
+    
     return (
         <Container>
             <div className="">
@@ -32,26 +56,6 @@ const page = ({params}) => {
                             <option value="Google Meet"> Google Meet</option>
                             <option value="In location">In Person Meeting</option>
                         </select>
-                        {/* <div className="input_field mt-8 relative">
-                            {
-                                method ? " " 
-                                : <div onClick={() => setAction(!action)} className=" cursor-pointer">
-                                    <div className="flex justify-between items-center">
-                                        <p>Select a Method</p>
-                                        {
-                                            action ? <FaAngleUp className='text-xl'/> : <FaAngleDown className='text-xl'/>
-                                        }
-                                    </div>
-                                    {
-                                        action && <div className="">
-                                            <div className="">
-                                                
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                            }
-                        </div> */}
                         
                         <label className='text-lg font-semibold mb-3 mt-8' htmlFor='description'>Description:</label>
                         <textarea placeholder='Write your schedule details....' id='description' className='input_field min-h-[200px] resize-none' {...register("description")}></textarea>
