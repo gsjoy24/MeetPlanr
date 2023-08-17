@@ -48,9 +48,9 @@ const EventsTabs = () => {
                   </div>
 
                   <div>
-                     <button className="border border-[#465AF7] text-[#465AF7] hover:bg-[#eaf0f8] px-5 py-[2px] rounded-full mt-6">
+                     <Link href="" className="border border-[#465AF7] text-[#465AF7] hover:bg-[#eaf0f8] px-5 py-[2px] rounded-full mt-6">
                         New Event Type
-                     </button>
+                     </Link>
                   </div>
                </div>
             </TabPanel>
