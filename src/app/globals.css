@@ -11,6 +11,10 @@
     @apply bg-[#465AF7] w-fit h-fit mx-auto text-white px-8 py-4 rounded-lg mt-6
 }
 
+/*========================== Event Form ==================================*/
+.input_field{
+  @apply border border-gray-800 rounded-md p-3 outline-none w-full  
+}
 
 
 
