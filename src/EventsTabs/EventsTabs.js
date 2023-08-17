@@ -26,9 +26,9 @@ const EventsTabs = () => {
             selectedIndex={tabIndex}
             onSelect={(index) => setTabIndex(index)}
          >
-            <TabList>
-               <Tab>Event Types</Tab>
-               <Tab>Scheduled Events</Tab>
+            <TabList className="shadow-md flex space-x-10">
+               <Tab className="border-t-0 border-b-4 cursor-pointer pb-2">Event Types</Tab>
+               <Tab className="border-t-0 border-b-4 cursor-pointer pb-2">Scheduled Events</Tab>
             </TabList>
 
             <TabPanel>
@@ -48,16 +48,19 @@ const EventsTabs = () => {
                   </div>
 
                   <div>
-                     <Link href="" className="border border-[#465AF7] text-[#465AF7] hover:bg-[#eaf0f8] px-5 py-[2px] rounded-full mt-6">
+                     <Link
+                        href=""
+                        className="border border-[#465AF7] text-[#465AF7] hover:bg-[#eaf0f8] px-5 py-[2px] rounded-full mt-6"
+                     >
                         New Event Type
-                     </Link>
+                     </Link> 
                   </div>
                </div>
             </TabPanel>
             <TabPanel>
-               <p className="text-[#737373] text-xl font-semibold">
+               <p className="text-[#737373] text-xl font-semibold mt-8">
                   No Events Yet
-               </p>
+           </p>
             </TabPanel>
          </Tabs>
       </Container>
