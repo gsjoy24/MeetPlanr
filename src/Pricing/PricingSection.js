@@ -1,4 +1,4 @@
-import SectionTitle from '@/Components/SectionTitle';
+import SectionTitle from '@/components/SectionTitle';
 import React from 'react';
 
 const PricingSection = () => {
