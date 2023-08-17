@@ -2,20 +2,20 @@
 "use client"
 import Button from '@/common/Button';
 import Container from '@/components/container';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 const page = ({params}) => {
+    const router = useRouter();
     const {register,handleSubmit} = useForm()
-    const [method,setMethod] = useState(null);
-    const [action,setAction] = useState(false);
-    console.log(params);
     const onSubmit = (data) => console.log(data)
+
     return (
         <Container>
-            <div className="">
-                <div className=" py-5">
-                    <Button>Back</Button>
+            <div className="my-10">
+                <div  className=" py-5">
+                    <Button onClick={() => router.back()}>Back</Button>
                 </div>
     {/*================= Event Form ====================== =*/}
                 <div className='w-4/5 border-2 rounded-md shadow-md mx-auto p-5'>
@@ -32,27 +32,7 @@ const page = ({params}) => {
                             <option value="Google Meet"> Google Meet</option>
                             <option value="In location">In Person Meeting</option>
                         </select>
-                        {/* <div className="input_field mt-8 relative">
-                            {
-                                method ? " " 
-                                : <div onClick={() => setAction(!action)} className=" cursor-pointer">
-                                    <div className="flex justify-between items-center">
-                                        <p>Select a Method</p>
-                                        {
-                                            action ? <FaAngleUp className='text-xl'/> : <FaAngleDown className='text-xl'/>
-                                        }
-                                    </div>
-                                    {
-                                        action && <div className="">
-                                            <div className="">
-                                                
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                            }
-                        </div> */}
-                        
+
                         <label className='text-lg font-semibold mb-3 mt-8' htmlFor='description'>Description:</label>
                         <textarea placeholder='Write your schedule details....' id='description' className='input_field min-h-[200px] resize-none' {...register("description")}></textarea>
 
