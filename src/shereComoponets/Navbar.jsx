@@ -16,8 +16,8 @@ const Navbar = () => {
                         <ul className='flex font-bold flex-col lg:flex-row gap-3 lg:gap-x-7'>
                             <li><Link href="/">Home</Link></li>
                             <li><Link href="/product">Product</Link></li>
-                            <li><Link href="/statistics">Solutions</Link></li>
-                            <li><Link href="/applied">Pricing</Link></li>
+                            <li><Link href="/solutions">Solutions</Link></li>
+                            <li><Link href="/pricing">Pricing</Link></li>
                             <li><Link href="/blogs">Blog</Link></li>
                         </ul>
                         <button className='btn bg-[#465AF7] text-white mx-2 px-6 mt-10 lg:mt-0'>Login</button>

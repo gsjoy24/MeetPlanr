@@ -1,4 +1,3 @@
-import SectionTitle from "@/Components/SectionTitle";
 import PricingSection from "@/Pricing/PricingSection";
 
 const Pricing = () => {
@@ -7,11 +6,6 @@ const Pricing = () => {
         <>
 
             <PricingSection />
-
-
-
-
-
 
 
         </>
