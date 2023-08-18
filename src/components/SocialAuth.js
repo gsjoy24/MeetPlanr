@@ -9,8 +9,7 @@ const SocialAuth = ({ router, setError }) => {
 
 	const handleGoogleAuth = () => {
 		continueWithGoogle()
-			.then((data) => {
-				console.log(data.user);
+			.then(() => {
 				setLoading(false);
 				toast.success('Successfully logged in!');
 				router.push('/');
@@ -25,7 +24,6 @@ const SocialAuth = ({ router, setError }) => {
 	const handleGithubAuth = () => {
 		continueWithGithub()
 			.then((data) => {
-				console.log(data.user);
 				setLoading(false);
 				toast.success('Successfully logged in!');
 				router.push('/');
