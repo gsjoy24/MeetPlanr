@@ -1,6 +1,7 @@
 import { insertSchedulingToDb } from "@/services/scheduling.service";
 
 
+
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const data = req.body;
