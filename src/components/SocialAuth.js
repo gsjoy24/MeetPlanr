@@ -9,8 +9,7 @@ const SocialAuth = ({ router, setError }) => {
 
 	const handleGoogleAuth = () => {
 		continueWithGoogle()
-			.then((data) => {
-				console.log(data.user);
+			.then(() => {
 				setLoading(false);
 				toast.success('Successfully logged in!');
 				router.push('/');
@@ -25,7 +24,6 @@ const SocialAuth = ({ router, setError }) => {
 	const handleGithubAuth = () => {
 		continueWithGithub()
 			.then((data) => {
-				console.log(data.user);
 				setLoading(false);
 				toast.success('Successfully logged in!');
 				router.push('/');
@@ -40,17 +38,17 @@ const SocialAuth = ({ router, setError }) => {
 	return (
 		<>
 			<div className="divider text-xs">or continue with</div>
-			<div className="flex justify-center items-center gap-2 mb-12 md:mb-0">
+			<div className="flex justify-center items-center gap-2 pb-12 md:pb-4">
 				<Image
 					onClick={handleGoogleAuth}
-					className="hover:scale-105 active:scale-90 duration-200"
+					className="hover:scale-105 active:scale-90 duration-200 cursor-pointer"
 					src={googleImg}
 					alt="google"
 					width={50}
 				/>
 				<Image
 					onClick={handleGithubAuth}
-					className="hover:scale-105 active:scale-90 duration-200"
+					className="hover:scale-105 active:scale-90 duration-200 cursor-pointer"
 					src={githubImg}
 					alt="github"
 					width={50}

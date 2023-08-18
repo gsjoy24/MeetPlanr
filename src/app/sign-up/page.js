@@ -29,7 +29,7 @@ const signUp = () => {
 		const { name, email, password, photoURL } = formData;
 
 		createUser(email, password)
-			.then((data) => {
+			.then(() => {
 				updateUserProfile(name, photoURL).then(() => {
 					console.log('profile updated');
 				});
