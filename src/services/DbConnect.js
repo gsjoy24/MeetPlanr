@@ -17,9 +17,9 @@ const DbConnect = async () => {
           }
         });
         db=client.db("meet-planr")
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    return db;
+      await client.db("admin").command({ ping: 1 });
+      console.log("Pinged your deployment. You successfully connected to MongoDB!");
+      return db;
     }
     catch(error){
         console.log(error.message)

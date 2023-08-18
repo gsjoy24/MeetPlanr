@@ -2,14 +2,14 @@
 "use client"
 import Button from '@/common/Button';
 import Container from '@/components/container';
+import GetSchedule from '@/utils/GetSchedule';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-const page = ({params}) => {
+const page = async  ({params}) => {
     const {register,handleSubmit} = useForm()
-    const [method,setMethod] = useState(null);
-    const [action,setAction] = useState(false);
-    console.log(params);
+    const schedule =await GetSchedule();
+    console.log(schedule);
     const onSubmit = async (data) => {
         try {
             const response = await fetch('/api/scheduling', {

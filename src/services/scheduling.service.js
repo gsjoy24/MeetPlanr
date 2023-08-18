@@ -1,5 +1,6 @@
+"use client"
 import DbConnect from "./DbConnect";
-
+import 'server-only'
 
 export const insertSchedulingToDb = async (data) => {
     const db = await DbConnect();
