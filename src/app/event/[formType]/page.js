@@ -2,44 +2,37 @@
 "use client"
 import Button from '@/common/Button';
 import Container from '@/components/container';
-import GetSchedule from '@/utils/GetSchedule';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-const page = async  ({params}) => {
+import Swal from 'sweetalert2';
+const page = ({params}) => {
     const {register,handleSubmit} = useForm()
-    const schedule =await GetSchedule();
-    console.log(schedule);
+    const router = useRouter();
     const onSubmit = async (data) => {
-        try {
-            const response = await fetch('/api/scheduling', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(data),
-            });
-      
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-      
-            const responseData = await response.json();
-            if (responseData.insertedId) {
-              alert('Scheduling Added');
-            }
-          } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred while posting data');
-          }
-        
+        const res = await fetch('https://meetplanr-server-jmjubaer.vercel.app/schedule',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        const postResponse = await res.json();
+        if(postResponse.insertedId){
+            Swal.fire({
+                icon: 'success',
+                title: 'Schedule created successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              router.push('/solutions')
+        }
     }
     
     return (
         <Container>
-            <div className="">
-                <div className=" py-5">
-                    <Button>Back</Button>
+            <div className="my-8">
+                <div className="my-5">
+                    <button onClick={()=> router.back()} className='ft_btn'>Back</button>
                 </div>
     {/*================= Event Form ====================== =*/}
                 <div className='w-4/5 border-2 rounded-md shadow-md mx-auto p-5'>
@@ -51,7 +44,7 @@ const page = async  ({params}) => {
                         <label className='text-lg font-semibold mb-3' htmlFor='eventName'>Event Name:*</label>
                         <input placeholder='Event Name...' required className='input_field' id='eventName' {...register("eventName")} />         
 
-                        <label className='text-lg font-semibold mb-3 mt-5' htmlFor='eventName'>Event Method:*</label> 
+                        <label className='text-lg font-semibold mb-3 mt-5' htmlFor='eventMethod'>Event Method:*</label> 
                         <select id='eventMethod' className='input_field' {...register("eventMethod")}>
                             <option value="Google Meet"> Google Meet</option>
                             <option value="In location">In Person Meeting</option>
@@ -70,15 +63,15 @@ const page = async  ({params}) => {
 
                         <div className="grid grid-cols-2 gap-5 mt-8">
                             <div className="">
-                                <label className='text-lg font-semibold mb-3' htmlFor='eventName'>Event Name:*</label>
-                                <input className='input_field' id='eventName' {...register("eventName")} type='date' required/> 
+                                <label className='text-lg font-semibold mb-3' htmlFor='eventDate'>Event Date:*</label>
+                                <input className='input_field' id='eventDate' {...register("eventDate")} type='date' required/> 
                             </div>
                             <div className="">
-                                <label className='text-lg font-semibold mb-3' htmlFor='eventName'>Event Name:*</label>
-                                <input className='input_field' id='eventName' {...register("eventName")} type='time' required/> 
+                                <label className='text-lg font-semibold mb-3' htmlFor='eventTime'>Event Time:*</label>
+                                <input className='input_field' id='eventTime' {...register("eventTime")} type='time' required/> 
                             </div>
                         </div>
-                        <input className='ft_btn' type="submit" />
+                        <input className='ft_btn mt-8' type="submit" />
                     </form>
                 </div>
             </div>
