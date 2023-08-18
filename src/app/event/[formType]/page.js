@@ -26,7 +26,7 @@ const page = ({params}) => {
       
             const responseData = await response.json();
             if (responseData.insertedId) {
-              alert('Scheduling Add');
+              alert('Scheduling Added');
             }
           } catch (error) {
             console.error('Error:', error);
