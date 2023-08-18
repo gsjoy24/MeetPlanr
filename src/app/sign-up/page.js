@@ -12,7 +12,7 @@ import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import SocialAuth from '@/components/SocialAuth';
 
-const signUp = () => {
+const SignUp = () => {
 	const router = useRouter();
 	const [showPass, setShowPass] = useState(false);
 	const [error, setError] = useState('');
@@ -160,4 +160,4 @@ const signUp = () => {
 	);
 };
 
-export default signUp;
+export default SignUp;

@@ -1,16 +1,24 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import Container from "@/components/container";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { IoIosAdd } from "react-icons/io";
 import img from "@/assets/events-tabs/placeholder.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import EventCard from "@/components/EventCard";
 
 const EventsTabs = () => {
    const [tabIndex, setTabIndex] = useState(0);
-
+   const [schedules, setSchedules] = useState([]);
+   useEffect(async() => {
+      const res = await fetch('https://meetplanr-server-jmjubaer.vercel.app/schedule');
+      const data = await res.json();
+      console.log(data);
+      setSchedules(data)
+   },[])
    return (
       <Container>
          <div className="flex justify-between my-8">
@@ -32,7 +40,7 @@ const EventsTabs = () => {
             </TabList>
 
             <TabPanel>
-               <div className="mt-8 md:flex lg:flex justify-between items-center">
+               <div className="my-8 md:flex lg:flex justify-between items-center">
                   <div className="flex items-center space-x-5">
                      <Image
                         src={img}
@@ -55,6 +63,11 @@ const EventsTabs = () => {
                         New Event Type
                      </Link> 
                   </div>
+               </div>
+               <div className="grid grid-cols-3 gap-5 my-8">
+                  {
+                     schedules.map(schedule => <EventCard schedule={schedule} key={schedule?._id}></EventCard>)
+                  }
                </div>
             </TabPanel>
             <TabPanel>
