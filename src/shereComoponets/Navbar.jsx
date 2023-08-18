@@ -19,11 +19,11 @@ const Navbar = () => {
                 <div className={`jm_nav ${open ? "w-4/5 md:w-1/2 p-5" : "w-0"}`}>
                     <ul className='flex items-center font-bold flex-col lg:flex-row gap-5'>
                         <div className='text-2xl md:text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow lg:hidden'><Link href="/">MeetPlanr</Link></div>
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/product">Product</Link></li>
-                        <li><Link href="/solutions">Solutions</Link></li>
-                        <li><Link href="/pricing">Pricing</Link></li>
-                        <li><Link href="/blogs">Blog</Link></li>
+                        <li ><Link href="/">Home</Link></li>
+                        <li ><Link href="/product">Product</Link></li>
+                        <li ><Link href="/solutions">Solutions</Link></li>
+                        <li ><Link href="/pricing">Pricing</Link></li>
+                        <li ><Link href="/blogs">Blog</Link></li>
                         {user ?
                             <>
                                 <li>
@@ -44,7 +44,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <button onClick={() => setOpen(!open)} className='block lg:hidden'>{open ? <FaTimes /> : <FaBars />}</button>
+                <button onClick={() => setOpen(!open)} className='block lg:hidden'>{open ? <FaTimes size={25} /> : <FaBars size={20} />}</button>
             </nav>
         </Container>
     );
