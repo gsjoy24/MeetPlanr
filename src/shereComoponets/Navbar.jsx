@@ -23,7 +23,7 @@ const Navbar = () => {
                         <li ><Link href="/product">Product</Link></li>
                         <li ><Link href="/solutions">Solutions</Link></li>
                         <li ><Link href="/pricing">Pricing</Link></li>
-                        <li ><Link href="/blogs">Blog</Link></li>
+                        <li ><Link href="/blogs">Blogs</Link></li>
                         {user ?
                             <>
                                 <li>
