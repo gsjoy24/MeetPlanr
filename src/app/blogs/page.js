@@ -156,18 +156,17 @@ const Page = () => {
 				<div className="flex justify-center items-center  ">
 					<Image width="1440" height="280" src={people} alt="" loading="lazy" />
 				</div>
-
-				<div className="blue-section w-full h-96 bg-blue-500 flex flex-col justify-center items-center text-white mb-10">
-					<p className="text-2xl md:text-4xl font-bold mb-8 max-w-xl leading-tight text-center px-2">
-						Make the magic happen, we’ll make sure it happens on time.
-					</p>
-					<div className="mt-4">
-						<button className=" bg-white hover:bg-slate-300 text-blue-500 hover: font-thin py-2 px-4 rounded flex items-center justify-center">
-							Sign Up
-						</button>
-					</div>
-				</div>
 			</Container>
+			<div className="blue-section w-full h-96 bg-blue-500 flex flex-col justify-center items-center text-white mb-10">
+				<p className="text-2xl md:text-4xl font-bold mb-8 max-w-xl leading-tight text-center px-2">
+					Make the magic happen, we’ll make sure it happens on time.
+				</p>
+				<div className="mt-4">
+					<button className=" bg-white hover:bg-slate-300 text-blue-500 hover: font-thin py-2 px-4 rounded flex items-center justify-center">
+						Sign Up
+					</button>
+				</div>
+			</div>
 		</section>
 	);
 };
