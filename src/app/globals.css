@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/*======================= Common Style ===========================*/
+
+.mp_btn{
+    @apply bg-[#465AF7] w-fit h-fit mx-auto text-white px-8 py-4 rounded-lg  cursor-pointer
+}
+
 /*====================== Navbar =============================*/
 .nav {
 	@apply flex lg:grid lg:grid-cols-5 justify-between items-center py-6 px-4 border-b-2 border-s-black;
@@ -11,13 +17,22 @@
 }
 
 /*==================== Featured section ===============================*/
-.ft_btn{
-    @apply bg-[#465AF7] w-fit h-fit mx-auto text-white px-8 py-4 rounded-lg  cursor-pointer
+
+.ft_hover{
+@apply hover:bg-gray-200 transition-all duration-300 
+}
+
+.ft_hover .ft_icon{
+	@apply transition-all duration-500
+}
+.ft_hover:hover .ft_icon{
+	color: #fff !important;
+	@apply border-white transition-all duration-500 bg-[#00a4f8];
 }
 
 /*========================== Event Form ==================================*/
 .input_field {
-	@apply border border-gray-800 rounded-md p-3 outline-none w-full;
+	@apply border border-gray-800 rounded-md p-3 outline-[#00a4f8] w-full ;
 }
 
 .borderBottom {
