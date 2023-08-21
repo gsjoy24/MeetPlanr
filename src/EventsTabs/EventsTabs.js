@@ -69,7 +69,8 @@ const EventsTabs = () => {
                         <option>One-on-One</option>
                         <option>Group</option>
                      </select>
-                  </div>
+             </div>
+             
                </div>
                <div className="grid grid-cols-3 gap-5 my-8">
                   {schedules.map((schedule) => (
