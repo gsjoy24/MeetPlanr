@@ -11,7 +11,7 @@ const page = ({params}) => {
     const {register,handleSubmit} = useForm()
     const router = useRouter();
     const onSubmit = async (data) => {
-        const res = await fetch('https://meetplanr-server-jmjubaer.vercel.app/schedule',{
+        const res = await fetch('http://localhost:5000/schedule',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
