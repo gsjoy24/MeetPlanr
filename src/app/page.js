@@ -11,7 +11,6 @@ const Home = () => {
 			<Banner />
 			<Featured></Featured>
 			<Counting></Counting>
-			<PricingPlan></PricingPlan>
 			<Review ></Review>
 		</div>
 	);
