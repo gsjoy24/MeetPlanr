@@ -5,7 +5,7 @@ import Container from '@/components/container';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaAngleDown, FaAngleLeft, FaAngleUp } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 const page = ({params}) => {
     const {register,handleSubmit} = useForm()
@@ -32,7 +32,7 @@ const page = ({params}) => {
         <Container>
             <div className="my-8">
                 <div className="my-5">
-                    <button onClick={()=> router.back()} className='ft_btn'>Back</button>
+                    <button onClick={()=> router.back()} className='border border-[#465AF7] text-[#465AF7] w-fit h-fit mx-auto px-5 py-4 rounded-3xl hover:bg-[#465AF7] hover:text-[#fff] cursor-pointer transition-all duration-500'><FaAngleLeft className='inline mr-1'/> Back</button>
                 </div>
     {/*================= Event Form ====================== =*/}
                 <div className='w-4/5 border-2 rounded-md shadow-md mx-auto p-5'>
@@ -71,7 +71,7 @@ const page = ({params}) => {
                                 <input className='input_field' id='eventTime' {...register("eventTime")} type='time' required/> 
                             </div>
                         </div>
-                        <input className='ft_btn mt-8' type="submit" />
+                        <input className='mp_btn mt-8' type="submit" />
                     </form>
                 </div>
             </div>
