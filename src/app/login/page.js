@@ -30,7 +30,6 @@ const LoginPage = () => {
 
 		loginWithEmail(email, password)
 			.then((data) => {
-				console.log(data.user);
 				reset();
 				setLoading(false);
 				toast.success('Successfully logged in!');

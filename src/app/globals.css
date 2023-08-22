@@ -2,33 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-.jm_nav{
-    @apply block lg:flex justify-between lg:col-span-3 items-center absolute lg:static lg:w-auto top-0 left-0 overflow-hidden h-screen lg:h-auto duration-500 bg-[#fff] lg:bg-[transparent] lg:p-0 z-50
-  }
+/*====================== Navbar =============================*/
+.nav {
+	@apply flex lg:grid lg:grid-cols-5 justify-between items-center py-6 px-4 border-b-2 border-s-black;
+}
+.jm_nav {
+	@apply block lg:flex justify-between lg:col-span-3 items-center absolute lg:static lg:w-auto top-0 left-0 overflow-hidden h-screen lg:h-auto duration-500 bg-[#fff] lg:bg-[transparent] lg:p-0 z-50;
+}
 
 /*==================== Featured section ===============================*/
 .ft_btn{
-    @apply bg-[#465AF7] w-fit h-fit mx-auto text-white px-8 py-4 rounded-lg mt-6
+    @apply bg-[#465AF7] w-fit h-fit mx-auto text-white px-8 py-4 rounded-lg  cursor-pointer
 }
 
 /*========================== Event Form ==================================*/
-.input_field{
-  @apply border border-gray-800 rounded-md p-3 outline-none w-full  
+.input_field {
+	@apply border border-gray-800 rounded-md p-3 outline-none w-full;
 }
 
-
-
-
-
 .borderBottom {
-  border-bottom: 1px solid #FaFaFa;
-  opacity: 0.08;
-
-
+	border-bottom: 1px solid #fafafa;
+	opacity: 0.08;
 }
 
 .bg_stander:hover {
-  background: linear-gradient(135deg, #743CBD 0%, #AB67C3 100%);
-  color: white;
-
+	background: linear-gradient(135deg, #743cbd 0%, #ab67c3 100%);
+	color: white;
 }
