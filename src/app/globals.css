@@ -32,7 +32,7 @@
 
 /*========================== Event Form ==================================*/
 .input_field {
-	@apply border border-gray-800 rounded-md p-3 outline-[#00a4f8] w-full ;
+	@apply border-gray-800 rounded-xl outline-none p-3 w-full ;
 }
 
 .borderBottom {
