@@ -20,7 +20,8 @@ const page = ({params}) => {
     // console.log(method);
     const onSubmit = async (data) => {
         console.log(data)
-        const {eventName,description,duration,eventDate,eventTime}=data;
+        const {eventName,description,duration,eventDate,eventTime,eventLink}=data;
+        const scheduleLink = `http://localhost:3000/${eventLink}`;
 
         // const allData={
         //     eventName,
