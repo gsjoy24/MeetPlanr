@@ -5,11 +5,18 @@ import Container from '@/components/container';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
-import { FaAngleDown, FaAngleLeft, FaAngleUp } from 'react-icons/fa';
+import { FaAngleDown, FaAngleLeft, FaAngleUp, FaTimes } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import meetlogo from '../../../assets/event-form/meet.png'
+import locationLogo from '../../../assets/event-form/location.png'
+import Image from 'next/image';
+
 const page = ({params}) => {
     const {register,handleSubmit} = useForm()
     const router = useRouter();
+    const [method,setMethod] = useState(null);
+    const [action,setAction] = useState(false);
+    console.log(method);
     const onSubmit = async (data) => {
         const res = await fetch('http://localhost:5000/schedule',{
             method: 'POST',
@@ -45,11 +52,48 @@ const page = ({params}) => {
                         <input placeholder='Event Name...' required className='input_field' id='eventName' {...register("eventName")} />         
 
                         <label className='text-lg font-semibold mb-3 mt-5' htmlFor='eventMethod'>Event Method:*</label> 
-                        <select id='eventMethod' className='input_field' {...register("eventMethod")}>
-                            <option value="Google Meet"> Google Meet</option>
-                            <option value="In location">In Person Meeting</option>
-                        </select>
                         
+                        <div className="input_field mt-8 relative">
+                            {
+                                (method == "Google Meet") ? 
+                                
+                                <div className="flex gap-3 relative">
+                                    <Image className='w-6 object-contain' alt='meet icon' src={meetlogo}/>
+                                    <p className='text-lg font-medium'>Google Meet</p>
+                                    <span onClick={() => setMethod(null)} className='absolute right-1 top-1 text-lg cursor-pointer'><FaTimes/></span>
+                                </div>
+                                
+                                :(method == "In Person") ?                                    
+                                
+                                <div className="flex gap-3 relative">
+                                    <Image className='w-6 object-contain' alt='meet icon' src={locationLogo}/>
+                                    <p className='text-lg font-medium'>In-person Meeting</p>
+                                    <span onClick={() => setMethod(null)} className='absolute right-1 top-1 text-lg cursor-pointer'><FaTimes/></span>
+                                </div>
+
+                                : <div onClick={() => setAction(!action)} className="cursor-pointer">
+                                    <div className="flex justify-between items-center">
+                                        <p>Select a Method</p>
+                                        {
+                                            action ? <FaAngleUp className='text-xl'/> : <FaAngleDown className='text-xl'/>
+                                        }
+                                    </div>
+                                    {
+                                        action && <div className="">
+                                            <div onClick={() => setMethod('Google Meet')} className="flex gap-3 border-y-2 my-2 py-2">
+                                                <Image className='w-6 object-contain' alt='meet icon' src={meetlogo}/>
+                                                <p className='text-lg font-medium'>Google Meet</p>
+                                            </div>
+                                            <div onClick={() => setMethod('In Person')} className="flex gap-3">
+                                                <Image className='w-6 object-contain' alt='meet icon' src={locationLogo}/>
+                                                <p className='text-lg font-medium'>In-person Meeting</p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+
                         <label className='text-lg font-semibold mb-3 mt-8' htmlFor='description'>Description:</label>
                         <textarea placeholder='Write your schedule details....' id='description' className='input_field min-h-[200px] resize-none' {...register("description")}></textarea>
 
