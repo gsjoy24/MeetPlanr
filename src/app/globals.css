@@ -44,3 +44,11 @@
 	background: linear-gradient(135deg, #743cbd 0%, #ab67c3 100%);
 	color: white;
 }
+.disc_effects{
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),inset -5px -5px 10px #fff;
+    background: transparent;
+}
+.disc_effects_up{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px #fff;
+    background: transparent;
+}
