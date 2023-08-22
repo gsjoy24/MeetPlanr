@@ -117,6 +117,12 @@ const page = ({params}) => {
                                 <input className='input_field' id='eventTime' {...register("eventTime")} type='time' required/> 
                             </div>
                         </div>
+
+                        <label className='text-lg font-semibold mb-3 mt-8' htmlFor='eventLink'>Event Link:*</label>
+                        <div className="input_field flex gap-1">
+                            <label className='font-medium' htmlFor='eventLink'>http://localhost:3000/</label>
+                            <input placeholder='link path...' required className='outline-none' id='eventLink' {...register("eventLink")} />
+                        </div>  
                     </div>
 
                     <div className="text-right p-3 border-t">
