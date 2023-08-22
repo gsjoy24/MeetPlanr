@@ -11,9 +11,9 @@ const Featured = () => {
 			<Container>
 				<SectionTitle title={'Features'}></SectionTitle>
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-					<div className="border-2 p-5 rounded-md shadow-lg grid">
-						<div className="border w-[120px] h-[120px] flex justify-center items-center rounded-full mx-auto">
-							<FaCalendarCheck className="text-[#00a4f8] text-6xl" />
+					<div className="border-2 p-5 rounded-md shadow-lg grid ft_hover">
+						<div className="border w-[120px] h-[120px] ft_icon flex justify-center items-center rounded-full mx-auto text-[#00a4f8]">
+							<FaCalendarCheck className=" text-6xl" />
 						</div>
 						<h3 className="font-semibold text-2xl mt-7 text-center">Calender</h3>
 						<p className="my-5">
@@ -23,9 +23,9 @@ const Featured = () => {
 						</p>
 						<Button>Learn more</Button>
 					</div>
-					<div className="border-2 p-5 grid rounded-md shadow-lg">
-						<div className="border w-[120px] h-[120px] flex justify-center items-center rounded-full mx-auto">
-							<FaRegEnvelope className="text-[#00a4f8] text-6xl" />
+					<div className="border-2 p-5 grid rounded-md shadow-lg ft_hover">
+						<div className="border w-[120px] h-[120px] ft_icon flex justify-center items-center rounded-full mx-auto text-[#00a4f8]">
+							<FaRegEnvelope className="text-6xl" />
 						</div>
 						<h3 className="font-semibold text-2xl mt-7 text-center">Reminder Emails</h3>
 						<p className="my-5">
@@ -35,9 +35,9 @@ const Featured = () => {
 						</p>
 						<Button>Learn more</Button>
 					</div>
-					<div className="border-2 p-5 grid rounded-md shadow-lg">
-						<div className="border w-[120px] h-[120px] flex justify-center items-center rounded-full mx-auto">
-							<FaCalendarAlt className="text-[#00a4f8] text-6xl" />
+					<div className="border-2 p-5 grid rounded-md shadow-lg ft_hover">
+						<div className="border w-[120px] h-[120px] ft_icon flex justify-center items-center rounded-full mx-auto text-[#00a4f8]">
+							<FaCalendarAlt className=" text-6xl" />
 						</div>
 						<h3 className="font-semibold text-2xl mt-7 text-center">Scheduling</h3>
 						<p className="my-5">
@@ -47,9 +47,9 @@ const Featured = () => {
 						</p>
 						<Button>Learn more</Button>
 					</div>
-					<div className="border-2 p-5 grid rounded-md shadow-lg">
-						<div className="border w-[120px] h-[120px] flex justify-center items-center rounded-full mx-auto">
-							<FaLink className="text-[#00a4f8] text-6xl" />
+					<div className="border-2 p-5 grid rounded-md shadow-lg ft_hover">
+						<div className="border w-[120px] h-[120px] ft_icon flex justify-center items-center rounded-full mx-auto text-[#00a4f8]">
+							<FaLink className="text-6xl" />
 						</div>
 						<h3 className="font-semibold text-2xl mt-7 text-center">Embedding Options</h3>
 						<p className="my-5">
@@ -59,9 +59,9 @@ const Featured = () => {
 						</p>
 						<Button>Learn more</Button>
 					</div>
-					<div className="border-2 p-5 grid rounded-md shadow-lg">
-						<div className="border w-[120px] h-[120px] flex justify-center items-center rounded-full mx-auto">
-							<FaDatabase className="text-[#00a4f8] text-6xl" />
+					<div className="border-2 p-5 grid rounded-md shadow-lg ft_hover">
+						<div className="border w-[120px] h-[120px] ft_icon flex justify-center items-center rounded-full mx-auto text-[#00a4f8]">
+							<FaDatabase className="text-6xl" />
 						</div>
 						<h3 className="font-semibold text-2xl mt-7 text-center">Database support</h3>
 						<p className="my-5">
@@ -71,9 +71,9 @@ const Featured = () => {
 						</p>
 						<Button>Learn more</Button>
 					</div>
-					<div className="border-2 p-5 grid rounded-md shadow-lg">
-						<div className="border w-[120px] h-[120px] flex justify-center items-center rounded-full mx-auto">
-							<FaMoneyCheckAlt className="text-[#00a4f8] text-6xl" />
+					<div className="border-2 p-5 grid rounded-md shadow-lg ft_hover">
+						<div className="border w-[120px] h-[120px] ft_icon flex justify-center items-center rounded-full mx-auto text-[#00a4f8]">
+							<FaMoneyCheckAlt className="text-6xl" />
 						</div>
 						<h3 className="font-semibold text-2xl mt-7 text-center">Payment</h3>
 						<p className="my-5">

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/*======================= Common Style ===========================*/
+
+.mp_btn{
+    @apply bg-[#465AF7] w-fit h-fit mx-auto text-white px-8 py-4 rounded-lg  cursor-pointer
+}
+
 /*====================== Navbar =============================*/
 .nav {
 	@apply flex lg:grid lg:grid-cols-5 justify-between items-center py-6 px-4 border-b-2 border-s-black;
@@ -11,13 +17,21 @@
 }
 
 /*==================== Featured section ===============================*/
-.ft_btn{
-    @apply bg-[#465AF7] w-fit h-fit mx-auto text-white px-8 py-4 rounded-lg  cursor-pointer
+
+.ft_hover{
+@apply hover:bg-gray-200 transition-all duration-300 
+}
+
+.ft_hover .ft_icon{
+	@apply transition-all duration-500
+}
+.ft_hover:hover .ft_icon{
+	@apply border-white transition-all duration-500 bg-[#00a4f8] text-white;
 }
 
 /*========================== Event Form ==================================*/
 .input_field {
-	@apply border border-gray-800 rounded-md p-3 outline-none w-full;
+	@apply border-gray-800 rounded-md outline-[#00a4f8] p-3 w-full border;
 }
 
 .borderBottom {
@@ -28,4 +42,12 @@
 .bg_stander:hover {
 	background: linear-gradient(135deg, #743cbd 0%, #ab67c3 100%);
 	color: white;
+}
+.disc_effects{
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),inset -5px -5px 10px #fff;
+    background: transparent;
+}
+.disc_effects_up{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px #fff;
+    background: transparent;
 }
