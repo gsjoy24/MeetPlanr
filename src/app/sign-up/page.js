@@ -23,7 +23,7 @@ const SignUp = () => {
 		reset
 	} = useForm();
 
-	const { loading, setLoading, createUser, updateUserProfile } = UserAuth();
+	const { loading, setLoading, createUser, updateUserProfile, verifyEmail } = UserAuth();
 
 	const onSubmit = (formData) => {
 		const { name, email, password, photoURL } = formData;
@@ -33,6 +33,9 @@ const SignUp = () => {
 				updateUserProfile(name, photoURL).then(() => {
 					console.log('profile updated');
 				});
+				verifyEmail()
+					.then(() => console.log('done'))
+					.catch((err) => console.error(err));
 
 				reset();
 				setLoading(false);

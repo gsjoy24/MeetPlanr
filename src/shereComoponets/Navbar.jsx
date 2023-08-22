@@ -27,7 +27,7 @@ const Navbar = () => {
                         {user ?
                             <>
                                 <li>
-                                    <Image className="rounded-full object-cover" src={user?.photoURL ? user?.photoURL : 'https://img.freepik.com/free-icon/user_318-563642.jpg?w=360'} width={50} height={50} alt={user?.displayName ? user?.displayName : 'User'} />
+                                    <Image className="rounded-full" src={user?.photoURL ? user?.photoURL : 'https://img.freepik.com/free-icon/user_318-563642.jpg?w=360'} width={50} height={50} alt={user?.displayName ? user?.displayName : 'User'} />
                                 </li>
                                 <li onClick={() => logOutUser()}>
                                     <Button>Log out</Button>

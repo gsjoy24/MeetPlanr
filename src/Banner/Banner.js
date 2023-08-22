@@ -19,7 +19,7 @@ const Banner = () => {
 						<Button>Create Event</Button>
 					</Link>
 				</div>
-				<div className="order-1 lg:order-2">
+				<div className="order-1 lg:order-2 max-w-md">
 					<Lottie animationData={animation} loop={true} />
 				</div>
 			</div>
