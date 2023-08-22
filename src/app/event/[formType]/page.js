@@ -2,6 +2,7 @@
 "use client"
 import Button from '@/common/Button';
 import Container from '@/components/container';
+import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
@@ -16,28 +17,30 @@ const page = ({params}) => {
     const router = useRouter();
     const [method,setMethod] = useState(null);
     const [action,setAction] = useState(false);
-    console.log(method);
+    // console.log(method);
     const onSubmit = async (data) => {
-        const res = await fetch('http://localhost:5000/schedule',{
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
-        });
-        const postResponse = await res.json();
-        if(postResponse.insertedId){
-            Swal.fire({
-                icon: 'success',
-                title: 'Schedule created successfully',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              router.push('/solutions')
+        console.log(data)
+        const {eventName,description,duration,eventDate,eventTime}=data;
+
+        // const allData={
+        //     eventName,
+        //     eventMethod,
+        //     description,
+        //     duration,
+        //     eventDate,
+        //     eventTime
+
+        // }
+        try {
+            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,eventDate,eventTime,method});
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error submitting form:', error);
         }
     }
-    
     return (
         <Container>
-            <div className="my-8">
+            <div className="my-8 mt-28">
                 <div className="my-5">
                     <button onClick={()=> router.back()} className='border border-[#465AF7] text-[#465AF7] w-fit h-fit mx-auto px-5 py-4 rounded-3xl hover:bg-[#465AF7] hover:text-[#fff] cursor-pointer transition-all duration-500'><FaAngleLeft className='inline mr-1'/> Back</button>
                 </div>
