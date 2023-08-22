@@ -26,13 +26,12 @@
 	@apply transition-all duration-500
 }
 .ft_hover:hover .ft_icon{
-	color: #fff !important;
-	@apply border-white transition-all duration-500 bg-[#00a4f8];
+	@apply border-white transition-all duration-500 bg-[#00a4f8] text-white;
 }
 
 /*========================== Event Form ==================================*/
 .input_field {
-	@apply border-gray-800 rounded-xl outline-none p-3 w-full ;
+	@apply border-gray-800 rounded-md outline-[#00a4f8] p-3 w-full border;
 }
 
 .borderBottom {
