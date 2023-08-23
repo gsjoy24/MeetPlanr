@@ -8,6 +8,31 @@ import Link from 'next/link';
 
 const Banner = () => {
 	return (
+<<<<<<< HEAD
+      <div className="bg-[#F7FAFF]">
+         <Container>
+            <div className="py-12 grid lg:grid-cols-2 gap-8 items-center mt-20">
+               <div className="order-2 lg:order-1">
+                  <h1 className="text-2xl sm:text-6xl leading-normal font-bold ">
+                     MeetPlanr Appointment Scheduling
+                  </h1>
+                  <p className="mt-7 text-[20px] text-[#5A7795] mb-5">
+                     MeetPlanr is the most flexible, comprehensive appointment
+                     scheduling software for professionals, SMEs, and
+                     enterprises.
+                  </p>
+                  <Link href="/solutions">
+                     <Button>Create Event</Button>
+                  </Link>
+               </div>
+               <div className="order-1 lg:order-2">
+                  <Lottie animationData={animation} loop={true} />
+               </div>
+            </div>
+         </Container>
+      </div>
+   );
+=======
 		<Container>
 			<div className="my-12 grid lg:grid-cols-2 gap-8 items-center">
 				<div className="order-2 lg:order-1">
@@ -26,6 +51,7 @@ const Banner = () => {
 			</div>
 		</Container>
 	);
+>>>>>>> 3846696c274257578d8487700f57db10f842fed0
 };
 
 export default Banner;
