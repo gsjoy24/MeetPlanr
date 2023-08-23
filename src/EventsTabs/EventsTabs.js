@@ -16,20 +16,19 @@ const EventsTabs = () => {
    const [actions,setActions] = useState(false);
    const [tabIndex, setTabIndex] = useState(0);
    const [schedules, setSchedules] = useState([]);
-
-   useEffect(async () => {
-      const res = await fetch(
-         "/api/scheduling"
-      );
-      const data = await res.json();
-      console.log(data);
-      setSchedules(data);
+   
+   useEffect(() => {
+      const fetchData = async () => {
+			try {
+				const res = await fetch("/api/scheduling");
+				const data = await res.json();
+				console.log(data);
+				setSchedules(data);
 			} catch (error) {
 				console.error('Error fetching data:', error);
 			}
 		};
       fetchData();
-
    }, []);
 
 	return (
