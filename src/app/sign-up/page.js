@@ -12,7 +12,7 @@ import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import SocialAuth from '@/components/SocialAuth';
 
-const signUp = () => {
+const SignUp = () => {
 	const router = useRouter();
 	const [showPass, setShowPass] = useState(false);
 	const [error, setError] = useState('');
@@ -23,7 +23,7 @@ const signUp = () => {
 		reset
 	} = useForm();
 
-	const { loading, setLoading, createUser, updateUserProfile } = UserAuth();
+	const { loading, setLoading, createUser, updateUserProfile, verifyEmail } = UserAuth();
 
 	const onSubmit = (formData) => {
 		const { name, email, password, photoURL } = formData;
@@ -33,6 +33,9 @@ const signUp = () => {
 				updateUserProfile(name, photoURL).then(() => {
 					console.log('profile updated');
 				});
+				verifyEmail()
+					.then(() => console.log('done'))
+					.catch((err) => console.error(err));
 
 				reset();
 				setLoading(false);
@@ -160,4 +163,4 @@ const signUp = () => {
 	);
 };
 
-export default signUp;
+export default SignUp;
