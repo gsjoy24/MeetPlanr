@@ -9,7 +9,9 @@ import {
 	GithubAuthProvider,
 	signInWithPopup,
 	signInWithEmailAndPassword,
-	signOut
+	signOut,
+	sendPasswordResetEmail,
+	sendEmailVerification
 } from 'firebase/auth';
 import app from '@/firebase/firebase.config';
 
@@ -60,6 +62,16 @@ export const AuthProvider = ({ children }) => {
 		});
 	};
 
+	// sent reset password email.
+	const resetPass = (email) => {
+		return sendPasswordResetEmail(auth, email);
+	};
+
+	// verify user email address
+	const verifyEmail = () => {
+		return sendEmailVerification(auth.currentUser);
+	};
+
 	// observing the user state
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -81,7 +93,9 @@ export const AuthProvider = ({ children }) => {
 		continueWithGithub,
 		updateUserProfile,
 		loginWithEmail,
-		logOutUser
+		logOutUser,
+		resetPass,
+		verifyEmail
 	};
 
 	return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

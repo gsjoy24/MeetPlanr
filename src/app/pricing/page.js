@@ -1,10 +1,10 @@
-import PricingSection from "@/Pricing/PricingSection";
+import PricingSection from '@/Pricing/PricingSection';
 
 const Pricing = () => {
-    return (
-      <>
-        <PricingSection />
-      </>
-    )
-}
+	return (
+		<>
+			<PricingSection />
+		</>
+	);
+};
 export default Pricing;
