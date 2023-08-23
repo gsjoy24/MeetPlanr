@@ -26,13 +26,12 @@
 	@apply transition-all duration-500
 }
 .ft_hover:hover .ft_icon{
-	color: #fff !important;
-	@apply border-white transition-all duration-500 bg-[#00a4f8];
+	@apply border-white transition-all duration-500 bg-[#00a4f8] text-white;
 }
 
 /*========================== Event Form ==================================*/
 .input_field {
-	@apply border border-gray-800 rounded-md p-3 outline-[#00a4f8] w-full ;
+	@apply border-gray-800 rounded-md outline-[#00a4f8] p-3 w-full border;
 }
 
 .borderBottom {
@@ -43,4 +42,12 @@
 .bg_stander:hover {
 	background: linear-gradient(135deg, #743cbd 0%, #ab67c3 100%);
 	color: white;
+}
+.disc_effects{
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),inset -5px -5px 10px #fff;
+    background: transparent;
+}
+.disc_effects_up{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px #fff;
+    background: transparent;
 }

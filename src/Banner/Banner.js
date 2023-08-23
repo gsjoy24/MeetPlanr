@@ -5,6 +5,7 @@ import Lottie from 'lottie-react';
 import animation from '../assets/animation_ll3za900.json';
 import Button from '@/common/Button';
 import Link from 'next/link';
+
 const Banner = () => {
 	return (
 		<Container>
