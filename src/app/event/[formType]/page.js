@@ -21,6 +21,7 @@ const page = ({params}) => {
     const onSubmit = async (data) => {
         console.log(data)
         const {eventName,description,duration,eventDate,eventTime,eventLink}=data;
+        const random = Math.round(Math.random() * 1000);
         const scheduleLink = `http://localhost:3000/${eventLink}`;
 
         // const allData={
