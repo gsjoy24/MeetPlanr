@@ -10,7 +10,7 @@ const Banner = () => {
 	return (
       <div className="bg-[#F7FAFF]">
          <Container>
-            <div className="py-12 grid lg:grid-cols-2 gap-8 items-center">
+            <div className="py-12 grid lg:grid-cols-2 gap-8 items-center mt-20">
                <div className="order-2 lg:order-1">
                   <h1 className="text-2xl sm:text-6xl leading-normal font-bold ">
                      MeetPlanr Appointment Scheduling

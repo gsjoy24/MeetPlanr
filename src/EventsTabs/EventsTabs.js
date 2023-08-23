@@ -9,8 +9,11 @@ import img from "@/assets/events-tabs/placeholder.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import EventCard from "@/components/EventCard";
-
+import one_one_one from '../assets/events-tabs/one_on_one.png';
+import group from '../assets/events-tabs/group.png';
+import { FaAngleRight, FaTimesCircle } from "react-icons/fa";
 const EventsTabs = () => {
+   const [actions,setActions] = useState(false);
    const [tabIndex, setTabIndex] = useState(0);
    const [schedules, setSchedules] = useState([]);
    useEffect(async () => {
@@ -62,13 +65,36 @@ const EventsTabs = () => {
                   </div>
 
                   <div className="mt-6">
-                     <select className="select select-bordered border-[#465AF7] text-[#465AF7] hover:bg-[#eaf0f8] select-sm rounded-full w-full max-w-xs">
-                        <option disabled selected>
-                           New Event Type
-                        </option>
-                        <option>One-on-One</option>
-                        <option>Group</option>
-                     </select>
+                     <button onClick={() => setActions(true)} className="border px-5 py-1 rounded-full border-[#465AF7] text-[#465AF7]">
+                        Create New Event
+                     </button>
+                     {
+                        actions && <div className="w-full h-screen bg-slate-800 bg-opacity-10 fixed top-0 left-0 z-50 flex items-center justify-center">
+                           <div className=" w-fit flex flex-col relative">
+                              <button className="absolute -top-2 -right-2 text-3xl text-red-500 bg-white rounded-full" onClick={()=> setActions(false)}><FaTimesCircle/></button>
+                              <Link href={"/event/one-on-one"} className="et_link rounded-t-xl border-2">
+                                 <div className="gap-4 flex items-center">
+                                    <Image src={one_one_one} alt="icon" className="w-20 object-cover"/>
+                                    <div className="flex flex-col">
+                                       <span>One-On-One</span>
+                                       <span><b>One host</b> with <b>one invitee</b></span>
+                                    </div>
+                                 </div>
+                                 <FaAngleRight className="text-xl"/>
+                              </Link>
+                              <Link href={"/event/group"} className="border-2 border-t-0 hover:border-t-2 et_link rounded-b-xl">
+                                 <div className="gap-4 flex items-center">
+                                    <Image src={group} alt="icon" className="w-20 object-cover"/>
+                                    <div className="flex flex-col">
+                                       <span>Group</span>
+                                       <span><b>One host</b> with <b>group invitee</b></span>
+                                    </div>
+                                 </div>
+                                 <FaAngleRight className="text-xl"/>
+                              </Link>
+                           </div>
+                        </div>
+                     }
                   </div>
                </div>
 
