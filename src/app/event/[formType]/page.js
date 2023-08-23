@@ -13,32 +13,39 @@ import locationLogo from '../../../assets/event-form/location.png'
 import Image from 'next/image';
 
 const page = ({params}) => {
-    const {register,handleSubmit} = useForm()
+    const {register,handleSubmit,reset} = useForm()
     const router = useRouter();
     const [method,setMethod] = useState(null);
     const [action,setAction] = useState(false);
     // console.log(method);
     const onSubmit = async (data) => {
         console.log(data)
+        // console.log(scheduleLink);
+      if(method){
         const {eventName,description,duration,eventDate,eventTime,eventLink}=data;
-        const random = Math.round(Math.random() * 1000);
-        const scheduleLink = `http://localhost:3000/${eventLink}`;
-
-        // const allData={
-        //     eventName,
-        //     eventMethod,
-        //     description,
-        //     duration,
-        //     eventDate,
-        //     eventTime
-
-        // }
+        const x= Math.round(Math.random() * 100000)
+        const scheduleLink = `http://localhost:3000/${eventLink + x}`;
         try {
-            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,eventDate,eventTime,method});
+            
+            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,eventDate,eventTime,method,scheduleLink});
             console.log(response.data);
+            if(response.data.insertedId){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Schedule created successfully!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  reset();
+            }
+            
         } catch (error) {
             console.error('Error submitting form:', error);
         }
+      }else{
+        alert('Please select a method!')
+      }
+       
     }
     return (
         <Container>
