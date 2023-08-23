@@ -16,10 +16,11 @@ const EventsTabs = () => {
    const [actions,setActions] = useState(false);
    const [tabIndex, setTabIndex] = useState(0);
    const [schedules, setSchedules] = useState([]);
+   
    useEffect(() => {
       const fetchData = async () => {
 			try {
-				const res = await fetch('https://meetplanr-server-jmjubaer.vercel.app/schedule');
+				const res = await fetch("/api/scheduling");
 				const data = await res.json();
 				console.log(data);
 				setSchedules(data);
