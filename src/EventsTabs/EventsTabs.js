@@ -13,11 +13,20 @@ import EventCard from '@/components/EventCard';
 const EventsTabs = () => {
 	const [tabIndex, setTabIndex] = useState(0);
 	const [schedules, setSchedules] = useState([]);
-	useEffect(async () => {
-		const res = await fetch('https://meetplanr-server-jmjubaer.vercel.app/schedule');
-		const data = await res.json();
-		console.log(data);
-		setSchedules(data);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await fetch('https://meetplanr-server-jmjubaer.vercel.app/schedule');
+				const data = await res.json();
+				console.log(data);
+				setSchedules(data);
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+		};
+
+		fetchData();
 	}, []);
 	return (
 		<Container>
