@@ -20,6 +20,7 @@ const CalenderModal = ({ isVisible, onClose }) => {
                   <p>Modal content</p>
                   <p>Modal content</p>
                   <p>Modal content</p>
+                  <p>Modal content</p>
                </div>
             </div>
          </div>
