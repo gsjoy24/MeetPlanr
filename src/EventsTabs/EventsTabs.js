@@ -9,86 +9,102 @@ import img from "@/assets/events-tabs/placeholder.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import EventCard from "@/components/EventCard";
-
+import one_one_one from '../assets/events-tabs/one_on_one.png';
+import group from '../assets/events-tabs/group.png';
+import { FaAngleRight, FaTimesCircle } from "react-icons/fa";
 const EventsTabs = () => {
+   const [actions,setActions] = useState(false);
    const [tabIndex, setTabIndex] = useState(0);
    const [schedules, setSchedules] = useState([]);
-   useEffect(async () => {
-      const res = await fetch(
-         "https://meetplanr-server-jmjubaer.vercel.app/schedule"
-      );
-      const data = await res.json();
-      console.log(data);
-      setSchedules(data);
+   
+   useEffect(() => {
+      const fetchData = async () => {
+			try {
+				const res = await fetch("/api/scheduling");
+				const data = await res.json();
+				console.log(data);
+				setSchedules(data);
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+		};
+      fetchData();
    }, []);
-   return (
-      <Container>
-         <div className="flex justify-between my-8">
-            <h2 className="text-3xl">My MeetPlanr</h2>
-            <button className="bg-[#465AF7] hover:bg-sky-950 text-white px-4 py-3 rounded-full flex items-center space-x-1 font-semibold">
-               <span>
-                  <IoIosAdd className="text-xl" />
-               </span>{" "}
-               <span>Create</span>
-            </button>
-         </div>
-         <Tabs
-            selectedIndex={tabIndex}
-            onSelect={(index) => setTabIndex(index)}
-         >
-            <TabList className="shadow-md flex space-x-10">
-               <Tab className="border-t-0 border-b-4 cursor-pointer pb-2">
-                  Event Types
-               </Tab>
-               <Tab className="border-t-0 border-b-4 cursor-pointer pb-2">
-                  Scheduled Events
-               </Tab>
-            </TabList>
 
-            <TabPanel>
-               <div className="my-8 md:flex lg:flex justify-between items-center">
-                  <div className="flex items-center space-x-5">
-                     <Image
-                        src={img}
-                        alt="User Profile"
-                        className="w-12 h-12 rounded-full"
-                     />
-                     <div>
-                        <h4>Jhone Devlin</h4>
-                        <Link href="" className="text-[#465AF7]">
-                           https://meetplanr.com/alexaghosh6
-                        </Link>
-                     </div>
-                  </div>
+	return (
+		<Container>
+			<div className="flex justify-between my-8">
+				<h2 className="text-3xl">My MeetPlanr</h2>
+				<button className="bg-[#465AF7] hover:bg-sky-950 text-white px-4 py-3 rounded-full flex items-center space-x-1 font-semibold">
+					<span>
+						<IoIosAdd className="text-xl" />
+					</span>{' '}
+					<span>Create</span>
+				</button>
+			</div>
+			<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+				<TabList className="shadow-md flex space-x-10">
+					<Tab className="border-t-0 border-b-4 cursor-pointer pb-2">Event Types</Tab>
+					<Tab className="border-t-0 border-b-4 cursor-pointer pb-2">Scheduled Events</Tab>
+				</TabList>
+
+				<TabPanel>
+					<div className="my-8 md:flex lg:flex justify-between items-center">
+						<div className="flex items-center space-x-5">
+							<Image src={img} alt="User Profile" className="w-12 h-12 rounded-full" />
+							<div>
+								<h4>Jhone Devlin</h4>
+								<Link href="" className="text-[#465AF7]">
+									https://meetplanr.com/alexaghosh6
+								</Link>
+							</div>
+						</div>
 
                   <div className="mt-6">
-                     <select className="select select-bordered border-[#465AF7] text-[#465AF7] hover:bg-[#eaf0f8] select-sm rounded-full w-full max-w-xs">
-                        <option disabled selected>
-                           New Event Type
-                        </option>
-                        <option>One-on-One</option>
-                        <option>Group</option>
-                     </select>
+                     <button onClick={() => setActions(true)} className="border px-5 py-1 rounded-full border-[#465AF7] text-[#465AF7]">
+                        Create New Event
+                     </button>
+                     {
+                        actions && <div className="w-full h-screen bg-slate-800 bg-opacity-10 fixed top-0 left-0 z-50 flex items-center justify-center">
+                           <div className=" w-fit flex flex-col relative">
+                              <button className="absolute -top-2 -right-2 text-3xl text-red-500 bg-white rounded-full" onClick={()=> setActions(false)}><FaTimesCircle/></button>
+                              <Link href={"/event/one-on-one"} className="et_link rounded-t-xl border-2">
+                                 <div className="gap-4 flex items-center">
+                                    <Image src={one_one_one} alt="icon" className="w-20 object-cover"/>
+                                    <div className="flex flex-col">
+                                       <span>One-On-One</span>
+                                       <span><b>One host</b> with <b>one invitee</b></span>
+                                    </div>
+                                 </div>
+                                 <FaAngleRight className="text-xl"/>
+                              </Link>
+                              <Link href={"/event/group"} className="border-2 border-t-0 hover:border-t-2 et_link rounded-b-xl">
+                                 <div className="gap-4 flex items-center">
+                                    <Image src={group} alt="icon" className="w-20 object-cover"/>
+                                    <div className="flex flex-col">
+                                       <span>Group</span>
+                                       <span><b>One host</b> with <b>group invitee</b></span>
+                                    </div>
+                                 </div>
+                                 <FaAngleRight className="text-xl"/>
+                              </Link>
+                           </div>
+                        </div>
+                     }
                   </div>
-               </div>
-
-               <div className="grid grid-cols-3 gap-5 my-8">
-                  {schedules.map((schedule) => (
-                     <EventCard
-                        schedule={schedule}
-                        key={schedule?._id}
-                     ></EventCard>
-                  ))}
-               </div>
-            </TabPanel>
-            <TabPanel>
-               <p className="text-[#737373] text-xl font-semibold mt-8">
-                  No Events Yet
-               </p>
-            </TabPanel>
-         </Tabs>
-      </Container>
-   );
+					</div>
+					<div className="grid grid-cols-3 gap-5 my-8">
+						{schedules.map((schedule) => (
+							<EventCard schedule={schedule} key={schedule?._id}></EventCard>
+						))}
+					</div>
+				</TabPanel>
+				<TabPanel>
+					<p className="text-[#737373] text-xl font-semibold mt-8">No Events Yet</p>
+				</TabPanel>
+			</Tabs>
+		</Container>
+	);
 };
 
 export default EventsTabs;

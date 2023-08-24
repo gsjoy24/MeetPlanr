@@ -4,13 +4,14 @@ import signUpAnimation from '../../assets/register.json';
 import Lottie from 'lottie-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { BiSolidErrorAlt } from 'react-icons/bi';
 import { UserAuth } from '@/providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import SocialAuth from '@/components/SocialAuth';
+import Swal from 'sweetalert2';
 
 const LoginPage = () => {
 	const router = useRouter();
@@ -20,16 +21,17 @@ const LoginPage = () => {
 		register,
 		formState: { errors },
 		handleSubmit,
-		reset
+		reset,
+		watch
 	} = useForm();
 
-	const { loading, setLoading, loginWithEmail } = UserAuth();
+	const { loading, setLoading, loginWithEmail, resetPass } = UserAuth();
 
-	const onSubmit = (formData) => {
+	const handleLogin = (formData) => {
 		const { email, password } = formData;
-
 		loginWithEmail(email, password)
-			.then((data) => {
+			.then(() => {
+				setError('');
 				reset();
 				setLoading(false);
 				toast.success('Successfully logged in!');
@@ -42,6 +44,31 @@ const LoginPage = () => {
 			});
 	};
 
+	const resetPassEmail = watch('email');
+	const handleResetPass = () => {
+		// validating email format
+		const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+		const email = emailRegex.test(resetPassEmail);
+		if (!email) {
+			setError('The email is not valid!');
+		} else {
+			setError('');
+			resetPass(resetPassEmail)
+				.then(() => {
+					Swal.fire({
+						icon: 'success',
+						title: 'Email send!',
+						confirmButtonColor: '#465AF7',
+						html: `<p class="text-xs">We've sent you an email! Please check your inbox and follow the steps provided to regain access to your account. If you don't receive the email within a few minutes, please check your spam folder. If you continue to experience issues, feel free to contact our support team for assistance.</p>`,
+						footer: `<a class='text-xs hover:underline duration-200' href="https://mail.google.com/" target='_blank'>Open Gmail</a>`
+					});
+				})
+				.catch((err) => {
+					setError(err.message);
+				});
+		}
+	};
+
 	return (
 		<Container>
 			<div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center pb-12">
@@ -49,7 +76,7 @@ const LoginPage = () => {
 					<Lottie animationData={signUpAnimation} />
 				</div>
 				<div className="md:p-12">
-					<form onSubmit={handleSubmit(onSubmit)}>
+					<form onSubmit={handleSubmit(handleLogin)}>
 						<h2 className="text-3xl font-bold text-center mb-8">Login Now</h2>
 
 						{/* email */}
@@ -68,8 +95,12 @@ const LoginPage = () => {
 									<BiSolidErrorAlt size={17} /> <span>Email is required!</span>
 								</p>
 							)}
+							{error && (
+								<p className="text-xs text-red-500 flex items-center gap-2 pt-2 ml-1" role="alert">
+									<BiSolidErrorAlt size={17} /> <span>{error}</span>
+								</p>
+							)}
 						</div>
-
 						{/* password */}
 						<div className="relative">
 							<label className="label">
@@ -94,12 +125,10 @@ const LoginPage = () => {
 								</p>
 							)}
 						</div>
-						{error && (
-							<p className="text-xs text-red-500 flex items-center gap-2 pt-2 ml-1" role="alert">
-								<BiSolidErrorAlt size={17} /> <span>{error}</span>
-							</p>
-						)}
 
+						<span onClick={handleResetPass} className="text-xs p-2 cursor-pointer hover:text-[#465AF7] duration-200">
+							forgot password?
+						</span>
 						<button
 							className="bg-[#465AF7] hover:bg-sky-950 duration-200 text-white py-2 w-full rounded-lg mt-6"
 							type={loading ? 'button' : 'submit'}
