@@ -32,9 +32,7 @@ const PricingSection = () => {
                            Yearly
                         </p>
                      </div>
-
                      <hr className="borderBottom my-3" />
-
                      <div className="pb-6 px-5 font-normal Normal text-[16px]">
                         <p className="text-lg mb-3 font-medium Medium">
                            Basic features
@@ -72,9 +70,7 @@ const PricingSection = () => {
                            </p>
                         </div>
                      </div>
-
                      <hr className="borderBottom" />
-
                      <div className="px-5">
                         <button className="text-[16px] font-semibold text-[#0B3558] group-hover:text-white bg-sky-100 group-hover:bg-sky-800 border border-[#0b3558af] px-8 py-3 rounded-lg mt-6">
                            Choose Plan
@@ -109,9 +105,7 @@ const PricingSection = () => {
                            Yearly
                         </p>
                      </div>
-
                      <hr className="borderBottom my-3" />
-
                      <div className="pb-6 px-5 font-normal Normal text-[16px]">
                         <p className="text-lg mb-3 font-medium Medium">
                            Standard features plus
@@ -149,9 +143,7 @@ const PricingSection = () => {
                            </p>
                         </div>
                      </div>
-
                      <hr className="borderBottom" />
-
                      <div className="px-5">
                         <button className="text-[16px] font-semibold text-white bg-[#0b355831] bg-sky-800 border border-[#0b3558af] px-8 py-3 rounded-lg mt-6">
                            Choose Plan
@@ -181,9 +173,7 @@ const PricingSection = () => {
                            Yearly
                         </p>
                      </div>
-
                      <hr className="borderBottom my-3" />
-
                      <div className="pb-6 px-5 font-normal Normal text-[16px]">
                         <p className="text-lg mb-3 font-medium Medium">
                            Premium features plus
@@ -221,9 +211,7 @@ const PricingSection = () => {
                            </p>
                         </div>
                      </div>
-
                      <hr className="borderBottom" />
-
                      <div className="px-5">
                         <button className="text-[16px] font-semibold text-[#0B3558] group-hover:text-white bg-sky-100 group-hover:bg-sky-800 border border-[#0b3558af] px-8 py-3 rounded-lg mt-6">
                            Choose Plan
