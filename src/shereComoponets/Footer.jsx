@@ -4,9 +4,10 @@ import Container from "@/components/container";
 
 const Footer = () => {
     return (
+      <div className="border-t-2   border-s-black py-6 px-4 w-full ">
         <Container>
             <footer className="footer footer-center p-8
-            border-t-2   border-s-black text-base-content rounded">
+             text-base-content rounded">
   <div className="grid grid-flow-col gap-4 font-bold ">
     <a className="link link-hover">About us</a> 
     <a className="link link-hover">Contact</a> 
@@ -25,7 +26,7 @@ const Footer = () => {
   </div>
 </footer>
         </Container>
-        
+        </div>
     );
 };
 
