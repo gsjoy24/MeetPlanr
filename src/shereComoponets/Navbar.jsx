@@ -16,7 +16,7 @@ const Navbar = () => {
         setCondition(false);
     }
     return (
-        <div className="border-b-2 border-s-black py-5 px-4 fixed w-full bg-white -top-3 z-20">
+        <div className="border-b-2 border-s-black py-5 fixed w-full bg-white -top-3 z-20">
         <Container>
             <nav className='flex justify-between relative items-center  '>
                 <div className='text-2xl md:text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow'><Link href="/">MeetPlanr</Link></div>
@@ -42,7 +42,7 @@ const Navbar = () => {
                                 </li>
                             </>}
                     </ul>
-                    {condition && <div className="absolute w-60 top-16 right-0 bg-white border drop_shadow h-fit z-50 rounded-lg overflow-hidden">
+                    {condition && <div className="absolute w-60 lg:top-16 lg:right-0 bg-white border drop_shadow h-fit z-50 rounded-lg overflow-hidden">
                         <Link href={'/my-account'} onClick={() => setCondition(false)} className="flex justify-between items-center px-5 py-3 hover:bg-slate-300 w-full text-left">
                             <span>My Account</span>
                             <FaAngleRight/>
