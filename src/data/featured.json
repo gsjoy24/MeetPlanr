@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Calendar",
+        "icon": "https://i.ibb.co/CtLrH2D/calender.png",
+        "image": "https://i.ibb.co/4mdWm3r/google-calendar.jpg",
+        "description": "The calendar feature is the backbone of our platform, allowing users to set their availability and view upcoming interview appointments. Users can sync their schedules with popular calendar services like Google Calendar, ensuring a seamless integration with their existing commitments."
+    },
+    {
+        "name": "Reminder Emails",
+        "icon": "https://i.ibb.co/598Qg07/email.jpg",
+        "image": "https://i.ibb.co/kXVQv7q/email-remainder.jpg",
+        "description": "To reduce no-shows and enhance communication, your platform sends automated reminder emails to both interviewers and interviewees before the scheduled interview. This feature helps to keep participants informed and engaged, improving the overall scheduling experience."
+    },
+    {
+        "name": "Scheduling",
+        "icon": "https://i.ibb.co/g3nCkB1/schedule.png",
+        "image": "https://i.ibb.co/D5VKGxm/scheduleing.jpg",
+        "description": "Your platform offers a user-friendly and efficient scheduling process. Interviewees can easily view interviewers' availability and select suitable time slots for their interviews. The system ensures that interviewers' calendars are up-to-date to avoid conflicts and double bookings."
+    },
+    {
+        "name": "Embedding Options",
+        "icon": "https://i.ibb.co/d7CwfGm/link.png",
+        "image": "https://i.ibb.co/tKhPdJh/meet-embaded.png",
+        "description": "To enhance accessibility and convenience, your platform provides embedding options. Users can embed interview scheduling forms or links directly into their websites or emails. This feature allows interviewees to schedule interviews without leaving the organization's web page or email interface."
+    },
+    {
+        "name": "Database support",
+        "icon": "https://i.ibb.co/nRj64qN/database.png",
+        "image": "https://i.ibb.co/4mdWm3r/google-calendar.jpg",
+        "description": "Your platform offers seamless integration with external databases or Applicant Tracking Systems (ATS). This integration allows interviewers to access candidates' information and interview details directly from the ATS or database, streamlining the interview process and enhancing collaboration."
+    },
+    {
+        "name": "Payment",
+        "icon": "https://i.ibb.co/HNfyr6t/payment.png",
+        "image": "https://i.ibb.co/drm9c5B/payment-info.png",
+        "description": "As an optional feature, your platform provides payment integration for premium or advanced services. Users can choose to charge interviewees for specialized interview sessions, consultations, or access to exclusive features. This payment integration ensures a secure and hassle-free transaction process."
+    }
+]

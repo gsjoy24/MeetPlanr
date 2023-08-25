@@ -11,16 +11,21 @@ import Swal from 'sweetalert2';
 import meetlogo from '../../../assets/event-form/meet.png'
 import locationLogo from '../../../assets/event-form/location.png'
 import Image from 'next/image';
+import { UserAuth } from '@/providers/AuthProvider';
 
 const page = ({params}) => {
     const {register,handleSubmit,reset} = useForm()
     const router = useRouter();
     const [method,setMethod] = useState(null);
     const [action,setAction] = useState(false);
+    const { user } = UserAuth()
+    // console.log(user);
+    const email=user?.email;
+    const name=user?.displayName;
     // console.log(method);
     const onSubmit = async (data) => {
         console.log(data)
-        // console.log(scheduleLink);
+    //     // console.log(scheduleLink);
       if(method){
         const {eventName,description,duration,eventDate,eventTime,eventLink}=data;
         const x= Math.round(Math.random() * 100000)
@@ -36,6 +41,9 @@ const page = ({params}) => {
                     showConfirmButton: false,
                     timer: 1500
                   })
+                  const sendEmail= await axios.post(`/api/sendmail`,{email,name,scheduleLink});
+                  console.log(sendEmail.data);
+                  router.back();
                   reset();
             }
             
