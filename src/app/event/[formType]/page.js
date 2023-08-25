@@ -11,12 +11,17 @@ import Swal from 'sweetalert2';
 import meetlogo from '../../../assets/event-form/meet.png'
 import locationLogo from '../../../assets/event-form/location.png'
 import Image from 'next/image';
+import { UserAuth } from '@/providers/AuthProvider';
 
 const page = ({params}) => {
     const {register,handleSubmit,reset} = useForm()
     const router = useRouter();
     const [method,setMethod] = useState(null);
     const [action,setAction] = useState(false);
+    const { user } = UserAuth()
+    // console.log(user);
+    const email=user?.email;
+    const name=user?.displayName;
     // console.log(method);
     const onSubmit = async (data) => {
         console.log(data)
@@ -27,17 +32,19 @@ const page = ({params}) => {
         const scheduleLink = `http://localhost:3000/${eventLink + x}`;
         try {
             
-            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,eventDate,eventTime,method,scheduleLink});
-            console.log(response.data);
-            if(response.data.insertedId){
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Schedule created successfully!',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
+            // const response = await axios.post(`/api/scheduling`, { eventName,description,duration,eventDate,eventTime,method,scheduleLink});
+            // console.log(response.data);
+            // if(response.data.insertedId){
+            //     Swal.fire({
+            //         icon: 'success',
+            //         title: 'Schedule created successfully!',
+            //         showConfirmButton: false,
+            //         timer: 1500
+            //       })
+                  const sendEmail= await axios.post(`/api/sendmail`,{email,name,scheduleLink});
+                  console.log(sendEmail.data);
                   reset();
-            }
+            // }
             
         } catch (error) {
             console.error('Error submitting form:', error);
