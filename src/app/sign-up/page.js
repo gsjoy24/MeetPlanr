@@ -40,6 +40,7 @@ const SignUp = () => {
 				reset();
 				setLoading(false);
 				toast.success('Successfully signed up!');
+
 				router.push('/');
 			})
 			.catch((err) => {
