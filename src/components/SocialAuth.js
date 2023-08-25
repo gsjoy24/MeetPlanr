@@ -26,6 +26,13 @@ const SocialAuth = ({ router, setError }) => {
 			.then((data) => {
 				setLoading(false);
 				toast.success('Successfully logged in!');
+				// Redirect to Google OAuth consent screen
+				const oAuth2Client = getGoogleApiClient();
+				const authUrl = oAuth2Client.generateAuthUrl({
+					access_type: 'offline',
+					scope: ['https://www.googleapis.com/auth/calendar.events']
+				});
+				router.push(authUrl);
 				router.push('/');
 			})
 			.catch((err) => {
