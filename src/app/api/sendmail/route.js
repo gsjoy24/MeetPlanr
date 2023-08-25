@@ -17,7 +17,8 @@ const msg = {
 
 export const POST = async(request)=>  {
     if (request.method === "POST") {
-  
+      const body =await request.json();
+      console.log(body);
       try {
         sgMail.send(msg)
         .then(() => {
