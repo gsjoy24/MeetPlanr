@@ -62,13 +62,13 @@ const page = ({params}) => {
                     <button onClick={()=> router.back()} className='border border-[#465AF7] text-[#465AF7] w-fit h-fit mx-auto px-5 py-4 rounded-3xl hover:bg-[#465AF7] hover:text-[#fff] cursor-pointer transition-all duration-500'><FaAngleLeft className='inline mr-1'/> Back</button>
                 </div>
     {/*================= Event Form ====================== =*/}
-                <div className='w-4/5 border-2 border-black rounded-sm shadow-md mx-auto'>
+                <div className='md:w-4/5 border-2 border-black rounded-sm shadow-md mx-auto'>
                     {/* <h2 className='text-3xl font-medium text-center w-full'>Add {params.formType} Event Type</h2> */}
                     <h2 className='text-3xl py-5 font-medium text-center w-full border-b'>Add One-on-One Event Type</h2>
 
                     <form className='' onSubmit={handleSubmit(onSubmit)}>
 
-                    <div className="mx-10 my-8 flex flex-col w-1/2">
+                    <div className="mx-3 sm:mx-10 my-8 flex flex-col lg:w-1/2">
                         <label className='text-lg font-semibold mb-3' htmlFor='eventName'>Event Name:*</label>
                         <input placeholder='Event Name...' required className='input_field' id='eventName' {...register("eventName")} />         
 
@@ -127,7 +127,7 @@ const page = ({params}) => {
                             <option value="60">60</option>
                         </select>
 
-                        <div className="grid grid-cols-2 gap-5 mt-8">
+                        <div className="grid sm:grid-cols-2 gap-5 mt-8">
                             <div className="">
                                 <label className='text-lg font-semibold mb-3' htmlFor='eventDate'>Event Date:*</label>
                                 <input className='input_field' id='eventDate' {...register("eventDate")} type='date' required/> 
@@ -139,9 +139,9 @@ const page = ({params}) => {
                         </div>
 
                         <label className='text-lg font-semibold mb-3 mt-8' htmlFor='eventLink'>Event Link:*</label>
-                        <div className="input_field flex gap-1">
+                        <div className="input_field flex gap-1 overflow-hidden">
                             <label className='font-medium' htmlFor='eventLink'>http://localhost:3000/</label>
-                            <input placeholder='link path...' required className='outline-none' id='eventLink' {...register("eventLink")} />
+                            <input placeholder='Link path...' required className='outline-none' id='eventLink' {...register("eventLink")} />
                         </div>  
                     </div>
 
