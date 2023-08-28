@@ -4,8 +4,8 @@ import { FaCalendarCheck, FaTimesCircle } from 'react-icons/fa';
 
 const FeatureCard = ({feature}) => {
     const {description,icon,image,name} = feature || {};   
-   const [showModal, setShowModal] = useState(false);
-
+    const [showModal, setShowModal] = useState(false);
+    const [showAll,setShowAll] = useState(false);   
     return (
         <>
             <div className="border-2 p-5 rounded-md shadow-lg grid ft_hover">
@@ -15,16 +15,19 @@ const FeatureCard = ({feature}) => {
                 <h3 className="font-semibold text-2xl mt-7 text-center">
                     {name}
                 </h3>
-                <p className="my-5">
-                    {description.slice(0,120)}....
-                </p>
+                {
+                    showAll 
+                    ? <p className='py-5'>{description} <button className='font-semibold hover:underline' onClick={() => setShowAll(false)}>See less.</button></p> 
+                    : <p className='py-5'>{description.slice(0,120)}... <button className='font-semibold hover:underline' onClick={()=> setShowAll(true)}>See more.</button></p>
+                }
+
                 <button onClick={() => setShowModal(true)} className="bg-[#465AF7] hover:bg-sky-950 active:scale-95 duration-200 text-white px-6 py-3 rounded-lg" >
                     Learn more
                 </button>
             </div>
             {
-                showModal && <div className="fixed flex justify-center items-center bg-slate-800 bg-opacity-10 top-0 left-0 w-full h-screen z-50">
-                <div className="w-4/5 h-[90vh] bg-white overflow-auto p-10">
+                showModal && <div className="fixed flex justify-center items-center bg-slate-800 bg-opacity-20 top-0 left-0 w-full h-screen z-50">
+                <div className="w-4/5 h-[90vh] bg-white overflow-auto p-5">
                     <Image width={600} height={300} src={image} className='w-4/5 mx-auto border-2 shadow-lg p-5 rounded-lg' alt='Features Image'/>
                     <h2 className='text-3xl font-semibold my-5'>{name}</h2>
                     <p>{description}</p>
