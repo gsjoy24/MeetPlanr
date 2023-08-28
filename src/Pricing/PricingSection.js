@@ -23,7 +23,7 @@ const PricingSection = () => {
 							<div className="px-5">
 								<p className="text-[22px] uppercase mt-[30px] font-bold">Basic</p>
 								<div className="flex items-center lg:text-[42px] uppercase my-2 font-bold">
-									<span className="lg:text-[40px] mt-[5px]">Free</span>
+									<span className="text-4xl lg:text-[40px] mt-[5px]">Free</span>
 								</div>
 								<p className="text-[17px] uppercase font-bold Bold">Yearly</p>
 							</div>
@@ -83,8 +83,8 @@ const PricingSection = () => {
 										Recommended
 									</span>
 								</div>
-								<div className="flex items-center lg:text-[42px] uppercase my-2 font-bold Medium">
-									<span className="lg:text-[40px] mt-[5px] -mr-1">
+								<div className="flex items-center text-4xl lg:text-[42px] uppercase my-2 font-bold Medium">
+									<span className="lg:text-[40px] mt-[5px] -mr-1 -ml-2">
 										<FaDollarSign />
 									</span>
 									<span>15</span>
@@ -142,8 +142,8 @@ const PricingSection = () => {
 						<div className="card group lg:w-[310px] rounded-3xl xl:w-auto bg-base-100 hover:bg-[#0B3558] text-[#0B3558] hover:text-white border shadow-md pb-10 duration-300 mx-auto">
 							<div className="px-5">
 								<p className="text-[22px] uppercase mt-[30px] font-bold Medium">Premium</p>
-								<div className="flex items-center lg:text-[42px] uppercase my-2 font-bold Medium">
-									<span className="lg:text-[40px] mt-[5px] -mr-1">
+								<div className="flex items-center text-4xl lg:text-[42px] uppercase my-2 font-bold Medium">
+									<span className="lg:text-[40px] mt-[5px] -mr-1 -ml-2">
 										<FaDollarSign />
 									</span>
 									<span>25</span>
