@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const SchedulingFeatures = () => {
    return (
-      <div className="text-center">
+      <div className="text-center pt-[30px] lg:pt-[70px]">
          <div className="mt-24">
             <h3 className="text-[#465AF7] font-semibold uppercase">
                CALENDLY FEATURES
