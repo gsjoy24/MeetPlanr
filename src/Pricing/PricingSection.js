@@ -9,7 +9,7 @@ const PricingSection = () => {
 	return (
 		<Container>
 			<section>
-				<div className="lg:mt-[140px] my-20">
+				<div className="my-16">
 					<div className="text-center">
 						<SectionTitle title={'Pricing Plans'}></SectionTitle>
 						<p className="md:w-[600px] lg:w-[563px] mx-auto font-normal Normal text-[20px] text-[#5A7795]">
@@ -25,11 +25,11 @@ const PricingSection = () => {
 								<div className="flex items-center lg:text-[42px] uppercase my-2 font-bold">
 									<span className="text-4xl lg:text-[40px] mt-[5px]">Free</span>
 								</div>
-								<p className="text-[17px] uppercase font-bold Bold">Yearly</p>
+								<p className="text-[17px] uppercase font-bold">Yearly</p>
 							</div>
 							<hr className="borderBottom my-3" />
-							<div className="pb-6 px-5 font-normal Normal text-[16px]">
-								<p className="text-lg mb-3 font-medium Medium">Basic features</p>
+							<div className="Normal px-5 pb-6 font-normal">
+								<p className="Medium mb-3 text-lg font-medium">Basic features</p>
 								<div className="text-[#5A7795] space-y-2 group-hover:text-white">
 									<p className="flex items-center">
 										<span className="mr-2 text-green-500">
@@ -93,8 +93,8 @@ const PricingSection = () => {
 							</div>
 							<hr className="borderBottom my-3" />
 							<div className="pb-6 px-5 font-normal Normal text-[16px]">
-								<p className="text-lg mb-3 font-medium Medium">Standard features plus</p>
-								<div className="text-white space-y-2">
+								<p className="Medium mb-3 text-lg font-medium">Standard features plus</p>
+								<div className="space-y-2 text-white">
 									<p className="flex items-center">
 										<span className="mr-2 text-green-500">
 											<GiCheckMark />
@@ -133,7 +133,7 @@ const PricingSection = () => {
 									Choose Plan
 								</button>
 							</div>
-							<Link href="" className="text-white text-sm px-5 mt-5 underline font-medium">
+							<Link href="" className="px-5 mt-5 text-sm font-medium text-white underline">
 								Get Your 30 Day Free Trail
 							</Link>
 						</div>
@@ -152,7 +152,7 @@ const PricingSection = () => {
 							</div>
 							<hr className="borderBottom my-3" />
 							<div className="pb-6 px-5 font-normal Normal text-[16px]">
-								<p className="text-lg mb-3 font-medium Medium">Premium features plus</p>
+								<p className="Medium mb-3 text-lg font-medium">Premium features plus</p>
 								<div className="text-[#5A7795] space-y-2 group-hover:text-white">
 									<p className="flex items-center">
 										<span className="mr-2 text-green-500">
