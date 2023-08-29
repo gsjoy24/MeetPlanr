@@ -16,7 +16,6 @@ const EventsTabs = () => {
    const [actions,setActions] = useState(false);
    const [tabIndex, setTabIndex] = useState(0);
    const [schedules, setSchedules] = useState([]);
-   
    useEffect(() => {
       const fetchData = async () => {
 			try {

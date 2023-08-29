@@ -125,3 +125,6 @@
 .react-datepicker__input-container input{
 	width: 220px;
 }
+.react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+    right: 150px !important;
+}

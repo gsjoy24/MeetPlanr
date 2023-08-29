@@ -29,6 +29,8 @@ const page = ({params}) => {
       setStartDate(start);
       setEndDate(end);
     }
+    const timeRange = {startDate,endDate}
+    console.log(timeRange);
     const clearDateRange = () => {
         setDateRange(null);
         setStartDate(new Date())
@@ -36,14 +38,15 @@ const page = ({params}) => {
     }
     const onSubmit = async (data) => {
       if(method){
-        const {eventName,description,duration,eventDate,eventTime,eventLink}=data;
+        const {eventName,description,duration,eventLink}=data;
         const email=user?.email;
         const name=user?.displayName;
         const x= Math.round(Math.random() * 100000)
-        const scheduleLink = `http://localhost:3000/${eventLink + x}`;
+        const scheduleLink = `http://localhost:3000/jmjubser/${eventLink + x}`;
+        const path = eventLink + x
         try {
-            
-            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,eventDate,eventTime,method,scheduleLink});
+        
+            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,method,scheduleLink,email,name,timeRange,path});
             console.log(response.data);
             if(response.data.insertedId){
                 Swal.fire({
@@ -52,8 +55,6 @@ const page = ({params}) => {
                     showConfirmButton: false,
                     timer: 1500
                   })
-                  const sendEmail= await axios.post(`/api/sendmail`,{email,name,scheduleLink});
-                  console.log(sendEmail.data);
                   router.back();
                   reset();
             }
@@ -139,6 +140,7 @@ const page = ({params}) => {
                         </select>
 
                         <label className='text-lg font-semibold mb-3 mt-8'>Date Range:*</label>
+
                         <div className={`rounded-md p-3 w-full relative 
                         ${action ? "border-2 border-[#00a4f8]" : "border border-gray-800"}`}>
                             {
@@ -165,17 +167,14 @@ const page = ({params}) => {
 
                                 : <div onClick={() => setAction(!action)} className="cursor-pointer">
                                     <div className="flex justify-between items-center">
-                                        <p> Date Range</p>
+                                        <p className='text-lg font-medium'>Indefinitely into the future</p>
                                         {
                                             action ? <FaAngleUp className='text-xl'/> : <FaAngleDown className='text-xl'/>
                                         }
                                     </div>
                                     {
-                                        action && <div className="">
-                                            <div onClick={() => setDateRange('Google Meet')} className="flex gap-3 border-y-2 border-[#00a4f8] my-2 py-2">
-                                                <p className='text-lg font-medium'>Indefinitely into the future</p>
-                                            </div>
-                                            <div onClick={() => setDateRange('In Person')} className="flex gap-3">
+                                        action && <div className="">    
+                                            <div onClick={() => setDateRange('In Person')} className="flex gap-3 border-t-2 border-[#00a4f8] pt-2 mt-2">
                                                 <p className='text-lg font-medium'>Select a date range</p>
                                             </div>
                                         </div>
