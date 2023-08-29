@@ -14,6 +14,7 @@ import {
 	sendEmailVerification
 } from 'firebase/auth';
 import app from '@/firebase/firebase.config';
+import axios from 'axios';
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -74,8 +75,19 @@ export const AuthProvider = ({ children }) => {
 
 	// observing the user state
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+		const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
 			setUser(currentUser);
+
+			if (currentUser) {
+				try {
+					const response = await axios.post('/api/addNewUser', {
+						name: currentUser.displayName,
+						email: currentUser.email
+					});
+					console.log('User info sent to server:', response.data);
+				} catch (error) {}
+			}
+
 			setLoading(false);
 		});
 
