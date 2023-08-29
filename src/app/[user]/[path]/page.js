@@ -11,6 +11,7 @@ const EventSchedule = ({params}) => {
     const [startDate, setStartDate] = useState(null);
     console.log(startDate);
     const duration = 30;
+    const endDate = null;
     return (
         <Container>
             <div className="pt-28 pb-10 flex justify-center gap-5"  >
@@ -33,7 +34,7 @@ const EventSchedule = ({params}) => {
                         showTimeSelect
                         onChange={(date) => setStartDate(date)}
                         minDate={new Date()}
-                        // maxDate={addDays(new Date(), 5)}
+                        maxDate={endDate}
                         locale="pt-BR"
                         timeFormat="p"
                         timeIntervals={duration}
