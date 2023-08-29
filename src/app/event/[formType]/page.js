@@ -29,7 +29,8 @@ const page = ({params}) => {
       setStartDate(start);
       setEndDate(end);
     }
-    console.log(startDate,endDate);
+    const timeRange = {startDate,endDate}
+    console.log(timeRange);
     const clearDateRange = () => {
         setDateRange(null);
         setStartDate(new Date())
@@ -38,7 +39,6 @@ const page = ({params}) => {
     const onSubmit = async (data) => {
       if(method){
         const {eventName,description,duration,eventLink}=data;
-        const timeRange = {startDate,endDate}
         const email=user?.email;
         const name=user?.displayName;
         const x= Math.round(Math.random() * 100000)
