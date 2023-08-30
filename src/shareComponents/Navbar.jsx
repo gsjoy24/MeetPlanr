@@ -33,9 +33,9 @@ const Navbar = () => {
                 <Link href="/solutions">Solutions</Link>
 
                 {!isOpen ? (
-                  <HiOutlineChevronDown className="ml-2"/>
+                  <HiOutlineChevronDown className="ml-2" />
                 ) : (
-                    <HiOutlineChevronUp className="ml-2"/>
+                  <HiOutlineChevronUp className="ml-2" />
                 )}
 
                 {isOpen && (
@@ -90,6 +90,6 @@ const Navbar = () => {
       </Container>
     </div>
   );
-};
+}
 
 export default Navbar;
