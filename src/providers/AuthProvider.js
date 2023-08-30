@@ -78,15 +78,15 @@ export const AuthProvider = ({ children }) => {
 		const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
 			setUser(currentUser);
 
-			if (currentUser) {
-				try {
-					const response = await axios.post('/api/addNewUser', {
-						name: currentUser.displayName,
-						email: currentUser.email
-					});
-					console.log('User info sent to server:', response.data);
-				} catch (error) {}
-			}
+			// if (currentUser) {
+			// 	try {
+			// 		const response = await axios.post('/api/addNewUser', {
+			// 			name: currentUser.displayName,
+			// 			email: currentUser.email
+			// 		});
+			// 		console.log('User info sent to server:', response.data);
+			// 	} catch (error) {}
+			// }
 
 			setLoading(false);
 		});

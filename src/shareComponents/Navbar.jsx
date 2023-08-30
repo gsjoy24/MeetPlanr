@@ -16,7 +16,7 @@ const Navbar = () => {
         setCondition(false);
     }
     return (
-        <div className="border-s-black sticky top-0 z-20 w-full py-2 bg-white border-b-2">
+        <div className="border-s-black top-0 z-20 w-full py-2 bg-white border-b-2">
             <Container>
                 <nav className=' relative flex items-center justify-between'>
                     <div className='text-2xl md:text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow'><Link href="/">MeetPlanr</Link></div>
