@@ -29,8 +29,6 @@ const Navbar = () => {
 
               <li><Link href="/">Home</Link></li>
               <li><Link href="/product">Product</Link></li>
-              {/* <li><Link href="/solutions">Solutions</Link></li> */}
-
               <li onClick={() => setIsOpen((prev) => !prev)} className="flex items-center cursor-pointer">
                 <Link href="/solutions">Solutions</Link>
 
@@ -60,15 +58,6 @@ const Navbar = () => {
                   </ul>
                 )}
               </li>
-
-              {/* <li className="group">
-                <Link href="/solutions">Solutions</Link>
-                <ul className="absolute p-3 pl-3 pr-12 space-y-2 rounded-sm hidden group-hover:block bg-slate-300 sm:mb-5">
-                  <li><Link href="/solutions">Solutions</Link></li>
-                  <li><Link href="/solutions">Solutions</Link></li>
-                  <li><Link href="/solutions">Solutions</Link></li>
-                </ul>
-              </li> */}
               <li><Link href="/pricing">Pricing</Link></li>
               <li><Link href="/blogs">Blogs</Link></li>
               {user ?
