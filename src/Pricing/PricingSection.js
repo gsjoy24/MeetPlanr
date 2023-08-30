@@ -192,7 +192,7 @@ const PricingSection = () => {
 									Choose Plan
 								</button>
 							</div>
-							<Link href="" className="text-[#0B3558] group-hover:text-white text-sm px-5 mt-5 underline font-medium">
+							<Link href="/PaymentGateway" className="text-[#0B3558] group-hover:text-white text-sm px-5 mt-5 underline font-medium">
 								Get Your 30 Day Free Trail
 							</Link>
 						</div>
