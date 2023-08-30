@@ -10,7 +10,7 @@ export const POST= async(request)=>  {
         const schedulingCollection = db.collection("scheduling");
         const {eventName,method,description,duration,eventDate,eventTime,scheduleLink}=body;
         const docs={eventName,method,description,duration,eventDate,eventTime,scheduleLink};
-      const result=await schedulingCollection.insertOne(docs);
+        const result=await schedulingCollection.insertOne(docs);
       
         return NextResponse.json(result);
       } catch (error) {

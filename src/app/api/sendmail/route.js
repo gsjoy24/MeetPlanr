@@ -1,13 +1,9 @@
-
-
-
 import { NextResponse } from 'next/server';
 
 // javascript
 const api_key = process.env.SEND_GRID_KEY;
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(api_key)
-
 
 export const POST = async(request)=>  {
     if (request.method === "POST") {
