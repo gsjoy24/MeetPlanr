@@ -15,12 +15,9 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={poppins.className}>
 				<AuthProvider>
-                <Footer></Footer>
 					<div>
 						<main className="min-h-[calc(100vh-200px)]">{children}</main>
 					</div>
-					<Navbar></Navbar>
-
 					<Toaster position="top-center" reverseOrder={false} />
 				</AuthProvider>
 			</body>
