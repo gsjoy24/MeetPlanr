@@ -5,11 +5,11 @@ import Link from "next/link";
 const SchedulingFeatures = () => {
    return (
       <div className="text-center">
-         <div className="mt-24">
+         <div className="mt-16">
             <h3 className="text-[#465AF7] font-semibold uppercase">
                CALENDLY FEATURES
             </h3>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl text-sky-950 font-bold my-8">
+            <h1 className="md:text-5xl lg:text-6xl text-sky-950 my-8 text-4xl font-bold">
                More than a{" "}
                <span className="text-[#465AF7]">scheduling link</span>
             </h1>

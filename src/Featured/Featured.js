@@ -12,7 +12,6 @@ import {
    FaMoneyCheckAlt,
    FaRegEnvelope,
 } from "react-icons/fa";
-import CalenderModal from "./CalenderModal";
 import FeatureCard from "@/components/FeatureCard";
 
 const Featured = () => {
@@ -24,7 +23,7 @@ const Featured = () => {
 			setFeatures(features);
 		  })()
 	},[])
-	console.log(features)
+	// console.log(features)
    
    return (
       <section className="" style={{ marginTop: "64px", marginBottom: "64px" }}>

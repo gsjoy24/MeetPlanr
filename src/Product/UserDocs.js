@@ -24,7 +24,7 @@ const UserDocs = () => {
           </h3>
           <SectionTitle title={"How Calendly Works"}></SectionTitle>
           <div className="">
-             <div className="grid gap-10 md:grid-cols-2 items-center">
+             <div className="grid items-center gap-10 md:grid-cols-2">
                 <div className="md:pr-8">
                    <h3 className="text-[#00a4f8] font-semibold uppercase">
                       STEP ONE
@@ -43,7 +43,7 @@ const UserDocs = () => {
                    <Image src={img1} alt="docs image"></Image>
                 </div>
              </div>
-             <div className="grid gap-16 md:grid-cols-2 items-center my-10">
+             <div className="grid items-center gap-16 my-10 md:grid-cols-2">
                 <div className=" md:order-2">
                    <h3 className="text-[#00a4f8] font-semibold uppercase">
                       STEP TWO
@@ -63,7 +63,7 @@ const UserDocs = () => {
                    <Image src={img2} alt="docs image"></Image>
                 </div>
              </div>
-             <div className="grid gap-10 md:grid-cols-2 items-center my-10">
+             <div className="grid items-center gap-10 my-10 md:grid-cols-2">
                 <div className="md:pr-8">
                    <h3 className="text-[#00a4f8] font-semibold uppercase">
                       STEP THREE
@@ -82,7 +82,7 @@ const UserDocs = () => {
                    <Image src={img3} alt="docs image"></Image>
                 </div>
              </div>
-             <div className="grid gap-16 md:grid-cols-2 items-center my-10">
+             <div className="grid items-center gap-16 my-10 md:grid-cols-2">
                 <div className="md:order-2">
                    <h3 className="text-[#00a4f8] font-semibold">STEP FOUR</h3>
                    <h2 className="my-6 text-4xl font-bold">
