@@ -1,6 +1,6 @@
 'use client';
 import Container from '@/components/container';
-import signUpAnimation from '../../assets/signup.json';
+import signUpAnimation from '../../../assets/signup.json';
 import Lottie from 'lottie-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -52,13 +52,13 @@ const SignUp = () => {
 
 	return (
 		<Container>
-			<div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center">
-				<div className="max-w-lg mx-auto -mt-12 md:m-auto lg:h-auto">
+			<div className="md:grid-cols-2 grid items-center justify-center grid-cols-1">
+				<div className="md:m-auto lg:h-auto max-w-lg mx-auto -mt-12">
 					<Lottie animationData={signUpAnimation} />
 				</div>
 				<div className="md:p-12 space-y-6">
 					<form onSubmit={handleSubmit(onSubmit)}>
-						<h2 className="text-3xl font-bold text-center mb-8">Sign Up Now</h2>
+						<h2 className="mb-8 text-3xl font-bold text-center">Sign Up Now</h2>
 						{/* name */}
 						<div>
 							<label className="label">
@@ -71,7 +71,7 @@ const SignUp = () => {
 								{...register('name', { required: true })}
 							/>
 							{errors.name?.type === 'required' && (
-								<p className="text-xs text-red-500 flex items-center gap-2 pt-2 ml-1" role="alert">
+								<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500" role="alert">
 									<BiSolidErrorAlt size={17} /> <span>Name is required!</span>
 								</p>
 							)}
@@ -89,7 +89,7 @@ const SignUp = () => {
 								{...register('photoURL', { required: true })}
 							/>
 							{errors.photoURL?.type === 'required' && (
-								<p className="text-xs text-red-500 flex items-center gap-2 pt-2 ml-1" role="alert">
+								<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500" role="alert">
 									<BiSolidErrorAlt size={17} /> <span>Photo URL is required!</span>
 								</p>
 							)}
@@ -107,7 +107,7 @@ const SignUp = () => {
 								{...register('email', { required: true })}
 							/>
 							{errors.email?.type === 'required' && (
-								<p className="text-xs text-red-500 flex items-center gap-2 pt-2 ml-1" role="alert">
+								<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500" role="alert">
 									<BiSolidErrorAlt size={17} /> <span>Email is required!</span>
 								</p>
 							)}
@@ -128,18 +128,18 @@ const SignUp = () => {
 								})}
 								autoComplete="current-password"
 							/>
-							<p className="absolute top-12 right-5 active:scale-90" onClick={() => setShowPass(!showPass)}>
+							<p className="top-12 right-5 active:scale-90 absolute" onClick={() => setShowPass(!showPass)}>
 								{showPass ? <BsEyeSlashFill size={20} /> : <BsEyeFill size={20} />}
 							</p>
 
 							{errors.password && (
-								<p className="text-xs text-red-500 flex items-center gap-2 pt-2 ml-1">
+								<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500">
 									<BiSolidErrorAlt size={17} /> <span>{errors.password.message}!</span>
 								</p>
 							)}
 						</div>
 						{error && (
-							<p className="text-xs text-red-500 flex items-center gap-2 pt-2 ml-1" role="alert">
+							<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500" role="alert">
 								<BiSolidErrorAlt size={17} /> <span>{error}</span>
 							</p>
 						)}
@@ -150,7 +150,7 @@ const SignUp = () => {
 						>
 							{loading ? 'Please wait' : 'Sign Up'}
 						</button>
-						<p className="text-xs mt-3">
+						<p className="mt-3 text-xs">
 							<span>Already have an account?</span>
 							<Link className="text-[#465AF7] ml-2" href="/login">
 								Login Now!
