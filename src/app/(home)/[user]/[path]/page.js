@@ -45,7 +45,8 @@ const EventSchedule = ({params}) => {
               setShowModal(false);
               reset();
               setConfirm(true);
-            //   const inviteeEmailSend = axios.post(`/api/sendmail`)
+            const inviteeEmailSend = axios.post(`/api/sendmail`,);
+            const hostEmailSend = axios.post(`/api/sendmail`,);
         }
     };
 
