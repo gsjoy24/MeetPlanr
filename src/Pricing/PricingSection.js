@@ -1,9 +1,9 @@
-import React from 'react';
-import SectionTitle from '@/components/SectionTitle';
-import Container from '@/components/container';
-import { FaDollarSign } from 'react-icons/fa';
-import { GiCheckMark } from 'react-icons/gi';
-import Link from 'next/link';
+import React from "react";
+import SectionTitle from "@/components/SectionTitle";
+import Container from "@/components/container";
+import { FaDollarSign } from "react-icons/fa";
+import { GiCheckMark } from "react-icons/gi";
+import Link from "next/link";
 
 const PricingSection = () => {
 	return (
