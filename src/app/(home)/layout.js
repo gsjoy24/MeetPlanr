@@ -1,4 +1,4 @@
-import './globals.css';
+import '../globals.css';
 export const metadata = {
 	title: 'MeetPlanr',
 	description:
@@ -15,9 +15,11 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={poppins.className}>
 				<AuthProvider>
+					<Navbar></Navbar>
 					<div>
 						<main className="min-h-[calc(100vh-200px)]">{children}</main>
 					</div>
+					<Footer></Footer>
 					<Toaster position="top-center" reverseOrder={false} />
 				</AuthProvider>
 			</body>

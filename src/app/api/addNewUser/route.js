@@ -10,7 +10,7 @@ export const POST = async (request) => {
 			const findUser = await userCollection.findOne({ email: body.email });
 
 			if (!findUser) {
-				const result = await userCollection.insertOne({ ...body, role: 'user' });
+				const result = await userCollection.insertOne({ ...body, enrolledDate: new Date(), role: 'user' });
 				return NextResponse.json(result);
 			} else {
 				return;
