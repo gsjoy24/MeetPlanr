@@ -1,12 +1,12 @@
-import React from 'react';
-import SectionTitle from '@/components/SectionTitle';
-import Container from '@/components/container';
-import { FaDollarSign } from 'react-icons/fa';
-import { GiCheckMark } from 'react-icons/gi';
-import Link from 'next/link';
+import React from "react";
+import SectionTitle from "@/components/SectionTitle";
+import Container from "@/components/container";
+import { FaDollarSign } from "react-icons/fa";
+import { GiCheckMark } from "react-icons/gi";
+import Link from "next/link";
 
 const PricingSection = () => {
-	return (
+   return (
       <Container>
          <section>
             <div className="lg:mt-[140px] my-20">
@@ -39,6 +39,7 @@ const PricingSection = () => {
                         <p className="mb-3 text-lg font-medium Medium">
                            Basic features
                         </p>
+
                         <div className="text-[#5A7795] space-y-2 group-hover:text-white">
                            <p className="flex items-center">
                               <span className="mr-2 text-green-500">
