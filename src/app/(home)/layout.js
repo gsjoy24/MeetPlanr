@@ -12,17 +12,13 @@ import Footer from '@/shareComponents/Footer';
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en">
-			<body className={poppins.className}>
-				<AuthProvider>
-					<Navbar></Navbar>
-					<div>
-						<main className="min-h-[calc(100vh-200px)]">{children}</main>
-					</div>
-					<Footer></Footer>
-					<Toaster position="top-center" reverseOrder={false} />
-				</AuthProvider>
-			</body>
-		</html>
+		<div>
+			<Navbar></Navbar>
+			<div>
+				<main className="min-h-[calc(100vh-200px)]">{children}</main>
+			</div>
+			<Footer></Footer>
+			<Toaster position="top-center" reverseOrder={false} />
+		</div>
 	);
 }

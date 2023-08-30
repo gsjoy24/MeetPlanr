@@ -16,7 +16,7 @@ const EventSchedule = ({params}) => {
     const [loading,setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [confirm, setConfirm] = useState(false);
-    const {_id,timeRange,scheduleLink,path,hostName,method,eventName,hostEmail,duration,description} = scheduleInfo || {};
+    const {timeRange,path,hostName,method,eventName,hostEmail,duration} = scheduleInfo || {};
     const {startDate,endDate} = timeRange || {};
     const [scheduleDate, setScheduleDate] = useState(null);
     const minDate = new Date(startDate);
@@ -45,8 +45,8 @@ const EventSchedule = ({params}) => {
               setShowModal(false);
               reset();
               setConfirm(true);
-            const inviteeEmailSend = axios.post(`/api/sendmail`,);
-            const hostEmailSend = axios.post(`/api/sendmail`,);
+            const inviteeEmailSend = await axios.post(`/api/sendmailinvitee`,{inviteeName,inviteeEmail,eventName,hostEmail,scheduleDate,method});
+            const hostEmailSend = axios.post(`/api/sendmailhost`,{inviteeName,inviteeEmail,eventName,hostEmail,scheduleDate,method,hostName});
         }
     };
 
@@ -55,9 +55,9 @@ const EventSchedule = ({params}) => {
     }
 
     if(scheduleInfo){
-        // if(scheduleInfo.confirm){
-        //     return <Container><p className="text-5xl font-bold text-slate-500 py-40 mt-20 text-center">This Event already Confirmed...</p></Container>
-        // }
+        if(scheduleInfo.confirm){
+            return <Container><p className="text-5xl font-bold text-slate-500 py-40 mt-20 text-center">This Event already Confirmed...</p></Container>
+        }
     }
     else{
         return <Container><p className="text-5xl py-40 mt-20 text-center">No Schedule available in this link</p></Container>

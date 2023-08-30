@@ -8,8 +8,8 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
 import { FaAngleDown, FaAngleLeft, FaAngleUp, FaTimes } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import meetlogo from '../../../assets/event-form/meet.png'
-import locationLogo from '../../../assets/event-form/location.png'
+import meetlogo from '../../../../assets/event-form/meet.png'
+import locationLogo from '../../../../assets/event-form/location.png'
 import Image from 'next/image';
 import { UserAuth } from '@/providers/AuthProvider';
 import DatePicker from "react-datepicker";
