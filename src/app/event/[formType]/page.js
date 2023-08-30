@@ -39,14 +39,14 @@ const page = ({params}) => {
     const onSubmit = async (data) => {
       if(method){
         const {eventName,description,duration,eventLink}=data;
-        const email=user?.email;
-        const name=user?.displayName;
+        const hostEmail=user?.email;
+        const hostName=user?.displayName;
         const x= Math.round(Math.random() * 100000)
         const scheduleLink = `http://localhost:3000/jmjubser/${eventLink + x}`;
         const path = eventLink + x
         try {
         
-            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,method,scheduleLink,email,name,timeRange,path});
+            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,method,scheduleLink,hostEmail,hostName,timeRange,path});
             console.log(response.data);
             if(response.data.insertedId){
                 Swal.fire({

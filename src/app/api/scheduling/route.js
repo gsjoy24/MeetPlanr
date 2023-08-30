@@ -8,8 +8,8 @@ export const POST= async(request)=>  {
         const body =await request.json();
         const db = await DbConnect();
         const schedulingCollection = db.collection("scheduling");
-        const {eventName,description,duration,method,scheduleLink,email,name,timeRange,path}=body;
-        const docs={eventName,description,duration,method,scheduleLink,email,name,timeRange,path};
+        const {eventName,description,duration,method,scheduleLink,hostName,hostEmail,timeRange,path}=body;
+        const docs={eventName,description,duration,method,scheduleLink,hostName,hostEmail,timeRange,path};
       const result=await schedulingCollection.insertOne(docs);
       
         return NextResponse.json(result);

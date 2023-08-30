@@ -7,14 +7,14 @@ sgMail.setApiKey(api_key)
 
 export const POST = async(request)=>  {
     if (request.method === "POST") {
-      const body =await request.json();
-      console.log(body);
+      // const body =await request.json();
+      // console.log(body);
       const msg = {
-        to: `${body?.email}`, // Change to your recipient
-        from: 'jmjubaer3927@gmail.com', // Change to your verified sender
-        subject: `Your Schedule information from Meetplanr`, // Change to your
-        text: `${body?.name}, You make a new schedule in Meetplanr. Your schedule link is ${body?.scheduleLink}.`,
-        html: `<b>${body?.name}</b>, You make a new schedule in <b>Meetplanr</b>. Your schedule link is <b>${body?.scheduleLink}</b>.`,
+        to: 'meetplanr@gmail.com', // Change to your recipient
+        from: 'meetplanr@gmail.com', // Change to your verified sender
+        subject: 'Sending with SendGrid is Fun',
+        text: 'and easy to do anywhere, even with Node.js',
+        html: '<strong>and easy to do anywhere, even with Node.js</strong>',
       }
       try {
         sgMail.send(msg)
@@ -22,7 +22,7 @@ export const POST = async(request)=>  {
           console.log('Email sent')
         })
         .catch((error) => {
-          console.error(error)
+          console.error(error.message)
         })
         return NextResponse.json({result: "send mail"});
       } catch (error) {
