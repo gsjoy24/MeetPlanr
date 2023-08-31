@@ -8,9 +8,11 @@ export const POST = async (request) => {
 			const db = await DbConnect();
 			const userCollection = db.collection('users');
 			const findUser = await userCollection.findOne({ email: body.email });
-
+			const random= Math.round(Math.random() * 100000);
+			const usernameWithoutSpaces = body?.name?.replace(/\s+/g, '');
+			const username = usernameWithoutSpaces + random;
 			if (!findUser) {
-				const result = await userCollection.insertOne({ ...body, enrolledDate: new Date(), role: 'user' });
+				const result = await userCollection.insertOne({ ...body, timestump: new Date(), role: 'user',username });
 				return NextResponse.json(result);
 			} else {
 				return;
