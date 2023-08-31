@@ -12,7 +12,7 @@ const Banner = () => {
 			<Container>
 				<div className="py-6 grid lg:grid-cols-2 gap-8 items-center">
 					<div className="order-2 lg:order-1">
-						<h1 className="text-2xl sm:text-6xl leading-normal font-bold ">MeetPlanr Appointment Scheduling</h1>
+						<h1 className="text-2xl sm:text-6xl line_height font-bold ">MeetPlanr Appointment Scheduling</h1>
 						<p className="mt-7 text-[20px] text-[#5A7795] mb-5">
 							MeetPlanr is the most flexible, comprehensive appointment scheduling software for professionals, SMEs, and
 							enterprises.

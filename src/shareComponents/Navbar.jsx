@@ -63,7 +63,7 @@ const Navbar = () => {
               {user ?
                 <li>
                   <button onClick={() => setCondition(!condition)}>
-                    <Image className="rounded-full" src={user?.photoURL ? user?.photoURL : 'https://img.freepik.com/free-icon/user_318-563642.jpg?w=360'} width={50} height={50} alt={user?.displayName ? user?.displayName : 'User'} />
+                    <Image width={50} height={50} className="rounded-full w-12 h-12" src={user?.photoURL ? user?.photoURL : 'https://img.freepik.com/free-icon/user_318-563642.jpg?w=360'} alt={user?.displayName ? user?.displayName : 'User'} />
                   </button>
 
                 </li>

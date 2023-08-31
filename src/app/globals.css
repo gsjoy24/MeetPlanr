@@ -10,6 +10,9 @@
 .text_shadow{
 	text-shadow: 2px 2px 10px #fff;
 }
+.line_height{
+	line-height: 80px !important;
+}
 /*====================== Navbar =============================*/
 .nav {
 	@apply flex lg:grid lg:grid-cols-5 justify-between items-center py-6 px-4 border-b-2 border-s-black;
