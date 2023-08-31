@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import SectionTitle from "@/components/SectionTitle";
 import Container from "@/components/container";
@@ -66,10 +67,10 @@ const PricingSection = () => {
 							<hr className="borderBottom" />
 							<div className="px-5">
 								<button className="text-[16px] font-semibold text-[#0B3558] group-hover:text-white bg-sky-100 group-hover:bg-sky-800 border border-[#0b3558af] px-8 py-3 rounded-lg mt-6">
-									Choose Plan
+								<Link href='/payment'>Choose Plan</Link>
 								</button>
 							</div>
-							<Link href="" className="text-[#0B3558] group-hover:text-white text-sm px-5 mt-5 underline font-medium">
+							<Link href="/payment" className="text-[#0B3558] group-hover:text-white text-sm px-5 mt-5 underline font-medium">
 								Get Your 30 Day Free Trail
 							</Link>
 						</div>
@@ -130,10 +131,10 @@ const PricingSection = () => {
 							<hr className="borderBottom" />
 							<div className="px-5">
 								<button className="text-[16px] font-semibold text-white bg-[#0b355831] bg-sky-800 border border-[#0b3558af] px-8 py-3 rounded-lg mt-6">
-									Choose Plan
+								<Link href='/payment'>Choose Plan</Link>
 								</button>
 							</div>
-							<Link href="" className="px-5 mt-5 text-sm font-medium text-white underline">
+							<Link href="/payment" className="px-5 mt-5 text-sm font-medium text-white underline">
 								Get Your 30 Day Free Trail
 							</Link>
 						</div>
@@ -189,7 +190,7 @@ const PricingSection = () => {
 							<hr className="borderBottom" />
 							<div className="px-5">
 								<button className="text-[16px] font-semibold text-[#0B3558] group-hover:text-white bg-sky-100 group-hover:bg-sky-800 border border-[#0b3558af] px-8 py-3 rounded-lg mt-6">
-									Choose Plan
+									<Link href='/payment'>Choose Plan</Link>
 								</button>
 							</div>
 							<Link href="" className="text-[#0B3558] group-hover:text-white text-sm px-5 mt-5 underline font-medium">
