@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaCalendarCheck, FaTimesCircle } from 'react-icons/fa';
 
 const FeatureCard = ({feature}) => {
