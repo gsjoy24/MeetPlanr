@@ -19,6 +19,7 @@
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
     "dustjs-linkedin": "^3.0.1",
+    "encoding": "^0.1.13",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
     "firebase": "^10.1.0",
