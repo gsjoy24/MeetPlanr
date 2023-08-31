@@ -7,9 +7,9 @@ import axios from 'axios';
 
 const SocialAuth = ({ router, setError }) => {
 	const { continueWithGoogle, continueWithGithub, setLoading } = UserAuth();
-	const addUserToServer = async (name, email) => {
+	const addUserToServer = async (name, email, photoURL) => {
 		try {
-			const response = await axios.post('/api/addNewUser', { name, email });
+			const response = await axios.post('/api/add-new-user', { name, email, photoURL });
 		} catch (error) {
 			// the error is not important here!
 		}
@@ -18,7 +18,7 @@ const SocialAuth = ({ router, setError }) => {
 	const handleGoogleAuth = () => {
 		continueWithGoogle()
 			.then((data) => {
-				addUserToServer(data.user.displayName, data.user.email);
+				addUserToServer(data.user.displayName, data.user.email, data.user.photoURL);
 				setLoading(false);
 				toast.success('Successfully logged in!');
 				router.push('/');
@@ -33,7 +33,7 @@ const SocialAuth = ({ router, setError }) => {
 	const handleGithubAuth = () => {
 		continueWithGithub()
 			.then((data) => {
-				addUserToServer(data.user.displayName, data.user.email);
+				addUserToServer(data.user.displayName, data.user.email, data.user.photoURL);
 				toast.success('Successfully logged in!');
 				setLoading(false);
 				router.push('/');
