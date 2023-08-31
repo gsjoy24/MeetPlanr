@@ -7,15 +7,15 @@ import axios from 'axios';
 
 const SocialAuth = ({ router, setError }) => {
 	const { continueWithGoogle, continueWithGithub, setLoading } = UserAuth();
+	const addUserToServer = async (name, email) => {
+		try {
+			const response = await axios.post('/api/addNewUser', { name, email });
+		} catch (error) {
+			// the error is not important here!
+		}
+	};
 
 	const handleGoogleAuth = () => {
-		const addUserToServer = async (name, email) => {
-			try {
-				const response = await axios.post('/api/addNewUser', { name, email });
-			} catch (error) {
-				// the error is not important here!
-			}
-		};
 		continueWithGoogle()
 			.then((data) => {
 				addUserToServer(data.user.displayName, data.user.email);
@@ -33,15 +33,9 @@ const SocialAuth = ({ router, setError }) => {
 	const handleGithubAuth = () => {
 		continueWithGithub()
 			.then((data) => {
-				setLoading(false);
+				addUserToServer(data.user.displayName, data.user.email);
 				toast.success('Successfully logged in!');
-				// Redirect to Google OAuth consent screen
-				const oAuth2Client = getGoogleApiClient();
-				const authUrl = oAuth2Client.generateAuthUrl({
-					access_type: 'offline',
-					scope: ['https://www.googleapis.com/auth/calendar.events']
-				});
-				router.push(authUrl);
+				setLoading(false);
 				router.push('/');
 			})
 			.catch((err) => {

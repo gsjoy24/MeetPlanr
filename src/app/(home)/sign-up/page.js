@@ -31,7 +31,6 @@ const SignUp = () => {
 		const addUserToServer = async () => {
 			try {
 				const response = await axios.post('/api/addNewUser', { name, email });
-				console.log('User info sent to server:', response.data);
 			} catch (error) {
 				console.log(error);
 			}
