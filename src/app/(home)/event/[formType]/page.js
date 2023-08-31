@@ -8,31 +8,45 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
 import { FaAngleDown, FaAngleLeft, FaAngleUp, FaTimes } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import meetlogo from '../../../assets/event-form/meet.png'
-import locationLogo from '../../../assets/event-form/location.png'
+import meetlogo from '../../../../assets/event-form/meet.png'
+import locationLogo from '../../../../assets/event-form/location.png'
 import Image from 'next/image';
 import { UserAuth } from '@/providers/AuthProvider';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const page = ({params}) => {
     const {register,handleSubmit,reset} = useForm()
     const router = useRouter();
     const [method,setMethod] = useState(null);
+    const [dateRange,setDateRange] = useState(null);
     const [action,setAction] = useState(false);
     const { user } = UserAuth()
-    // console.log(user);
-    const email=user?.email;
-    const name=user?.displayName;
-    // console.log(method);
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(null);
+    const onChange = (dates) => {
+    const [start, end] = dates;
+      setStartDate(start);
+      setEndDate(end);
+    }
+    const timeRange = {startDate,endDate}
+    console.log(timeRange);
+    const clearDateRange = () => {
+        setDateRange(null);
+        setStartDate(new Date())
+        setEndDate(null)
+    }
     const onSubmit = async (data) => {
-        console.log(data)
-    //     // console.log(scheduleLink);
       if(method){
-        const {eventName,description,duration,eventDate,eventTime,eventLink}=data;
+        const {eventName,description,duration,eventLink}=data;
+        const hostEmail=user?.email;
+        const hostName=user?.displayName;
         const x= Math.round(Math.random() * 100000)
-        const scheduleLink = `http://localhost:3000/${eventLink + x}`;
+        const scheduleLink = `http://localhost:3000/jmjubser/${eventLink + x}`;
+        const path = eventLink + x
         try {
-            
-            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,eventDate,eventTime,method,scheduleLink});
+        
+            const response = await axios.post(`/api/scheduling`, { eventName,description,duration,method,scheduleLink,hostEmail,hostName,timeRange,path});
             console.log(response.data);
             if(response.data.insertedId){
                 Swal.fire({
@@ -41,8 +55,6 @@ const page = ({params}) => {
                     showConfirmButton: false,
                     timer: 1500
                   })
-                  const sendEmail= await axios.post(`/api/sendmail`,{email,name,scheduleLink});
-                  console.log(sendEmail.data);
                   router.back();
                   reset();
             }
@@ -62,13 +74,13 @@ const page = ({params}) => {
                     <button onClick={()=> router.back()} className='border border-[#465AF7] text-[#465AF7] w-fit h-fit mx-auto px-5 py-4 rounded-3xl hover:bg-[#465AF7] hover:text-[#fff] cursor-pointer transition-all duration-500'><FaAngleLeft className='inline mr-1'/> Back</button>
                 </div>
     {/*================= Event Form ====================== =*/}
-                <div className='w-4/5 border-2 border-black rounded-sm shadow-md mx-auto'>
+                <div className='md:w-4/5 border-2 border-black rounded-sm shadow-md mx-auto'>
                     {/* <h2 className='text-3xl font-medium text-center w-full'>Add {params.formType} Event Type</h2> */}
                     <h2 className='text-3xl py-5 font-medium text-center w-full border-b'>Add One-on-One Event Type</h2>
 
                     <form className='' onSubmit={handleSubmit(onSubmit)}>
 
-                    <div className="mx-10 my-8 flex flex-col w-1/2">
+                    <div className="mx-3 sm:mx-10 my-8 flex flex-col lg:w-1/2">
                         <label className='text-lg font-semibold mb-3' htmlFor='eventName'>Event Name:*</label>
                         <input placeholder='Event Name...' required className='input_field' id='eventName' {...register("eventName")} />         
 
@@ -90,7 +102,7 @@ const page = ({params}) => {
                                 <div className="flex gap-3 relative">
                                     <Image className='w-6 object-contain rounded-full' alt='meet icon' src={locationLogo}/>
                                     <p className='text-lg font-medium'>In-person Meeting</p>
-                                    <span onClick={() => setMethod(null)} className='absolute right-1 top-1 text-lg cursor-pointer'><FaTimes/></span>
+                                    <span onClick={() => setMethod(null)} className='absolute right-0 top-1 text-lg cursor-pointer'><FaTimes/></span>
                                 </div>
 
                                 : <div onClick={() => setAction(!action)} className="cursor-pointer">
@@ -115,7 +127,7 @@ const page = ({params}) => {
                                 </div>
                             }
                         </div>
-
+                    
                         <label className='text-lg font-semibold mb-3 mt-8' htmlFor='description'>Description:</label>
                         <textarea placeholder='Write your schedule details....' id='description' className='input_field min-h-[200px] resize-none' {...register("description")}></textarea>
 
@@ -127,21 +139,55 @@ const page = ({params}) => {
                             <option value="60">60</option>
                         </select>
 
-                        <div className="grid grid-cols-2 gap-5 mt-8">
-                            <div className="">
-                                <label className='text-lg font-semibold mb-3' htmlFor='eventDate'>Event Date:*</label>
-                                <input className='input_field' id='eventDate' {...register("eventDate")} type='date' required/> 
-                            </div>
-                            <div className="">
-                                <label className='text-lg font-semibold mb-3' htmlFor='eventTime'>Event Time:*</label>
-                                <input className='input_field' id='eventTime' {...register("eventTime")} type='time' required/> 
-                            </div>
+                        <label className='text-lg font-semibold mb-3 mt-8'>Date Range:*</label>
+
+                        <div className={`rounded-md p-3 w-full relative 
+                        ${action ? "border-2 border-[#00a4f8]" : "border border-gray-800"}`}>
+                            {
+                                (dateRange == "Google Meet") ? 
+                                
+                                <div className="flex gap-3 relative">
+                                    <p className='text-lg font-medium'>Indefinitely into the future</p>
+                                    <span onClick={() => setDateRange(null)} className='absolute right-1 top-1 text-lg cursor-pointer'><FaTimes/></span>
+                                </div>
+                                
+                                :(dateRange == "In Person") ?                                    
+                                
+                                <div className="flex gap-3 relative">
+                                        <DatePicker
+                                            selected={startDate}
+                                            onChange={onChange}
+                                            startDate={startDate}
+                                            endDate={endDate}
+                                            selectsRange
+                                            withPortal
+                                            />
+                                    <span onClick={clearDateRange} className='absolute right-1 top-1 text-lg cursor-pointer'><FaTimes/></span>
+                                </div>
+
+                                : <div onClick={() => setAction(!action)} className="cursor-pointer">
+                                    <div className="flex justify-between items-center">
+                                        <p className='text-lg font-medium'>Indefinitely into the future</p>
+                                        {
+                                            action ? <FaAngleUp className='text-xl'/> : <FaAngleDown className='text-xl'/>
+                                        }
+                                    </div>
+                                    {
+                                        action && <div className="">    
+                                            <div onClick={() => setDateRange('In Person')} className="flex gap-3 border-t-2 border-[#00a4f8] pt-2 mt-2">
+                                                <p className='text-lg font-medium'>Select a date range</p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
                         </div>
 
                         <label className='text-lg font-semibold mb-3 mt-8' htmlFor='eventLink'>Event Link:*</label>
-                        <div className="input_field flex gap-1">
-                            <label className='font-medium' htmlFor='eventLink'>http://localhost:3000/</label>
-                            <input placeholder='link path...' required className='outline-none' id='eventLink' {...register("eventLink")} />
+                        <label className='font-medium my-2' htmlFor='eventLink'>http://localhost:3000/user</label>
+                        <div className="input_field flex gap-1 overflow-hidden">
+                        <label className='font-medium my-2' htmlFor='eventLink'>/jmjubaer/</label>
+                            <input placeholder='Link path...' required className='outline-none' id='eventLink' {...register("eventLink")} />
                         </div>  
                     </div>
 

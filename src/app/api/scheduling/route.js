@@ -8,8 +8,8 @@ export const POST= async(request)=>  {
         const body =await request.json();
         const db = await DbConnect();
         const schedulingCollection = db.collection("scheduling");
-        const {eventName,method,description,duration,eventDate,eventTime,scheduleLink}=body;
-        const docs={eventName,method,description,duration,eventDate,eventTime,scheduleLink};
+        const {eventName,description,duration,method,scheduleLink,hostName,hostEmail,timeRange,path}=body;
+        const docs={eventName,description,duration,method,scheduleLink,hostName,hostEmail,timeRange,path};
       const result=await schedulingCollection.insertOne(docs);
       
         return NextResponse.json(result);
@@ -21,7 +21,7 @@ export const POST= async(request)=>  {
     }
   }
 
-  export const GET = async (request) => {
+export const GET = async (request) => {
     try {
         const db = await DbConnect();
         const schedulingCollection = db.collection("scheduling");

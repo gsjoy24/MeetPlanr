@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PaymentGateway = () => {
+const page = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const PaymentGateway = () => {
     );
 };
 
-export default PaymentGateway;
+export default page;
