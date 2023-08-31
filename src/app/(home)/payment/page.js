@@ -1,12 +1,11 @@
-import Payment from "@/Pricing/Payment";
-
+import Payment from '@/Pricing/Payment';
 
 const page = () => {
-  return (
-    <div>
-     <Payment/>
-    </div>
-  );
+	return (
+		<div>
+			<Payment />
+		</div>
+	);
 };
 
 export default page;
