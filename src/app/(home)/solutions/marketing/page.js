@@ -1,13 +1,10 @@
-import React from 'react';
-import Marketing from '@/Marketing/Marketing';
-import Container from '@/components/container';
+import React from "react";
+import Marketing from "@/Marketing/Marketing";
 
 const MarketingPage = () => {
    return (
       <>
-         <Container>
-            <Marketing />
-         </Container>
+        <Marketing />
       </>
    );
 };
