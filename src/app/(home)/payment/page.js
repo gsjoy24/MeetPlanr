@@ -1,9 +1,10 @@
 import Payment from "@/Pricing/Payment";
 
+
 const page = () => {
   return (
     <div>
-      <Payment />
+     <Payment/>
     </div>
   );
 };
