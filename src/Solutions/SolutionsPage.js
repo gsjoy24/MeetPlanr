@@ -10,7 +10,7 @@ const SolutionsPage = () => {
    return (
       <div>
          <section>
-            <div className="mt-16 text-center lg:w-[800px] w-full mx-auto">
+            <div className="mt-16 text-center md:w-[650px] lg:w-[800px] w-full mx-auto">
                <h3 className="text-[#465AF7] font-semibold uppercase">
                   SOLUTIONS
                </h3>
@@ -40,7 +40,7 @@ const SolutionsPage = () => {
                </h1>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                <div>
                   <div
                      tabIndex={0}
@@ -199,7 +199,7 @@ const SolutionsPage = () => {
                   </div>
                </div>
 
-               <div data-aos="fade-up" data-aos-duration="2000">
+               <div data-aos="fade-up" data-aos-duration="1000">
                   <Image src={img1} alt="Solutions image" />
                </div>
             </div>
@@ -207,8 +207,8 @@ const SolutionsPage = () => {
 
          {/* Solutions by industry */}
          <section className="bg-[#F7FAFF] rounded-2xl p-16 mt-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
-               <div data-aos="fade-up" data-aos-duration="2000">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+               <div data-aos="fade-up" data-aos-duration="1000" className="md:order-last lg:order-first">
                   <Image src={img2} alt="Solutions image" />
                </div>
 
@@ -355,7 +355,7 @@ const SolutionsPage = () => {
                   <span className="text-[#0B3558]">Easy</span>
                   <span className="text-[#465AF7] ml-3">ahead</span>
                </p>
-               <p className="text-[17px] text-[#5A7795] w-full lg:w-[420px] mt-5 mb-16">
+               <p className="text-[17px] text-[#5A7795] w-full md:w-[420px] mt-5 mb-16">
                   We take the work out of connecting with others so you can
                   accomplish more.
                </p>
