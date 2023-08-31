@@ -41,19 +41,19 @@ const Navbar = () => {
                 {isOpen && (
                   <ul className="text-[17px] absolute mt-[270px] p-3 pl-5 pr-16 space-y-2 rounded-md sm:mb-5 bg-[#d1e6fa]">
                     <li className="hover:text-[#465AF7] duration-100">
-                      <Link href="/marketing">Marketing</Link>
+                      <Link href="/solutions/marketing">Marketing</Link>
                     </li>
                     <li className="hover:text-[#465AF7] duration-100">
-                      <Link href="/technology">Technology</Link>
+                      <Link href="/solutions/technology">Technology</Link>
                     </li>
                     <li className="hover:text-[#465AF7] duration-100">
-                      <Link href="/customer-success">Customer Success</Link>
+                      <Link href="/solutions/customer-success">Customer Success</Link>
                     </li>
                     <li className="hover:text-[#465AF7] duration-100">
-                      <Link href="/professional-services">Professional Services</Link>
+                      <Link href="/solutions/professional-services">Professional Services</Link>
                     </li>
                     <li className="hover:text-[#465AF7] duration-100">
-                      <Link href="/businesses">Small & Medium Businesses</Link>
+                      <Link href="/solutions/businesses">Small & Medium Businesses</Link>
                     </li>
                   </ul>
                 )}
