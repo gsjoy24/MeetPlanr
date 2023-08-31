@@ -7,8 +7,6 @@ export const metadata = {
 import { poppins } from '@/utils/fonts';
 import { AuthProvider } from '@/providers/AuthProvider';
 import { Toaster } from 'react-hot-toast';
-import Navbar from '@/shareComponents/Navbar';
-import Footer from '@/shareComponents/Footer';
 
 export default function RootLayout({ children }) {
 	return (
