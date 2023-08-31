@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Marketing from '@/Marketing/Marketing';
 import Container from '@/components/container';
 
