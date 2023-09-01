@@ -1,4 +1,3 @@
-import React from 'react';
 import { bebas_neue } from '@/utils/fonts';
 
 const SectionTitle = ({ title }) => {

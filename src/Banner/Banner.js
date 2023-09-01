@@ -1,6 +1,6 @@
 'use client';
 import Container from '@/components/container';
-import React from 'react';
+
 import Lottie from 'lottie-react';
 import animation from '../assets/animation_ll3za900.json';
 import Button from '@/common/Button';
@@ -10,9 +10,9 @@ const Banner = () => {
 	return (
 		<div className="bg-[#F7FAFF]">
 			<Container>
-				<div className="py-6 grid lg:grid-cols-2 gap-8 items-center">
-					<div className="order-2 lg:order-1">
-						<h1 className="text-2xl sm:text-6xl line_height font-bold ">MeetPlanr Appointment Scheduling</h1>
+				<div className="lg:grid-cols-2 grid items-center gap-8 py-6">
+					<div className="lg:order-1 order-2">
+						<h1 className="sm:text-6xl text-2xl font-bold line_height">MeetPlanr Appointment Scheduling</h1>
 						<p className="mt-7 text-[20px] text-[#5A7795] mb-5">
 							MeetPlanr is the most flexible, comprehensive appointment scheduling software for professionals, SMEs, and
 							enterprises.
@@ -21,7 +21,7 @@ const Banner = () => {
 							<Button>Create Event</Button>
 						</Link>
 					</div>
-					<div className="order-1 lg:order-2">
+					<div className="lg:order-2 order-1">
 						<Lottie animationData={animation} loop={true} />
 					</div>
 				</div>

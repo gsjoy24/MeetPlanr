@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import React from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import img1 from '../assets/review-image/img1.jpg';
 import img2 from '../assets/review-image/img2.jpg';
@@ -54,7 +53,7 @@ const Review = () => {
 						className="mySwiper"
 					>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img1}
@@ -69,11 +68,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -82,7 +81,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img2}
@@ -97,11 +96,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -110,7 +109,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img3}
@@ -125,11 +124,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -138,7 +137,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img4}
@@ -153,11 +152,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -166,7 +165,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img5}
@@ -181,11 +180,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -194,7 +193,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img6}
@@ -209,11 +208,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -222,7 +221,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img7}
@@ -237,11 +236,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -250,7 +249,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img8}
@@ -265,11 +264,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -278,7 +277,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img9}
@@ -293,11 +292,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -306,7 +305,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img10}
@@ -321,11 +320,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -334,7 +333,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img11}
@@ -349,11 +348,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
@@ -362,7 +361,7 @@ const Review = () => {
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div className="card border bg-base-100 shadow-xl my-10">
+							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
 									<Image
 										src={img12}
@@ -377,11 +376,11 @@ const Review = () => {
 									</p>
 
 									<div className="flex gap-2 my-2">
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
-										<AiFillStar className="text-orange-700 w-6 h-6" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<AiFillStar className="w-6 h-6 text-orange-700" />
 									</div>
 
 									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
