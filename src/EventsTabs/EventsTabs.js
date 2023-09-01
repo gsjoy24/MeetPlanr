@@ -54,7 +54,7 @@ const EventsTabs = () => {
 							<div>
 								<h4>Jhone Devlin</h4>
 								<Link href="" className="text-[#465AF7]">
-									https://meetplanr.com/alexaghosh6
+									https://meet-planr.vercel.app/{}
 								</Link>
 							</div>
 						</div>
