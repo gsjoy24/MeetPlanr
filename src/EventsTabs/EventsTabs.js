@@ -50,7 +50,7 @@ const EventsTabs = () => {
 				<TabPanel>
 					<div className="my-8 md:flex lg:flex justify-between items-center">
 						<div className="flex items-center space-x-5">
-							<Image src={img} alt="User Profile" className="w-12 h-12 rounded-full" />
+							<Image src={img} alt="User Profile" className="w-12 h-12 rounded-full border" />
 							<div>
 								<h4>Jhone Devlin</h4>
 								<Link href="" className="text-[#465AF7]">
