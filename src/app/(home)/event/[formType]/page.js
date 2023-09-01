@@ -42,7 +42,7 @@ const EventPage = ({ params }) => {
 			const hostEmail = user?.email;
 			const hostName = user?.displayName;
 			const x = Math.round(Math.random() * 100000);
-			const scheduleLink = `http://localhost:3000/jmjubser/${eventLink + x}`;
+			const scheduleLink = `https://meet-planr.vercel.app/jmjubser/${eventLink + x}`;
 			const path = eventLink + x;
 			try {
 				const response = await axios.post(`/api/scheduling`, {

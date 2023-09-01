@@ -1,6 +1,7 @@
 'use client';
 import Button from '@/common/Button';
 import Container from '@/components/container';
+import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
@@ -68,9 +69,7 @@ const EventSchedule = ({ params }) => {
 
 	if (loading) {
 		return (
-			<Container>
-				<p className="py-40 mt-20 text-5xl text-center">loading....</p>
-			</Container>
+			<LoadingSpinner/>
 		);
 	}
 
