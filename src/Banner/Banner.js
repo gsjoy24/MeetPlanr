@@ -17,7 +17,7 @@ const Banner = () => {
 							MeetPlanr is the most flexible, comprehensive appointment scheduling software for professionals, SMEs, and
 							enterprises.
 						</p>
-						<Link href="/solutions">
+						<Link className='mt-5 inline-block' href="/solutions">
 							<Button>Create Event</Button>
 						</Link>
 					</div>
