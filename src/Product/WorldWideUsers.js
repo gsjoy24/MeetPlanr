@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Container from "@/components/container";
 import Slider from 'react-infinite-logo-slider';
 import img1 from '@/assets/product-image/Bitly.png';
 import img2 from '@/assets/product-image/Compass.png';
@@ -13,42 +14,51 @@ import img9 from '@/assets/product-image/Twilio.png';
 
 const WorldWideUsers = () => {
 	return (
-		<div className="mb-8">
-			<p className="text-4xl font-bold text-[#0B3558] lg:w-[680px] mx-auto text-center mb-10">
-				Scheduling automation for more than <span className="text-[#465AF7]">20 million</span> users worldwide
-			</p>
+      <Container>
+         <div className="mt-32 mb-28">
+            <p className="text-4xl font-bold text-[#0B3558] lg:w-[680px] mx-auto text-center mb-10">
+               Scheduling automation for more than{" "}
+               <span className="text-[#465AF7]">20 million</span> users
+               worldwide
+            </p>
 
-			<Slider duration={25} pauseOnHover={false} blurBorders={false} blurBoderColor={'#fff'}>
-				<Slider.Slide className="-mr-16">
-					<Image src={img1} alt="docs image"></Image>
-				</Slider.Slide>
-				<Slider.Slide className="mr-16">
-					<Image src={img2} alt="docs image"></Image>
-				</Slider.Slide>
-				<Slider.Slide className="mr-16">
-					<Image src={img3} alt="docs image"></Image>
-				</Slider.Slide>
-				<Slider.Slide className="mr-16">
-					<Image src={img4} alt="docs image"></Image>
-				</Slider.Slide>
-				<Slider.Slide className="-mr-16">
-					<Image src={img5} alt="docs image"></Image>
-				</Slider.Slide>
-				<Slider.Slide className="-mr-16">
-					<Image src={img6} alt="docs image"></Image>
-				</Slider.Slide>
-				<Slider.Slide className="-mr-16">
-					<Image src={img7} alt="docs image"></Image>
-				</Slider.Slide>
-				<Slider.Slide>
-					<Image src={img8} alt="docs image"></Image>
-				</Slider.Slide>
-				<Slider.Slide>
-					<Image src={img9} alt="docs image"></Image>
-				</Slider.Slide>
-			</Slider>
-		</div>
-	);
+            <Slider
+               duration={25}
+               pauseOnHover={false}
+               blurBorders={false}
+               blurBoderColor={"#fff"}
+            >
+               <Slider.Slide className="-mr-16">
+                  <Image src={img1} alt="docs image"></Image>
+               </Slider.Slide>
+               <Slider.Slide className="mr-16">
+                  <Image src={img2} alt="docs image"></Image>
+               </Slider.Slide>
+               <Slider.Slide className="mr-16">
+                  <Image src={img3} alt="docs image"></Image>
+               </Slider.Slide>
+               <Slider.Slide className="mr-16">
+                  <Image src={img4} alt="docs image"></Image>
+               </Slider.Slide>
+               <Slider.Slide className="-mr-16">
+                  <Image src={img5} alt="docs image"></Image>
+               </Slider.Slide>
+               <Slider.Slide className="-mr-16">
+                  <Image src={img6} alt="docs image"></Image>
+               </Slider.Slide>
+               <Slider.Slide className="-mr-16">
+                  <Image src={img7} alt="docs image"></Image>
+               </Slider.Slide>
+               <Slider.Slide>
+                  <Image src={img8} alt="docs image"></Image>
+               </Slider.Slide>
+               <Slider.Slide>
+                  <Image src={img9} alt="docs image"></Image>
+               </Slider.Slide>
+            </Slider>
+         </div>
+      </Container>
+   );
 };
 
 export default WorldWideUsers;
