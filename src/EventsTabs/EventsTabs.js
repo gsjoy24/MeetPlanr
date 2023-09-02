@@ -17,7 +17,7 @@ const EventsTabs = () => {
    const [tabIndex, setTabIndex] = useState(0);
    const [schedules, setSchedules] = useState([]);
    useEffect(() => {
-      const fetchData = async () => {
+    	(async () => {
 			try {
 				const res = await fetch("/api/scheduling");
 				const data = await res.json();
@@ -26,8 +26,7 @@ const EventsTabs = () => {
 			} catch (error) {
 				console.error('Error fetching data:', error);
 			}
-		};
-      fetchData();
+		})()
    }, []);
 
 	return (
@@ -54,7 +53,7 @@ const EventsTabs = () => {
 							<div>
 								<h4>Jhone Devlin</h4>
 								<Link href="" className="text-[#465AF7]">
-									https://meetplanr.com/alexaghosh6
+									https://meet-planr.vercel.app/usename354
 								</Link>
 							</div>
 						</div>
