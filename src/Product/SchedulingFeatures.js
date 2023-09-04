@@ -7,16 +7,14 @@ const SchedulingFeatures = () => {
       <div className="text-center">
          <div className="mt-16">
             <h3 className="text-[#465AF7] font-semibold uppercase">
-               CALENDLY FEATURES
+               MeetPlanr FEATURES
             </h3>
             <h1 className="md:text-5xl lg:text-6xl text-sky-950 my-8 text-4xl font-bold">
                More than a{" "}
                <span className="text-[#465AF7]">scheduling link</span>
             </h1>
             <p className="text-[22px] text-[#5A7795] lg:w-[710px] mx-auto mb-10">
-               Calendly is the scheduling automation platform with team-based
-               scheduling, solutions and integrations for every department, and
-               advanced security features
+            MeetPlanr is the scheduling automation platform with team-based scheduling, solutions and integrations for every department, and advanced security features
             </p>
 
             <div>

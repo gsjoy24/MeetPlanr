@@ -20,9 +20,9 @@ const UserDocs = () => {
     return (
        <section className="py-20">
           <h3 className="text-[#00a4f8] font-semibold uppercase text-center mb-6">
-             AN INTRODUCTION TO CALENDLY
+             AN INTRODUCTION TO MeetPlanr
           </h3>
-          <SectionTitle title={"How Calendly Works"}></SectionTitle>
+          <SectionTitle title={"How MeetPlanr Works"}></SectionTitle>
           <div className="">
              <div className="grid items-center gap-10 md:grid-cols-2">
                 <div className="md:pr-8">
@@ -33,9 +33,9 @@ const UserDocs = () => {
                       Create a Scheduling Link
                    </h2>
                    <p className="leading-relaxed text-xl text-[#5A7795] lg:w-[470px]">
-                      Connect your calendar and Calendly will help you create
+                      Connect your calendar and MeetPlanr will help you create
                       scheduling links and booking pages based on your
-                      availability. Share your Calendly link with others so
+                      availability. Share your MeetPlanr link with others so
                       people can book time with you in one click.
                    </p>
                 </div>
@@ -72,7 +72,7 @@ const UserDocs = () => {
                       Workflows and integrations
                    </h2>
                    <p className="leading-relaxed text-xl text-[#5A7795] lg:w-[470px]">
-                      Workflows and integrations connect Calendly to your
+                      Workflows and integrations connect MeetPlanr to your
                       process and other tools. Send reminders, follow-ups, and
                       connect your CRM, video conferencing, and even billing
                       platforms!
@@ -89,7 +89,7 @@ const UserDocs = () => {
                       Designed for your whole organization
                    </h2>
                    <p className="leading-relaxed text-xl text-[#5A7795] lg:w-[470px]">
-                      With Calendly commonly used to power meetings with
+                      With MeetPlanr commonly used to power meetings with
                       prospects, customers, recruits and more, it’s ideal to
                       power scheduling for your whole company with meeting
                       analytics, and enterprise-ready admin, security, and
