@@ -1,4 +1,5 @@
 import DbConnect from '@/services/DbConnect';
+import { NextResponse } from 'next/server';
 export const GET = async (request) => {
 	try {
 		const { email } = request.query;
