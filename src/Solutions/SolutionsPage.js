@@ -1,25 +1,25 @@
-import React from "react";
 import Container from "@/components/container";
 import { BsArrowRightShort } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import img1 from "@/assets/solutions/img1.png";
 import img2 from "@/assets/solutions/img3.png";
+import Button from "@/common/Button";
 
 const SolutionsPage = () => {
    return (
       <div>
          <section>
-            <div className="mt-16 text-center lg:w-[800px] w-full mx-auto">
+            <div className="mt-16 text-center md:w-[650px] lg:w-[800px] w-full mx-auto">
                <h3 className="text-[#465AF7] font-semibold uppercase">
                   SOLUTIONS
                </h3>
-               <h1 className="text-4xl lg:text-5xl text-sky-950 my-8 font-bold">
+               <h1 className="lg:text-5xl text-sky-950 my-8 text-4xl font-bold">
                   A scheduling automation solution for{" "}
                   <span className="text-[#465AF7]">every team</span>
                </h1>
                <p className="text-[21px] text-[#5A7795] mb-10">
-                  Drive results, meeting by meeting. Calendly automates
+                  Drive results, meeting by meeting. MeetPlanr automates
                   scheduling so teams can focus on delivering results.
                </p>
 
@@ -35,18 +35,18 @@ const SolutionsPage = () => {
                <h3 className="text-[#465AF7] font-semibold uppercase">
                   SOLUTIONS BY ROLE
                </h3>
-               <h1 className="text-3xl lg:text-3xl text-sky-950 my-6 font-bold">
+               <h1 className="lg:text-3xl text-sky-950 my-6 text-3xl font-bold">
                   Solutions for every role
                </h1>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
+            <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                <div>
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Sales
                      </div>
                      <div className="collapse-content">
@@ -70,9 +70,9 @@ const SolutionsPage = () => {
 
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Recruiting
                      </div>
                      <div className="collapse-content">
@@ -96,9 +96,9 @@ const SolutionsPage = () => {
 
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Customer Success
                      </div>
                      <div className="collapse-content">
@@ -122,9 +122,9 @@ const SolutionsPage = () => {
 
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Marketing
                      </div>
                      <div className="collapse-content">
@@ -148,9 +148,9 @@ const SolutionsPage = () => {
 
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Revenue Operations
                      </div>
                      <div className="collapse-content">
@@ -174,9 +174,9 @@ const SolutionsPage = () => {
 
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Information Technology
                      </div>
                      <div className="collapse-content">
@@ -199,7 +199,7 @@ const SolutionsPage = () => {
                   </div>
                </div>
 
-               <div data-aos="fade-up" data-aos-duration="2000">
+               <div data-aos="fade-up" data-aos-duration="800">
                   <Image src={img1} alt="Solutions image" />
                </div>
             </div>
@@ -207,8 +207,12 @@ const SolutionsPage = () => {
 
          {/* Solutions by industry */}
          <section className="bg-[#F7FAFF] rounded-2xl p-16 mt-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
-               <div data-aos="fade-up" data-aos-duration="2000">
+            <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
+               <div
+                  data-aos="fade-up"
+                  data-aos-duration="800"
+                  className="md:order-last lg:order-first"
+               >
                   <Image src={img2} alt="Solutions image" />
                </div>
 
@@ -217,16 +221,16 @@ const SolutionsPage = () => {
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         SOLUTIONS BY INDUSTRY
                      </h3>
-                     <h1 className="text-3xl lg:text-3xl text-sky-950 my-6 font-bold">
+                     <h1 className="lg:text-3xl text-sky-950 my-6 text-3xl font-bold">
                         Solutions for any industry
                      </h1>
                   </div>
 
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Financial Services
                      </div>
                      <div className="collapse-content">
@@ -251,9 +255,9 @@ const SolutionsPage = () => {
 
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Education
                      </div>
                      <div className="collapse-content">
@@ -277,9 +281,9 @@ const SolutionsPage = () => {
 
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Professional Services
                      </div>
                      <div className="collapse-content">
@@ -303,9 +307,9 @@ const SolutionsPage = () => {
 
                   <div
                      tabIndex={0}
-                     className="collapse collapse-plus rounded-md border border-base-300 bg-white mt-2"
+                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
                   >
-                     <div className="collapse-title text-[14px] text-slate-600 font-semibold">
+                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Technology
                      </div>
                      <div className="collapse-content">
@@ -334,7 +338,7 @@ const SolutionsPage = () => {
          <section>
             <div className="text-white bg-[#0B3558] rounded-3xl mb-20">
                <div className="mt-20 text-center sm:w-[500px] md:w-[600px] lg:w-[800px] mx-auto py-14">
-                  <p className="text-3xl lg:text-3xl my-8 font-bold tracking-widest">
+                  <p className="lg:text-3xl my-8 text-3xl font-bold tracking-widest">
                      Scheduling made easy
                   </p>
                   <p className="text-[17px] px-5 mb-10">
@@ -355,7 +359,7 @@ const SolutionsPage = () => {
                   <span className="text-[#0B3558]">Easy</span>
                   <span className="text-[#465AF7] ml-3">ahead</span>
                </p>
-               <p className="text-[17px] text-[#5A7795] w-full lg:w-[420px] mt-5 mb-16">
+               <p className="text-[17px] text-[#5A7795] w-full md:w-[420px] mt-5 mb-16">
                   We take the work out of connecting with others so you can
                   accomplish more.
                </p>

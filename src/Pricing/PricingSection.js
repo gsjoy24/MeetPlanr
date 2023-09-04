@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+
 import SectionTitle from "@/components/SectionTitle";
 import Container from "@/components/container";
 import { FaDollarSign } from "react-icons/fa";

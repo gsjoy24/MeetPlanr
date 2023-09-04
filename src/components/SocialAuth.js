@@ -3,13 +3,22 @@ import githubImg from '../assets/github.png';
 import Image from 'next/image';
 import { UserAuth } from '@/providers/AuthProvider';
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
 
 const SocialAuth = ({ router, setError }) => {
 	const { continueWithGoogle, continueWithGithub, setLoading } = UserAuth();
+	const addUserToServer = async (name, email, photoURL) => {
+		try {
+			const response = await axios.post('/api/user', { name, email, photoURL });
+		} catch (error) {
+			// the error is not important here!
+		}
+	};
 
 	const handleGoogleAuth = () => {
 		continueWithGoogle()
-			.then(() => {
+			.then((data) => {
+				addUserToServer(data.user.displayName, data.user.email, data.user.photoURL);
 				setLoading(false);
 				toast.success('Successfully logged in!');
 				router.push('/');
@@ -24,15 +33,9 @@ const SocialAuth = ({ router, setError }) => {
 	const handleGithubAuth = () => {
 		continueWithGithub()
 			.then((data) => {
-				setLoading(false);
+				addUserToServer(data.user.displayName, data.user.email, data.user.photoURL);
 				toast.success('Successfully logged in!');
-				// Redirect to Google OAuth consent screen
-				const oAuth2Client = getGoogleApiClient();
-				const authUrl = oAuth2Client.generateAuthUrl({
-					access_type: 'offline',
-					scope: ['https://www.googleapis.com/auth/calendar.events']
-				});
-				router.push(authUrl);
+				setLoading(false);
 				router.push('/');
 			})
 			.catch((err) => {
@@ -45,7 +48,7 @@ const SocialAuth = ({ router, setError }) => {
 	return (
 		<>
 			<div className="divider text-xs">or continue with</div>
-			<div className="flex justify-center items-center gap-2 pb-12 md:pb-4">
+			<div className="md:pb-4 flex items-center justify-center gap-2 pb-12">
 				<Image
 					onClick={handleGoogleAuth}
 					className="hover:scale-105 active:scale-90 duration-200 cursor-pointer"

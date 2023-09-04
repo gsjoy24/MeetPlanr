@@ -11,6 +11,7 @@ import { UserAuth } from '@/providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import SocialAuth from '@/components/SocialAuth';
+import axios from 'axios';
 
 const SignUp = () => {
 	const router = useRouter();
@@ -27,21 +28,33 @@ const SignUp = () => {
 
 	const onSubmit = (formData) => {
 		const { name, email, password, photoURL } = formData;
-
+		const addUserToServer = async () => {
+			try {
+<<<<<<< HEAD
+				const response = await axios.post('/api/user', { name, email });
+=======
+				const response = await axios.post('/api/add-new-user', { name, email, photoURL });
+>>>>>>> 7c453c8c2df96d11dae1debff926ac5e8c83c5b8
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		addUserToServer();
 		createUser(email, password)
 			.then(() => {
+				// adding picture and name to firebase
 				updateUserProfile(name, photoURL).then(() => {
 					console.log('profile updated');
 				});
+
+				// sending verification email.
 				verifyEmail()
 					.then(() => console.log('done'))
 					.catch((err) => console.error(err));
-
 				reset();
-				setLoading(false);
 				toast.success('Successfully signed up!');
-
 				router.push('/');
+				setLoading(false);
 			})
 			.catch((err) => {
 				console.log(err.message);
