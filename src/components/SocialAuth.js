@@ -9,7 +9,7 @@ const SocialAuth = ({ router, setError }) => {
 	const { continueWithGoogle, continueWithGithub, setLoading } = UserAuth();
 	const addUserToServer = async (name, email, photoURL) => {
 		try {
-			const response = await axios.post('/api/add-new-user', { name, email, photoURL });
+			const response = await axios.post('/api/user', { name, email, photoURL });
 		} catch (error) {
 			// the error is not important here!
 		}
