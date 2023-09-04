@@ -33,10 +33,18 @@ export const POST = async (request) => {
 };
 
 export const GET = async (request) => {
+	
     try {
-        const db = await DbConnect();
-        const schedulingCollection = db.collection("users");
-        const result = await schedulingCollection.find().toArray();
+		const email = request.nextUrl.searchParams.get('email');
+		const db = await DbConnect();
+        const userCollection = db.collection("users");
+		if(email){
+			const query = {email: email};
+			console.log(query);
+			const result =await userCollection.findOne(query);
+			return NextResponse.json(result);
+		}
+        const result = await userCollection.find().toArray();
         return NextResponse.json(result);
     }
     catch (error) {
