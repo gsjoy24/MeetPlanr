@@ -1,26 +1,26 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import customer from '../../assets/Untitled-design-6.jpg';
-import img2 from '../../assets/card2.png';
-import img3 from '../../assets/card3.jpg';
-import img4 from '../../assets/card4.jpg';
-import img5 from '../../assets/card5.jpg';
-import img6 from '../../assets/card7.jpg';
-import mobile from '../../assets/phone.webp';
-import ios from '../../assets/icon-apple.png';
-import android from '../../assets/icon-android.png';
-import people from '../../assets//setmore-people-community.webp';
-
 import Link from 'next/link';
 
 
 const Page = () => {
- 
+  const [data, setData] = useState([]);
+   const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+   
+    fetch('data.json') 
+      .then((response) => response.json())
+      .then((jsonData) => setData(jsonData))
+      
+  }, []);
+
     return (
         <section >
         <div className="flex justify-center items-center p-8">
             <div className="flex flex-col items-center pr-8">
-                <Image src={customer} alt="" width={500} height={500} />
+            <Image src='https://i.ibb.co/cQCcTyz/Untitled-design-6.jpg' alt="" width={500} height={500} />
             </div>
             <div className="flex flex-col pl-8">
                 <p className='font-thin text-sm mb-4 '>FEATURES — 5 MIN READ</p>
@@ -35,80 +35,30 @@ const Page = () => {
          {/* card section  */}
 
          
-       <div className="flex justify-center items-center">
-
-    
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
-  
-    <div className="card w-96 bg-base-100  hover:scale-105 transition-transform duration-200">
-    <div className="card w-96 bg-base-100 shadow-xl">
-    <figure><Image src={customer} alt="Shoes" /></figure>
-    <div className="card-body">
-      <h2 className="text-sm">FEATURES — 5 MIN READ</h2>
-      <h1 className='text-xl font-bold mt-4'>Choosing the best scheduling app for your small business.</h1>
-      <p className='mt-4'>Streamlining your scheduling process is crucial in helping small businesses find time to serve more customers. Managing appointments efficiently, enhancing…</p>
-      
+         <div className="flex justify-center items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+        {data.map((item) => (
+          <div key={item.id} className="card w-96 bg-base-100 shadow-xl hover:scale-105 transition-transform duration-200">
+            <figure>
+              <Image src={item.image} alt="Card" width={400} height={200} />
+            </figure>
+            <div className="card-body">
+              <h2 className="text-sm">{item.subtitle}</h2>
+              <h1 className="text-xl font-bold mt-4">{item.title}</h1>
+              <p className="mt-4">
+                {expanded ? item.content : `${item.content.split(' ').slice(0, 20).join(' ')}...`}
+              </p>
+              <button
+                className="text-blue-500 hover:underline mt-2"
+                onClick={() => setExpanded(!expanded)}
+              >
+                {expanded ? 'See Less' : 'See More'}
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-    </div>
-{/* card 1 */}
-    <div className="card w-96 bg-base-100  hover:scale-105 transition-transform duration-200">
-    <div className="card w-96 bg-base-100 shadow-xl">
-    <figure><Image src={img2} alt="Shoes" /></figure>
-    <div className="card-body">
-      <h2 className="text-sm">HOW-TO — 3 MIN READ</h2>
-      <h1 className='text-xl font-bold mt-4'>How Reserve with Google bookings fill your calendar.</h1>
-      <p className='mt-4'>Offering effortless online booking is a must to increase your customer base. By enabling Reserve with Google, you can convert leads straight from Google Search and Maps.</p>
-      
-    </div>
-  </div>
-    </div>
-{/* card 2 */}
-    <div className="card w-96 bg-base-100  hover:scale-105 transition-transform duration-200">
-    <div className="card w-96 bg-base-100 shadow-xl">
-    <figure><Image src={img3} alt="Shoes" /></figure>
-    <div className="card-body">
-      <h2 className="text-sm">HOW-TO — 6 MIN READ</h2>
-      <h1 className='text-xl font-bold mt-4'>leads straight from Google Search and Maps.</h1>
-      <p className='mt-4'>An e-commerce store is essential for your business to reach a wider audience and make sales throughout the day. Relying you can convert leads...</p>
-      
-    </div>
-  </div>
-    </div>
-    {/* card 3 */}
-    <div className="card w-96 bg-base-100 shadow-xl hover:scale-105 transition-transform duration-200">
-    <figure><Image src={img4} alt="Shoes" /></figure>
-    <div className="card-body">
-      <h2 className="text-sm">UNCATEGORIZED — 6 MIN READ</h2>
-      <h1 className='text-xl font-bold mt-4'>E-commerce vs. marketplace: why you should build your own online store.</h1>
-      <p className='mt-4'>Many startups might feel that a marketplace is the best avenue to get seen by new customers. But building your own e-commerce store benefits your... </p>
-      
-    </div>
-  </div>
-  {/* card 4 */}
-  <div className="card w-96 bg-base-100 shadow-xl hover:scale-105 transition-transform duration-200">
-    <figure><Image src={img5} alt="Shoes" /></figure>
-    <div className="card-body">
-      <h2 className="text-sm">UNCATEGORIZED — 8 MIN READ</h2>
-      <h1 className='text-xl font-bold mt-4'>Taking their cut – how online marketplaces leave you short.</h1>
-      <p className='mt-4'>Any service-based business operator knows the value of return visits. When a customer is happy, not only will they come to the value of return visits yours area …</p>
-      
-    </div>
-  </div>
-  {/* card 5 */}
-  <div className="card w-96 bg-base-100 shadow-xl hover:scale-105 transition-transform duration-200">
-    <figure><Image src={img6} alt="Shoes" /></figure>
-    <div className="card-body">
-      <h2 className="text-sm">FEATURES — 5 MIN READ</h2>
-      <h1 className='text-xl font-bold mt-4'> Choosing the best scheduling app for your small business.</h1>
-      <p className='mt-4'>Streamlining your scheduling process is crucial in helping small businesses find time to serve more customers. Managing appointments efficiently, enhancing…</p>
-      
-    </div>
-  </div>
-  
-  </div>
-
-</div>
 <div className="flex justify-center mt-6">
     <button className="btn bg-[#465AF7] text-white px-6 mb-8 mt-8">Learn more</button>
   </div>
@@ -120,15 +70,15 @@ const Page = () => {
                 <p>For teams on-the-move, Setmore Free comes in a pocket-<br></br>friendly edition for your Android or iOS device. Your<br></br>appointments are just a tap away.</p>
                 <div className="flex mt-5">
       <button className="border border-blue-500 hover:bg-slate-300 text-blue-500 hover:text-white font-thin py-2 px-4 mr-2 rounded flex items-center justify-center">
-        <Image src={ios} alt="iOS Icon" className="w-4 h-5 mr-2 mb-1" /> iOS
+        <Image src='https://i.ibb.co/k611zwY/icon-apple.png' alt="iOS Icon" width={20} height={25} className="w-4 h-5 mr-2 mb-1" /> iOS
       </button>
       <button className="border border-blue-500 hover:bg-slate-300 text-blue-500 hover:text-white font-thin py-2 px-4 rounded flex items-center justify-center">
-        <Image src={android} alt="Android Icon" className="w-4 h-5 mr-2" /> Android
+        <Image src='https://i.ibb.co/cyyZ4t3/icon-android.png' alt="Android Icon" width={20} height={25} className="w-4 h-5 mr-2" /> Android
       </button>
     </div>
             </div>
             <div className="flex flex-col items-center pr-8">
-                <Image src={mobile} alt="" width={500} height={500} />
+                <Image src='https://i.ibb.co/k9nhLBM/phone.webp' alt="" width={500} height={500} />
             </div>
             
         </div>
@@ -138,9 +88,11 @@ const Page = () => {
         <Image
           width="1440"
           height="280"
-          src={people}
+          src='https://i.ibb.co/2qMBCLm/setmore-people-community.webp'
           alt=""
+          
           loading="lazy"
+          
         />
       </div>
     </div>
