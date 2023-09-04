@@ -37,7 +37,7 @@ const Navbar = () => {
 							<li>
 								<Link href="/product">Product</Link>
 							</li>
-							<li onClick={() => setIsOpen((prev) => !prev)} className="flex items-center cursor-pointer">
+							<li onMouseEnter={() => setIsOpen((prev) => !prev)} className="flex items-center cursor-pointer">
 								<Link href="/solutions">Solutions</Link>
 
 								{!isOpen ? <HiOutlineChevronDown className="ml-2" /> : <HiOutlineChevronUp className="ml-2" />}
