@@ -17,3 +17,16 @@ export const POST = async (request) => {
 		return NextResponse.json({ message: 'Method not allowed' }, { status: 405 });
 	}
 };
+
+export const GET = async (request) => {
+    try {
+        const db = await DbConnect();
+        const schedulingCollection = db.collection("blogs");
+        const result = await schedulingCollection.find().sort({timestump: -1}).toArray();
+        return NextResponse.json(result);
+    }
+    catch (error) {
+        console.error("error for geting data", error);
+        NextResponse.json({ error: "eroor for geting data" });
+    }
+};
