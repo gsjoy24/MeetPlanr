@@ -29,7 +29,7 @@ const TimeSaving = () => {
                            <p className="text-2xl text-[#0B3558] font-semibold">
                               Offer available in real-time
                            </p>
-                           <p className="text-[16px] text-[#5A7795] mt-2">
+                           <p className="text-[15px] text-[#5A7795] mt-2">
                               Connect up to six calendars so you never have to
                               worry about getting double booked.
                            </p>
@@ -51,7 +51,7 @@ const TimeSaving = () => {
                            <p className="text-2xl text-[#0B3558] font-semibold">
                               Automate communications
                            </p>
-                           <p className="text-[16px] text-[#5A7795] mt-2">
+                           <p className="text-[15px] text-[#5A7795] mt-2">
                               Automate meeting communications for better
                               attendance and efficiency.
                            </p>
@@ -69,7 +69,7 @@ const TimeSaving = () => {
                            <p className="text-2xl text-[#0B3558] font-semibold">
                               Instant meeting planning
                            </p>
-                           <p className="text-[16px] text-[#5A7795] mt-2">
+                           <p className="text-[15px] text-[#5A7795] mt-2">
                               Qualify, route, and schedule meetings with the
                               right person or resource using MeetPlanr.
                            </p>
@@ -91,7 +91,7 @@ const TimeSaving = () => {
                            <p className="text-2xl text-[#0B3558] font-semibold">
                               Simplify appointment scheduling with us
                            </p>
-                           <p className="text-[16px] text-[#5A7795] mt-2">
+                           <p className="text-[15px] text-[#5A7795] mt-2">
                               Book more meetings with less effort by embedding
                               MeetPlanr anywhere on your website and adding
                               available time to emails.
@@ -114,7 +114,7 @@ const TimeSaving = () => {
                            <p className="text-2xl text-[#0B3558] font-semibold">
                               Customize exactly how you booked
                            </p>
-                           <p className="text-[16px] text-[#5A7795] mt-2">
+                           <p className="text-[15px] text-[#5A7795] mt-2">
                               Stay in control of your MeetPlanr with granular
                               availability tools, scheduling rules, buffers, and
                               more.
