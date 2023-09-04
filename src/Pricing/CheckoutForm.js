@@ -1,11 +1,31 @@
+import { UserAuth } from "@/providers/AuthProvider";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 
-const CheckoutForm = () => {
+const CheckoutForm = ({price}) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState('');
+  const { user } = UserAuth();
+  const [clientSecret, setClientSecret] = useState('');
+  const [processing, setProcessing] = useState(false);
+
+  useEffect(() => {
+   async function fetchClientSecret() {
+     try {
+       const response = await axios.post('/api/create-payment-intent', { price });
+       setClientSecret(response.data.clientSecret);
+     } catch (error) {
+       // Handle error
+     }
+   }
+
+   fetchClientSecret();
+ }, [price]);
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,7 +51,38 @@ const CheckoutForm = () => {
       setCardError('');
       console.log('payment method', paymentMethod);
     }
+    setProcessing(true);
+    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+      clientSecret,
+      {
+          payment_method: {
+              card: card,
+              billing_details: {
+                  email: user?.email || 'unknown',
+                  name: user?.displayName || 'anonymous'
+              },
+          },
+      },
+  );
+  if (confirmError) {
+   console.log(confirmError);
+}
+
+console.log('payment intent', paymentIntent)
+setProcessing(false)
+
+if (paymentIntent.status === 'succeeded'){
+
+   setTransactionId(paymentIntent.id);
+   const payment = {
+      email: user?.email,
+      transactionId: paymentIntent.id,
+      price,
+      date: new Date(),
+   }
+}
   }
+
 
   return (
      <div className="w-[400px]">
@@ -54,7 +105,7 @@ const CheckoutForm = () => {
            />
            <button
               type="submit"
-              disabled={!stripe}
+              disabled={!stripe || !clientSecret || processing}
               className="font-semibold mt-3 border px-4 py-[2px] rounded-full border-[#465AF7] text-[#465AF7] hover:bg-[#ebf0f7]"
            >
               Pay

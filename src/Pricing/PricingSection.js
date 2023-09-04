@@ -6,6 +6,8 @@ import { FaDollarSign } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
 import Link from "next/link";
 
+
+
 const PricingSection = () => {
 	return (
 		<Container>
