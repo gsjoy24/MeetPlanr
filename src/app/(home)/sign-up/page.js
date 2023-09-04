@@ -30,11 +30,7 @@ const SignUp = () => {
 		const { name, email, password, photoURL } = formData;
 		const addUserToServer = async () => {
 			try {
-<<<<<<< HEAD
-				const response = await axios.post('/api/user', { name, email });
-=======
 				const response = await axios.post('/api/add-new-user', { name, email, photoURL });
->>>>>>> 7c453c8c2df96d11dae1debff926ac5e8c83c5b8
 			} catch (error) {
 				console.log(error);
 			}
