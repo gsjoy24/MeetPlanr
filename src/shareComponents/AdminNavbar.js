@@ -19,29 +19,29 @@ const AdminNavbar = ({ children }) => {
 			</div>
 			<div className="drawer-side">
 				<label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-				<ul className="menu w-80 bg-base-200 text-base-content min-h-full p-4 space-y-3 text-xl">
-					<li className="border-b-2">
+				<ul className="menu w-80 bg-blue-200 text-base-content min-h-full p-4 space-y-3">
+					<li className="border-b-2 border-gray-400">
 						<div className="text-4xl text-[#465AF7] font-bold">MeetPlanr</div>
 					</li>
 					<li>
 						<Link className="flex items-center" href="/admin/add-new-blog">
-							<MdEditDocument size={30} /> <span>Add New Blog</span>
+							<MdEditDocument size={20} /> <span>Add New Blog</span>
 						</Link>
 					</li>
 					<li>
 						<Link className="flex items-center" href="/admin/all-schedule">
-							<FaCalendarTimes size={30} /> <span>All Schedule</span>
+							<FaCalendarTimes size={20} /> <span>All Schedule</span>
 						</Link>
 					</li>
 					<li>
 						<Link className="flex items-center" href="/admin/all-users">
-							<HiUserGroup size={30} /> <span>All users</span>
+							<HiUserGroup size={20} /> <span>All users</span>
 						</Link>
 					</li>
 
-					<li>
+					<li className="mt-auto">
 						<Link className="flex items-center border-b" href="/">
-							<HiHome size={30} /> <span>Home</span>
+							<HiHome size={20} /> <span>Home</span>
 						</Link>
 					</li>
 				</ul>

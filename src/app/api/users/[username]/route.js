@@ -1,8 +1,8 @@
 export const GET = async (request) => {
 	try {
 		const db = await DbConnect();
-		const schedulingCollection = db.collection('users');
-		const result = await schedulingCollection.find().toArray();
+		const userCollection = db.collection('users');
+		const result = await userCollection.find().toArray();
 		return NextResponse.json(result);
 	} catch (error) {
 		console.error('error for getting data', error);
