@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import image from '../../../assets/review-image/img1.jpg';
+import image from '../../../../assets/review-image/img1.jpg';
 const Apage = () => {
 	return (
 		<div className="w-4/5 p-10 mx-auto my-10 border-2 shadow-xl">
