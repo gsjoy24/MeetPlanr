@@ -1,4 +1,3 @@
-import Payment from "@/Pricing/Payment";
 import ButtonCheckout from "@/components/PayButton";
 import Stripe from "stripe";
 
@@ -9,8 +8,8 @@ async function loadPrices() {
 
   return sortedPrices;
 }
-const page = async () => {
-  const prices=await loadPrices();
+const PaymentPage = async () => {
+  const prices = await loadPrices();
   console.log(prices )
   return (
     <div>
@@ -28,4 +27,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default PaymentPage;
