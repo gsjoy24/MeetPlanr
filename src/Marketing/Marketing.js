@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from '@/components/container';
@@ -90,7 +89,7 @@ const Marketing = () => {
 					<div className="pb-14 text-center">
 						<h3 className="text-[#465AF7] font-semibold uppercase">EASY SCHEDULING AHEAD</h3>
 						<h1 className="text-4xl lg:text-5xl text-[#0B3558] lg:w-[840px] mx-auto my-6 font-semibold">
-							Calendly’s features for Marketing teams
+							MeetPlanr’s features for Marketing teams
 						</h1>
 					</div>
 
@@ -118,12 +117,12 @@ const Marketing = () => {
 						</div>
 
 						<div data-aos="fade-up" data-aos-duration="800">
-							<h3 className="text-[#465AF7] font-semibold uppercase">EMBED CALENDLY ANYWHERE</h3>
+							<h3 className="text-[#465AF7] font-semibold uppercase">EMBED MeetPlanr ANYWHERE</h3>
 							<p className="text-3xl lg:text-4xl text-[#0B3558] md:w-[520px] lg:w-[420px] my-6 font-semibold leading-8">
 								Create a frictionless customer journey
 							</p>
 							<p className="text-[18px] text-[#5A7795] md:w-[480px] mb-10 leading-8">
-								Embed your sales reps’ individual Calendly links into any email marketing campaign, display ad, QR code,
+								Embed your sales reps’ individual MeetPlanr links into any email marketing campaign, display ad, QR code,
 								or landing page, and skip the back and forth by offering prospects the ability to book a meeting
 								instantly.
 							</p>
@@ -131,8 +130,6 @@ const Marketing = () => {
 					</div>
 				</Container>
 			</section>
-
-			<section></section>
 		</div>
 	);
 };

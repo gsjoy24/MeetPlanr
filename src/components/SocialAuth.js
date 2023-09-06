@@ -3,18 +3,10 @@ import githubImg from '../assets/github.png';
 import Image from 'next/image';
 import { UserAuth } from '@/providers/AuthProvider';
 import { toast } from 'react-hot-toast';
-import axios from 'axios';
+import addUserToServer from '@/utils/addUserToServer';
 
 const SocialAuth = ({ router, setError }) => {
 	const { continueWithGoogle, continueWithGithub, setLoading } = UserAuth();
-	const addUserToServer = async (name, email, photoURL) => {
-		try {
-			const response = await axios.post('/api/add-new-user', { name, email, photoURL });
-		} catch (error) {
-			// the error is not important here!
-		}
-	};
-
 	const handleGoogleAuth = () => {
 		continueWithGoogle()
 			.then((data) => {
