@@ -32,7 +32,8 @@ const Page = () => {
 			<Container>
 				<div className="lg:flex lg:p-8 items-center justify-center p-4 space-y-3">
 					<div className="md:pr-8 flex flex-col items-center">
-						<Image className="w-full" src={customer} alt="customer" width={500} height={500} />
+					<Image className="w-full" src={customer} alt="customer" width={500} height={500} />
+
 					</div>
 					<div className="lg:pl-8 flex flex-col">
 						<p className="mb-4 text-sm font-thin">FEATURES — 5 MIN READ</p>
