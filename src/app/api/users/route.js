@@ -33,22 +33,20 @@ export const POST = async (request) => {
 };
 
 export const GET = async (request) => {
-	
-    try {
+	try {
 		const email = request.nextUrl.searchParams.get('email');
 		const db = await DbConnect();
-        const userCollection = db.collection("users");
-		if(email){
-			const query = {email: email};
+		const userCollection = db.collection('users');
+		if (email) {
+			const query = { email: email };
 			console.log(query);
-			const result =await userCollection.findOne(query);
+			const result = await userCollection.findOne(query);
 			return NextResponse.json(result);
 		}
-        const result = await userCollection.find().toArray();
-        return NextResponse.json(result);
-    }
-    catch (error) {
-        console.error("error for geting data", error);
-        NextResponse.json({ error: "eroor for geting data" });
-    }
+		const result = await userCollection.find().toArray();
+		return NextResponse.json(result);
+	} catch (error) {
+		console.error('error for getting data', error);
+		NextResponse.json({ error: 'error for getting data' });
+	}
 };

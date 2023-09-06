@@ -1,11 +1,6 @@
 "use client"
 import Image from 'next/image';
 import customer from '../../../assets/Untitled-design-6.jpg';
-import img2 from '../../../assets/card2.png';
-import img3 from '../../../assets/card3.jpg';
-import img4 from '../../../assets/card4.jpg';
-import img5 from '../../../assets/card5.jpg';
-import img6 from '../../../assets/card7.jpg';
 import mobile from '../../../assets/phone.webp';
 import ios from '../../../assets/icon-apple.png';
 import android from '../../../assets/icon-android.png';

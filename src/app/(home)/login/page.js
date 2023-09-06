@@ -4,7 +4,7 @@ import signUpAnimation from '../../../assets/register.json';
 import Lottie from 'lottie-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { BiSolidErrorAlt } from 'react-icons/bi';
 import { UserAuth } from '@/providers/AuthProvider';
