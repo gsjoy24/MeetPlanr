@@ -38,7 +38,7 @@
 
 /*========================== Event Form ==================================*/
 .input_field {
-	@apply border-gray-800 rounded-md outline-[#00a4f8] p-3 w-full border;
+	@apply border-[#9ab2cc] rounded-md outline-[#00a4f8] p-3 w-full border;
 }
 
 .borderBottom {

@@ -5,8 +5,24 @@ import Container from "@/components/container";
 
 const SchedulingFeatures = () => {
    return (
+<<<<<<< HEAD
+      <div className="text-center">
+         <div className="mt-16">
+            <h3 className="text-[#465AF7] font-semibold uppercase">
+               MeetPlanr FEATURES
+            </h3>
+            <h1 className="md:text-5xl lg:text-6xl text-sky-950 my-8 text-4xl font-bold">
+               More than a{" "}
+               <span className="text-[#465AF7]">scheduling link</span>
+            </h1>
+            <p className="text-[22px] text-[#5A7795] lg:w-[710px] mx-auto mb-10">
+            MeetPlanr is the scheduling automation platform with team-based scheduling, solutions and integrations for every department, and advanced security features
+            </p>
+
+=======
       <div className="text-center pt-16 bg-[#F7FAFF]">
          <Container>
+>>>>>>> 1fff35ca712d850b881828ce796c0aafccb0f0c4
             <div>
                <h3 className="text-[#465AF7] font-semibold uppercase">
                   MeetPlanr FEATURES

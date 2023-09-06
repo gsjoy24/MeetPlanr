@@ -10,6 +10,7 @@ const stripePromise = loadStripe(
 );
 
 const Payment = () => {
+
    return (
       <div className="mt-32">
          <Container>
