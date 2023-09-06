@@ -19,24 +19,39 @@ const BlogPostForm = () => {
 		setIsSubmitting(true);
 		const { image, ...restData } = data;
 
-		// UploadPicture(data.image[0], data.title)
-		// 	.then((data) => {
-		// 		const blogData = { ...restData, timestamp: new Date(), image: data.data.data.url };
-		// 		if (data.data.data.url) {
-		// 			axios
-		// 				.post('/api/blog', blogData)
-		// 				.then((response) => console.log(response.data))
-		// 				.catch((e) => console.log(e.message));
-		// 		}
-		// 	})
-		// 	.catch((error) => {
-		// 		console.log(error);
-		// 	})
-		// 	.finally(() => setIsSubmitting(false));
+		UploadPicture(data.image[0], data.title)
+			.then((data) => {
+				const blogData = { ...restData, timestamp: new Date(), image: data.data.data.url };
+				if (data.data.data.url) {
+					axios
+						.post('/api/blog', blogData)
+						.then((response) => {
+							Swal.fire({
+								icon: 'success',
+								title: '<span class="text-xl">Submitted <br> Have a quick look!</span>',
+								html: `<a class='text-xs'
+											href=${`/blogs/+${response.data.insertedId}`}
+											target="_blank">
+											${`https://meet-planr.vercel.app/blogs/${response.data.insertedId}`}
+											</a>`,
+								showConfirmButton: false,
+								showCloseButton: true
+							});
+							setIsSubmitting(false);
+						})
+						.catch((e) => {
+							console.log(e.message);
+							setIsSubmitting(false);
+						});
+				}
+			})
+			.catch((error) => {
+				console.log(error.message);
+			});
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className="w-full p-4 mx-auto">
+		<form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg p-4 mx-auto">
 			<h2 className="mb-5 text-3xl font-extrabold">Post a New Blog</h2>
 			{/* title */}
 			<div>
