@@ -29,12 +29,12 @@ const TechnologyPage = () => {
                         milestones.
                      </p>
                      <div>
-                        <button className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-white rounded-lg font-semibold mr-5 py-3 px-6">
+                        <button className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] text-white rounded-lg mr-5 py-3 px-6">
                            Create event
                         </button>
                         <Link
                            href="/sign-up"
-                           className="border border-[#465AF7] text-[#465AF7] bg-white hover:bg-[#e4ecf7] hover:border-[#465AF7] rounded-lg font-semibold py-3 px-6"
+                           className="border border-[#465AF7] text-[16px] text-[#465AF7] bg-white hover:bg-[#e4ecf7] hover:border-[#465AF7] rounded-lg py-3 px-6"
                         >
                            Sign up for free
                         </Link>
