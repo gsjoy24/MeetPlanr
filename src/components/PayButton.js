@@ -1,23 +1,20 @@
 "use client";
-
+import { UserAuth } from "@/providers/AuthProvider";
 import { useRouter } from "next/navigation";
 
-const ButtonCheckout = ({ priceId }) => {
+const 
+ButtonCheckout = ({ priceId,price }) => {
+  const { setPrice } = UserAuth();
   const router = useRouter();
   const handleCheckout = async () => {
-    console.log("object");
     const res = await fetch('/api/checkout', {
       method: 'POST',
-      body: JSON.stringify({priceId}),
+      body: JSON.stringify({priceId,price}),
       headers: {'Content-Type': 'application/json'}
-  })
-  const data = await res.json()
-  if(data){
-    console.log(data);
+    })
+    const data = await res.json()
+    if(data){
     router.push(data.url)
-    if(data.url == "http://localhost:3000/pricing"){
-      alert("payment done")
-    }
   }
   }
   return (

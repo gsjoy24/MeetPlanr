@@ -1,15 +1,11 @@
-"use client"
-import React, { useEffect } from 'react';
+import React from 'react';
 
-const SuccessPage = ({}) => {
-    useEffect(()=> {
-        console.log("object");
-    },[])
+const page = () => {
     return (
         <div>
-            success
+            This is the payment success page
         </div>
     );
 };
 
-export default SuccessPage;
+export default page;

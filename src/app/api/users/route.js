@@ -39,7 +39,6 @@ export const GET = async (request) => {
 		const userCollection = db.collection('users');
 		if (email) {
 			const query = { email: email };
-			console.log(query);
 			const result = await userCollection.findOne(query);
 			return NextResponse.json(result);
 		}
@@ -50,3 +49,5 @@ export const GET = async (request) => {
 		NextResponse.json({ error: 'eroor for geting data' });
 	}
 };
+
+

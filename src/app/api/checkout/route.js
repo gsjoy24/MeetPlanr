@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Stripe } from "stripe";
 
 export async function POST(request) {
-  const { priceId } = await request.json();
+  const { priceId,price } = await request.json();
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -15,11 +15,11 @@ export async function POST(request) {
         quantity: 1,
       },
     ],
-    success_url: "http://localhost:3000/success",
+    success_url: `http://localhost:3000/success/${price}`,
     cancel_url: "http://localhost:3000/pricing",
   });
 
   return NextResponse.json({
-    url: session.url
+    url: session.url    
   });
 }

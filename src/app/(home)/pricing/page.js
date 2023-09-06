@@ -88,7 +88,7 @@ const Pricing = async() => {
 							</div>
 							<hr className="borderBottom"/>
 							<div className="px-5">
-							<ButtonCheckout priceId={price.id} />
+							<ButtonCheckout price={price.unit_amount / 100} priceId={price.id} />
 							</div>
 						</div>
 					
