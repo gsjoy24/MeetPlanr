@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/container";
 import img1 from "@/assets/solutions/customer.png";
@@ -131,7 +130,11 @@ const CustomerSuccess = () => {
 
          <section className="bg-[#F7FAFF] py-20">
             <Container>
-               <div className="pb-14 text-center" data-aos="fade-up" data-aos-duration="600">
+               <div
+                  className="pb-14 text-center"
+                  data-aos="fade-up"
+                  data-aos-duration="600"
+               >
                   <h3 className="text-[#465AF7] font-semibold uppercase">
                      EASY SCHEDULING AHEAD
                   </h3>
@@ -232,7 +235,11 @@ const CustomerSuccess = () => {
 
          <section className="my-10">
             <Container>
-               <div className="text-center" data-aos="fade-up" data-aos-duration="600">
+               <div
+                  className="text-center"
+                  data-aos="fade-up"
+                  data-aos-duration="600"
+               >
                   <p className="text-[#465AF7] font-semibold uppercase">
                      MAKE IT YOUR OWN
                   </p>
@@ -247,7 +254,11 @@ const CustomerSuccess = () => {
 
                <div className="mt-20 mb-20">
                   <div className="md:grid-cols-3 grid grid-cols-1 gap-16">
-                     <div className="border rounded-xl p-5 space-y-4 shadow-md shadow-[#cacffc]" data-aos="fade-up" data-aos-duration="700">
+                     <div
+                        className="border rounded-tr-3xl rounded-bl-3xl p-5 space-y-4 shadow-md shadow-[#cacffc]"
+                        data-aos="fade-up"
+                        data-aos-duration="700"
+                     >
                         <PiSealCheck className="text-4xl text-[#465AF7]" />
                         <p className="text-xl text-[#0B3558] font-semibold">
                            Control your availability
@@ -258,7 +269,11 @@ const CustomerSuccess = () => {
                         </p>
                      </div>
 
-                     <div className="border rounded-xl p-5 space-y-4 shadow-md shadow-[#cacffc]" data-aos="fade-up" data-aos-duration="800">
+                     <div
+                        className="border rounded-tr-3xl rounded-bl-3xl p-5 space-y-4 shadow-md shadow-[#cacffc]"
+                        data-aos="fade-up"
+                        data-aos-duration="800"
+                     >
                         <PiSealCheck className="text-4xl text-[#465AF7]" />
                         <p className="text-xl text-[#0B3558] font-semibold">
                            Use custom branding
@@ -270,7 +285,11 @@ const CustomerSuccess = () => {
                         </p>
                      </div>
 
-                     <div className="border rounded-xl p-5 space-y-4 shadow-md shadow-[#cacffc]" data-aos="fade-up" data-aos-duration="900">
+                     <div
+                        className="border rounded-tr-3xl rounded-bl-3xl p-5 space-y-4 shadow-md shadow-[#cacffc]"
+                        data-aos="fade-up"
+                        data-aos-duration="900"
+                     >
                         <PiSealCheck className="text-4xl text-[#465AF7]" />
                         <p className="text-xl text-[#0B3558] font-semibold">
                            Share teams pages
