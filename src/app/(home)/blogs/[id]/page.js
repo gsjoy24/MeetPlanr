@@ -31,7 +31,7 @@ const page = ({ params }) => {
                     alt={blog.title}
                     className="w-full rounded-md mb-4"
                     width={1000}
-                    height={400} // Set the desired width value here
+                    height={400} 
                 />
                 <p className="text-gray-600">{blog.subtitle}</p>
                 <p className="text-gray-800 mt-2">{blog.content}</p>
