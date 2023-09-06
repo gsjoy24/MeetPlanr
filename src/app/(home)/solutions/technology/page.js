@@ -1,11 +1,11 @@
-import Container from '@/components/container';
+import TechnologyPage from '@/Technology/Technology';
 
-const TechnologyPage = () => {
+const Technology = () => {
 	return (
 		<>
-			<Container></Container>
+      <TechnologyPage />
 		</>
 	);
 };
 
-export default TechnologyPage;
+export default Technology;
