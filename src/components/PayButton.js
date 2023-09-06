@@ -1,8 +1,11 @@
 "use client";
 
-function ButtonCheckout({ priceId }) {
-  console.log(priceId);
-  const handleCheckout = async ( ) => {
+import { useRouter } from "next/navigation";
+
+const ButtonCheckout = ({ priceId }) => {
+  const router = useRouter();
+  const handleCheckout = async () => {
+    console.log("object");
     const res = await fetch('/api/checkout', {
       method: 'POST',
       body: JSON.stringify({priceId}),
@@ -10,15 +13,19 @@ function ButtonCheckout({ priceId }) {
   })
   const data = await res.json()
   if(data){
-    window.location.href = data.url
+    console.log(data);
+    router.push(data.url)
+    if(data.url == "http://localhost:3000/pricing"){
+      alert("payment done")
+    }
   }
   }
   return (
     <button
-      className="bg-sky-500 text-white px-4 py-2 rounded"
+      className=" font-semibold text-[#0B3558] bg-sky-100 border border-[#0b3558af] px-8 py-3 rounded-lg mt-6"
       onClick={handleCheckout}
     >
-      Buy
+  Choose Plan
     </button>
   );
 }

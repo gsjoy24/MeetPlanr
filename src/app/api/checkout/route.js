@@ -16,10 +16,10 @@ export async function POST(request) {
       },
     ],
     success_url: "http://localhost:3000/success",
-    cancel_url: "http://localhost:3000/payment",
+    cancel_url: "http://localhost:3000/pricing",
   });
 
   return NextResponse.json({
-    url: session.url,
+    url: session.url
   });
 }
