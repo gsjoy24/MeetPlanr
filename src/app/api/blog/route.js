@@ -18,11 +18,11 @@ export const POST = async (request) => {
 	}
 };
 
-export const GET = async (request) => {
+export const GET = async () => {
 	try {
 		const db = await DbConnect();
-		const schedulingCollection = db.collection('blogs');
-		const result = await schedulingCollection.find().sort({ timestump: -1 }).toArray();
+		const blogCollection = db.collection('blogs');
+		const result = await blogCollection.find().sort({ timestamp: -1 }).toArray();
 		return NextResponse.json(result);
 	} catch (error) {
 		console.error('error for getting data', error);
