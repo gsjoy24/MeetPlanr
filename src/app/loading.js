@@ -4,8 +4,10 @@ import loadingAnimation from '../assets/loading.json';
 
 const Loading = () => {
 	return (
-		<div className="max-w-sm mx-auto overflow-hidden">
-			<Lottie animationData={loadingAnimation} />
+		<div className="w-full h-[100vh] mx-auto overflow-hidden flex justify-center items-center">
+			<div className="max-w-sm">
+				<Lottie animationData={loadingAnimation} />
+			</div>
 		</div>
 	);
 };
