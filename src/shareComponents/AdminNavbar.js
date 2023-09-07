@@ -1,9 +1,14 @@
+'use client';
 import Link from 'next/link';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { FaCalendarTimes } from 'react-icons/fa';
 import { MdEditDocument } from 'react-icons/md';
+import { BiArrowFromRight } from 'react-icons/bi';
 import { HiUserGroup, HiHome } from 'react-icons/hi';
+import { usePathname } from 'next/navigation';
 const AdminNavbar = ({ children }) => {
+	const path = usePathname();
+
 	return (
 		<div className="drawer lg:drawer-open">
 			<input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -19,29 +24,37 @@ const AdminNavbar = ({ children }) => {
 			</div>
 			<div className="drawer-side">
 				<label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-				<ul className="menu w-80 bg-blue-200 text-base-content min-h-full p-4 space-y-3">
-					<li className="border-b-2 border-gray-400">
+				<ul className="menu w-80 text-base-content min-h-full p-4 space-y-3 bg-blue-300">
+					<li className="border-b border-gray-400">
 						<div className="text-4xl text-[#465AF7] font-bold">MeetPlanr</div>
 					</li>
 					<li>
-						<Link className="flex items-center" href="/admin/add-new-blog">
+						<Link
+							className={`flex items-center ${path == '/admin/add-new-blog' && 'bg-blue-400 text-white'}`}
+							href="/admin/add-new-blog"
+						>
 							<MdEditDocument size={20} /> <span>Add New Blog</span>
 						</Link>
 					</li>
 					<li>
-						<Link className="flex items-center" href="/admin/all-schedule">
+						<Link
+							className={`flex items-center ${path == '/admin/all-schedule' && 'bg-blue-400 text-white'}`}
+							href="/admin/all-schedule"
+						>
 							<FaCalendarTimes size={20} /> <span>All Schedule</span>
 						</Link>
 					</li>
 					<li>
-						<Link className="flex items-center" href="/admin/all-users">
+						<Link
+							className={`flex items-center ${path == '/admin/all-users' && 'bg-blue-400 text-white'}`}
+							href="/admin/all-users"
+						>
 							<HiUserGroup size={20} /> <span>All users</span>
 						</Link>
 					</li>
-
-					<li className="mt-auto">
-						<Link className="flex items-center border-b" href="/">
-							<HiHome size={20} /> <span>Home</span>
+					<li className="bottom-4 absolute w-full">
+						<Link className="flex items-center" href="/">
+							<BiArrowFromRight size={20} /> <span>Back to Home</span>
 						</Link>
 					</li>
 				</ul>

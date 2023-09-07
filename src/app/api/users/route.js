@@ -46,8 +46,8 @@ export const GET = async (request) => {
 		const result = await userCollection.find().toArray();
 		return NextResponse.json(result);
 	} catch (error) {
-		console.error('error for geting data', error);
-		NextResponse.json({ error: 'eroor for geting data' });
+		console.error('error for getting data', error);
+		NextResponse.json({ error: 'error for getting data' });
 	}
 };
 

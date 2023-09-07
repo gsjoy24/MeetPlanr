@@ -1,5 +1,5 @@
-import DbConnect from "@/services/DbConnect";
-import { NextResponse } from "next/server";
+import DbConnect from '@/services/DbConnect';
+import { NextResponse } from 'next/server';
 
 export const GET = async (request,{params}) => {
     try {

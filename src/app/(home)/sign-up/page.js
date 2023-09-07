@@ -12,6 +12,7 @@ import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import SocialAuth from '@/components/SocialAuth';
 import addUserToServer from '@/utils/addUserToServer';
+import { UploadPicture } from '@/utils/uploadPicture';
 
 const SignUp = () => {
 	const router = useRouter();
@@ -26,33 +27,38 @@ const SignUp = () => {
 
 	const { loading, setLoading, createUser, updateUserProfile, verifyEmail } = UserAuth();
 
-	const onSubmit = (formData) => {
-		const { name, email, password, photoURL } = formData;
+	const onSubmit = async (formData) => {
+		const { name, email, password, image } = formData;
 
-		createUser(email, password)
-			.then(() => {
-				// adding picture and name to firebase
-				updateUserProfile(name, photoURL)
-					.then(() => console.log('profile updated'))
-					.catch((err) => console.log(err.message));
+		UploadPicture(image[0], name)
+			.then((data) => {
+				const photoURL = data.data.data.url;
+				createUser(email, password)
+					.then(() => {
+						// adding picture and name to firebase
+						updateUserProfile(name, photoURL)
+							.then(() => console.log('profile updated'))
+							.catch((err) => console.log(err.message));
 
-				// adding user info to server
-				addUserToServer(name, email, photoURL);
+						// adding user info to server
+						addUserToServer(name, email, photoURL);
 
-				// sending verification email.
-				verifyEmail()
-					.then(() => console.log('verification email send!'))
-					.catch((err) => console.error(err));
-				reset();
-				toast.success('Successfully signed up!');
-				router.push('/');
-				setLoading(false);
+						// sending verification email.
+						verifyEmail()
+							.then(() => console.log('verification email send!'))
+							.catch((err) => console.error(err));
+						reset();
+						toast.success('Successfully signed up!');
+						router.push('/');
+						setLoading(false);
+					})
+					.catch((err) => {
+						console.log(err.message);
+						setError(err.message);
+						setLoading(false);
+					});
 			})
-			.catch((err) => {
-				console.log(err.message);
-				setError(err.message);
-				setLoading(false);
-			});
+			.catch((err) => console.log(err.message));
 	};
 
 	return (
@@ -62,7 +68,7 @@ const SignUp = () => {
 					<Lottie animationData={signUpAnimation} />
 				</div>
 				<div className="md:p-12 space-y-6">
-					<form onSubmit={handleSubmit(onSubmit)}>
+					<form className="space-y-2" onSubmit={handleSubmit(onSubmit)}>
 						<h2 className="mb-8 text-3xl font-bold text-center">Sign Up Now</h2>
 						{/* name */}
 						<div>
@@ -82,20 +88,21 @@ const SignUp = () => {
 							)}
 						</div>
 
-						{/* photoURL */}
+						{/* Image */}
 						<div>
 							<label className="label">
-								<span className="label-text">Your online photo URL</span>
+								<span className="label-text">Choose profile photo</span>
 							</label>
 							<input
-								className="input input-bordered focus:outline-none w-full text-sm"
-								type="text"
-								placeholder="Photo URL"
-								{...register('photoURL', { required: true })}
+								type="file"
+								accept="image/*"
+								{...register('image', { required: true })}
+								className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600 block w-full text-sm text-gray-500"
 							/>
-							{errors.photoURL?.type === 'required' && (
+							{/* <input type="file" /> */}
+							{errors.image?.type === 'required' && (
 								<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500" role="alert">
-									<BiSolidErrorAlt size={17} /> <span>Photo URL is required!</span>
+									<BiSolidErrorAlt size={17} /> <span>Image is required!</span>
 								</p>
 							)}
 						</div>
@@ -109,6 +116,7 @@ const SignUp = () => {
 								className="input input-bordered focus:outline-none w-full text-sm"
 								type="email"
 								placeholder="Email"
+								autoComplete="username"
 								{...register('email', { required: true })}
 							/>
 							{errors.email?.type === 'required' && (

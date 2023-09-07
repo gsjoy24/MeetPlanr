@@ -1,11 +1,6 @@
 "use client"
 import Image from 'next/image';
 import customer from '../../../assets/Untitled-design-6.jpg';
-import img2 from '../../../assets/card2.png';
-import img3 from '../../../assets/card3.jpg';
-import img4 from '../../../assets/card4.jpg';
-import img5 from '../../../assets/card5.jpg';
-import img6 from '../../../assets/card7.jpg';
 import mobile from '../../../assets/phone.webp';
 import ios from '../../../assets/icon-apple.png';
 import android from '../../../assets/icon-android.png';
@@ -32,7 +27,8 @@ const Page = () => {
 			<Container>
 				<div className="lg:flex lg:p-8 items-center justify-center p-4 space-y-3">
 					<div className="md:pr-8 flex flex-col items-center">
-						<Image className="w-full" src={customer} alt="customer" width={500} height={500} />
+					<Image className="w-full" src={customer} alt="customer" width={500} height={500} />
+
 					</div>
 					<div className="lg:pl-8 flex flex-col">
 						<p className="mb-4 text-sm font-thin">FEATURES — 5 MIN READ</p>
