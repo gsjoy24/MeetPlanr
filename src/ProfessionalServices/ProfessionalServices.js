@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/container";
 import Slider from "react-infinite-logo-slider";
@@ -28,17 +29,20 @@ const ProfessionalServices = () => {
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         MeetPlanr FOR PROFESSIONAL SERVICES
                      </h3>
-                     <p className="text-4xl lg:text-[39px] text-[#0B3558] md:w-[550px] my-6 font-bold leading-10">
+                     <p className="text-4xl lg:text-5xl text-[#0B3558] md:w-[550px] my-6 font-bold leading-10">
                         Premium customer service for your clients
                      </p>
-                     <p className="text-[18px] text-[#5A7795] md:w-[550px] mb-10 leading-8">
+                     <p className="text-[19px] text-[#5A7795] md:w-[550px] mb-10 leading-8">
                         Increase the scheduling process from booking to
                         follow-up and make it simple for your team to
                         concentrate on advancing client work.
                      </p>
-                     <button className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] text-white rounded-full mr-5 py-3 px-6">
+                     <Link
+                        href="/my-account"
+                        className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] font-semibold text-white rounded-lg mr-5 py-3 px-6"
+                     >
                         Create event
-                     </button>
+                     </Link>
                   </div>
 
                   <div>
@@ -101,7 +105,11 @@ const ProfessionalServices = () => {
 
          <section className="pt-14 pb-16 bg-[#FBFBFB]">
             <Container>
-               <div className="pb-14 text-center">
+               <div
+                  className="pb-14 text-center"
+                  data-aos="fade-up"
+                  data-aos-duration="500"
+               >
                   <h3 className="text-[#465AF7] font-semibold uppercase">
                      Why MeetPlanr
                   </h3>
@@ -113,7 +121,7 @@ const ProfessionalServices = () => {
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="1000"
+                     data-aos-duration="900"
                      className="md:order-last lg:order-first order-last"
                   >
                      <Image src={img13} alt="Calender" />
@@ -121,7 +129,7 @@ const ProfessionalServices = () => {
 
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="800"
+                     data-aos-duration="600"
                      className="lg:mt-8"
                   >
                      <h3 className="text-[#465AF7] font-semibold uppercase">
@@ -139,7 +147,7 @@ const ProfessionalServices = () => {
                </div>
 
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16 mt-36">
-                  <div data-aos="fade-up" data-aos-duration="800">
+                  <div data-aos="fade-up" data-aos-duration="500">
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         STAY ON TRACK
                      </h3>
@@ -156,7 +164,7 @@ const ProfessionalServices = () => {
 
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="1000"
+                     data-aos-duration="900"
                      className="md:order-last"
                   >
                      <Image src={img12} alt="Calender" className="lg:-mt-8" />
@@ -166,7 +174,7 @@ const ProfessionalServices = () => {
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16 mt-24">
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="1000"
+                     data-aos-duration="900"
                      className="md:order-last lg:order-first order-last"
                   >
                      <Image src={img11} alt="Calender" className="w-[520px]" />
@@ -174,7 +182,7 @@ const ProfessionalServices = () => {
 
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="800"
+                     data-aos-duration="600"
                      className="lg:mt-5"
                   >
                      <h3 className="text-[#465AF7] font-semibold uppercase">
@@ -249,7 +257,7 @@ const ProfessionalServices = () => {
                <div
                   className="text-center"
                   data-aos="fade-up"
-                  data-aos-duration="600"
+                  data-aos-duration="500"
                >
                   <p className="text-[#465AF7] font-semibold uppercase">
                      DON&apos;T JUST USE WHAT WE SAY
@@ -264,7 +272,7 @@ const ProfessionalServices = () => {
                      <div
                         className="border border-[#e4e1e1] rounded-tr-3xl rounded-bl-3xl p-5 space-y-7 bg-white"
                         data-aos="fade-up"
-                        data-aos-duration="700"
+                        data-aos-duration="600"
                      >
                         <Image src={img15} alt="logo" className="w-12" />
                         <p className="text-[#5A7795]">
@@ -290,7 +298,7 @@ const ProfessionalServices = () => {
                      <div
                         className="border border-[#e4e1e1] rounded-tr-3xl rounded-bl-3xl p-5 space-y-7 bg-white"
                         data-aos="fade-up"
-                        data-aos-duration="900"
+                        data-aos-duration="1000"
                      >
                         <Image src={img15} alt="logo" className="w-12" />
                         <p className="text-[#5A7795]">

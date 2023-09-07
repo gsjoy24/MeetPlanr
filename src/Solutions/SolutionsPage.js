@@ -23,15 +23,15 @@ const SolutionsPage = () => {
                   scheduling so teams can focus on delivering results.
                </p>
 
-               <button className="btn bg-[#465AF7] hover:bg-sky-950 text-white rounded-lg mr-5 px-6 capitalize tracking-widest">
+               <Link href="/my-account" className="btn bg-[#465AF7] hover:bg-sky-950 text-[16px] text-white rounded-lg mr-5 px-6 capitalize tracking-widest">
                   Create Event
-               </button>
+               </Link>
             </div>
          </section>
 
          {/* Solutions by role */}
-         <section className="bg-[#F7FAFF] rounded-2xl p-16 mt-16">
-            <div>
+         <section className="bg-[#F7FAFF] rounded-2xl p-5 lg:p-16 mt-16">
+            <div className="text-center">
                <h3 className="text-[#465AF7] font-semibold uppercase">
                   SOLUTIONS BY ROLE
                </h3>
@@ -199,25 +199,25 @@ const SolutionsPage = () => {
                   </div>
                </div>
 
-               <div data-aos="fade-up" data-aos-duration="800">
+               <div data-aos="fade-up" data-aos-duration="700">
                   <Image src={img1} alt="Solutions image" />
                </div>
             </div>
          </section>
 
          {/* Solutions by industry */}
-         <section className="bg-[#F7FAFF] rounded-2xl p-16 mt-20">
+         <section className="bg-[#F7FAFF] rounded-2xl p-5 lg:p-16 mt-20">
             <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                <div
                   data-aos="fade-up"
-                  data-aos-duration="800"
-                  className="md:order-last lg:order-first"
+                  data-aos-duration="700"
+                  className="md:order-last lg:order-first order-last"
                >
                   <Image src={img2} alt="Solutions image" />
                </div>
 
                <div>
-                  <div>
+                  <div className="text-center">
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         SOLUTIONS BY INDUSTRY
                      </h3>
@@ -348,21 +348,13 @@ const SolutionsPage = () => {
                      people, faster.
                   </p>
 
-                  <button className="btn bg-[#006BFF] hover:bg-sky-800 text-white border-none rounded-lg mr-5 px-6 capitalize tracking-widest">
+                  <Link
+                     href="/my-account"
+                     className="btn bg-[#006BFF] hover:bg-sky-800 text-white border-none rounded-lg mr-5 px-6 capitalize tracking-widest"
+                  >
                      Create Event
-                  </button>
+                  </Link>
                </div>
-            </div>
-
-            <div>
-               <p className="text-4xl font-extrabold">
-                  <span className="text-[#0B3558]">Easy</span>
-                  <span className="text-[#465AF7] ml-3">ahead</span>
-               </p>
-               <p className="text-[17px] text-[#5A7795] w-full md:w-[420px] mt-5 mb-16">
-                  We take the work out of connecting with others so you can
-                  accomplish more.
-               </p>
             </div>
          </section>
       </div>
