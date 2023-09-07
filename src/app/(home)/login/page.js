@@ -12,6 +12,7 @@ import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import SocialAuth from '@/components/SocialAuth';
 import Swal from 'sweetalert2';
+import { MdFrontHand } from 'react-icons/md';
 
 const LoginPage = () => {
 	const router = useRouter();
@@ -84,12 +85,7 @@ const LoginPage = () => {
 							<label className="label">
 								<span className="label-text">Enter your email</span>
 							</label>
-							<input
-								className="input input-bordered focus:outline-none w-full text-sm"
-								type="email"
-								placeholder="Email"
-								{...register('email', { required: true })}
-							/>
+							<input className="mp_input" type="email" placeholder="Email" {...register('email', { required: true })} />
 							{errors.email?.type === 'required' && (
 								<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500" role="alert">
 									<BiSolidErrorAlt size={17} /> <span>Email is required!</span>
@@ -107,7 +103,7 @@ const LoginPage = () => {
 								<span className="label-text">Enter your password</span>
 							</label>
 							<input
-								className="input input-bordered focus:outline-none w-full text-sm"
+								className="mp_input"
 								type={showPass ? 'text' : 'password'}
 								placeholder="Password"
 								{...register('password', {
@@ -133,7 +129,14 @@ const LoginPage = () => {
 							className="bg-[#465AF7] hover:bg-sky-950 duration-200 text-white py-2 w-full rounded-lg mt-6"
 							type={loading ? 'button' : 'submit'}
 						>
-							{loading ? 'Please wait' : 'Login'}
+							{loading ? (
+								<p className='flex items-center justify-center gap-2'>
+									<MdFrontHand />
+									<span>Have Patients...</span>
+								</p>
+							) : (
+								'Login'
+							)}
 						</button>
 
 						<p className="mt-3 text-xs">

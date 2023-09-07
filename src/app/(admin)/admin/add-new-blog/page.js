@@ -61,7 +61,7 @@ const BlogPostForm = () => {
 					<span className="label-text">Blog Title</span>
 				</label>
 				<input
-					className="input input-bordered focus:outline-none w-full text-sm"
+					className="mp_input"
 					type="text"
 					placeholder="Title"
 					autoComplete="title"
@@ -79,7 +79,7 @@ const BlogPostForm = () => {
 					<span className="label-text">Sub Title</span>
 				</label>
 				<input
-					className="input input-bordered focus:outline-none w-full text-sm"
+					className="mp_input"
 					type="text"
 					placeholder="Subtitle"
 					autoComplete="subtitle"
@@ -97,7 +97,7 @@ const BlogPostForm = () => {
 					<span className="label-text">Blog Content</span>
 				</label>
 				<textarea
-					className="input input-bordered focus:outline-none w-full p-3 text-sm min-h-[130px]"
+					className="mp_input min-h-[130px]"
 					placeholder="Content"
 					{...register('content', { required: true })}
 				/>
