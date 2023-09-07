@@ -75,6 +75,7 @@ const EventPage = ({ params }) => {
 		}
 	};
 	return (
+      <div>
       <Container>
          <div className="mt-24 my-8">
             <div className="my-5">
@@ -338,6 +339,7 @@ const EventPage = ({ params }) => {
             </div>
          </div>
       </Container>
+      </div>
    );
 };
 
