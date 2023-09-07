@@ -11,6 +11,7 @@ async function loadPrices() {
 const PaymentPage = async () => {
   const prices = await loadPrices();
   console.log(prices )
+  // console.log(prices?.lookup_key )
   return (
     <div>
    <h1>pricing</h1>
@@ -18,6 +19,7 @@ const PaymentPage = async () => {
     prices.map(price=>(
       <div key={price.id}>
         <h3>{ price.nickname}</h3>
+        <h3>{ price?.lookup_key}</h3>
         <h2>{price.unit_amount / 100} $</h2>
         <ButtonCheckout priceId={price.id} />
       </div>

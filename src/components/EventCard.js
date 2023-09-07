@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const EventCard = ({schedule}) => {
     const {eventName,description,duration,scheduleLink} = schedule || {};
     const detailsLink = `${scheduleLink}/details`
-   const copyLink = () => {
+    const copyLink = () => {
     navigator.clipboard.writeText(scheduleLink).then(() => {
             Swal.fire({
                 icon: 'success',
