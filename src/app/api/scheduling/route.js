@@ -7,8 +7,8 @@ export const POST = async (request) => {
 			const body = await request.json();
 			const db = await DbConnect();
 			const schedulingCollection = db.collection('scheduling');
-			const { eventName, description, duration, method, scheduleLink, hostName, hostEmail, timeRange, path } = body;
-			const docs = { eventName, description, duration, method, scheduleLink, hostName, hostEmail, timeRange, path };
+			const { eventName, description, duration, method, scheduleLink, hostName, hostEmail, timeRange, path,username } = body;
+			const docs = { eventName, description, duration, method, scheduleLink, hostName, hostEmail, timeRange, path,username };
 			const result = await schedulingCollection.insertOne(docs);
 
 			return NextResponse.json(result);
@@ -25,7 +25,6 @@ export const GET = async (request) => {
 		const userName = request.nextUrl.searchParams.get('username');
 		const db = await DbConnect();
 		const schedulingCollection = db.collection('scheduling');
-		console.log("userName");
 		if (userName) {
 			const result = await schedulingCollection.find({ username: userName }).toArray();
 			return NextResponse.json(result);

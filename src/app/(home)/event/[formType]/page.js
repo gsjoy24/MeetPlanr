@@ -14,23 +14,25 @@ import Image from 'next/image';
 import { UserAuth } from '@/providers/AuthProvider';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
+import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 
 const EventPage = ({ params }) => {
 	const { register, handleSubmit, reset } = useForm();
-	const router = useRouter();
 	const [method, setMethod] = useState(null);
 	const [dateRange, setDateRange] = useState(null);
 	const [action, setAction] = useState(false);
-	const { user } = UserAuth();
 	const [startDate, setStartDate] = useState(new Date());
 	const [endDate, setEndDate] = useState(null);
+	const router = useRouter();
+	const user = UseGetCurrentUser();
+
 	const onChange = (dates) => {
 		const [start, end] = dates;
 		setStartDate(start);
 		setEndDate(end);
 	};
 	const timeRange = { startDate, endDate };
-	console.log(timeRange);
 	const clearDateRange = () => {
 		setDateRange(null);
 		setStartDate(new Date());
@@ -40,10 +42,11 @@ const EventPage = ({ params }) => {
 		if (method) {
 			const { eventName, description, duration, eventLink } = data;
 			const hostEmail = user?.email;
-			const hostName = user?.displayName;
+			const hostName = user?.name;
 			const x = Math.round(Math.random() * 100000);
-			const scheduleLink = `https://meet-planr.vercel.app/user/jmjubser/${eventLink + x}`;
-			const path = eventLink + x;
+         const eventLinkWithoutSpaces = eventLink.replace(/\s+/g, '');
+			const path = eventLinkWithoutSpaces.toLowerCase() + x;
+			const scheduleLink = `https://meet-planr.vercel.app/user/${user?.username}/${path}`;
 			try {
 				const response = await axios.post(`/api/scheduling`, {
 					eventName,
@@ -54,7 +57,8 @@ const EventPage = ({ params }) => {
 					hostEmail,
 					hostName,
 					timeRange,
-					path
+					path,
+               username: user?.username
 				});
 				console.log(response.data);
 				if (response.data.insertedId) {
@@ -64,7 +68,7 @@ const EventPage = ({ params }) => {
 						showConfirmButton: false,
 						timer: 1500
 					});
-					router.back();
+					router.push("/my-account");
 					reset();
 				}
 			} catch (error) {
@@ -74,6 +78,9 @@ const EventPage = ({ params }) => {
 			alert('Please select a method!');
 		}
 	};
+   if(!user){
+      return <LoadingSpinner></LoadingSpinner>
+   }
 	return (
       <div>
       <Container>
@@ -308,15 +315,12 @@ const EventPage = ({ params }) => {
                      >
                         Event Link:*
                      </label>
-                     <label
-                        className="my-2 text-[15px] text-[#768ba1]"
-                        htmlFor="eventLink"
-                     >
-                        http://localhost:3000/user
+                     <label className="my-2 text-[15px] text-[#768ba1]" htmlFor="eventLink" >
+                     https://meet-planr.vercel.app/user
                      </label>
                      <div className="input_field flex gap-1 overflow-hidden">
                         <label className="font-medium" htmlFor="eventLink">
-                           /meetplanr/
+                           /{user ? user?.username : "username"}/
                         </label>
                         <input
                            placeholder="Link path..."

@@ -14,6 +14,7 @@ import group from '../assets/events-tabs/group.png';
 import { FaAngleRight, FaTimesCircle } from "react-icons/fa";
 import UseGetCurrentUser from "@/hooks/UseGetCurrentUser";
 import LoadingSpinner from "@/shareComponents/LoadingSpinner";
+import Swal from "sweetalert2";
 
 const EventsTabs = () => {
    const [actions,setActions] = useState(false);
@@ -21,7 +22,6 @@ const EventsTabs = () => {
    const [schedules, setSchedules] = useState([]);
    const [loading,setLoading] = useState(true)
    const currentUser = UseGetCurrentUser();
-   console.log(currentUser);
    useEffect(() => {
     	(async () => {
 			try {
@@ -37,10 +37,19 @@ const EventsTabs = () => {
 			}
 		})()
    }, [currentUser]);
-
+   const copyLink = () => {
+    navigator.clipboard.writeText(`https://meet-planr.vercel.app/${currentUser?.username}`).then(() => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Link coped',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        });
+    };
 	return (
-		<Container>
-			<div className="flex justify-between my-8">
+		<div>
+			{/* <div className="flex justify-between my-8">
 				<h2 className="text-3xl">My MeetPlanr</h2>
 				<button className="bg-[#465AF7] hover:bg-sky-950 text-white px-4 py-3 rounded-full flex items-center space-x-1 font-semibold">
 					<span>
@@ -48,22 +57,27 @@ const EventsTabs = () => {
 					</span>
 					<span>Create</span>
 				</button>
-			</div>
+			</div> */}
 			<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-				<TabList className="shadow-md flex space-x-10">
-					<Tab className="border-t-0 border-b-4 cursor-pointer pb-2">Event Types</Tab>
-					<Tab className="border-t-0 border-b-4 cursor-pointer pb-2">Scheduled Events</Tab>
-				</TabList>
+				<div className="shadow-md">
+					<Container>
+						<TabList className=" flex space-x-10 mt-10">
+							<Tab className="border-0 cursor-pointer pb-2">Event Types</Tab>
+							<Tab className="border-0 cursor-pointer pb-2">Scheduled Events</Tab>
+						</TabList>
+					</Container>
+				</div>
 
+				<Container>
 				<TabPanel>
 					<div className="my-8 md:flex lg:flex justify-between items-center">
 						<div className="flex items-center space-x-5">
 							<Image src={img} alt="User Profile" className="w-12 h-12 rounded-full border" />
 							<div>
-								<h4>Jhone Devlin</h4>
-								<Link href="" className="text-[#465AF7]">
-									https://meet-planr.vercel.app/usename354
-								</Link>
+								<h4>{currentUser ? currentUser?.name : "User Name"}</h4>
+								<button onClick={copyLink} className="text-[#465AF7]">
+									https://meet-planr.vercel.app/{currentUser ? currentUser?.username :'username'}
+								</button>
 							</div>
 						</div>
 
@@ -115,8 +129,9 @@ const EventsTabs = () => {
 				<TabPanel>
 					<p className="text-[#737373] text-xl font-semibold mt-8">No Events Yet</p>
 				</TabPanel>
+				</Container>
 			</Tabs>
-		</Container>
+		</div>
 	);
 };
 
