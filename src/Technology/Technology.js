@@ -29,12 +29,15 @@ const TechnologyPage = () => {
                         milestones.
                      </p>
                      <div>
-                        <button className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] text-white rounded-lg mr-5 py-3 px-6">
+                        <Link
+                           href="/my-account"
+                           className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] font-semibold text-white rounded-lg mr-5 py-3 px-6"
+                        >
                            Create event
-                        </button>
+                        </Link>
                         <Link
                            href="/sign-up"
-                           className="border border-[#465AF7] text-[16px] text-[#465AF7] bg-white hover:bg-[#e4ecf7] hover:border-[#465AF7] rounded-lg py-3 px-6"
+                           className="border border-[#465AF7] text-[16px] font-semibold text-[#465AF7] bg-white hover:bg-[#e4ecf7] hover:border-[#465AF7] rounded-lg py-3 px-6"
                         >
                            Sign up for free
                         </Link>
@@ -110,7 +113,11 @@ const TechnologyPage = () => {
                </div>
 
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
-                  <div data-aos="fade-up" data-aos-duration="1000" className="md:order-last lg:order-first order-last">
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="1000"
+                     className="md:order-last lg:order-first order-last"
+                  >
                      <Image src={img3} alt="Calender" />
                   </div>
 
@@ -162,11 +169,19 @@ const TechnologyPage = () => {
                </div>
 
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16 mt-24">
-                  <div data-aos="fade-up" data-aos-duration="1000" className="md:order-last lg:order-first order-last">
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="1000"
+                     className="md:order-last lg:order-first order-last"
+                  >
                      <Image src={img5} alt="Calender" />
                   </div>
 
-                  <div data-aos="fade-up" data-aos-duration="800" className="lg:mt-12">
+                  <div
+                     data-aos="fade-up"
+                     data-aos-duration="800"
+                     className="lg:mt-12"
+                  >
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         MODERNISE THE HIRING PROCESS
                      </h3>

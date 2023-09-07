@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/container";
 import img1 from "@/assets/solutions/customer.png";
@@ -31,9 +32,12 @@ const CustomerSuccess = () => {
                         journey to improve their experience and increase
                         satisfaction.
                      </p>
-                     <button className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] text-white rounded-full mr-5 py-3 px-6">
+                     <Link
+                        href="/my-account"
+                        className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] text-white rounded-full mr-5 py-3 px-6"
+                     >
                         Create event
-                     </button>
+                     </Link>
                   </div>
 
                   <div>

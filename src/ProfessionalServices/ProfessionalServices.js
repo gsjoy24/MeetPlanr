@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/container";
 import Slider from "react-infinite-logo-slider";
@@ -36,9 +37,12 @@ const ProfessionalServices = () => {
                         follow-up and make it simple for your team to
                         concentrate on advancing client work.
                      </p>
-                     <button className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] text-white rounded-full mr-5 py-3 px-6">
+                     <Link
+                        href="/my-account"
+                        className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] text-white rounded-full mr-5 py-3 px-6"
+                     >
                         Create event
-                     </button>
+                     </Link>
                   </div>
 
                   <div>

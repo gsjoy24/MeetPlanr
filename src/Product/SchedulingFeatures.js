@@ -22,12 +22,18 @@ const SchedulingFeatures = () => {
                </p>
 
                <div>
-                  <button className="btn border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-white rounded-lg font-semibold mr-5 px-6">
+                  <Link
+                     href="/sign-up"
+                     className="btn border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-white rounded-lg font-semibold mr-5 px-6"
+                  >
                      Sign up for free
-                  </button>
-                  <button className="btn border border-[#465AF7] text-[#465AF7] bg-white hover:bg-[#e4ecf7] hover:border-[#465AF7] rounded-lg font-semibold px-6">
+                  </Link>
+                  <Link
+                     href="/product"
+                     className="btn border border-[#465AF7] text-[#465AF7] bg-white hover:bg-[#e4ecf7] hover:border-[#465AF7] rounded-lg font-semibold px-6"
+                  >
                      How it works
-                  </button>
+                  </Link>
                </div>
 
                <div
