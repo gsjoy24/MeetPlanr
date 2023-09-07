@@ -6,8 +6,8 @@ import Link from 'next/link';
 
 const Error = () => {
 	return (
-		<div className="w-full h-[100vh] flex justify-center items-center">
-			<div className="max-w-[700px] mx-auto flex flex-col justify-center items-center gap-4">
+		<div className="w-full bg-[#F2F2F2] h-[100vh] flex justify-center items-center">
+			<div className="max-w-[700px] flex flex-col justify-center items-center gap-4">
 				<Lottie animationData={errorImg}></Lottie>
 				<Button>
 					<Link href="/">Back to home</Link>
