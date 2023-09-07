@@ -22,8 +22,14 @@ export const POST = async (request) => {
 
 export const GET = async (request) => {
 	try {
+		const userName = request.nextUrl.searchParams.get('username');
 		const db = await DbConnect();
 		const schedulingCollection = db.collection('scheduling');
+		console.log("userName");
+		if (userName) {
+			const result = await schedulingCollection.find({ username: userName }).toArray();
+			return NextResponse.json(result);
+		}
 		const result = await schedulingCollection.find().toArray();
 		return NextResponse.json(result);
 	} catch (error) {

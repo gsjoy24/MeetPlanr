@@ -12,22 +12,31 @@ import EventCard from "@/components/EventCard";
 import one_one_one from '../assets/events-tabs/one_on_one.png';
 import group from '../assets/events-tabs/group.png';
 import { FaAngleRight, FaTimesCircle } from "react-icons/fa";
+import UseGetCurrentUser from "@/hooks/UseGetCurrentUser";
+import LoadingSpinner from "@/shareComponents/LoadingSpinner";
+
 const EventsTabs = () => {
    const [actions,setActions] = useState(false);
    const [tabIndex, setTabIndex] = useState(0);
    const [schedules, setSchedules] = useState([]);
+   const [loading,setLoading] = useState(true)
+   const currentUser = UseGetCurrentUser();
+   console.log(currentUser);
    useEffect(() => {
     	(async () => {
 			try {
-				const res = await fetch("/api/scheduling");
+				const res = await fetch(`/api/scheduling?username=${currentUser?.username}`);
 				const data = await res.json();
 				console.log(data);
-				setSchedules(data);
+				if(data){
+					setSchedules(data);
+					setLoading(false)
+				}	
 			} catch (error) {
 				console.error('Error fetching data:', error);
 			}
 		})()
-   }, []);
+   }, [currentUser]);
 
 	return (
 		<Container>
@@ -36,7 +45,7 @@ const EventsTabs = () => {
 				<button className="bg-[#465AF7] hover:bg-sky-950 text-white px-4 py-3 rounded-full flex items-center space-x-1 font-semibold">
 					<span>
 						<IoIosAdd className="text-xl" />
-					</span>{' '}
+					</span>
 					<span>Create</span>
 				</button>
 			</div>
@@ -92,9 +101,15 @@ const EventsTabs = () => {
                   </div>
 					</div>
 					<div className="grid grid-cols-3 gap-5 my-8">
-						{schedules.map((schedule) => (
-							<EventCard schedule={schedule} key={schedule?._id}></EventCard>
-						))}
+						{
+						loading ? 
+						<div className="mx-auto col-span-3 py-20">
+							<span className="loading loading-bars loading-lg"></span>
+						</div> 
+						: schedules.map((schedule) => (
+								<EventCard schedule={schedule} key={schedule?._id}></EventCard>
+							))
+						}
 					</div>
 				</TabPanel>
 				<TabPanel>
