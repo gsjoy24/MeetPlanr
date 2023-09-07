@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export const GET = async ({ params }) => {
 	try {
 		const db = await DbConnect();
-		const id = params.id;
+		const id = params?.id;
 		console.log(id);
 		const blogCollection = db.collection('blogs');
 		const query = { _id: new ObjectId(id) };

@@ -37,6 +37,7 @@ const BlogPostForm = () => {
 								showConfirmButton: false,
 								showCloseButton: true
 							});
+							reset();
 							setIsSubmitting(false);
 						})
 						.catch((e) => {
@@ -47,6 +48,7 @@ const BlogPostForm = () => {
 			})
 			.catch((error) => {
 				console.log(error.message);
+				setIsSubmitting(false);
 			});
 	};
 
