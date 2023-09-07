@@ -1,20 +1,10 @@
 import SectionTitle from '@/components/SectionTitle';
 import Container from '@/components/container';
-import Stripe from "stripe";
-import Link from 'next/link';
 import { GiCheckMark } from 'react-icons/gi';
 import ButtonCheckout from '@/components/PayButton';
-
-async function loadPrices() {
-	const stripe= new Stripe (process.env.STRIPE_SECRET_KEY);
-	const prices= await stripe.prices.list();
-	const sortedPrices= prices.data.sort((a,b)=>a.unit_amount - b.unit_amount);
-  
-	return sortedPrices;
-  }
+import UseLoadPrice from '@/hooks/UseLoadPrice';
 const Pricing = async() => {
-	const prices = await loadPrices();
-	// console.log(prices )
+	const prices = await UseLoadPrice();
 	return (
 		<Container>
 			<div className="my-16">
@@ -27,7 +17,7 @@ const Pricing = async() => {
 
 				<div className="grid lg:mt-[50px] gap-5 lg:grid-cols-3 md:grid-cols-2 mt-10">
 				{
-					prices.map(price=>(
+					prices?.map(price=>(
 						<div key={price.id} className={`rounded-3xl card group w-full hover:bg-[#0B3558] text-[#0B3558] hover:text-white border transition-all shadow-md pb-10 duration-700 mx-auto ${price.nickname === "STANDARD" && "bg-[#0B3558] text-white"}`}>
 							<div className="px-5">
 								<p className="text-[22px] uppercase mt-[30px] font-bold">{ price.nickname}</p>
@@ -88,7 +78,7 @@ const Pricing = async() => {
 							</div>
 							<hr className="borderBottom"/>
 							<div className="px-5">
-							<ButtonCheckout price={price.unit_amount / 100} priceId={price.id} />
+								<ButtonCheckout priceName={price.nickname} price={price.unit_amount / 100} priceId={price.id} />
 							</div>
 						</div>
 					

@@ -17,7 +17,8 @@ export const POST = async (request) => {
 					...body,
 					timestamp: new Date(),
 					username,
-					role: 'user'
+					role: 'user',
+					plan: 'Basic'
 				});
 				return NextResponse.json(result);
 			} else {
