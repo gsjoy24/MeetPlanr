@@ -65,6 +65,12 @@
 	@apply flex items-center gap-20 p-5 bg-white hover:border-[#465AF7] shadow-lg justify-between;
 }
 
+/* ===================Event tab==================== */
+.react-tabs__tab--selected{
+	border-color: #465af7 !important;
+	@apply border-b-4 outline-none
+}
+
 /* ==================Calender======================  */
 
 .react-datepicker__day,
