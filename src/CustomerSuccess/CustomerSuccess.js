@@ -34,7 +34,7 @@ const CustomerSuccess = () => {
                      </p>
                      <Link
                         href="/my-account"
-                        className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] text-white rounded-full mr-5 py-3 px-6"
+                        className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] font-semibold text-white rounded-lg mr-5 py-3 px-6"
                      >
                         Create event
                      </Link>
@@ -104,7 +104,7 @@ const CustomerSuccess = () => {
                   <div
                      className="lg:-mt-5"
                      data-aos="fade-up"
-                     data-aos-duration="700"
+                     data-aos-duration="600"
                   >
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         RETAIN AND GROW
@@ -124,8 +124,6 @@ const CustomerSuccess = () => {
                         src={img5}
                         alt="Marketing Image"
                         className="lg:w-[550px] lg:-mt-16"
-                        data-aos="fade-up"
-                        data-aos-duration="900"
                      />
                   </div>
                </div>
@@ -150,7 +148,7 @@ const CustomerSuccess = () => {
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="700"
+                     data-aos-duration="600"
                      className="lg:mt-10"
                   >
                      <h3 className="text-[#465AF7] font-semibold uppercase">
@@ -168,7 +166,7 @@ const CustomerSuccess = () => {
                      </p>
                   </div>
 
-                  <div data-aos="fade-up" data-aos-duration="900">
+                  <div data-aos="zoom-in" data-aos-duration="800">
                      <Image
                         src={img6}
                         alt="Calender"
@@ -179,8 +177,8 @@ const CustomerSuccess = () => {
 
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16 mt-32">
                   <div
-                     data-aos="fade-up"
-                     data-aos-duration="900"
+                     data-aos="zoom-in"
+                     data-aos-duration="800"
                      className="md:order-last lg:order-first order-last"
                   >
                      <Image src={img7} alt="Calender" />
@@ -188,7 +186,7 @@ const CustomerSuccess = () => {
 
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="700"
+                     data-aos-duration="600"
                      className="lg:mt-20"
                   >
                      <h3 className="text-[#465AF7] font-semibold uppercase">
@@ -209,7 +207,7 @@ const CustomerSuccess = () => {
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16 mt-28">
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="700"
+                     data-aos-duration="600"
                      className="lg:mt-10"
                   >
                      <h3 className="text-[#465AF7] font-semibold uppercase">
@@ -226,7 +224,7 @@ const CustomerSuccess = () => {
                      </p>
                   </div>
 
-                  <div data-aos="fade-up" data-aos-duration="900">
+                  <div data-aos="zoom-in" data-aos-duration="800">
                      <Image
                         src={img8}
                         alt="Calender"
@@ -276,7 +274,7 @@ const CustomerSuccess = () => {
                      <div
                         className="border rounded-tr-3xl rounded-bl-3xl p-5 space-y-4 shadow-md shadow-[#cacffc]"
                         data-aos="fade-up"
-                        data-aos-duration="800"
+                        data-aos-duration="900"
                      >
                         <PiSealCheck className="text-4xl text-[#465AF7]" />
                         <p className="text-xl text-[#0B3558] font-semibold">
@@ -292,7 +290,7 @@ const CustomerSuccess = () => {
                      <div
                         className="border rounded-tr-3xl rounded-bl-3xl p-5 space-y-4 shadow-md shadow-[#cacffc]"
                         data-aos="fade-up"
-                        data-aos-duration="900"
+                        data-aos-duration="1000"
                      >
                         <PiSealCheck className="text-4xl text-[#465AF7]" />
                         <p className="text-xl text-[#0B3558] font-semibold">

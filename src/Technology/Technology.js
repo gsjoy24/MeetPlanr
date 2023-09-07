@@ -18,11 +18,11 @@ const TechnologyPage = () => {
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         MeetPlanr FOR TECH Industry
                      </h3>
-                     <p className="text-4xl lg:text-[39px] text-[#0B3558] md:w-[550px] my-6 font-bold leading-10">
+                     <p className="text-4xl lg:text-5xl text-[#0B3558] md:w-[600px] my-6 font-bold leading-10">
                         The competitive advantage of scheduling for tech
                         businesses
                      </p>
-                     <p className="text-[18px] text-[#5A7795] md:w-[465px] mb-10">
+                     <p className="text-[19px] text-[#5A7795] md:w-[465px] mb-10">
                         With scheduling speed and personalisation, you can
                         generate new revenue opportunities, close more
                         transactions, increase ARR more quickly, and meet team
@@ -55,16 +55,16 @@ const TechnologyPage = () => {
                   <h3 className="text-[#465AF7] font-semibold uppercase">
                      MeetPlanr OVERVIEW
                   </h3>
-                  <h1 className="text-4xl lg:text-[39px] text-[#0B3558] lg:w-[840px] mx-auto my-6 font-bold">
-                     Create the proper connections out in the appropriate ways.
+                  <h1 className="text-4xl lg:text-[41px] text-[#0B3558] lg:w-[840px] mx-auto my-6 font-bold">
+                     Create the proper connections out in the appropriate ways
                   </h1>
                </div>
 
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                   <div className="md:mt-14">
-                     <p className="text-2xl lg:text-3xl text-[#0B3558] md:w-[620px] my-6 font-bold leading-10">
+                     <p className="text-2xl lg:text-3xl text-[#0B3558] md:w-[590px] my-6 font-bold leading-10">
                         With MeetPlanr, CallRail boosted meeting conversions and
-                        increased contract closings.
+                        increased contract closings
                      </p>
 
                      <div className="md:grid-cols-3 grid grid-cols-1 gap-16 mt-12 mx-auto">
@@ -72,7 +72,7 @@ const TechnologyPage = () => {
                            <p className="text-5xl text-[#465AF7] font-bold">
                               3x
                            </p>
-                           <p className="text-[16px] text-[#5A7795] mt-5">
+                           <p className="text-[17px] text-[#5A7795] mt-5">
                               Sales conversion rate
                            </p>
                         </div>
@@ -80,7 +80,7 @@ const TechnologyPage = () => {
                            <p className="text-5xl text-[#465AF7] font-bold">
                               165k
                            </p>
-                           <p className="text-[16px] text-[#5A7795] mt-5">
+                           <p className="text-[17px] text-[#5A7795] mt-5">
                               Cost savings
                            </p>
                         </div>
@@ -88,7 +88,7 @@ const TechnologyPage = () => {
                            <p className="text-5xl text-[#465AF7] font-bold">
                               4,510
                            </p>
-                           <p className="text-[16px] text-[#5A7795] mt-5">
+                           <p className="text-[17px] text-[#5A7795] mt-5">
                               Hours reclaimed
                            </p>
                         </div>
@@ -96,7 +96,10 @@ const TechnologyPage = () => {
                   </div>
 
                   <div>
-                     <Image src={img2} alt="Marketing Image" />
+                     <Image
+                        src={img2}
+                        alt="Marketing Image"
+                     />
                   </div>
                </div>
             </section>
@@ -106,7 +109,7 @@ const TechnologyPage = () => {
                   <h3 className="text-[#465AF7] font-semibold uppercase">
                      Why MeetPlanr
                   </h3>
-                  <h1 className="text-3xl lg:text-[39px] text-[#0B3558] lg:w-[840px] mx-auto my-6 font-semibold">
+                  <h1 className="text-3xl lg:text-[41px] text-[#0B3558] lg:w-[840px] mx-auto my-6 font-bold">
                      A more effective way to attract clients, win over
                      customers, and select top talent
                   </h1>
@@ -115,13 +118,13 @@ const TechnologyPage = () => {
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="1000"
+                     data-aos-duration="900"
                      className="md:order-last lg:order-first order-last"
                   >
                      <Image src={img3} alt="Calender" />
                   </div>
 
-                  <div data-aos="fade-up" data-aos-duration="800">
+                  <div data-aos="fade-up" data-aos-duration="600">
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         NEVER MISS A REVENUE OPPORTUNITY
                      </h3>
@@ -142,7 +145,7 @@ const TechnologyPage = () => {
                </div>
 
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16 mt-24">
-                  <div data-aos="fade-up" data-aos-duration="800">
+                  <div data-aos="fade-up" data-aos-duration="600">
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         DRIVER EXPANSION AND RETENTION
                      </h3>
@@ -161,7 +164,7 @@ const TechnologyPage = () => {
 
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="1000"
+                     data-aos-duration="900"
                      className="md:order-last"
                   >
                      <Image src={img4} alt="Calender" className="lg:-mt-12" />
@@ -171,7 +174,7 @@ const TechnologyPage = () => {
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16 mt-24">
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="1000"
+                     data-aos-duration="900"
                      className="md:order-last lg:order-first order-last"
                   >
                      <Image src={img5} alt="Calender" />
@@ -179,7 +182,7 @@ const TechnologyPage = () => {
 
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="800"
+                     data-aos-duration="600"
                      className="lg:mt-12"
                   >
                      <h3 className="text-[#465AF7] font-semibold uppercase">

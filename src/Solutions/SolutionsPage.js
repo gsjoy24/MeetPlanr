@@ -23,7 +23,7 @@ const SolutionsPage = () => {
                   scheduling so teams can focus on delivering results.
                </p>
 
-               <Link href="/my-account" className="btn bg-[#465AF7] hover:bg-sky-950 text-white rounded-lg mr-5 px-6 capitalize tracking-widest">
+               <Link href="/my-account" className="btn bg-[#465AF7] hover:bg-sky-950 text-[16px] text-white rounded-lg mr-5 px-6 capitalize tracking-widest">
                   Create Event
                </Link>
             </div>
@@ -199,7 +199,7 @@ const SolutionsPage = () => {
                   </div>
                </div>
 
-               <div data-aos="fade-up" data-aos-duration="800">
+               <div data-aos="fade-up" data-aos-duration="700">
                   <Image src={img1} alt="Solutions image" />
                </div>
             </div>
@@ -210,7 +210,7 @@ const SolutionsPage = () => {
             <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                <div
                   data-aos="fade-up"
-                  data-aos-duration="800"
+                  data-aos-duration="700"
                   className="md:order-last lg:order-first order-last"
                >
                   <Image src={img2} alt="Solutions image" />

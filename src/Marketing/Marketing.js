@@ -18,7 +18,7 @@ const Marketing = () => {
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         MARKETING TEAMS
                      </h3>
-                     <h1 className="text-4xl lg:text-5xl text-[#0B3558] md:w-[420px] my-6 font-semibold">
+                     <h1 className="text-4xl lg:text-5xl text-[#0B3558] md:w-[420px] my-6 font-bold">
                         Convert leads to meetings – faster
                      </h1>
                      <p className="text-[18px] text-[#5A7795] md:w-[465px] mb-10">
@@ -109,7 +109,7 @@ const Marketing = () => {
                </div>
 
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
-                  <div data-aos="fade-up" data-aos-duration="800">
+                  <div data-aos="fade-up" data-aos-duration="700">
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         IMPROVE CONVERSION RATES
                      </h3>
@@ -126,7 +126,7 @@ const Marketing = () => {
                      </p>
                   </div>
 
-                  <div data-aos="fade-up" data-aos-duration="1000">
+                  <div data-aos="fade-up" data-aos-duration="900">
                      <Image src={img5} alt="Calender" />
                   </div>
                </div>
@@ -134,13 +134,13 @@ const Marketing = () => {
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16 mt-32">
                   <div
                      data-aos="fade-up"
-                     data-aos-duration="1000"
+                     data-aos-duration="900"
                      className="md:order-last lg:order-first order-last"
                   >
                      <Image src={img6} alt="Calender" />
                   </div>
 
-                  <div data-aos="fade-up" data-aos-duration="800">
+                  <div data-aos="fade-up" data-aos-duration="700">
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         EMBED MeetPlanr ANYWHERE
                      </h3>

@@ -123,14 +123,14 @@ const Navbar = () => {
                         <Link
                            href={"/my-account"}
                            onClick={() => setCondition(false)}
-                           className="hover:bg-slate-300 flex items-center justify-between w-full px-5 py-3 text-left"
+                           className="hover:bg-slate-200 flex items-center justify-between w-full px-5 py-3 text-left font-semibold"
                         >
                            <span>My Account</span>
                            <FaAngleRight />
                         </Link>
                         <button
                            onClick={handleLogOut}
-                           className="hover:bg-slate-300 flex items-center justify-between w-full px-5 py-3 text-left"
+                           className="hover:bg-slate-200 flex items-center justify-between w-full px-5 py-3 text-left font-semibold"
                         >
                            <span>Log out</span>
                            <FaAngleRight />
