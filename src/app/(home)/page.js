@@ -11,8 +11,8 @@ const Home = () => {
 			<VerifyEmailMessage />
 			<Banner />
 			<Featured />
-      <Counting />
-      <TimeSaving />
+      		<Counting />
+      		<TimeSaving />
 			<Review />
 		</div>
 	);
