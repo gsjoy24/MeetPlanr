@@ -1,4 +1,5 @@
 'use client';
+import Loading from '@/app/loading';
 /* eslint-disable react-hooks/rules-of-hooks */
 import axios from 'axios';
 import Image from 'next/image';
@@ -6,13 +7,15 @@ import { useEffect, useState } from 'react';
 
 const page = ({ params }) => {
 	const [blog, setBlog] = useState({});
-
+	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		async function fetchData() {
 			try {
 				const response = await axios(`/api/blog/${params.id}`);
-				setBlog(response.data);
-				console.log(response);
+				if (response.data) {
+					setBlog(response.data);
+					setLoading(false);
+				}
 			} catch (error) {
 				console.error('Error fetching data:', error);
 			}
@@ -20,7 +23,9 @@ const page = ({ params }) => {
 
 		fetchData();
 	}, [params]);
-
+	if (loading) {
+		return <Loading />;
+	}
 	return (
 		<div className=" min-h-screen py-6">
 			<div className=" max-w-2xl p-6 mx-auto">
