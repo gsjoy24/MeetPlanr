@@ -13,6 +13,7 @@ import Link from 'next/link';
 import SocialAuth from '@/components/SocialAuth';
 import addUserToServer from '@/utils/addUserToServer';
 import { UploadPicture } from '@/utils/uploadPicture';
+import { MdFrontHand } from 'react-icons/md';
 
 const SignUp = () => {
 	const router = useRouter();
@@ -75,12 +76,7 @@ const SignUp = () => {
 							<label className="label">
 								<span className="label-text">What is your name?</span>
 							</label>
-							<input
-								className="input input-bordered focus:outline-none w-full text-sm"
-								type="text"
-								placeholder="Name"
-								{...register('name', { required: true })}
-							/>
+							<input className="mp_input" type="text" placeholder="Name" {...register('name', { required: true })} />
 							{errors.name?.type === 'required' && (
 								<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500" role="alert">
 									<BiSolidErrorAlt size={17} /> <span>Name is required!</span>
@@ -113,7 +109,7 @@ const SignUp = () => {
 								<span className="label-text">What is your email?</span>
 							</label>
 							<input
-								className="input input-bordered focus:outline-none w-full text-sm"
+								className="mp_input"
 								type="email"
 								placeholder="Email"
 								autoComplete="username"
@@ -132,7 +128,7 @@ const SignUp = () => {
 								<span className="label-text">Create a new password</span>
 							</label>
 							<input
-								className="input input-bordered focus:outline-none w-full text-sm"
+								className="mp_input"
 								type={showPass ? 'text' : 'password'}
 								placeholder="Password"
 								{...register('password', {
@@ -156,12 +152,18 @@ const SignUp = () => {
 								<BiSolidErrorAlt size={17} /> <span>{error}</span>
 							</p>
 						)}
-
 						<button
 							className="bg-[#465AF7] hover:bg-sky-950 duration-200 text-white py-2 w-full rounded-lg mt-6"
 							type={loading ? 'button' : 'submit'}
 						>
-							{loading ? 'Please wait' : 'Sign Up'}
+							{loading ? (
+								<p className="flex items-center justify-center gap-2">
+									<MdFrontHand />
+									<span>Have Patients...</span>
+								</p>
+							) : (
+								'Sign Up'
+							)}
 						</button>
 						<p className="mt-3 text-xs">
 							<span>Already have an account?</span>

@@ -2,11 +2,10 @@ import DbConnect from '@/services/DbConnect';
 import { ObjectId } from 'mongodb';
 import { NextResponse } from 'next/server';
 
-export const GET = async (request,{ params }) => {
+export const GET = async (request, { params }) => {
 	try {
 		const db = await DbConnect();
 		const id = params?.id;
-		console.log(params);
 		const blogCollection = db.collection('blogs');
 		const query = { _id: new ObjectId(id) };
 		const result = await blogCollection.findOne(query);
