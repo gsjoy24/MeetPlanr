@@ -38,7 +38,7 @@ const EventsTabs = () => {
 		})()
    }, [currentUser]);
    const copyLink = () => {
-    navigator.clipboard.writeText(`https://meet-planr.vercel.app/${currentUser?.username}`).then(() => {
+    navigator.clipboard.writeText(`https://meet-planr.vercel.app/user/${currentUser?.username}`).then(() => {
             Swal.fire({
                 icon: 'success',
                 title: 'Link coped',
@@ -76,7 +76,7 @@ const EventsTabs = () => {
 							<div>
 								<h4>{currentUser ? currentUser?.name : "User Name"}</h4>
 								<button onClick={copyLink} className="text-[#465AF7]">
-									https://meet-planr.vercel.app/{currentUser ? currentUser?.username :'username'}
+									https://meet-planr.vercel.app/user/{currentUser ? currentUser?.username :'username'}
 								</button>
 							</div>
 						</div>
@@ -120,9 +120,9 @@ const EventsTabs = () => {
 						<div className="mx-auto col-span-3 py-20">
 							<span className="loading loading-bars loading-lg"></span>
 						</div> 
-						: schedules.map((schedule) => (
+						: schedules ? schedules.map((schedule) => (
 								<EventCard schedule={schedule} key={schedule?._id}></EventCard>
-							))
+							)) : <span className='col-span-3 text-4xl text-slate-500 font-bold'>No Schedule available</span>
 						}
 					</div>
 				</TabPanel>
