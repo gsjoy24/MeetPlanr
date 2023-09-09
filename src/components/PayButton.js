@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const ButtonCheckout = ({ priceId,price,priceName }) => {
   const router = useRouter();
   const currentUser = UseGetCurrentUser();
-  const selectedPlan = currentUser?.plan?.toUpperCase() === priceName?.toUpperCase();
+  const selectedPlan = currentUser?.plan?.toUpperCase() === priceName?.toUpperCase() && !(priceName?.toUpperCase() == "BASIC");
   const isDisable = (currentUser?.plan === "Standard" || currentUser?.plan === "Premium")
   const isFree = priceName?.toUpperCase() == "BASIC";
   const handleCheckout = async () => {

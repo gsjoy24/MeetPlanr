@@ -15,8 +15,8 @@ export async function POST(request) {
         quantity: 1,
       },
     ],
-    success_url: `http://localhost:3000/success/${price}`,
-    cancel_url: "http://localhost:3000/pricing",
+    success_url: `https://meet-planr.vercel.app/success/${price}`,
+    cancel_url: "https://meet-planr.vercel.app/pricing",
   });
 
   return NextResponse.json({

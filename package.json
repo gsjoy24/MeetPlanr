@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "@nestjs-modules/mailer": "^1.7.1",
@@ -54,7 +55,9 @@
     "velocityjs": "^2.0.6"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.4",
     "@types/nodemailer": "^6.4.9",
-    "daisyui": "^3.5.1"
+    "daisyui": "^3.5.1",
+    "jest": "^29.6.4"
   }
 }

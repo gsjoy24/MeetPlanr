@@ -18,7 +18,7 @@ const Pricing = async() => {
 				<div className="grid lg:mt-[50px] gap-5 lg:grid-cols-3 md:grid-cols-2 mt-10">
 				{
 					prices?.map(price=>(
-						<div key={price.id} className={`rounded-3xl card group w-full hover:bg-[#0B3558] text-[#0B3558] hover:text-white border transition-all shadow-md pb-10 duration-700 mx-auto ${price.nickname === "STANDARD" && "bg-[#0B3558] text-white"}`}>
+						<div key={price.id} className={`rounded-3xl max-w-[350px] card group w-full hover:bg-[#0B3558] text-[#0B3558] hover:text-white border transition-all shadow-md pb-10 duration-700 mx-auto ${price.nickname === "STANDARD" && "bg-[#0B3558] text-white"}`}>
 							<div className="px-5">
 								<p className="text-[22px] uppercase mt-[30px] font-bold">{ price.nickname}</p>
 								<div className="flex items-center lg:text-[42px] uppercase my-2 font-bold">
