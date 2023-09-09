@@ -17,7 +17,8 @@ const EventSchedule = ({ params }) => {
 	const [loading, setLoading] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [confirm, setConfirm] = useState(false);
-	const { timeRange, path, hostName, method, eventName, hostEmail, duration } = scheduleInfo || {};
+	const { timeRange, path, hostName, method, eventName, hostEmail, duration,scheduleLink } = scheduleInfo || {};
+	const detailsLink = `${scheduleLink}/details`
 	const { startDate, endDate } = timeRange || {};
 	const [scheduleDate, setScheduleDate] = useState(null);
 	const minDate = new Date(startDate);
@@ -53,7 +54,8 @@ const EventSchedule = ({ params }) => {
 				eventName,
 				hostEmail,
 				scheduleDate,
-				method
+				method,
+				detailsLink
 			});
 			const hostEmailSend = axios.post(`/api/sendmailhost`, {
 				inviteeName,
@@ -62,7 +64,8 @@ const EventSchedule = ({ params }) => {
 				hostEmail,
 				scheduleDate,
 				method,
-				hostName
+				hostName,
+				detailsLink
 			});
 		}
 	};
