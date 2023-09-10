@@ -41,9 +41,9 @@ const EventPage = () => {
          const { eventName, description, duration,eventLink,methodInfo } = data;
 			const hostEmail = user?.email;
 			const hostName = user?.name;
-			const random = Math.round(Math.random() * 100000);
+			const random = Math.round(Math.random() * 1000000);
          const EventLink = eventLink?.replace(/\s+/g, '-') || livePath
-			const path = user?.username + "/" + EventLink.toLowerCase() + "-" + random;
+			const path = EventLink.toLowerCase() + "-" + random;
 			const scheduleLink = `https://meet-planr.vercel.app/user/${path}`;
          const schedule = {eventName,description,duration,method,scheduleLink,hostEmail,hostName,timeRange,path,username: user?.username,methodInfo}
          console.log(schedule);

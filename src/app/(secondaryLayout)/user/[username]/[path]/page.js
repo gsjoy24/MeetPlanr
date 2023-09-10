@@ -3,13 +3,17 @@ import Button from '@/common/Button';
 import Container from '@/components/container';
 import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 import axios from 'axios';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
-
+import meetlogo from '@/assets/event-form/meet.png';
+import locationLogo from '@/assets/event-form/location.png';
+import phoneLogo from '@/assets/event-form/phone.png';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useForm } from 'react-hook-form';
-import { FaMapMarkerAlt, FaRegClock, FaTimesCircle, FaVideo } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaRegClock, FaTimesCircle, FaVideo } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import Image from 'next/image';
 
 const EventSchedule = ({ params }) => {
 	const { register, handleSubmit, reset } = useForm();
@@ -17,7 +21,8 @@ const EventSchedule = ({ params }) => {
 	const [loading, setLoading] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [confirm, setConfirm] = useState(false);
-	const { timeRange, path, hostName, method, eventName, hostEmail, duration,scheduleLink } = scheduleInfo || {};
+	const { timeRange, path, hostName, method, eventName, hostEmail, duration,scheduleLink,methodInfo } = scheduleInfo || {};
+	console.log(scheduleInfo);
 	const detailsLink = `${scheduleLink}/details`
 	const { startDate, endDate } = timeRange || {};
 	const [scheduleDate, setScheduleDate] = useState(null);
@@ -55,7 +60,8 @@ const EventSchedule = ({ params }) => {
 				hostEmail,
 				scheduleDate,
 				method,
-				detailsLink
+				detailsLink,
+				methodInfo
 			});
 			const hostEmailSend = axios.post(`/api/sendmailhost`, {
 				inviteeName,
@@ -65,7 +71,8 @@ const EventSchedule = ({ params }) => {
 				scheduleDate,
 				method,
 				hostName,
-				detailsLink
+				detailsLink,
+				methodInfo
 			});
 		}
 	};
@@ -108,14 +115,19 @@ const EventSchedule = ({ params }) => {
 						<h3 className="mt-4 text-lg font-bold">location:</h3>
 						<div className=" mt-2">
 							{method == 'Google Meet' ? (
-								<div className="flex items-center gap-2">
-									<FaVideo className="text-2xl font-medium" />
+								<Link target='_blank' href={methodInfo} className="flex items-center text-blue-500 hover:underline gap-2">
+									<Image width={30} height={30} src={meetlogo} alt='icon' />
 									<span className="text-lg font-medium">Google Meet</span>
+								</Link>
+							) : method == 'Phone Call' ? (
+								<div className="flex items-center gap-2">
+									<Image width={30} height={30} src={phoneLogo} alt='icon' />
+									<span className="text-lg font-medium">{methodInfo}</span>
 								</div>
 							) : method == 'In Person' ? (
 								<div className="flex items-center gap-2">
-									<FaMapMarkerAlt className="text-2xl font-medium" />
-									<span className="text-lg font-medium">In Person</span>
+									<Image width={30} height={30} src={locationLogo} alt='icon' />
+									<span className="text-lg font-medium">{methodInfo}</span>
 								</div>
 							) : (
 								<p>no location added</p>

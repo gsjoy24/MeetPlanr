@@ -3,9 +3,13 @@ import Container from '@/components/container';
 import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 import axios from 'axios';
 import moment from 'moment/moment';
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaCalendar, FaCalendarAlt, FaRegClock } from 'react-icons/fa';
-
+import meetlogo from '@/assets/event-form/meet.png';
+import locationLogo from '@/assets/event-form/location.png';
+import phoneLogo from '@/assets/event-form/phone.png';
 const EventDetails = ({path}) => {
     const [details,setDetails] = useState({});
     const [loading,setLoading] = useState(true)
@@ -19,7 +23,7 @@ const EventDetails = ({path}) => {
         })()
     },[path])
     console.log(details);
-    const {confirm,description,duration,eventName,hostEmail,hostName,inviteeEmail,inviteeName,method,scheduleDate,scheduleLink,timeRange,} = details || {};
+    const {confirm,description,duration,eventName,hostEmail,hostName,inviteeEmail,inviteeName,method,scheduleDate,methodInfo} = details || {};
 
     if(loading){
         return <LoadingSpinner/>
@@ -54,7 +58,24 @@ const EventDetails = ({path}) => {
                             : "Schedule not Confirmed"
                         }
                         <h2 className='text-md font-semibold mt-2'>Event Location:</h2>
-                        <p className='text-2xl font-medium'>{method}</p>
+                        {method == 'Google Meet' ? (
+								<Link target='_blank' href={methodInfo} className="flex items-center text-blue-500 hover:underline gap-2">
+									<Image width={30} height={30} src={meetlogo} alt='icon' />
+									<span className="text-lg font-medium">Google Meet</span>
+								</Link>
+							) : method == 'Phone Call' ? (
+								<div className="flex items-center gap-2">
+									<Image width={30} height={30} src={phoneLogo} alt='icon' />
+									<span className="text-lg font-medium">{methodInfo}</span>
+								</div>
+							) : method == 'In Person' ? (
+								<div className="flex items-center gap-2">
+									<Image width={30} height={30} src={locationLogo} alt='icon' />
+									<span className="text-lg font-medium">{methodInfo}</span>
+								</div>
+							) : (
+								<p>no location added</p>
+							)}
                     </div>
                 </div>
                 <div className='grid grid-cols-2 mt-5'>
@@ -66,7 +87,7 @@ const EventDetails = ({path}) => {
                         </div>
                         <div className="flex flex-wrap gap-2 mt-3">
                             <h3 className='font-bold'>Email:</h3>
-                            <p>{hostEmail}</p>
+                            <a className='text-blue-500 hover:underline' href={`mailto:${hostEmail}`}>{hostEmail}</a>
                         </div>
                     </div>
                     <div className="px-5 border-l-0 border-2 p-3">
@@ -77,7 +98,7 @@ const EventDetails = ({path}) => {
                         </div>
                         <div className="flex flex-wrap gap-2 mt-3">
                             <h3 className='font-bold'>Email:</h3>
-                            <p>{inviteeEmail ? inviteeEmail : "Event not confirm"}</p>
+                            <p>{inviteeEmail ? <a className='text-blue-500 hover:underline' href={`mailto:${inviteeEmail}`}>{inviteeEmail}</a> : "Event not confirm"}</p>
                         </div>
                     </div>
                 </div>
