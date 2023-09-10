@@ -8,17 +8,14 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaAngleDown, FaAngleLeft, FaAngleUp, FaTimes } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import meetlogo from '../../../../assets/event-form/meet.png';
-import locationLogo from '../../../../assets/event-form/location.png';
-import Image from 'next/image';
-import { UserAuth } from '@/providers/AuthProvider';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
 import LoadingSpinner from '@/shareComponents/LoadingSpinner';
+import InputOption from '@/components/InputOption';
 
-const EventPage = ({ params }) => {
-	const { register, handleSubmit, reset } = useForm();
+const EventPage = () => {
+	const { register, handleSubmit,reset,watch,setValue } = useForm();
 	const [method, setMethod] = useState(null);
 	const [dateRange, setDateRange] = useState(null);
 	const [action, setAction] = useState(false);
@@ -26,40 +23,32 @@ const EventPage = ({ params }) => {
 	const [endDate, setEndDate] = useState(null);
 	const router = useRouter();
 	const user = UseGetCurrentUser();
-
+   const placeholderText = (method === "Google Meet") ? "Enter google meet link ..." : method === "Phone Call" ? "Enter phone number...." :(method === "In Person") ? "Enter location name.." : "enter method info..."
 	const onChange = (dates) => {
-		const [start, end] = dates;
+      const [start, end] = dates;
 		setStartDate(start);
 		setEndDate(end);
 	};
 	const timeRange = { startDate, endDate };
 	const clearDateRange = () => {
-		setDateRange(null);
+      setDateRange(null);
 		setStartDate(new Date());
 		setEndDate(null);
 	};
+   const livePath = watch("eventName") ?  watch("eventName")?.replace(/\s+/g, '-') : "";
 	const onSubmit = async (data) => {
-		if (method) {
-			const { eventName, description, duration, eventLink } = data;
+      if (method) {
+         const { eventName, description, duration,eventLink,methodInfo } = data;
 			const hostEmail = user?.email;
 			const hostName = user?.name;
-			const x = Math.round(Math.random() * 100000);
-         const eventLinkWithoutSpaces = eventLink.replace(/\s+/g, '');
-			const path = eventLinkWithoutSpaces.toLowerCase() + x;
-			const scheduleLink = `https://meet-planr.vercel.app/user/${user?.username}/${path}`;
+			const random = Math.round(Math.random() * 100000);
+         const EventLink = eventLink?.replace(/\s+/g, '-') || livePath
+			const path = user?.username + "/" + EventLink.toLowerCase() + "-" + random;
+			const scheduleLink = `https://meet-planr.vercel.app/user/${path}`;
+         const schedule = {eventName,description,duration,method,scheduleLink,hostEmail,hostName,timeRange,path,username: user?.username,methodInfo}
+         console.log(schedule);
 			try {
-				const response = await axios.post(`/api/scheduling`, {
-					eventName,
-					description,
-					duration,
-					method,
-					scheduleLink,
-					hostEmail,
-					hostName,
-					timeRange,
-					path,
-               username: user?.username
-				});
+				const response = await axios.post(`/api/scheduling`,{...schedule} );
 				console.log(response.data);
 				if (response.data.insertedId) {
 					Swal.fire({
@@ -95,7 +84,6 @@ const EventPage = ({ params }) => {
             </div>
             {/*================= Event Form ====================== =*/}
             <div className="md:w-4/5 mx-auto border-2 border-[#d7e3f0] rounded-xl shadow-md">
-               {/* <h2 className='w-full text-3xl font-medium text-center'>Add {params.formType} Event Type</h2> */}
                <h2 className="w-full py-5 text-3xl text-[#0B3558] font-medium text-center border-b">
                   Add One-on-One Event Type
                </h2>
@@ -105,107 +93,20 @@ const EventPage = ({ params }) => {
                      <label className="mb-3 text-[#3e5063]" htmlFor="eventName">
                         Event Name:*
                      </label>
-                     <input
-                        placeholder="Event Name..."
-                        required
+                     <input placeholder="Event Name..."required
                         className="input_field"
                         id="eventName"
                         {...register("eventName")}
                      />
 
-                     <label
-                        className="mt-8 mb-3 text-[#3e5063]"
-                        htmlFor="eventMethod"
-                     >
+                     <label className="mt-8 mb-3 text-[#3e5063]" >
                         Event Method:*
                      </label>
-
-                     <div
-                        className={`rounded-md p-3 w-full relative 
-                        ${
-                           action
-                              ? "border-2 border-[#00a4f8]"
-                              : "border border-[#9ab2cc]"
-                        }`}
-                     >
-                        {method == "Google Meet" ? (
-                           <div className="relative flex gap-3">
-                              <Image
-                                 className="object-contain w-6"
-                                 alt="meet icon"
-                                 src={meetlogo}
-                              />
-                              <p className="text-lg font-medium">Google Meet</p>
-                              <span
-                                 onClick={() => setMethod(null)}
-                                 className="right-1 top-1 absolute text-lg cursor-pointer"
-                              >
-                                 <FaTimes />
-                              </span>
-                           </div>
-                        ) : method == "In Person" ? (
-                           <div className="relative flex gap-3">
-                              <Image
-                                 className="object-contain w-6 rounded-full"
-                                 alt="meet icon"
-                                 src={locationLogo}
-                              />
-                              <p className="text-lg font-medium">
-                                 In-person Meeting
-                              </p>
-                              <span
-                                 onClick={() => setMethod(null)}
-                                 className="top-1 absolute right-0 text-lg cursor-pointer"
-                              >
-                                 <FaTimes />
-                              </span>
-                           </div>
-                        ) : (
-                           <div
-                              onClick={() => setAction(!action)}
-                              className="cursor-pointer"
-                           >
-                              <div className="flex items-center justify-between">
-                                 <p>Select a Method</p>
-                                 {action ? (
-                                    <FaAngleUp className="text-xl" />
-                                 ) : (
-                                    <FaAngleDown className="text-xl" />
-                                 )}
-                              </div>
-                              {action && (
-                                 <div className="">
-                                    <div
-                                       onClick={() => setMethod("Google Meet")}
-                                       className="flex gap-3 border-y-2 border-[#00a4f8] my-2 py-2"
-                                    >
-                                       <Image
-                                          className="object-contain w-6"
-                                          alt="meet icon"
-                                          src={meetlogo}
-                                       />
-                                       <p className="text-lg font-medium">
-                                          Google Meet
-                                       </p>
-                                    </div>
-                                    <div
-                                       onClick={() => setMethod("In Person")}
-                                       className="flex gap-3"
-                                    >
-                                       <Image
-                                          className="object-contain w-6"
-                                          alt="meet icon"
-                                          src={locationLogo}
-                                       />
-                                       <p className="text-lg font-medium">
-                                          In-person Meeting
-                                       </p>
-                                    </div>
-                                 </div>
-                              )}
-                           </div>
-                        )}
-                     </div>
+                     <InputOption setValue={setValue} method={method} setMethod={setMethod}/>
+                     {
+                        method && <input 
+                        placeholder={placeholderText} type={method === "Google Meet" ? "url" : "text"} required className="input_field mt-2" {...register("methodInfo")} />
+                     }
 
                      <label
                         className="mt-8 mb-3 text-[#3e5063]"
@@ -249,19 +150,7 @@ const EventPage = ({ params }) => {
                               : "border border-[#9ab2cc]"
                         }`}
                      >
-                        {dateRange == "Google Meet" ? (
-                           <div className="relative flex gap-3">
-                              <p className="text-lg font-medium">
-                                 Indefinitely into the future
-                              </p>
-                              <span
-                                 onClick={() => setDateRange(null)}
-                                 className="right-1 top-1 absolute text-lg cursor-pointer"
-                              >
-                                 <FaTimes />
-                              </span>
-                           </div>
-                        ) : dateRange == "In Person" ? (
+                        { dateRange === "Select Range" ? (
                            <div className="relative flex gap-3">
                               <DatePicker
                                  selected={startDate}
@@ -296,7 +185,7 @@ const EventPage = ({ params }) => {
                               {action && (
                                  <div className="">
                                     <div
-                                       onClick={() => setDateRange("In Person")}
+                                       onClick={() => setDateRange("Select Range")}
                                        className="flex gap-3 border-t-2 border-[#00a4f8] pt-2 mt-2"
                                     >
                                        <p className="text-lg font-medium">
@@ -320,12 +209,13 @@ const EventPage = ({ params }) => {
                      </label>
                      <div className="input_field flex gap-1 overflow-hidden">
                         <label className="font-medium" htmlFor="eventLink">
-                           /{user ? user?.username : "username"}/
+                           /{user ? user?.username : "username364"}/
                         </label>
                         <input
                            placeholder="Link path..."
                            required
-                           className="outline-none"
+                           defaultValue={livePath}
+                           className="outline-none w-full"
                            id="eventLink"
                            {...register("eventLink")}
                         />

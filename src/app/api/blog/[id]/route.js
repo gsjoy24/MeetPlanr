@@ -6,7 +6,7 @@ export const GET = async (request,{ params }) => {
 	try {
 		const db = await DbConnect();
 		const id = params?.id;
-		console.log(params);
+		// console.log(params);
 		const blogCollection = db.collection('blogs');
 		const query = { _id: new ObjectId(id) };
 		const result = await blogCollection.findOne(query);

@@ -25,7 +25,7 @@ const EventSchedule = ({ params }) => {
 	const maxDate = endDate ? new Date(endDate) : null;
 	useEffect(() => {
 		(async () => {
-			const res = await axios(`/api/scheduling/${params.path}`);
+			const res = await axios(`/api/scheduling/${params?.path}`);
 			const data = res?.data;
 			if (data) {
 				setLoading(false);
