@@ -25,7 +25,7 @@ export const POST = async(request)=>  {
         <h4 style="margin-bottom: 5px;">Event Date/Time:</h4>
         <p style=" margin: 0;">${new Date(scheduleDate)}</p>
         <h4 style="margin-bottom: 5px;">Event Location:</h4>
-        <p>${method === "Google Meet" ? <span>This is a Google Meet web conference. <a href={methodInfo}>Join Now</a></span> : methodInfo}</p>
+        <p>${method}: ${methodInfo}</p>
         <a href="${detailsLink}" style="margin-top: 30px; display: inline-block;">More Information in <b>MeetPlanr</b></a>
     </div>`,
       }

@@ -14,16 +14,19 @@ import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
 import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 import InputOption from '@/components/InputOption';
 
-const EventPage = () => {
+const EventPage = ({params}) => {
 	const { register, handleSubmit,reset,watch,setValue } = useForm();
 	const [method, setMethod] = useState(null);
 	const [dateRange, setDateRange] = useState(null);
 	const [action, setAction] = useState(false);
-	const [startDate, setStartDate] = useState(new Date());
-	const [endDate, setEndDate] = useState(null);
+   const eventType = params?.formtype;
 	const router = useRouter();
 	const user = UseGetCurrentUser();
-   const placeholderText = (method === "Google Meet") ? "Enter google meet link ..." : method === "Phone Call" ? "Enter phone number...." :(method === "In Person") ? "Enter location name.." : "enter method info..."
+   const placeholderText = (method === "Google Meet") ? "Enter google meet link ..." : method === "Phone Call" ? "Enter phone number...." :(method === "In Person") ? "Enter location name.." : "enter method info...";
+   
+   const [scheduleDate,setScheduleDate] = useState(null);
+	const [startDate, setStartDate] = useState(new Date());
+   const [endDate, setEndDate] = useState(null);
 	const onChange = (dates) => {
       const [start, end] = dates;
 		setStartDate(start);
@@ -36,6 +39,7 @@ const EventPage = () => {
 		setEndDate(null);
 	};
    const livePath = watch("eventName") ?  watch("eventName")?.replace(/\s+/g, '-') : "";
+   const liveDuration = watch("duration");
 	const onSubmit = async (data) => {
       if (method) {
          const { eventName, description, duration,eventLink,methodInfo } = data;
@@ -44,8 +48,8 @@ const EventPage = () => {
 			const random = Math.round(Math.random() * 1000000);
          const EventLink = eventLink?.replace(/\s+/g, '-') || livePath
 			const path = EventLink.toLowerCase() + "-" + random;
-			const scheduleLink = `https://meet-planr.vercel.app/user/${path}`;
-         const schedule = {eventName,description,duration,method,scheduleLink,hostEmail,hostName,timeRange,path,username: user?.username,methodInfo}
+			const scheduleLink = `https://meet-planr.vercel.app/user/${user?.username}/${path}`;
+         const schedule = {eventName,description,duration,method,scheduleLink,hostEmail,hostName,timeRange,path,username: user?.username,methodInfo,scheduleDate,eventType: eventType == "hostControlGroup" ? "Group" : "Single"}
          console.log(schedule);
 			try {
 				const response = await axios.post(`/api/scheduling`,{...schedule} );
@@ -67,9 +71,9 @@ const EventPage = () => {
 			alert('Please select a method!');
 		}
 	};
-   if(!user){
-      return <LoadingSpinner></LoadingSpinner>
-   }
+   // if(!user){
+   //    return <LoadingSpinner></LoadingSpinner>
+   // }
 	return (
       <div>
       <Container>
@@ -82,10 +86,11 @@ const EventPage = () => {
                   <FaAngleLeft className="inline mr-1" /> Back
                </button>
             </div>
+
             {/*================= Event Form ====================== =*/}
             <div className="md:w-4/5 mx-auto border-2 border-[#d7e3f0] rounded-xl shadow-md">
                <h2 className="w-full py-5 text-3xl text-[#0B3558] font-medium text-center border-b">
-                  Add One-on-One Event Type
+                  Add {eventType == "oneOnOne" ? "One-on-One" : eventType == "hostControlSingle" ? "Host control" : ""} Event Type {eventType == "hostControlSingle" && "(one-on-one)"}
                </h2>
 
                <form className="" onSubmit={handleSubmit(onSubmit)}>
@@ -138,65 +143,85 @@ const EventPage = () => {
                         <option value="60">60</option>
                      </select>
 
-                     <label className="mt-8 mb-3 text-[#3e5063]">
-                        Date Range:*
-                     </label>
+                     {
+                        eventType ==="oneOnOne" 
+                        ? <><label className="mt-8 mb-3 text-[#3e5063]">
+                           Date Range:*
+                        </label>
 
-                     <div
-                        className={`rounded-md p-3 w-full relative 
-                        ${
-                           action
-                              ? "border-2 border-[#00a4f8]"
-                              : "border border-[#9ab2cc]"
-                        }`}
-                     >
-                        { dateRange === "Select Range" ? (
-                           <div className="relative flex gap-3">
-                              <DatePicker
-                                 selected={startDate}
-                                 onChange={onChange}
-                                 startDate={startDate}
-                                 endDate={endDate}
-                                 selectsRange
-                                 withPortal
-                              />
-                              <span
-                                 onClick={clearDateRange}
-                                 className="right-1 top-1 absolute text-lg cursor-pointer"
+                        <div
+                           className={`rounded-md p-3 w-full relative 
+                           ${
+                              action
+                                 ? "border-2 border-[#00a4f8]"
+                                 : "border border-[#9ab2cc]"
+                           }`}
+                        >
+                           { dateRange === "Select Range" ? (
+                              <div className="relative flex gap-3">
+                                 <DatePicker
+                                    selected={startDate}
+                                    onChange={onChange}
+                                    startDate={startDate}
+                                    endDate={endDate}
+                                    selectsRange
+                                    withPortal
+                                 />
+                                 <span
+                                    onClick={clearDateRange}
+                                    className="right-1 top-1 absolute text-lg cursor-pointer"
+                                 >
+                                    <FaTimes />
+                                 </span>
+                              </div>
+                           ) : (
+                              <div
+                                 onClick={() => setAction(!action)}
+                                 className="cursor-pointer"
                               >
-                                 <FaTimes />
-                              </span>
-                           </div>
-                        ) : (
-                           <div
-                              onClick={() => setAction(!action)}
-                              className="cursor-pointer"
-                           >
-                              <div className="flex items-center justify-between">
-                                 <p className="text-lg font-medium">
-                                    Indefinitely into the future
-                                 </p>
-                                 {action ? (
-                                    <FaAngleUp className="text-xl" />
-                                 ) : (
-                                    <FaAngleDown className="text-xl" />
+                                 <div className="flex items-center justify-between">
+                                    <p className="text-lg font-medium">
+                                       Indefinitely into the future
+                                    </p>
+                                    {action ? (
+                                       <FaAngleUp className="text-xl" />
+                                    ) : (
+                                       <FaAngleDown className="text-xl" />
+                                    )}
+                                 </div>
+                                 {action && (
+                                    <div className="">
+                                       <div
+                                          onClick={() => setDateRange("Select Range")}
+                                          className="flex gap-3 border-t-2 border-[#00a4f8] pt-2 mt-2"
+                                       >
+                                          <p className="text-lg font-medium">
+                                             Select a date range
+                                          </p>
+                                       </div>
+                                    </div>
                                  )}
                               </div>
-                              {action && (
-                                 <div className="">
-                                    <div
-                                       onClick={() => setDateRange("Select Range")}
-                                       className="flex gap-3 border-t-2 border-[#00a4f8] pt-2 mt-2"
-                                    >
-                                       <p className="text-lg font-medium">
-                                          Select a date range
-                                       </p>
-                                    </div>
-                                 </div>
-                              )}
-                           </div>
-                        )}
-                     </div>
+                           )}
+                        </div></>
+                        : <>
+                        <label className="mt-8 mb-3 text-[#3e5063]">
+                           Select Date/Time:*
+                        </label>
+                        <div className="input_field">
+                           <DatePicker
+                              selected={scheduleDate}
+                              showTimeSelect
+                              dateFormat="MMMM d, yyyy h:mm aa"
+                              onChange={(date) => setScheduleDate(date)}
+                              minDate={new Date()}
+                              placeholderText="Select a date and time"
+                              timeIntervals={liveDuration}
+                              withPortal
+                              required
+                           />
+                        </div></>
+                     }
 
                      <label
                         className="mt-8 mb-1 text-[#3e5063]"

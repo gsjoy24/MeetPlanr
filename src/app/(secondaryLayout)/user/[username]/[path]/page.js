@@ -21,11 +21,11 @@ const EventSchedule = ({ params }) => {
 	const [loading, setLoading] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [confirm, setConfirm] = useState(false);
-	const { timeRange, path, hostName, method, eventName, hostEmail, duration,scheduleLink,methodInfo } = scheduleInfo || {};
-	console.log(scheduleInfo);
+	const { timeRange, path, hostName, method, eventName, hostEmail, duration,scheduleLink,methodInfo,scheduleDate:selectedDate,eventType } = scheduleInfo || {};
 	const detailsLink = `${scheduleLink}/details`
 	const { startDate, endDate } = timeRange || {};
 	const [scheduleDate, setScheduleDate] = useState(null);
+	const  preSelectedDate = selectedDate ? new Date(selectedDate) : null
 	const minDate = new Date(startDate);
 	const maxDate = endDate ? new Date(endDate) : null;
 	useEffect(() => {
@@ -43,7 +43,8 @@ const EventSchedule = ({ params }) => {
 	}, [params]);
 	const onSubmit = async (data) => {
 		const { inviteeEmail, inviteeName } = data;
-		const res = await axios.put(`/api/scheduling/${path}`, { inviteeEmail, inviteeName, scheduleDate });
+		const scheduleDate = preSelectedDate;
+		const res = await axios.put(`/api/scheduling/${path}`, { inviteeEmail, inviteeName, scheduleDate: preSelectedDate? preSelectedDate : scheduleDate, confirm: eventType == "Group" ? false : true });
 		if (res?.data?.modifiedCount > 0) {
 			Swal.fire({
 				icon: 'success',
@@ -100,7 +101,7 @@ const EventSchedule = ({ params }) => {
 	}
 	return (
 		<Container>
-			<div className="pt-28 my-10">
+			<div className="pt-10 my-10">
 				<div className="flex items-center justify-center gap-5">
 					<div className="w-[40%] border rounded-md p-5">
 						<h3 className="text-lg font-bold">Invitee:</h3>
@@ -133,22 +134,22 @@ const EventSchedule = ({ params }) => {
 								<p>no location added</p>
 							)}
 						</div>
-						<p className="mt-2 font-bold text-red-500">If not select any time it automatic select 12:00 AM.</p>
+						{!preSelectedDate && <p className="mt-2 font-bold text-red-500">If not select any time it automatic select 12:00 AM.</p>}
 					</div>
 					<div className="">
 						<DatePicker
-							selected={scheduleDate}
+							selected={preSelectedDate? preSelectedDate : scheduleDate}
 							showTimeSelect
 							onChange={(date) => setScheduleDate(date)}
-							minDate={minDate}
-							maxDate={maxDate}
+							minDate={preSelectedDate ? preSelectedDate : minDate}
+							maxDate={preSelectedDate ? preSelectedDate : maxDate}
 							timeIntervals={duration}
 							inline
 							fixedHeight
 						/>
 					</div>
 				</div>
-				{scheduleDate && (
+				{(scheduleDate || preSelectedDate) && (
 					<div onClick={() => setShowModal(true)} className="w-fit mx-auto mt-5">
 						<Button>Confirm</Button>
 					</div>

@@ -48,15 +48,6 @@ const EventsTabs = () => {
     };
 	return (
 		<div>
-			{/* <div className="flex justify-between my-8">
-				<h2 className="text-3xl">My MeetPlanr</h2>
-				<button className="bg-[#465AF7] hover:bg-sky-950 text-white px-4 py-3 rounded-full flex items-center space-x-1 font-semibold">
-					<span>
-						<IoIosAdd className="text-xl" />
-					</span>
-					<span>Create</span>
-				</button>
-			</div> */}
 			<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
 				<div className="shadow-md">
 					<Container>
@@ -66,7 +57,6 @@ const EventsTabs = () => {
 						</TabList>
 					</Container>
 				</div>
-
 				<Container>
 				<TabPanel>
 					<div className="my-8 md:flex lg:flex justify-between items-center">
@@ -98,11 +88,11 @@ const EventsTabs = () => {
                                  </div>
                                  <FaAngleRight className="text-xl"/>
                               </Link>
-                              <Link href={"/event/group"} className="border-2 border-t-0 hover:border-t-2 et_link rounded-b-xl">
+                              <Link href={"/event/hostControlSingle"} className="border-2 border-t-0 hover:border-t-2 et_link rounded-b-xl">
                                  <div className="gap-4 flex items-center">
-                                    <Image src={group} alt="icon" className="w-20 object-cover"/>
+                                    <Image src={one_one_one} alt="icon" className="w-20 object-cover"/>
                                     <div className="flex flex-col">
-                                       <span>Group</span>
+                                       <span>Host control (one-on-one)</span>
                                        <span><b>One host</b> with <b>group invitee</b></span>
                                     </div>
                                  </div>
