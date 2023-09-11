@@ -17,7 +17,7 @@ const Navbar = () => {
 		if (checkbox.checked) {
 			checkbox.checked = false;
 		}
-	}
+	};
 	// user data form the sever!
 	const userData = UseGetCurrentUser();
 	const { user, logOutUser } = UserAuth();
@@ -77,19 +77,19 @@ const Navbar = () => {
 												<IoIosArrowForward className="group-hover:rotate-90 duration-200" />
 											</label>
 											<ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-												<li className="hover:text-[#465AF7] duration-100">
+												<li>
 													<Link href="/solutions/marketing">Marketings</Link>
 												</li>
-												<li className="hover:text-[#465AF7] duration-100">
+												<li>
 													<Link href="/solutions/technology">Technology</Link>
 												</li>
-												<li className="hover:text-[#465AF7] duration-100">
+												<li>
 													<Link href="/solutions/customer-success">Customer Success</Link>
 												</li>
-												<li className="hover:text-[#465AF7] duration-100">
+												<li>
 													<Link href="/solutions/professional-services">Professional Services</Link>
 												</li>
-												<li className="hover:text-[#465AF7] duration-100">
+												<li>
 													<Link href="/solutions/businesses">Small & Medium Businesses</Link>
 												</li>
 											</ul>
@@ -212,21 +212,21 @@ const Navbar = () => {
 							<li className="flex items-center justify-center gap-4">
 								<BlockLink closeSideNAv={closeSideNAv} route={'solutions'} />
 								<details className="dropdown">
-									<summary className=" hover:text-[#465AF7] duration-150"></summary>
+									<summary className="hover:text-[#465AF7] duration-150"></summary>
 									<ul className="dropdown-content -left-16 border z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-										<li className="hover:text-[#465AF7] duration-100">
+										<li>
 											<Link href="/solutions/marketing">Marketing</Link>
 										</li>
-										<li className="hover:text-[#465AF7] duration-100">
+										<li>
 											<Link href="/solutions/technology">Technology</Link>
 										</li>
-										<li className="hover:text-[#465AF7] duration-100">
+										<li>
 											<Link href="/solutions/customer-success">Customer Success</Link>
 										</li>
-										<li className="hover:text-[#465AF7] duration-100">
+										<li>
 											<Link href="/solutions/professional-services">Professional Services</Link>
 										</li>
-										<li className="hover:text-[#465AF7] duration-100">
+										<li>
 											<Link href="/solutions/businesses">Small & Medium Businesses</Link>
 										</li>
 									</ul>
