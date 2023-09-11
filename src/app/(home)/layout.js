@@ -11,7 +11,7 @@ import Footer from '@/shareComponents/Footer';
 export default function RootLayout({ children }) {
 	return (
 		<div>
-			<Navbar></Navbar>
+			<Navbar />
 			<div>
 				<main className="min-h-[calc(100vh-200px)]">{children}</main>
 			</div>
