@@ -6,6 +6,8 @@ import { MdEditDocument } from 'react-icons/md';
 import { BiArrowFromRight } from 'react-icons/bi';
 import { HiUserGroup, HiHome } from 'react-icons/hi';
 import { usePathname } from 'next/navigation';
+import Container from '@/components/container';
+
 const AdminNavbar = ({ children }) => {
 	const path = usePathname();
 
@@ -20,7 +22,9 @@ const AdminNavbar = ({ children }) => {
 						<FaBarsStaggered />
 					</label>
 				</div>
-				<div className="lg:p-10 p-4">{children}</div>
+				<div className="lg:p-10 p-4">
+					<Container>{children}</Container>
+				</div>
 			</div>
 			<div className="drawer-side">
 				<label htmlFor="my-drawer-2" className="drawer-overlay"></label>

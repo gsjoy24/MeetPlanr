@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 import Button from '@/common/Button';
 import Container from '@/components/container';
@@ -43,8 +44,7 @@ const EventSchedule = ({ params }) => {
 	}, [params]);
 	const onSubmit = async (data) => {
 		const { inviteeEmail, inviteeName } = data;
-		const scheduleDate = preSelectedDate;
-		const res = await axios.put(`/api/scheduling/${path}`, { inviteeEmail, inviteeName, scheduleDate: preSelectedDate? preSelectedDate : scheduleDate, confirm: eventType == "Group" ? false : true });
+		const res = await axios.put(`/api/scheduling/${path}`, { inviteeEmail, inviteeName, scheduleDate: preSelectedDate ? preSelectedDate : scheduleDate, confirm: eventType == "Group" ? false : true });
 		if (res?.data?.modifiedCount > 0) {
 			Swal.fire({
 				icon: 'success',
@@ -134,7 +134,9 @@ const EventSchedule = ({ params }) => {
 								<p>no location added</p>
 							)}
 						</div>
-						{!preSelectedDate && <p className="mt-2 font-bold text-red-500">If not select any time it automatic select 12:00 AM.</p>}
+						{preSelectedDate ? 
+						<p className="mt-2 font-bold text-red-500">You can't change the date/time. It's a host control Event.</p>
+						: <p className="mt-2 font-bold text-red-500">If not select any time it automatic select 12:00 AM.</p>}
 					</div>
 					<div className="">
 						<DatePicker

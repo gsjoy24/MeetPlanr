@@ -49,7 +49,7 @@ const EventPage = ({params}) => {
          const EventLink = eventLink?.replace(/\s+/g, '-') || livePath
 			const path = EventLink.toLowerCase() + "-" + random;
 			const scheduleLink = `https://meet-planr.vercel.app/user/${user?.username}/${path}`;
-         const schedule = {eventName,description,duration,method,scheduleLink,hostEmail,hostName,timeRange,path,username: user?.username,methodInfo,scheduleDate,eventType: eventType == "hostControlGroup" ? "Group" : "Single"}
+         const schedule = {eventName,description,duration,method,scheduleLink,hostEmail,hostName,timeRange,path,username: user?.username,methodInfo,scheduleDate,eventType: eventType == "hostControlGroup" ? "Group" : "Single", timeStamp: new Date()}
          console.log(schedule);
 			try {
 				const response = await axios.post(`/api/scheduling`,{...schedule} );
