@@ -14,7 +14,7 @@ const AccountPage = () => {
 	const currentUser = UseGetCurrentUser();
 	useEffect(()=>{
 		(async()=> {
-			const response = await axios(`/api/scheduling?username=${params?.user}`)
+			const response = await axios(`/api/scheduling?username=${params?.username}`)
 			setSchedules(response?.data)
 			if(response?.data){
 				setLoading(false)

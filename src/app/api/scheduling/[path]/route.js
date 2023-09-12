@@ -20,15 +20,9 @@ export const PUT = async (request, { params }) => {
 		const db = await DbConnect();
 		const { path } = params;
 		const body = await request.json();
-		const { inviteeName, inviteeEmail, scheduleDate } = body || {};
 		const filter = { path: path };
 		const updateDoc = {
-			$set: {
-				inviteeName,
-				inviteeEmail,
-				scheduleDate,
-				confirm: true
-			}
+			$set: {...body}
 		};
 		const option = { upsert: true };
 		const schedulingCollection = db.collection('scheduling');
