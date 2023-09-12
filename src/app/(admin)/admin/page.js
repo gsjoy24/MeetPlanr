@@ -1,10 +1,13 @@
+import State from '@/components/State';
+
 const AdminPage = () => {
 	return (
-		<h1>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus praesentium quas reiciendis exercitationem
-			quo iusto itaque maiores rem, debitis sapiente quos corporis voluptates beatae reprehenderit at temporibus,
-			tenetur sed ipsam!
-		</h1>
+		<div className="flex flex-wrap items-center justify-center gap-5 text-white">
+			<State num={'132'} title="Users" />
+			<State num={'42'} title="Blogs" />
+			<State num={'232'} title="Schedules" />
+			<State num={'121'} title="Feedbacks" />
+		</div>
 	);
 };
 
