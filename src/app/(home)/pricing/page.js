@@ -33,12 +33,12 @@ const Pricing = async() => {
 								<ul>
 								{
 									price?.lookup_key ?
-									price?.lookup_key?.split(',').map((sentence, index) => (
+									price?.lookup_key?.split(',').map((feature, index) => (
 										<li key={index} className="flex items-center">
 											<span className="mr-2 text-green-500">
 												<GiCheckMark />
 											</span>
-											<span>{sentence.trim()}</span>
+											<span>{feature.trim()}</span>
 										</li>
 									))
 									: <>
@@ -46,13 +46,13 @@ const Pricing = async() => {
 											<span className="mr-2 text-green-500">
 												<GiCheckMark />
 											</span>
-											<span>Connect one calendar</span>
+											<span>Create two Events</span>
 										</li>
 										<li className="flex items-center">
 											<span className="mr-2 text-green-500">
 												<GiCheckMark />
 											</span>
-											<span>Create one active event type</span>
+											<span>Send reminder email(both invitees and host).</span>
 										</li>
 										<li className="flex items-center">
 											<span className="mr-2 text-green-500">
@@ -77,7 +77,7 @@ const Pricing = async() => {
 								</ul>
 							</div>
 							<hr className="borderBottom"/>
-							<div className="px-5">
+							<div className="px-5 mt-auto">
 								<ButtonCheckout priceName={price.nickname} price={price.unit_amount / 100} priceId={price.id} />
 							</div>
 						</div>

@@ -7,9 +7,7 @@ export const POST = async (request) => {
 			const body = await request.json();
 			const db = await DbConnect();
 			const schedulingCollection = db.collection('scheduling');
-			const { eventName, description, duration, method, scheduleLink, hostName, hostEmail, timeRange, path,username } = body;
-			const docs = { eventName, description, duration, method, scheduleLink, hostName, hostEmail, timeRange, path,username };
-			const result = await schedulingCollection.insertOne(docs);
+			const result = await schedulingCollection.insertOne({...body});
 
 			return NextResponse.json(result);
 		} catch (error) {
@@ -26,10 +24,10 @@ export const GET = async (request) => {
 		const db = await DbConnect();
 		const schedulingCollection = db.collection('scheduling');
 		if (userName) {
-			const result = await schedulingCollection.find({ username: userName }).toArray();
+			const result = await schedulingCollection.find({ username: userName }).sort({timeStamp: -1}).toArray();
 			return NextResponse.json(result);
 		}
-		const result = await schedulingCollection.find().toArray();
+		const result = await schedulingCollection.find().sort({timeStamp: -1}).toArray();
 		return NextResponse.json(result);
 	} catch (error) {
 		console.error('error for getting data', error);
