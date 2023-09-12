@@ -1,11 +1,9 @@
 import axios from 'axios';
 import { UserAuth } from '@/providers/AuthProvider';
-const addUserToServer = async () => {
+const getCurrentUserInfo = async () => {
 	const { user } = UserAuth();
 	try {
 		const response = await axios.get(`/api/users?email=${user.email}`);
-		console.log(`/api/users?email=${user.email}`);
-
 		if (response.status === 200) {
 			const userData = response.data;
 			return userData;
@@ -18,4 +16,4 @@ const addUserToServer = async () => {
 		return null;
 	}
 };
-export default addUserToServer;
+export default getCurrentUserInfo;

@@ -12,7 +12,7 @@ const AdminNavbar = ({ children }) => {
 	const path = usePathname();
 
 	return (
-		<div className="drawer lg:drawer-open">
+		<div className="drawer lg:drawer-open bg-gray-100">
 			<input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 			<div className="drawer-content">
 				{/* Page content here */}
@@ -26,18 +26,17 @@ const AdminNavbar = ({ children }) => {
 			</div>
 			<div className="drawer-side">
 				<label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-				<ul className="menu w-80 text-base-content bg-base-200 min-h-full p-4 space-y-3">
-					<div className="text-4xl p-4 text-[#465AF7] font-bold border-b border-gray-400">MeetPlanr</div>
+				<ul className="menu w-80 text-base-content min-h-full p-4 space-y-3 bg-white">
+					<div className="text-4xl p-4 text-[#465AF7] font-bold border-b border-gray-300">MeetPlanr</div>
 
-					
 					<li>
-						<Link className={`flex items-center ${path == '/admin' && 'bg-[#465AF7] text-white'}`} href="/admin">
+						<Link className={`flex items-center py-3 ${path == '/admin' && 'bg-[#465AF7] text-white'}`} href="/admin">
 							<BiSolidBarChartSquare size={20} /> <span>Dashboard</span>
 						</Link>
 					</li>
 					<li>
 						<Link
-							className={`flex items-center ${path == '/admin/add-new-blog' && 'bg-[#465AF7] text-white'}`}
+							className={`flex items-center py-3 ${path == '/admin/add-new-blog' && 'bg-[#465AF7] text-white'}`}
 							href="/admin/add-new-blog"
 						>
 							<MdEditDocument size={20} /> <span>Add New Blog</span>
@@ -45,7 +44,7 @@ const AdminNavbar = ({ children }) => {
 					</li>
 					<li>
 						<Link
-							className={`flex items-center ${path == '/admin/all-schedule' && 'bg-[#465AF7] text-white'}`}
+							className={`flex items-center py-3 ${path == '/admin/all-schedule' && 'bg-[#465AF7] text-white'}`}
 							href="/admin/all-schedule"
 						>
 							<FaCalendarTimes size={20} /> <span>All Schedule</span>
@@ -53,14 +52,14 @@ const AdminNavbar = ({ children }) => {
 					</li>
 					<li>
 						<Link
-							className={`flex items-center ${path == '/admin/all-users' && 'bg-[#465AF7] text-white'}`}
+							className={`flex items-center py-3 ${path == '/admin/all-users' && 'bg-[#465AF7] text-white'}`}
 							href="/admin/all-users"
 						>
 							<HiUserGroup size={20} /> <span>All users</span>
 						</Link>
 					</li>
 					<li className="bottom-4 absolute w-full">
-						<Link className="flex items-center" href="/">
+						<Link className="active:bg-red-300 flex items-center" href="/">
 							<BiArrowFromRight size={20} /> <span>Back to Home</span>
 						</Link>
 					</li>
