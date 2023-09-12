@@ -4,7 +4,6 @@ import Button from '@/common/Button';
 import SectionTitle from '@/components/SectionTitle';
 import Container from '@/components/container';
 import { useEffect, useState } from 'react';
-import { FaCalendarAlt, FaCalendarCheck, FaDatabase, FaLink, FaMoneyCheckAlt, FaRegEnvelope } from 'react-icons/fa';
 import FeatureCard from '@/components/FeatureCard';
 
 const Featured = () => {
@@ -16,7 +15,6 @@ const Featured = () => {
 			setFeatures(features);
 		})();
 	}, []);
-	// console.log(features)
 
 	return (
 		<section className="" style={{ marginTop: '64px', marginBottom: '64px' }}>
