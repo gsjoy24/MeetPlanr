@@ -9,7 +9,7 @@ sgMail.setApiKey(api_key)
 export const POST = async(request)=>  {
     if (request.method === "POST") {
       const body =await request.json();
-      const {inviteeName,inviteeEmail,eventName,hostEmail,scheduleDate,method} = body || {};
+      const {inviteeName,inviteeEmail,eventName,hostEmail,scheduleDate,method,detailsLink,methodInfo} = body || {};
       const msg = {
         to: `${inviteeEmail}`, // Change to your recipient
         from: 'meetplanr@gmail.com', // Change to your verified sender
@@ -25,9 +25,9 @@ export const POST = async(request)=>  {
         <h4 style="margin-bottom: 5px;">Event Date/Time:</h4>
         <p style=" margin: 0;">${new Date(scheduleDate)}</p>
         <h4 style="margin-bottom: 5px;">Event Location:</h4>
-        <p>${method}</p>
-        <a href="#" style="margin-top: 30px; display: inline-block;">More Information in <b>MeetPlanr</b></a>
-    </div>`,
+        <p>${method}: ${methodInfo}</p>
+        <a href="${detailsLink}" style="margin-top: 30px; display: inline-block;">More Information in <b>MeetPlanr</b></a>
+        </div>`,
       }
       try {
         sgMail.send(msg)

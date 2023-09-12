@@ -11,7 +11,7 @@ const EventCard = ({schedule}) => {
         });
     };
     return (
-        <div className='border-2 shadow-md p-5 rounded-ss-2xl rounded-br-2xl grid'>
+        <div className='border-2 shadow-md p-5 max-w-[400px] w-full mx-auto rounded-ss-2xl rounded-br-2xl grid'>
             <h2 className='text-lg font-medium'>{eventName}</h2>
             <p className='my-1'>{duration}mins, One-on-One</p>
             <Link target='_blank' className='my-5 text-blue-500 hover:underline' href={detailsLink}>View more details</Link>

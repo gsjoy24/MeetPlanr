@@ -18,7 +18,7 @@ const Pricing = async() => {
 				<div className="grid lg:mt-[50px] gap-5 lg:grid-cols-3 md:grid-cols-2 mt-10">
 				{
 					prices?.map(price=>(
-						<div key={price.id} className={`rounded-3xl card group w-full hover:bg-[#0B3558] text-[#0B3558] hover:text-white border transition-all shadow-md pb-10 duration-700 mx-auto ${price.nickname === "STANDARD" && "bg-[#0B3558] text-white"}`}>
+						<div key={price.id} className={`rounded-3xl max-w-[350px] card group w-full hover:bg-[#0B3558] text-[#0B3558] hover:text-white border transition-all shadow-md pb-10 duration-700 mx-auto ${price.nickname === "STANDARD" && "bg-[#0B3558] text-white"}`}>
 							<div className="px-5">
 								<p className="text-[22px] uppercase mt-[30px] font-bold">{ price.nickname}</p>
 								<div className="flex items-center lg:text-[42px] uppercase my-2 font-bold">
@@ -33,12 +33,12 @@ const Pricing = async() => {
 								<ul>
 								{
 									price?.lookup_key ?
-									price?.lookup_key?.split(',').map((sentence, index) => (
+									price?.lookup_key?.split(',').map((feature, index) => (
 										<li key={index} className="flex items-center">
 											<span className="mr-2 text-green-500">
 												<GiCheckMark />
 											</span>
-											<span>{sentence.trim()}</span>
+											<span>{feature.trim()}</span>
 										</li>
 									))
 									: <>
@@ -46,13 +46,13 @@ const Pricing = async() => {
 											<span className="mr-2 text-green-500">
 												<GiCheckMark />
 											</span>
-											<span>Connect one calendar</span>
+											<span>Create two Events</span>
 										</li>
 										<li className="flex items-center">
 											<span className="mr-2 text-green-500">
 												<GiCheckMark />
 											</span>
-											<span>Create one active event type</span>
+											<span>Send reminder email(both invitees and host).</span>
 										</li>
 										<li className="flex items-center">
 											<span className="mr-2 text-green-500">
@@ -77,7 +77,7 @@ const Pricing = async() => {
 								</ul>
 							</div>
 							<hr className="borderBottom"/>
-							<div className="px-5">
+							<div className="px-5 mt-auto">
 								<ButtonCheckout priceName={price.nickname} price={price.unit_amount / 100} priceId={price.id} />
 							</div>
 						</div>
