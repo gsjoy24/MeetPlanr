@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
-import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 import InputOption from '@/components/InputOption';
 
 const EventPage = ({params}) => {
@@ -49,7 +48,22 @@ const EventPage = ({params}) => {
          const EventLink = eventLink?.replace(/\s+/g, '-') || livePath
 			const path = EventLink.toLowerCase() + "-" + random;
 			const scheduleLink = `https://meet-planr.vercel.app/user/${user?.username}/${path}`;
-         const schedule = {eventName,description,duration,method,scheduleLink,hostEmail,hostName,timeRange,path,username: user?.username,methodInfo,scheduleDate,eventType: eventType == "hostControlGroup" ? "Group" : "Single", timeStamp: new Date()}
+         const schedule = {
+            eventName,
+            description,
+            duration,
+            method,
+            scheduleLink,
+            hostEmail,
+            hostName,
+            timeRange,
+            path,
+            username: user?.username,
+            methodInfo,
+            scheduleDate,
+            eventType: eventType == "hostControlGroup" ? "Group" : "Single", timeStamp: new Date(),
+            inviteeInfo: []
+         }
          console.log(schedule);
 			try {
 				const response = await axios.post(`/api/scheduling`,{...schedule} );

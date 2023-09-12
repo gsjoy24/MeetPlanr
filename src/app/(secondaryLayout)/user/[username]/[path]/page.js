@@ -22,7 +22,7 @@ const EventSchedule = ({ params }) => {
 	const [loading, setLoading] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [confirm, setConfirm] = useState(false);
-	const { timeRange, path, hostName, method, eventName, hostEmail, duration,scheduleLink,methodInfo,scheduleDate:selectedDate,eventType } = scheduleInfo || {};
+	const { timeRange, path, hostName, method, eventName, hostEmail, duration,scheduleLink,methodInfo,scheduleDate:selectedDate,eventType,inviteeInfo} = scheduleInfo || {};
 	const detailsLink = `${scheduleLink}/details`
 	const { startDate, endDate } = timeRange || {};
 	const [scheduleDate, setScheduleDate] = useState(null);
@@ -43,8 +43,12 @@ const EventSchedule = ({ params }) => {
 		})();
 	}, [params]);
 	const onSubmit = async (data) => {
-		const { inviteeEmail, inviteeName } = data;
-		const res = await axios.put(`/api/scheduling/${path}`, { inviteeEmail, inviteeName, scheduleDate: preSelectedDate ? preSelectedDate : scheduleDate, confirm: eventType == "Group" ? false : true });
+		inviteeInfo.push(data);
+		console.log(inviteeInfo);	
+		const res = await axios.put(`/api/scheduling/${path}`, {
+		inviteeInfo,
+		scheduleDate: preSelectedDate ? preSelectedDate : scheduleDate, confirm: eventType == "Group" ? false : true 
+	});
 		if (res?.data?.modifiedCount > 0) {
 			Swal.fire({
 				icon: 'success',
@@ -55,8 +59,8 @@ const EventSchedule = ({ params }) => {
 			reset();
 			setConfirm(true);
 			const inviteeEmailSend = await axios.post(`/api/sendmailinvitee`, {
-				inviteeName,
-				inviteeEmail,
+				inviteeName: data?.inviteeName,
+				inviteeEmail: data?.inviteeEmail,
 				eventName,
 				hostEmail,
 				scheduleDate,
@@ -64,9 +68,9 @@ const EventSchedule = ({ params }) => {
 				detailsLink,
 				methodInfo
 			});
-			const hostEmailSend = axios.post(`/api/sendmailhost`, {
-				inviteeName,
-				inviteeEmail,
+			const hostEmailSend = await	 axios.post(`/api/sendmailhost`, {
+				inviteeName: data?.inviteeName,
+				inviteeEmail: data?.inviteeEmail,
 				eventName,
 				hostEmail,
 				scheduleDate,
@@ -102,8 +106,8 @@ const EventSchedule = ({ params }) => {
 	return (
 		<Container>
 			<div className="pt-10 my-10">
-				<div className="flex items-center justify-center gap-5">
-					<div className="w-[40%] border rounded-md p-5">
+				<div className="flex flex-wrap items-center justify-center gap-5">
+					<div className="w-full sm:w-[515px] lg:w-[40%] border rounded-md p-5">
 						<h3 className="text-lg font-bold">Invitee:</h3>
 						<p className="mt-1 text-xl font-medium">{hostName}</p>
 						<h3 className="mt-4 text-lg font-bold">Meeting Name:</h3>

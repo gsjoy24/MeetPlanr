@@ -11,27 +11,36 @@ import meetlogo from '@/assets/event-form/meet.png';
 import locationLogo from '@/assets/event-form/location.png';
 import phoneLogo from '@/assets/event-form/phone.png';
 const EventDetails = ({path}) => {
-    const [details,setDetails] = useState({});
+    const [details,setDetails] = useState(null);
     const [loading,setLoading] = useState(true)
     useEffect(()=> {
         (async() => {
             const eventDetails = await axios(`/api/scheduling/${path}`)
-            if(eventDetails.data){
+            if(eventDetails?.data){
                 setDetails(eventDetails.data)
+                setLoading(false)
+            }else{
                 setLoading(false)
             }
         })()
     },[path])
     console.log(details);
-    const {confirm,description,duration,eventName,hostEmail,hostName,inviteeEmail,inviteeName,method,scheduleDate,methodInfo} = details || {};
+    const {description,duration,eventName,hostEmail,hostName,method,scheduleDate,methodInfo,inviteeInfo} = details || {};
 
     if(loading){
         return <LoadingSpinner/>
     }
+    if (!details) {
+		return (
+			<Container>
+				<p className="py-40 mt-20 text-5xl text-center">No Schedule available in this link</p>
+			</Container>
+		);
+	}
     return (
         <Container>
-            <div className="w-2/3 p-5 my-20 border-2 shadow-xl mx-auto rounded-3xl rounded-tl-none rounded-br-none">
-                <div className="grid grid-cols-2">
+            <div className="w-full md:w-4/5 lg:w-2/3 p-5 my-20 border-2 shadow-xl mx-auto rounded-3xl rounded-tl-none rounded-br-none">
+                <div className="grid sm:grid-cols-2">
                     <div className="">
                         <h2 className='text-md font-semibold'>Event Name:</h2>
                         <p className='text-2xl font-medium'>{eventName}</p>
@@ -78,28 +87,32 @@ const EventDetails = ({path}) => {
 							)}
                     </div>
                 </div>
-                <div className='grid grid-cols-2 mt-5'>
-                    <div className="border-2 p-3">
+                <div className='grid md:grid-cols-2 mt-5'>
+                    <div className="border-2 w-full p-3">
                         <h2 className='text-xl text-center font-semibold'>Host</h2>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex gap-2">
                             <h3 className='font-bold'>Name:</h3>
                             <p>{hostName}</p>
                         </div>
-                        <div className="flex flex-wrap gap-2 mt-3">
+                        <div className="flex gap-2 mt-3">
                             <h3 className='font-bold'>Email:</h3>
-                            <a className='text-blue-500 hover:underline' href={`mailto:${hostEmail}`}>{hostEmail}</a>
+                            <a className='text-blue-500 hover:underline sm:w-[250px] w-[200px] whitespace-nowrap overflow-hidden text-ellipsis' href={`mailto:${hostEmail}`}>{hostEmail}</a>
                         </div>
                     </div>
-                    <div className="px-5 border-l-0 border-2 p-3">
+                    <div className="w-full border-t-0 sm:border-t-2 sm:border-l-0 border-2 p-3">
                         <h2 className='text-xl text-center font-semibold'>Invitee</h2>
-                        <div className="flex flex-wrap gap-2 mt-3">
-                            <h3 className='font-bold'>Name:</h3>
-                            <p>{inviteeName ? inviteeName : "Event not confirm"}</p>
-                        </div>
-                        <div className="flex flex-wrap gap-2 mt-3">
-                            <h3 className='font-bold'>Email:</h3>
-                            <p>{inviteeEmail ? <a className='text-blue-500 hover:underline' href={`mailto:${inviteeEmail}`}>{inviteeEmail}</a> : "Event not confirm"}</p>
-                        </div>
+                        {
+                            inviteeInfo?.map(({inviteeName,inviteeEmail},idx) =>  <div key={idx} className="">
+                            <div className="flex gap-2 mt-3">
+                                <h3 className='font-bold'>Name:</h3>
+                                <p>{inviteeName ? inviteeName : "Event not confirm"}</p>
+                            </div>
+                            <div className="flex gap-2 mt-1">
+                                <h3 className='font-bold'>Email:</h3>
+                                <p className='sm:w-[250px] w-[200px] whitespace-nowrap overflow-hidden text-ellipsis'>{inviteeEmail ? <a className='text-blue-500 hover:underline' href={`mailto:${inviteeEmail}`}>{inviteeEmail}</a> : "Event not confirm"}</p>
+                            </div>
+                        </div>)
+                        }
                     </div>
                 </div>
             </div>
