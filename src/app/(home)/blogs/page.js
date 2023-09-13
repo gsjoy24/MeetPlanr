@@ -1,61 +1,82 @@
-"use client"
+'use client';
 import Image from 'next/image';
 import customer from '../../../assets/Untitled-design-6.jpg';
 import mobile from '../../../assets/phone.webp';
 import ios from '../../../assets/icon-apple.png';
 import android from '../../../assets/icon-android.png';
 import people from '../../../assets//setmore-people-community.webp';
-
 import Link from 'next/link';
 import Container from '@/components/container';
 import Button from '@/common/Button';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import BlogCard from '@/components/BlogCard';
+import UseBlogs from '@/hooks/UseBlogs';
+import Loading from '@/app/loading';
 
 const Page = () => {
-	const [blogs,setBlogs] = useState([])
-	useEffect(() => {
-		( async() => {
-			const data =await axios('/api/blog');
-			setBlogs(data.data);
+	const allBlogs = UseBlogs();
+	let firstBlog = {};
+	let restBlogs = [];
+	let BlogContent;
+
+	// Function to truncate the content to a maximum of 20 words
+	const truncateContent = (text) => {
+		const words = text.split(' ');
+		if (words.length > 17) {
+			return words.slice(0, 17).join(' ') + '...';
+		} else {
+			return text;
 		}
-		)()
-	})
+	};
+
+	if (Array.isArray(allBlogs)) {
+		[firstBlog, ...restBlogs] = allBlogs;
+		BlogContent = truncateContent(firstBlog?.content);
+	}
+
 	return (
 		<section>
 			<Container>
-				<div className="lg:flex lg:p-8 items-center justify-center p-4 space-y-3">
-					<div className="md:pr-8 flex flex-col items-center">
-					<Image className="w-full" src={customer} alt="customer" width={500} height={500} />
+				{allBlogs && Array.isArray(allBlogs) ? (
+					<>
+						<div className="lg:flex lg:p-8 items-center justify-center p-4 space-y-3">
+							<div className="md:pr-8 flex flex-col items-center">
+								<Image
+									className="w-full"
+									src={firstBlog.image ? firstBlog.image : 'https://i.ibb.co/Ytbhzg4/blank.jpg'}
+									alt="customer"
+									width={500}
+									height={500}
+								/>
+							</div>
+							<div className="lg:pl-8 flex flex-col">
+								<p className="mb-4 text-sm font-thin">{firstBlog?.title && firstBlog?.title}</p>
+								<h1 className="mb-4 text-2xl font-bold">{firstBlog?.title ? firstBlog?.title : 'loading'}</h1>
+								<p>{BlogContent ? BlogContent : 'loading'}</p>
+								<span>
+									<Link className="hover:underline mt-2 text-blue-500" href={`/blogs/${firstBlog?._id}`}>
+										Read article
+									</Link>
+								</span>
+							</div>
+						</div>
+						{/* card section  */}
+						<div className="md:grid-cols-2 lg:grid-cols-3 mt-14 grid grid-cols-1 gap-12">
+							{restBlogs ? (
+								restBlogs.map((blog) => (
+									<BlogCard blog={blog} key={blog?._id} truncateContent={truncateContent}></BlogCard>
+								))
+							) : (
+								<Loading />
+							)}
+						</div>
 
-					</div>
-					<div className="lg:pl-8 flex flex-col">
-						<p className="mb-4 text-sm font-thin">FEATURES — 5 MIN READ</p>
-						<h1 className="mb-4 text-2xl font-bold">
-							The perfect fit: Choosing the <br></br> best scheduling app for your <br></br> small business.
-						</h1>
-						<p>
-							Streamlining your scheduling process is crucial in helping small <br></br> businesses find time to serve
-							more customers. Managing appointments <br></br> efficiently, enhancing…
-						</p>
-						<Link className="hover:underline mt-2 text-blue-500" href="/your-target-page">
-							Read article
-						</Link>
-					</div>
-				</div>
-
-				{/* card section  */}
-
-				<div className="md:grid-cols-2 lg:grid-cols-3 mt-14 grid grid-cols-1 gap-12">
-					{
-						blogs.map(blog => <BlogCard blog={blog} key={blog?._id}></BlogCard>)
-					}
-				</div>
-
-				<div className="flex justify-center m-12">
-					<Button>Learn more</Button>
-				</div>
+						<div className="flex justify-center m-12">
+							<Button>Learn more</Button>
+						</div>
+					</>
+				) : (
+					<Loading />
+				)}
 
 				<div className="md:flex-row-reverse md:mb-0 flex flex-col items-center justify-center gap-5 mb-8">
 					<div className="flex flex-col items-center">
