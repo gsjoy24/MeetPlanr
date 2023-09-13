@@ -22,7 +22,7 @@ export const PUT = async (request, { params }) => {
 		const body = await request.json();
 		const filter = { path: path };
 		const updateDoc = {
-			$set: {...body}
+			$set: { ...body }
 		};
 		const option = { upsert: true };
 		const schedulingCollection = db.collection('scheduling');
