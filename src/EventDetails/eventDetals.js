@@ -39,7 +39,7 @@ const EventDetails = ({path}) => {
 	}
     return (
         <Container>
-            <div className="w-full md:w-4/5 lg:w-2/3 p-5 my-20 border-2 shadow-xl mx-auto rounded-3xl rounded-tl-none rounded-br-none">
+            <div className="w-full md:w-4/5 lg:w-2/3 p-3 sm:p-5 my-20 border-2 shadow-xl mx-auto rounded-3xl rounded-tl-none rounded-br-none">
                 <div className="grid sm:grid-cols-2">
                     <div className="">
                         <h2 className='text-md font-semibold'>Event Name:</h2>

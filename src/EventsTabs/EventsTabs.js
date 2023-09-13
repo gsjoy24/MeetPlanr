@@ -14,6 +14,7 @@ import { FaAngleRight, FaTimesCircle } from "react-icons/fa";
 import UseGetCurrentUser from "@/hooks/UseGetCurrentUser";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";                    
+import { toast } from "react-hot-toast";
 
 const EventsTabs = () => {
    const [actions,setActions] = useState(false);
@@ -83,6 +84,8 @@ const EventsTabs = () => {
 						setActions(false)
 					}
 				})
+			}else{
+				router.push('/event/hostControlGroup')
 			}
 	}}
 	const handleEdit = (path,confirm,eventType) => {
