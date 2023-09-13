@@ -37,6 +37,11 @@ const ReportPage = () => {
       alert('Please select a Issue subject')
     }
   };
+<<<<<<< HEAD
+  
+
+=======
+>>>>>>> 39bea4533d242c9622f90936cf99fd962c20b818
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="max-w-md w-full p-4   rounded-md">

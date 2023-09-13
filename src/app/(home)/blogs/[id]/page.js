@@ -1,20 +1,21 @@
 'use client';
 import Loading from '@/app/loading';
+import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 /* eslint-disable react-hooks/rules-of-hooks */
 import axios from 'axios';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
-const page = ({ params }) => {
+
+const DetailsPage = ({ params }) => {
 	const [blog, setBlog] = useState({});
-	const [loading, setLoading] = useState(true);
+	const [loading,setLoading] = useState(true);
 	useEffect(() => {
 		async function fetchData() {
 			try {
 				const response = await axios(`/api/blog/${params.id}`);
-				if (response.data) {
+				if(response.data){
 					setBlog(response.data);
-					setLoading(false);
+					setLoading(false)
 				}
 			} catch (error) {
 				console.error('Error fetching data:', error);
@@ -23,8 +24,10 @@ const page = ({ params }) => {
 
 		fetchData();
 	}, [params]);
-	if (loading) {
-		return <Loading />;
+	console.log(params);
+	console.log(blog);
+	if(loading){
+		return <Loading/>
 	}
 	return (
 		<div className=" min-h-screen py-6">
@@ -38,4 +41,4 @@ const page = ({ params }) => {
 	);
 };
 
-export default page;
+export default DetailsPage;
