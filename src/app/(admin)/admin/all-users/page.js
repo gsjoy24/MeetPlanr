@@ -2,18 +2,30 @@
 import Loading from '@/app/loading';
 import UseAllUsers from '@/hooks/UseAllUsers';
 import TimeZoneConverter from '@/shareComponents/TimeZoneConverter';
+import axios from 'axios';
 import Image from 'next/image';
+import { useState } from 'react';
 import { AiFillDollarCircle } from 'react-icons/ai';
+import { BsFillInfoCircleFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 
 const AllUser = () => {
+	const [loading, setLoading] = useState(false);
 	const allUsers = UseAllUsers();
+
+	const changeUserRole = async (role, id) => {
+		setLoading(true);
+		const res = await axios.put('/api/changeRole', { role, id });
+		const data = await res.data;
+		console.log(data);
+		setLoading(false);
+	};
 
 	return allUsers && Array.isArray(allUsers) ? (
 		<>
 			<h1 className="md:text-2xl mb-5 text-xl font-bold">All registered users</h1>
-			<div className="mx-auto overflow-x-auto max-w-[330px] sm:max-w-[620px] md:max-w-[740px] lg:max-w-[800px]">
-				<table className="table-pin-rows table min-w-full">
+			<div className="mx-auto overflow-x-auto max-w-[330px] sm:max-w-[620px] md:max-w-[740px] lg:max-w-[830px]">
+				<table className="table min-w-full">
 					{/* head */}
 					<thead>
 						<tr>
@@ -28,7 +40,6 @@ const AllUser = () => {
 					</thead>
 					<tbody>
 						{/* row 1 */}
-
 						{allUsers &&
 							allUsers.map((user, i) => (
 								<tr key={user?._id}>
@@ -66,7 +77,25 @@ const AllUser = () => {
 									<td>
 										<TimeZoneConverter inputDate={user?.timestamp} />
 									</td>
-									<th>{user?.role}</th>
+									<th>
+										<span className="relative">
+											{user?.role}
+											<div className="dropdown dropdown-end -top-2 -right-4 absolute">
+												<label tabIndex={0}>
+													<BsFillInfoCircleFill size={13} />
+												</label>
+												<ul
+													onClick={() => changeUserRole(user.role, user._id)}
+													tabIndex={0}
+													className="dropdown-content z-[1] menu shadow rounded-box bg-[#465AF7] hover:bg-[#2d42e3] text-[#f3f3f3] hover:text-white w-28"
+												>
+													<li className="flex items-center justify-center">
+														{loading ? 'loading' : <>Make {user?.role === 'admin' ? 'User' : 'Admin'}</>}
+													</li>
+												</ul>
+											</div>
+										</span>
+									</th>
 								</tr>
 							))}
 					</tbody>
@@ -78,7 +107,7 @@ const AllUser = () => {
 							</th>
 							<th>User</th>
 							<th>Email and Plan</th>
-							<th>Regi. time & Date</th>
+							<th>Regi. Time & Date</th>
 							<th>Role</th>
 						</tr>
 					</tfoot>
