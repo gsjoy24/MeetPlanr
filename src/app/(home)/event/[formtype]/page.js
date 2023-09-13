@@ -12,6 +12,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
 import InputOption from '@/components/InputOption';
+import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 
 const EventPage = ({params}) => {
 	const { register, handleSubmit,reset,watch,setValue } = useForm();

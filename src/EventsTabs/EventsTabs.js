@@ -85,10 +85,17 @@ const EventsTabs = () => {
 				})
 			}
 	}}
-	const handleEdit = (path) => {
-		if(currentUser){
+	const handleEdit = (path,confirm,eventType) => {
 			if(currentUser?.plan === "Premium"){
-				router.push(`/editevent/${path}`)
+				if(!(eventType == "Single" && confirm)){
+					router.push(`/editevent/${path}`)
+				}else{
+					Swal.fire({
+						icon: 'warning',
+						title: 'Oops...',
+						text: "You can't Edit this event. Because it's already confirmed",
+					  })
+				}
 			}else{
 				Swal.fire({
 					title: "This is the premium Features!",
@@ -105,7 +112,7 @@ const EventsTabs = () => {
 					}
 				})
 			}
-	}}
+	}
 	return (
 		<div>
 			<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>

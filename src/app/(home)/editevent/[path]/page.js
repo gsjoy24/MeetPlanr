@@ -12,14 +12,25 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
 import InputOption from '@/components/InputOption';
+import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 
 const editEventPage = ({params}) => {
    const { register, handleSubmit,reset,watch,setValue } = useForm();
-   const [schedule,setSchedule] = useState({});
+   const [schedule,setSchedule] = useState(null);
+   const {
+      duration: preDuration,
+      eventName: preEventName,
+      description: preDescription,
+      timeRange: preTimeRange,
+      scheduleDate: preScheduleDate,
+      method: preMethod,
+      methodInfo: preMethodInfo,
+      path,
+   } = schedule || {};
+   console.log(schedule);
 	const [method, setMethod] = useState(null);
 	const [dateRange, setDateRange] = useState(null);
 	const [action, setAction] = useState(false);
-   const eventType = params?.formtype;
 	const router = useRouter();
 	const user = UseGetCurrentUser();
    const placeholderText = (method === "Google Meet") ? "Enter google meet link ..." : method === "Phone Call" ? "Enter phone number...." :(method === "In Person") ? "Enter location name.." : "enter method info...";
@@ -38,50 +49,55 @@ const editEventPage = ({params}) => {
 		setStartDate(new Date());
 		setEndDate(null);
 	};
-   const livePath = watch("eventName") ?  watch("eventName")?.replace(/\s+/g, '-') : "";
    const liveDuration = watch("duration");
+   useEffect(()=> {
+      setMethod(preMethod);
+      setEndDate(preTimeRange?.endDate);
+
+   },[schedule])
     useEffect(()=> {
         (async()=>{
          const response = await axios(`/api/scheduling/${params?.path}`)
          setSchedule(response.data)
         })()
     },[params])
-    console.log(schedule);
     const onSubmit = async (data) => {
+      console.log(data);
       if (method) {
-      const { eventName, description, duration,eventLink,methodInfo } = data;
-      const EventLink = eventLink?.replace(/\s+/g, '-') || livePath
-		const path = EventLink.toLowerCase() + "-" + random;
-		const scheduleLink = `https://meet-planr.vercel.app/user/${user?.username}/${path}`;
-         // const schedule = {
-         //    eventName,
-         //    description,
-         //    duration,
-         //    method,
-         //    timeRange,
-         //    methodInfo,
-         //    scheduleDate,
-         // }
-			// try {
-			// 	const response = await axios.post(`/api/scheduling`,{...schedule} );
-			// 	console.log(response.data);
-			// 	if (response.data.insertedId) {
-			// 		Swal.fire({
-			// 			icon: 'success',
-			// 			title: 'Schedule created successfully!',
-			// 			showConfirmButton: false,
-			// 			timer: 1500
-			// 		});
-			// 		router.push("/my-account");
-			// 		reset();
-			// 	}
-			// } catch (error) {
-			// 	console.error('Error submitting form:', error);
-			// }
+      const { eventName, description, duration,methodInfo } = data;
+         const newInfo = {
+            eventName,
+            description,
+            duration,
+            method,
+            methodInfo,
+            timeRange,
+            scheduleDate: scheduleDate ? scheduleDate :(!scheduleDate && !preScheduleDate) ? null : preScheduleDate,
+         }
+         console.log(newInfo);
+			try {
+				const response = await axios.put(`/api/scheduling/${path}`,{...newInfo} );
+            console.log(response);
+				if (response.data.modifiedCount > 0) {
+					Swal.fire({
+						icon: 'success',
+						title: 'Schedule updated successfully!',
+						showConfirmButton: false,
+						timer: 1500
+					});
+					router.push("/my-account");
+					reset();
+				}
+			} catch (error) {
+				console.error('Error submitting form:', error);
+			}
 		} else {
 			alert('Please select a method!');
 		}
 	};
+   if(!schedule){
+      return <LoadingSpinner/>
+   }
     return (
         <Container>
         <div className="mt-24 my-8">
@@ -95,7 +111,7 @@ const editEventPage = ({params}) => {
            {/*================= Event Form ====================== =*/}
            <div className="md:w-4/5 mx-auto border-2 border-[#d7e3f0] rounded-xl shadow-md">
               <h2 className="w-full py-5 text-3xl text-[#0B3558] font-medium text-center border-b">
-                 Add {eventType == "oneOnOne" ? "One-on-One" : eventType == "hostControlSingle" ? "Host control" : ""} Event Type {eventType == "hostControlSingle" && "(one-on-one)"}
+                 Event update form
               </h2>
 
               <form className="" onSubmit={handleSubmit(onSubmit)}>
@@ -105,6 +121,7 @@ const editEventPage = ({params}) => {
                     </label>
                     <input placeholder="Event Name..."required
                        className="input_field"
+                       defaultValue={preEventName}
                        id="eventName"
                        {...register("eventName")}
                     />
@@ -115,7 +132,7 @@ const editEventPage = ({params}) => {
                     <InputOption setValue={setValue} method={method} setMethod={setMethod}/>
                     {
                        method && <input 
-                       placeholder={placeholderText} type={method === "Google Meet" ? "url" : "text"} required className="input_field mt-2" {...register("methodInfo")} />
+                       placeholder={placeholderText} defaultValue={preMethodInfo} type={method === "Google Meet" ? "url" : "text"} required className="input_field mt-2" {...register("methodInfo")} />
                     }
 
                     <label
@@ -127,6 +144,7 @@ const editEventPage = ({params}) => {
                     <textarea
                        placeholder="Write your schedule details...."
                        id="description"
+                       defaultValue={preDescription}
                        className="input_field min-h-[200px] resize-none"
                        {...register("description")}
                     ></textarea>
@@ -139,6 +157,7 @@ const editEventPage = ({params}) => {
                     </label>
                     <select
                        id="duration"
+                       defaultValue={preDuration}
                        className="input_field"
                        {...register("duration")}
                     >
@@ -149,7 +168,7 @@ const editEventPage = ({params}) => {
                     </select>
 
                     {
-                       eventType ==="oneOnOne" 
+                       !preScheduleDate 
                        ? <><label className="mt-8 mb-3 text-[#3e5063]">
                           Date Range:*
                        </label>
@@ -162,13 +181,13 @@ const editEventPage = ({params}) => {
                                 : "border border-[#9ab2cc]"
                           }`}
                        >
-                          { dateRange === "Select Range" ? (
+                          { (dateRange === "Select Range" || endDate) ? (
                              <div className="relative flex gap-3">
                                 <DatePicker
                                    selected={startDate}
                                    onChange={onChange}
-                                   startDate={startDate}
-                                   endDate={endDate}
+                                   startDate={new Date(startDate)}
+                                   endDate={endDate ? new Date(endDate) : endDate}
                                    selectsRange
                                    withPortal
                                 />
@@ -215,7 +234,7 @@ const editEventPage = ({params}) => {
                        </label>
                        <div className="input_field">
                           <DatePicker
-                             selected={scheduleDate}
+                             selected={scheduleDate ? scheduleDate : new Date(preScheduleDate)}
                              showTimeSelect
                              dateFormat="MMMM d, yyyy h:mm aa"
                              onChange={(date) => setScheduleDate(date)}
@@ -244,10 +263,12 @@ const editEventPage = ({params}) => {
                        <input
                           placeholder="Link path..."
                           required
-                          defaultValue={livePath}
-                          className="outline-none w-full"
+                          disabled
+                          Value={path}
+                          className="outline-none w-full disabled:cursor-not-allowed"
                           id="eventLink"
                           {...register("eventLink")}
+                          title='You cannot change the link path'
                        />
                     </div>
                  </div>
