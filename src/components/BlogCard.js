@@ -2,25 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, truncateContent }) => {
 	const { content, image, subtitle, title, _id } = blog || {};
 
-	// Function to truncate the content to a maximum of 30 words
-	const truncateContent = (text, maxLength) => {
-		const words = text.split(' ');
-		if (words.length > maxLength) {
-			return words.slice(0, maxLength).join(' ') + '...';
-		} else {
-			return text;
-		}
-	};
-
-	const truncatedContent = truncateContent(content, 17);
+	const truncatedContent = truncateContent(content);
 
 	return (
 		<div className="card min-w-[310px] max-w-sm bg-base-100 shadow-xl hover:-translate-y-1 hover:bg-blue-100 duration-200 mx-auto">
 			<figure className="max-h-[180px] overflow-hidden">
-				<Image width={500} height={180} src={image} alt="blogs image" />
+				<Image width={500} height={180} src={image ? image : 'https://i.ibb.co/Ytbhzg4/blank.jpg'} alt="blogs image" />
 			</figure>
 			<div className="card-body">
 				<p className="text-xs">{subtitle}</p>
