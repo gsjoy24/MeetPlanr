@@ -32,7 +32,7 @@ const Page = () => {
 		[firstBlog, ...restBlogs] = allBlogs;
 		BlogContent = truncateContent(firstBlog?.content);
 	}
-	console.log(firstBlog, restBlogs);
+
 	return (
 		<section>
 			<Container>
