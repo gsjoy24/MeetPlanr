@@ -4,7 +4,6 @@ import Container from "@/components/container";
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { IoIosAdd } from "react-icons/io";
 import img from "@/assets/events-tabs/placeholder.jpg";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +13,7 @@ import group from '../assets/events-tabs/group.png';
 import { FaAngleRight, FaTimesCircle } from "react-icons/fa";
 import UseGetCurrentUser from "@/hooks/UseGetCurrentUser";
 import Swal from "sweetalert2";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";                    
 
 const EventsTabs = () => {
    const [actions,setActions] = useState(false);
@@ -41,17 +40,12 @@ const EventsTabs = () => {
    }, [currentUser]);
    const copyLink = () => {
     navigator.clipboard.writeText(`https://meet-planr.vercel.app/user/${currentUser?.username}`).then(() => {
-            Swal.fire({
-                icon: 'success',
-                title: 'Link coped',
-                showConfirmButton: false,
-                timer: 1500
-            })
+		toast.success("User Link coped");
         });
     };
 	const handleEventType = () => {
 		if(currentUser){
-			const availableSchedulesQuantity = (currentUser?.plan === "Basic") ? (schedules.length - 2) : (currentUser?.plan === "Standard") ? (schedules.length - 10) : 0 ;
+			const availableSchedulesQuantity = (currentUser?.plan === "Basic") ? (2 - schedules.length) : (currentUser?.plan === "Standard") ? (10 - schedules.length) : 0 ;
 			console.log(availableSchedulesQuantity);
 			if(currentUser?.plan === "Premium" || availableSchedulesQuantity > 0){
 				setActions(true)
@@ -71,6 +65,53 @@ const EventsTabs = () => {
 				  })
 			}
 		}
+	}
+	const handleGroupEvent = () => {
+		if(currentUser){
+			if(currentUser?.plan === "Basic"){
+				Swal.fire({
+					title: "Upgrade Your Plan!",
+					text: "If you want to create group event. please upgrade your plan.",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Upgrade plan'
+				}).then((result) => {
+					if (result.isConfirmed) {
+						router.push('/pricing')
+						setActions(false)
+					}
+				})
+			}
+	}}
+	const handleEdit = (path,confirm,eventType) => {
+			if(currentUser?.plan === "Premium"){
+				if(!(eventType == "Single" && confirm)){
+					router.push(`/editevent/${path}`)
+				}else{
+					Swal.fire({
+						icon: 'warning',
+						title: 'Oops...',
+						text: "You can't Edit this event. Because it's already confirmed",
+					  })
+				}
+			}else{
+				Swal.fire({
+					title: "This is the premium Features!",
+					text: "If you want to Edit the event. Please Purchase the premium plan.",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Upgrade plan'
+				}).then((result) => {
+					if (result.isConfirmed) {
+						router.push('/pricing')
+						setActions(false)
+					}
+				})
+			}
 	}
 	return (
 		<div>
@@ -130,16 +171,16 @@ const EventsTabs = () => {
 											<FaAngleRight className="text-xl"/>
 										</Link>
 
-										<Link href={"/event/hostControlGroup"} className="border-2 border-t-0 hover:border-t-2 et_link rounded-b-xl">
+										<button onClick={handleGroupEvent} className="border-2 border-t-0 hover:border-t-2 et_link rounded-b-xl">
 											<div className="gap-4 flex items-center">
 												<Image src={group} alt="icon" className="w-20 object-cover"/>
-												<div className="flex flex-col">
+												<div className="flex flex-col text-left">
 												<span>Host control (Group)</span>
 												<span><b>One host</b> with <b>group invitee</b></span>
 												</div>
 											</div>
 											<FaAngleRight className="text-xl"/>
-										</Link>
+										</button>
 									</div>
 									</div>
 								}
@@ -152,7 +193,7 @@ const EventsTabs = () => {
 								<span className="loading loading-bars loading-lg"></span>
 							</div> 
 							: schedules ? schedules.map((schedule) => (
-									<EventCard schedule={schedule} key={schedule?._id}></EventCard>
+									<EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id}></EventCard>
 								)) : <span className='col-span-3 text-4xl text-slate-500 font-bold'>No Schedule available</span>
 							}
 						</div>
