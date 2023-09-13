@@ -1,22 +1,17 @@
-import Link from 'next/link';
-import React from 'react';
-import Swal from 'sweetalert2';
+import React from "react";
+import Link from "next/link";
+import { toast } from "react-hot-toast";
 
 const EventCard = ({schedule}) => {
     const {eventName,description,duration,scheduleLink} = schedule || {};
     const detailsLink = `${scheduleLink}/details`
     const copyLink = () => {
     navigator.clipboard.writeText(scheduleLink).then(() => {
-            Swal.fire({
-                icon: 'success',
-                title: 'Link coped',
-                showConfirmButton: false,
-                timer: 1500
-            })
+            toast.success("Meeting Link coped");
         });
     };
     return (
-        <div className='border-2 shadow-md p-5 rounded-ss-2xl rounded-br-2xl grid'>
+        <div className='border-2 shadow-md p-5 max-w-[400px] w-full mx-auto rounded-ss-2xl rounded-br-2xl grid'>
             <h2 className='text-lg font-medium'>{eventName}</h2>
             <p className='my-1'>{duration}mins, One-on-One</p>
             <Link target='_blank' className='my-5 text-blue-500 hover:underline' href={detailsLink}>View more details</Link>

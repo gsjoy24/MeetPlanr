@@ -1,154 +1,258 @@
-"use client";
-import Button from "@/common/Button";
-import Container from "@/components/container";
-import { UserAuth } from "@/providers/AuthProvider";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import { FaAngleRight, FaBars, FaTimes } from "react-icons/fa";
-import { HiOutlineChevronUp, HiOutlineChevronDown } from "react-icons/hi";
-
+'use client';
+import { UserAuth } from '@/providers/AuthProvider';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRef, useState } from 'react';
+import { FaAngleRight } from 'react-icons/fa';
+import { FaBarsStaggered } from 'react-icons/fa6';
+import Container from '@/components/container';
+import BlockLink from './BlockLink';
+import { usePathname } from 'next/navigation';
+import { IoIosArrowForward } from 'react-icons/io';
+import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
 const Navbar = () => {
-   const [open, setOpen] = useState(false);
-   const { user, logOutUser } = UserAuth();
-   const [condition, setCondition] = useState(false);
-   const [isOpen, setIsOpen] = useState(false);
-   const handleLogOut = () => {
-      logOutUser();
-      setCondition(false);
-   };
-   return (
-      <div className="border-s-black sticky top-0 z-20 w-full py-2 bg-white border-b-2">
-         <Container>
-            <nav className=" relative flex items-center justify-between">
-               <div className="text-2xl md:text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow">
-                  <Link href="/">MeetPlanr</Link>
-               </div>
+	//  this function will close the mobile navigation when a user clicks on any route!
+	const closeSideNAv = () => {
+		const checkbox = document.getElementById('my-drawer-3');
+		if (checkbox.checked) {
+			checkbox.checked = false;
+		}
+	};
+	// user data form the sever!
+	const userData = UseGetCurrentUser();
+	const { user, logOutUser } = UserAuth();
+	const [condition, setCondition] = useState(false);
+	const currentPath = usePathname();
+	const handleLogOut = () => {
+		logOutUser();
+		setCondition(false);
+	};
+	return (
+		<div className="sticky top-0 z-50 bg-white border-b shadow-md">
+			<Container>
+				<div className="drawer">
+					<input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+					<div className="drawer-content flex flex-col">
+						{/* Navbar */}
+						<div className="navbar md:py-3 w-full py-1">
+							<div className="flex-1 text-2xl md:text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow">
+								<Link href="/">MeetPlanr</Link>
+							</div>
+							<div className="lg:hidden flex-none">
+								<label htmlFor="my-drawer-3" className="btn btn-square btn-ghost text-[#465AF7]">
+									<FaBarsStaggered size={18} />
+								</label>
+							</div>
+							<div className="lg:block flex-none hidden">
+								<ul className="menu-horizontal flex items-center gap-6 font-semibold duration-200">
+									{/* Navbar menu contents */}
+									<div className="text-2xl md:text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow lg:hidden">
+										<Link href="/">MeetPlanr</Link>
+									</div>
+									{userData?.role === 'admin' && (
+										<li>
+											<Link className={`py-1 capitalize hover:text-[#465AF7] rounded-lg duration-200`} href="/admin">
+												Admin Dashboard
+											</Link>
+										</li>
+									)}
+									<li>
+										<Link
+											className={`py-1 capitalize hover:text-[#465AF7] rounded-lg duration-200 ${
+												currentPath == '/' && 'text-blue-600'
+											}`}
+											href="/"
+										>
+											Home
+										</Link>
+									</li>
 
-               <div
-                  className={`jm_nav  ${open ? "w-4/5 md:w-1/2 p-5" : "w-0"}`}
-               >
-                  <ul className="lg:flex-row flex flex-col items-center gap-5 font-bold">
-                     <div className="text-2xl md:text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow lg:hidden">
-                        <Link href="/">MeetPlanr</Link>
-                     </div>
+									<li>
+										<BlockLink route={'product'} />
+									</li>
+									<li>
+										<div className="dropdown dropdown-hover">
+											<label tabIndex={0} className="group hover:text-[#465AF7] flex items-center justify-center gap-3">
+												<BlockLink route={'solutions'} />
+												<IoIosArrowForward className="group-hover:rotate-90 duration-200" />
+											</label>
+											<ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+												<li>
+													<Link href="/solutions/marketing">Marketings</Link>
+												</li>
+												<li>
+													<Link href="/solutions/technology">Technology</Link>
+												</li>
+												<li>
+													<Link href="/solutions/customer-success">Customer Success</Link>
+												</li>
+												<li>
+													<Link href="/solutions/professional-services">Professional Services</Link>
+												</li>
+												<li>
+													<Link href="/solutions/businesses">Small & Medium Businesses</Link>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<BlockLink route={'pricing'} />
+									</li>
+									<li>
+										<BlockLink route={'blogs'} />
+									</li>
+									{user ? (
+										<li>
+											<Image
+												onClick={() => setCondition(!condition)}
+												className="ring-2 max-w-[40px] max-h-[40px] object-cover rounded-full cursor-pointer"
+												src={
+													user?.photoURL
+														? user?.photoURL
+														: 'https://img.freepik.com/free-icon/user_318-563642.jpg?w=360'
+												}
+												width={40}
+												height={40}
+												alt={user?.displayName ? user?.displayName : 'User'}
+											/>
+										</li>
+									) : (
+										<>
+											<li>
+												<BlockLink route={'login'} />
+											</li>
+										</>
+									)}
+								</ul>
+								{condition && (
+									<div className="w-60 lg:top-16 lg:right-0 drop_shadow h-fit absolute z-50 overflow-hidden bg-white border rounded-lg">
+										<Link
+											href={'/my-account'}
+											onClick={() => setCondition(false)}
+											className={`hover:bg-slate-200 flex items-center justify-between w-full px-5 py-3 font-semibold text-left duration-200 ${
+												currentPath == '/my-account' && 'text-[#465AF7]'
+											}`}
+										>
+											<span>My Account</span>
+											<FaAngleRight />
+										</Link>
+										<button
+											onClick={handleLogOut}
+											className="hover:bg-slate-200 flex items-center justify-between w-full px-5 py-3 font-semibold text-left"
+										>
+											<span>Log out</span>
+											<FaAngleRight />
+										</button>
+									</div>
+								)}
+							</div>
+						</div>
+					</div>
+					<div className="drawer-side">
+						<label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+						<ul className="w-80 min-h-full p-4 space-y-5 text-lg font-semibold text-center duration-200 bg-white">
+							{/* Sidebar content here */}
+							<div className="text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow lg:hidden pb-3 border-b">
+								<Link className="block" href="/">
+									MeetPlanr
+								</Link>
+							</div>
+							{user && (
+								<>
+									<li>
+										<Image
+											onClick={() => setCondition(!condition)}
+											className="ring-2 max-w-[90px] max-h-[90px] object-cover mx-auto rounded-full cursor-pointer"
+											src={
+												user?.photoURL ? user?.photoURL : 'https://img.freepik.com/free-icon/user_318-563642.jpg?w=360'
+											}
+											width={90}
+											height={90}
+											alt={user?.displayName ? user?.displayName : 'User'}
+										/>
+									</li>
+									{userData?.role === 'admin' && (
+										<li>
+											<Link
+												onClick={closeSideNAv}
+												className={`py-1 capitalize hover:text-[#465AF7] rounded-lg duration-200`}
+												href="/admin"
+											>
+												Admin Dashboard
+											</Link>
+										</li>
+									)}
+									<li>
+										<Link
+											onClick={closeSideNAv}
+											className={`py-1 capitalize rounded-lg duration-200 ${
+												currentPath == '/my-account' && 'text-[#465AF7]'
+											}`}
+											href="/my-account"
+										>
+											My Account
+										</Link>
+									</li>
+								</>
+							)}
 
-                     <li>
-                        <Link href="/">Home</Link>
-                     </li>
-                     <li>
-                        <Link href="/product">Product</Link>
-                     </li>
+							<li>
+								<Link
+									onClick={closeSideNAv}
+									className={`py-1 capitalize rounded-lg duration-200 ${currentPath == '/' && 'text-[#465AF7]'}`}
+									href="/"
+								>
+									Home
+								</Link>
+							</li>
+							<li>
+								<BlockLink closeSideNAv={closeSideNAv} route={'product'} />
+							</li>
 
-                     <li
-                        onClick={() => setIsOpen((prev) => !prev)}
-                        className="flex items-center cursor-pointer"
-                     >
-                        <Link href="/solutions">Solutions</Link>
-
-                        {!isOpen ? (
-                           <HiOutlineChevronDown className="ml-2" />
-                        ) : (
-                           <HiOutlineChevronUp className="ml-2" />
-                        )}
-
-                        {isOpen && (
-                           <ul className="text-[17px] absolute mt-[270px] p-3 pl-5 pr-16 space-y-2 rounded-md sm:mb-5 bg-[#d1e6fa]">
-                              <li className="hover:text-[#465AF7] duration-100">
-                                 <Link href="/solutions/marketing">
-                                    Marketing
-                                 </Link>
-                              </li>
-                              <li className="hover:text-[#465AF7] duration-100">
-                                 <Link href="/solutions/technology">
-                                    Technology
-                                 </Link>
-                              </li>
-                              <li className="hover:text-[#465AF7] duration-100">
-                                 <Link href="/solutions/customer-success">
-                                    Customer Success
-                                 </Link>
-                              </li>
-                              <li className="hover:text-[#465AF7] duration-100">
-                                 <Link href="/solutions/professional-services">
-                                    Professional Services
-                                 </Link>
-                              </li>
-                              <li className="hover:text-[#465AF7] duration-100">
-                                 <Link href="/solutions/businesses">
-                                    Small & Medium Businesses
-                                 </Link>
-                              </li>
-                           </ul>
-                        )}
-                     </li>
-                     <li>
-                        <Link href="/pricing">Pricing</Link>
-                     </li>
-                     <li>
-                        <Link href="/blogs">Blogs</Link>
-                     </li>
-                     {user ? (
-                        <li>
-                           <button onClick={() => setCondition(!condition)}>
-                              <Image
-                                 className="rounded-full"
-                                 src={
-                                    user?.photoURL
-                                       ? user?.photoURL
-                                       : "https://img.freepik.com/free-icon/user_318-563642.jpg?w=360"
-                                 }
-                                 width={50}
-                                 height={50}
-                                 alt={
-                                    user?.displayName
-                                       ? user?.displayName
-                                       : "User"
-                                 }
-                              />
-                           </button>
-                        </li>
-                     ) : (
-                        <>
-                           <li>
-                              <Link href="/login">
-                                 <Button>Login</Button>
-                              </Link>
-                           </li>
-                        </>
-                     )}
-                  </ul>
-                  {condition && (
-                     <div className="w-60 lg:top-16 lg:right-0 drop_shadow h-fit absolute z-50 overflow-hidden bg-white border rounded-lg">
-                        <Link
-                           href={"/my-account"}
-                           onClick={() => setCondition(false)}
-                           className="hover:bg-slate-300 flex items-center justify-between w-full px-5 py-3 text-left"
-                        >
-                           <span>My Account</span>
-                           <FaAngleRight />
-                        </Link>
-                        <button
-                           onClick={handleLogOut}
-                           className="hover:bg-slate-300 flex items-center justify-between w-full px-5 py-3 text-left"
-                        >
-                           <span>Log out</span>
-                           <FaAngleRight />
-                        </button>
-                     </div>
-                  )}
-               </div>
-
-               <button
-                  onClick={() => setOpen(!open)}
-                  className="lg:hidden block"
-               >
-                  {open ? <FaTimes size={25} /> : <FaBars size={20} />}
-               </button>
-            </nav>
-         </Container>
-      </div>
-   );
+							<li className="flex items-center justify-center gap-4">
+								<BlockLink closeSideNAv={closeSideNAv} route={'solutions'} />
+								<details className="dropdown">
+									<summary className="hover:text-[#465AF7] duration-150"></summary>
+									<ul className="dropdown-content -left-16 border z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+										<li>
+											<Link href="/solutions/marketing">Marketing</Link>
+										</li>
+										<li>
+											<Link href="/solutions/technology">Technology</Link>
+										</li>
+										<li>
+											<Link href="/solutions/customer-success">Customer Success</Link>
+										</li>
+										<li>
+											<Link href="/solutions/professional-services">Professional Services</Link>
+										</li>
+										<li>
+											<Link href="/solutions/businesses">Small & Medium Businesses</Link>
+										</li>
+									</ul>
+								</details>
+							</li>
+							<li>
+								<BlockLink closeSideNAv={closeSideNAv} route={'pricing'} />
+							</li>
+							<li>
+								<BlockLink closeSideNAv={closeSideNAv} route={'blogs'} />
+							</li>
+							{user ? (
+								<li>
+									<button onClick={handleLogOut}>Log out</button>
+								</li>
+							) : (
+								<li>
+									<BlockLink closeSideNAv={closeSideNAv} route={'login'} />
+								</li>
+							)}
+						</ul>
+					</div>
+				</div>
+			</Container>
+		</div>
+	);
 };
 
 export default Navbar;

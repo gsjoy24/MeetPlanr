@@ -1,15 +1,20 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 import Button from '@/common/Button';
 import Container from '@/components/container';
 import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 import axios from 'axios';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
-
+import meetlogo from '@/assets/event-form/meet.png';
+import locationLogo from '@/assets/event-form/location.png';
+import phoneLogo from '@/assets/event-form/phone.png';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useForm } from 'react-hook-form';
-import { FaMapMarkerAlt, FaRegClock, FaTimesCircle, FaVideo } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaRegClock, FaTimesCircle, FaVideo } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import Image from 'next/image';
 
 const EventSchedule = ({ params }) => {
 	const { register, handleSubmit, reset } = useForm();
@@ -17,14 +22,16 @@ const EventSchedule = ({ params }) => {
 	const [loading, setLoading] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [confirm, setConfirm] = useState(false);
-	const { timeRange, path, hostName, method, eventName, hostEmail, duration } = scheduleInfo || {};
+	const { timeRange, path, hostName, method, eventName, hostEmail, duration,scheduleLink,methodInfo,scheduleDate:selectedDate,eventType,inviteeInfo} = scheduleInfo || {};
+	const detailsLink = `${scheduleLink}/details`
 	const { startDate, endDate } = timeRange || {};
 	const [scheduleDate, setScheduleDate] = useState(null);
+	const  preSelectedDate = selectedDate ? new Date(selectedDate) : null
 	const minDate = new Date(startDate);
 	const maxDate = endDate ? new Date(endDate) : null;
 	useEffect(() => {
 		(async () => {
-			const res = await axios(`/api/scheduling/${params.path}`);
+			const res = await axios(`/api/scheduling/${params?.path}`);
 			const data = res?.data;
 			if (data) {
 				setLoading(false);
@@ -36,8 +43,12 @@ const EventSchedule = ({ params }) => {
 		})();
 	}, [params]);
 	const onSubmit = async (data) => {
-		const { inviteeEmail, inviteeName } = data;
-		const res = await axios.put(`/api/scheduling/${path}`, { inviteeEmail, inviteeName, scheduleDate });
+		inviteeInfo.push(data);
+		console.log(inviteeInfo);	
+		const res = await axios.put(`/api/scheduling/${path}`, {
+		inviteeInfo,
+		scheduleDate: preSelectedDate ? preSelectedDate : scheduleDate, confirm: eventType == "Group" ? false : true 
+	});
 		if (res?.data?.modifiedCount > 0) {
 			Swal.fire({
 				icon: 'success',
@@ -48,21 +59,25 @@ const EventSchedule = ({ params }) => {
 			reset();
 			setConfirm(true);
 			const inviteeEmailSend = await axios.post(`/api/sendmailinvitee`, {
-				inviteeName,
-				inviteeEmail,
-				eventName,
-				hostEmail,
-				scheduleDate,
-				method
-			});
-			const hostEmailSend = axios.post(`/api/sendmailhost`, {
-				inviteeName,
-				inviteeEmail,
+				inviteeName: data?.inviteeName,
+				inviteeEmail: data?.inviteeEmail,
 				eventName,
 				hostEmail,
 				scheduleDate,
 				method,
-				hostName
+				detailsLink,
+				methodInfo
+			});
+			const hostEmailSend = await	 axios.post(`/api/sendmailhost`, {
+				inviteeName: data?.inviteeName,
+				inviteeEmail: data?.inviteeEmail,
+				eventName,
+				hostEmail,
+				scheduleDate,
+				method,
+				hostName,
+				detailsLink,
+				methodInfo
 			});
 		}
 	};
@@ -90,9 +105,9 @@ const EventSchedule = ({ params }) => {
 	}
 	return (
 		<Container>
-			<div className="pt-28 my-10">
-				<div className="flex items-center justify-center gap-5">
-					<div className="w-[40%] border rounded-md p-5">
+			<div className="pt-10 my-10">
+				<div className="flex flex-wrap items-center justify-center gap-5">
+					<div className="w-full sm:w-[515px] lg:w-[40%] border rounded-md p-5">
 						<h3 className="text-lg font-bold">Invitee:</h3>
 						<p className="mt-1 text-xl font-medium">{hostName}</p>
 						<h3 className="mt-4 text-lg font-bold">Meeting Name:</h3>
@@ -105,35 +120,42 @@ const EventSchedule = ({ params }) => {
 						<h3 className="mt-4 text-lg font-bold">location:</h3>
 						<div className=" mt-2">
 							{method == 'Google Meet' ? (
-								<div className="flex items-center gap-2">
-									<FaVideo className="text-2xl font-medium" />
+								<Link target='_blank' href={methodInfo} className="flex items-center text-blue-500 hover:underline gap-2">
+									<Image width={30} height={30} src={meetlogo} alt='icon' />
 									<span className="text-lg font-medium">Google Meet</span>
+								</Link>
+							) : method == 'Phone Call' ? (
+								<div className="flex items-center gap-2">
+									<Image width={30} height={30} src={phoneLogo} alt='icon' />
+									<span className="text-lg font-medium">{methodInfo}</span>
 								</div>
 							) : method == 'In Person' ? (
 								<div className="flex items-center gap-2">
-									<FaMapMarkerAlt className="text-2xl font-medium" />
-									<span className="text-lg font-medium">In Person</span>
+									<Image width={30} height={30} src={locationLogo} alt='icon' />
+									<span className="text-lg font-medium">{methodInfo}</span>
 								</div>
 							) : (
 								<p>no location added</p>
 							)}
 						</div>
-						<p className="mt-2 font-bold text-red-500">If not select any time it automatic select 12:00 AM.</p>
+						{preSelectedDate ? 
+						<p className="mt-2 font-bold text-red-500">You can't change the date/time. It's a host control Event.</p>
+						: <p className="mt-2 font-bold text-red-500">If not select any time it automatic select 12:00 AM.</p>}
 					</div>
 					<div className="">
 						<DatePicker
-							selected={scheduleDate}
+							selected={preSelectedDate? preSelectedDate : scheduleDate}
 							showTimeSelect
 							onChange={(date) => setScheduleDate(date)}
-							minDate={minDate}
-							maxDate={maxDate}
+							minDate={preSelectedDate ? preSelectedDate : minDate}
+							maxDate={preSelectedDate ? preSelectedDate : maxDate}
 							timeIntervals={duration}
 							inline
 							fixedHeight
 						/>
 					</div>
 				</div>
-				{scheduleDate && (
+				{(scheduleDate || preSelectedDate) && (
 					<div onClick={() => setShowModal(true)} className="w-fit mx-auto mt-5">
 						<Button>Confirm</Button>
 					</div>

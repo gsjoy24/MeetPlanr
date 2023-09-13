@@ -1,8 +1,7 @@
 "use client"
 import { UserAuth } from '@/providers/AuthProvider';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-
+import  { useEffect, useState } from 'react';
 
 const UseGetCurrentUser = () => {
     const { user } = UserAuth();

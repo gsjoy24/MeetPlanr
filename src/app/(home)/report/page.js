@@ -1,6 +1,8 @@
 "use client"
+import axios from 'axios';
 import React, { useState } from 'react';
 import {  Controller, useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
 const ReportPage = () => {
   
@@ -11,11 +13,35 @@ const ReportPage = () => {
     setSelectedSubject(e.target.value);
   };
 
-  const onSubmit = (data) => {
-    console.log(data); 
+  const onSubmit = async(data) => {
+    if(selectedSubject){
+      const subject = selectedSubject ==="others" ? data?.otherSubject : selectedSubject;
+      const report = {
+        name: data.name,
+        email: data.email,
+        phone: data.mobile,
+        description: data.description,
+        subject
+      }
+      console.log(report);
+      const response = await axios.post('/api/report',{...report})
+      if(response?.data?.insertedId){
+        Swal.fire({
+          icon: 'success',
+          title: 'Reported successf!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    }else{
+      alert('Please select a Issue subject')
+    }
   };
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> 39bea4533d242c9622f90936cf99fd962c20b818
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="max-w-md w-full p-4   rounded-md">
@@ -27,13 +53,13 @@ const ReportPage = () => {
             </label>
             <Controller
               name="name"
-              control={control}
+              control={control}                  
               render={({ field }) => (
                 <input
-                  {...field}
+                {...field}
+                  placeholder="Your Name"
                   type="text"
                   className={`w-full p-2 border rounded-md ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
-                  placeholder="Your Name"
                 />
               )}
               rules={{ required: 'Name is required' }}
@@ -99,7 +125,7 @@ const ReportPage = () => {
         <option value="scheduling">Scheduling</option>
         <option value="others">Others</option>
       </select>
-      {errors.subject && <span className="text-red-500 text-sm">{errors.subject.message}</span>}
+      {!selectedSubject && <span className="text-red-500 text-sm">Issue Subject is required</span>}
       {selectedSubject === 'others' && (
         <input
           type="text"
