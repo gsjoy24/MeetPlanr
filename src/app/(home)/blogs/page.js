@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import Image from 'next/image';
 import customer from '../../../assets/Untitled-design-6.jpg';
 import mobile from '../../../assets/phone.webp';
@@ -12,23 +12,16 @@ import Button from '@/common/Button';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import BlogCard from '@/components/BlogCard';
+import UseBlogs from '@/hooks/UseBlogs';
 
 const Page = () => {
-	const [blogs,setBlogs] = useState([])
-	useEffect(() => {
-		( async() => {
-			const data =await axios('/api/blog');
-			setBlogs(data.data);
-		}
-		)()
-	})
+	const allBlogs = UseBlogs();
 	return (
 		<section>
 			<Container>
 				<div className="lg:flex lg:p-8 items-center justify-center p-4 space-y-3">
 					<div className="md:pr-8 flex flex-col items-center">
-					<Image className="w-full" src={customer} alt="customer" width={500} height={500} />
-
+						<Image className="w-full" src={customer} alt="customer" width={500} height={500} />
 					</div>
 					<div className="lg:pl-8 flex flex-col">
 						<p className="mb-4 text-sm font-thin">FEATURES — 5 MIN READ</p>
@@ -48,9 +41,7 @@ const Page = () => {
 				{/* card section  */}
 
 				<div className="md:grid-cols-2 lg:grid-cols-3 mt-14 grid grid-cols-1 gap-12">
-					{
-						blogs.map(blog => <BlogCard blog={blog} key={blog?._id}></BlogCard>)
-					}
+					{allBlogs && allBlogs.map((blog) => <BlogCard blog={blog} key={blog?._id}></BlogCard>)}
 				</div>
 
 				<div className="flex justify-center m-12">

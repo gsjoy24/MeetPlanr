@@ -78,7 +78,7 @@ const AllUser = () => {
 							</th>
 							<th>User</th>
 							<th>Email and Plan</th>
-							<th>Regi. time & Date</th>
+							<th>Regi. Time & Date</th>
 							<th>Role</th>
 						</tr>
 					</tfoot>
