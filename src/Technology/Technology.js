@@ -31,12 +31,14 @@ const TechnologyPage = () => {
                      <div className=" sm:flex-row flex flex-col justify-center gap-3">
                         <Link
                            href="/my-account"
+                           data-testid="createEvent"
                            className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] font-semibold flex justify-center text-white rounded-lg py-3 px-6"
                         >
                            Create event
                         </Link>
                         <Link
                            href="/sign-up"
+                           data-testid="UserSignUp"
                            className="border border-[#465AF7] text-[16px] font-semibold text-[#465AF7] bg-white hover:bg-[#e4ecf7] flex justify-center hover:border-[#465AF7] rounded-lg py-3 px-6"
                         >
                            Sign up for free

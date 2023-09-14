@@ -3,13 +3,26 @@ import { render } from "@testing-library/react";
 import TechnologyPage from "./Technology";
 
 test("renders TechnologyPage component", () => {
-   const { getByText } = render(<TechnologyPage />);
+   const { getByText, getByTestId } = render(<TechnologyPage />);
 
    // Check for specific text content
    expect(getByText("MeetPlanr FOR TECH Industry")).toBeInTheDocument();
    expect(
       getByText("The competitive advantage of scheduling for tech businesses")
-   ).toBeInTheDocument();
+  ).toBeInTheDocument();
+  
+   // Test for the presence of specific links using data-testid
+   const createEventLink = getByTestId("createEvent");
+   expect(createEventLink).toBeInTheDocument();
+   expect(createEventLink).toHaveAttribute("href", "/my-account");
+
+   const UserSignUpLink = getByTestId("UserSignUp");
+   expect(UserSignUpLink).toBeInTheDocument();
+   expect(UserSignUpLink).toHaveAttribute("href", "/sign-up");
+});
+
+test("renders TechnologyPage component with data-testid attributes", () => {
+   const { getByTestId } = render(<TechnologyPage />);
 
    // Select images by their alt attributes
    const img1 = document.querySelector('img[alt="Marketing Image 1"]');
@@ -23,11 +36,7 @@ test("renders TechnologyPage component", () => {
    expect(img3).toBeInTheDocument();
    expect(img4).toBeInTheDocument();
    expect(img5).toBeInTheDocument();
-});
 
-test("renders TechnologyPage component with data-testid attributes", () => {
-  const { getByTestId } = render(<TechnologyPage />);
-  
    // Select images by their data-testid attributes
    expect(getByTestId("image1")).toBeInTheDocument();
    expect(getByTestId("image2")).toBeInTheDocument();
