@@ -31,7 +31,7 @@
 /*==================== Featured section ===============================*/
 
 .ft_hover {
-	@apply hover:bg-gray-200 transition-all duration-300;
+	@apply hover:bg-blue-200 transition-all duration-300;
 }
 
 .ft_hover .ft_icon {
