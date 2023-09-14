@@ -30,7 +30,7 @@ const SchedulingFeatures = () => {
                      Sign up for free
                   </Link>
                   <Link
-                     href="#product"
+                     href="#works"
                      className="btn border border-[#465AF7] text-[#465AF7] bg-white hover:bg-[#e4ecf7] hover:border-[#465AF7] rounded-lg font-semibold px-6"
                   >
                      How it works

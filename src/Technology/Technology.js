@@ -28,7 +28,7 @@ const TechnologyPage = () => {
                         transactions, increase ARR more quickly, and meet team
                         milestones.
                      </p>
-                     <div className=" sm:flex-row flex flex-col justify-center gap-3">
+                     <div className="sm:flex-row flex flex-col justify-center md:justify-start gap-3">
                         <Link
                            href="/my-account"
                            data-testid="createEvent"
