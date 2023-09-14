@@ -18,7 +18,7 @@ const UseAllUsers = () => {
 		})();
 	}, [refetch]);
 
-	return [allUsers,refetch, setRefetch];
+	return [allUsers, refetch, setRefetch];
 };
 
 export default UseAllUsers;
