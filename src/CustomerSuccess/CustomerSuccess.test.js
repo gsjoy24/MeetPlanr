@@ -9,6 +9,11 @@ test("renders CustomerSuccess component", () => {
    expect(getByText("CUSTOMER SUCCESS STORIES")).toBeInTheDocument();
    expect(getByText("Customer success is our success")).toBeInTheDocument();
 
+   // Test for the presence of specific links using data-testid
+   const createEventLink = getByTestId("createEvent");
+   expect(createEventLink).toBeInTheDocument();
+   expect(createEventLink).toHaveAttribute("href", "/my-account");
+
    // Check for specific images by alt attributes
    expect(getByTestId("Image1")).toBeInTheDocument();
    expect(getByTestId("company1")).toBeInTheDocument();

@@ -34,6 +34,7 @@ const CustomerSuccess = () => {
                      </p>
                      <Link
                         href="/my-account"
+                        data-testid="createEvent"
                         className="border border-[#465AF7] bg-[#465AF7] hover:bg-sky-950 hover:border-sky-950 text-[16px] font-semibold text-white rounded-lg mr-5 py-3 px-6"
                      >
                         Create event
