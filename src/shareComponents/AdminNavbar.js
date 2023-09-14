@@ -6,7 +6,6 @@ import { MdEditDocument } from 'react-icons/md';
 import { BiArrowFromRight, BiSolidBarChartSquare } from 'react-icons/bi';
 import { HiUserGroup } from 'react-icons/hi';
 import { usePathname } from 'next/navigation';
-import Container from '@/components/container';
 
 const AdminNavbar = ({ children }) => {
 	const path = usePathname();

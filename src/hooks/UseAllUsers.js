@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 
 const UseAllUsers = () => {
 	const [allUsers, setAllUsers] = useState(null);
+	const [refetch, setRefetch] = useState(false);
+
 	useEffect(() => {
 		(async () => {
 			try {
@@ -14,8 +16,9 @@ const UseAllUsers = () => {
 				console.error(error);
 			}
 		})();
-	}, []);
-	return allUsers;
+	}, [refetch]);
+
+	return [allUsers,refetch, setRefetch];
 };
 
 export default UseAllUsers;

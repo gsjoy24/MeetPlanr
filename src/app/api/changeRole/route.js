@@ -1,5 +1,6 @@
 import DbConnect from '@/services/DbConnect';
 import { NextResponse } from 'next/server';
+import { ObjectId } from 'mongodb';
 
 export const PUT = async (request) => {
 	if (request.method === 'PUT') {
@@ -12,7 +13,7 @@ export const PUT = async (request) => {
 
 			// Toggle the "role" field between "admin" and "user"
 			const update = {
-				$set: { role: 'admin' }
+				$set: { role: body.role === 'admin' ? 'user' : 'admin' }
 			};
 
 			// Perform the update
