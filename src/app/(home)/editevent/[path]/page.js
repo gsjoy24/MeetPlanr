@@ -25,6 +25,11 @@ const editEventPage = ({params}) => {
       scheduleDate: preScheduleDate,
       method: preMethod,
       methodInfo: preMethodInfo,
+      inviteeInfo,
+      scheduleLink,
+      hostEmail,
+      hostName,
+      eventType,
       path,
    } = schedule || {};
    console.log(schedule);
@@ -62,18 +67,20 @@ const editEventPage = ({params}) => {
         })()
     },[params])
     const onSubmit = async (data) => {
-      console.log(data);
       if (method) {
       const { eventName, description, duration,methodInfo } = data;
-         const newInfo = {
+      const newScheduleDate = scheduleDate ? scheduleDate :(!scheduleDate && !preScheduleDate) ? null : preScheduleDate;
+      const newInfo = {
             eventName,
             description,
             duration,
             method,
             methodInfo,
             timeRange,
-            scheduleDate: scheduleDate ? scheduleDate :(!scheduleDate && !preScheduleDate) ? null : preScheduleDate,
+            scheduleDate: newScheduleDate,
          }
+         const today = new Date();
+         const detailsLink = `${scheduleLink}/details`
          console.log(newInfo);
 			try {
 				const response = await axios.put(`/api/scheduling/${path}`,{...newInfo} );
@@ -87,6 +94,24 @@ const editEventPage = ({params}) => {
 					});
 					router.push("/my-account");
 					reset();
+
+               if((new Date(preScheduleDate) > today) && (eventType === "Group") && inviteeInfo?.length > 0){
+                  inviteeInfo.map(async(invitee) => {
+                     const sendMail = await axios.post('/api/sendUpdateMail',{
+                        inviteeName: invitee?.inviteeName,
+                        inviteeEmail: invitee?.inviteeEmail,
+                        eventName,
+                        hostEmail,
+                        scheduleDate: newScheduleDate,
+                        method,
+                        detailsLink,
+                        methodInfo,
+                        hostName
+                     })
+                     console.log(sendMail);
+                  })
+               }
+
 				}
 			} catch (error) {
 				console.error('Error submitting form:', error);
@@ -264,7 +289,7 @@ const editEventPage = ({params}) => {
                           placeholder="Link path..."
                           required
                           disabled
-                          Value={path}
+                          value={path}
                           className="outline-none w-full disabled:cursor-not-allowed"
                           id="eventLink"
                           {...register("eventLink")}
@@ -277,7 +302,7 @@ const editEventPage = ({params}) => {
                     <input
                        className="border border-[#465AF7] py-2 px-4 rounded-full cursor-pointer text-[15px] text-[#465AF7] hover:text-white hover:border-sky-950 hover:bg-sky-950 duration-300"
                        type="submit"
-                       value={"Create Event"}
+                       value={"Update Event"}
                     />
                  </div>
               </form>

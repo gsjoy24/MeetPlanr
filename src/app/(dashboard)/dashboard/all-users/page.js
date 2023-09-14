@@ -5,20 +5,27 @@ import TimeZoneConverter from '@/shareComponents/TimeZoneConverter';
 import axios from 'axios';
 import Image from 'next/image';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { AiFillDollarCircle } from 'react-icons/ai';
 import { BsFillInfoCircleFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 
 const AllUser = () => {
 	const [loading, setLoading] = useState(false);
-	const allUsers = UseAllUsers();
+	const [allUsers, refetch, setRefetch] = UseAllUsers();
 
 	const changeUserRole = async (role, id) => {
 		setLoading(true);
 		const res = await axios.put('/api/changeRole', { role, id });
-		const data = await res.data;
+		const data = res.data;
 		console.log(data);
 		setLoading(false);
+		if (data.result.matchedCount) {
+			setRefetch(!refetch);
+			toast.success(`The ${role} is ${role === 'admin' ? 'a user' : 'an admin'} now!`);
+		} else {
+			toast.error('Something went wrong! Please try again!');
+		}
 	};
 
 	return allUsers && Array.isArray(allUsers) ? (

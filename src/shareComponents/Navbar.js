@@ -51,9 +51,7 @@ const Navbar = () => {
 									</div>
 									{userData?.role === 'admin' && (
 										<li>
-											<Link className={`py-1 capitalize hover:text-[#465AF7] rounded-lg duration-200`} href="/admin">
-												Admin Dashboard
-											</Link>
+											<BlockLink route={'dashboard'} />
 										</li>
 									)}
 									<li>
@@ -173,13 +171,7 @@ const Navbar = () => {
 									</li>
 									{userData?.role === 'admin' && (
 										<li>
-											<Link
-												onClick={closeSideNAv}
-												className={`py-1 capitalize hover:text-[#465AF7] rounded-lg duration-200`}
-												href="/admin"
-											>
-												Admin Dashboard
-											</Link>
+											<BlockLink closeSideNAv={closeSideNAv} route={'dashboard'} />
 										</li>
 									)}
 									<li>

@@ -105,7 +105,7 @@ const EventPage = ({params}) => {
                {/*================= Event Form ====================== =*/}
                <div className="md:w-4/5 mx-auto border-2 border-[#d7e3f0] rounded-xl shadow-md">
                   <h2 className="w-full py-5 text-3xl text-[#0B3558] font-medium text-center border-b">
-                     Add {eventType == "oneOnOne" ? "One-on-One" : eventType == "hostControlSingle" ? "Host control" : ""} Event Type {eventType == "hostControlSingle" && "(one-on-one)"}
+                     Add {eventType == "oneOnOne" ? "One-on-One" : eventType == "hostControlSingle" ? "Host control" :eventType == "hostControlGroup" ? "Host control" : ""} Event Type {eventType == "hostControlSingle" ? "(one-on-one)" :eventType == "hostControlGroup" ? "(Group)" : ""} 
                   </h2>
 
                   <form className="" onSubmit={handleSubmit(onSubmit)}>

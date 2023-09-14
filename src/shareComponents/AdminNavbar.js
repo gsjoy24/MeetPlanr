@@ -6,7 +6,6 @@ import { MdEditDocument } from 'react-icons/md';
 import { BiArrowFromRight, BiSolidBarChartSquare } from 'react-icons/bi';
 import { HiUserGroup } from 'react-icons/hi';
 import { usePathname } from 'next/navigation';
-import Container from '@/components/container';
 
 const AdminNavbar = ({ children }) => {
 	const path = usePathname();
@@ -24,7 +23,9 @@ const AdminNavbar = ({ children }) => {
 			<div className="drawer-content">
 				{/* Page content here */}
 				<div className="lg:hidden flex items-center justify-between w-full px-6 py-2 border-b shadow-md text-[#465AF7]">
-					<div className="text-2xl font-bold">MeetPlanr</div>
+					<div className="text-2xl font-bold">
+						<Link href="/">MeetPlanr</Link>
+					</div>
 					<label htmlFor="my-drawer-2" className="drawer-button">
 						<FaBarsStaggered />
 					</label>
@@ -39,8 +40,8 @@ const AdminNavbar = ({ children }) => {
 					<li>
 						<Link
 							onClick={closeSideNAv}
-							className={`flex items-center py-3 ${path == '/admin' && 'bg-[#465AF7] text-white'}`}
-							href="/admin"
+							className={`flex items-center py-3 ${path == '/dashboard' && 'bg-[#465AF7] text-white'}`}
+							href="/dashboard"
 						>
 							<BiSolidBarChartSquare size={20} /> <span>Dashboard</span>
 						</Link>
@@ -48,8 +49,8 @@ const AdminNavbar = ({ children }) => {
 					<li>
 						<Link
 							onClick={closeSideNAv}
-							className={`flex items-center py-3 ${path == '/admin/add-new-blog' && 'bg-[#465AF7] text-white'}`}
-							href="/admin/add-new-blog"
+							className={`flex items-center py-3 ${path == '/dashboard/add-new-blog' && 'bg-[#465AF7] text-white'}`}
+							href="/dashboard/add-new-blog"
 						>
 							<MdEditDocument size={20} /> <span>Add New Blog</span>
 						</Link>
@@ -57,8 +58,8 @@ const AdminNavbar = ({ children }) => {
 					<li>
 						<Link
 							onClick={closeSideNAv}
-							className={`flex items-center py-3 ${path == '/admin/all-schedule' && 'bg-[#465AF7] text-white'}`}
-							href="/admin/all-schedule"
+							className={`flex items-center py-3 ${path == '/dashboard/all-schedule' && 'bg-[#465AF7] text-white'}`}
+							href="/dashboard/all-schedule"
 						>
 							<FaCalendarTimes size={20} /> <span>All Schedule</span>
 						</Link>
@@ -66,8 +67,8 @@ const AdminNavbar = ({ children }) => {
 					<li>
 						<Link
 							onClick={closeSideNAv}
-							className={`flex items-center py-3 ${path == '/admin/all-users' && 'bg-[#465AF7] text-white'}`}
-							href="/admin/all-users"
+							className={`flex items-center py-3 ${path == '/dashboard/all-users' && 'bg-[#465AF7] text-white'}`}
+							href="/dashboard/all-users"
 						>
 							<HiUserGroup size={20} /> <span>All users</span>
 						</Link>

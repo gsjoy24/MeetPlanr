@@ -31,7 +31,7 @@
 /*==================== Featured section ===============================*/
 
 .ft_hover {
-	@apply hover:bg-gray-200 transition-all duration-300;
+	@apply hover:bg-blue-200 transition-all duration-300;
 }
 
 .ft_hover .ft_icon {
@@ -74,7 +74,10 @@
 	border-color: #465af7 !important;
 	@apply border-b-4 outline-none;
 }
-
+.subtab .react-tabs ul{
+	margin-top: 0px !important;
+	margin-bottom: 10px !important;
+}
 /* ==================Calender======================  */
 
 .react-datepicker__day,

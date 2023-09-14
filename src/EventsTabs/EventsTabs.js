@@ -14,11 +14,14 @@ import { FaAngleRight, FaTimesCircle } from "react-icons/fa";
 import UseGetCurrentUser from "@/hooks/UseGetCurrentUser";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";                    
+import { toast } from "react-hot-toast";
 
 const EventsTabs = () => {
    const [actions,setActions] = useState(false);
    const [tabIndex, setTabIndex] = useState(0);
+   const [subTabIndex, setSubTabIndex] = useState(0);
    const [schedules, setSchedules] = useState([]);
+   console.log(schedules);
    const [loading,setLoading] = useState(true)
    const currentUser = UseGetCurrentUser();
    const router = useRouter();
@@ -83,6 +86,8 @@ const EventsTabs = () => {
 						setActions(false)
 					}
 				})
+			}else{
+				router.push('/event/hostControlGroup')
 			}
 	}}
 	const handleEdit = (path,confirm,eventType) => {
@@ -113,6 +118,17 @@ const EventsTabs = () => {
 				})
 			}
 	}
+// Sub Tab Section===========================================
+//UPCOMING-------------------
+	const today = new Date();
+
+	const upcoming = schedules?.filter(schedule => ((new Date(schedule?.scheduleDate) > today) && (schedule.confirm || (schedule?.inviteeInfo?.length > 0  && schedule?.eventType ==  "Group"))))
+//PENDING--------------------
+	const pending = schedules?.filter(schedule => (!(schedule?.confirm) && schedule?.eventType ==  "Single") || (schedule?.inviteeInfo?.length == 0  && schedule?.eventType ==  "Group"))
+//PAST----------------------	
+	const past = schedules?.filter(schedule => ((new Date(schedule?.scheduleDate) < today) && (schedule.confirm || (schedule?.inviteeInfo?.length > 0  && schedule?.eventType ==  "Group"))))
+
+
 	return (
 		<div>
 			<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
@@ -199,7 +215,48 @@ const EventsTabs = () => {
 						</div>
 					</TabPanel>
 					<TabPanel>
-						<p className="text-[#737373] text-xl font-semibold mt-8">No Events Yet</p>
+						<div className="rounded-md shadow-lg border my-14 subtab p-5">
+						<Tabs selectedIndex={subTabIndex} onSelect={(index) => setSubTabIndex(index)}>
+							<TabList className=" flex space-x-10 mt-10">
+								<Tab className="border-0 cursor-pointer pb-2">Upcoming</Tab>
+								<Tab className="border-0 cursor-pointer pb-2">Pending</Tab>
+								<Tab className="border-0 cursor-pointer pb-2">Past</Tab>
+							</TabList>
+							<TabPanel>
+								<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
+								{
+									loading ? 
+									<div className="mx-auto sm:col-span-2 lg:col-span-3 py-20">
+										<span className="loading loading-bars loading-lg"></span>
+									</div> 
+									: upcoming?.map(schedule => <EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id}></EventCard>)
+								}
+								</div>
+							</TabPanel>
+							<TabPanel>
+								<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
+								{
+									loading ? 
+									<div className="mx-auto sm:col-span-2 lg:col-span-3 py-20">
+										<span className="loading loading-bars loading-lg"></span>
+									</div> 
+									: pending?.map(schedule => <EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id}></EventCard>)
+								}
+								</div>
+							</TabPanel>
+							<TabPanel>
+								<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
+								{
+									loading ? 
+									<div className="mx-auto sm:col-span-2 lg:col-span-3 py-20">
+										<span className="loading loading-bars loading-lg"></span>
+									</div> 
+									: past?.map(schedule => <EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id}></EventCard>)
+								}
+								</div>
+							</TabPanel>
+						</Tabs>
+						</div>
 					</TabPanel>
 				</Container>
 			</Tabs>
