@@ -25,6 +25,11 @@ test("renders SolutionsPage component", () => {
 test("renders SolutionsPage component", () => {
    const { getByTestId } = render(<SolutionsPage />);
 
+   // Test for the presence of specific links using data-testid
+   const createEventLink = getByTestId("createEvent");
+   expect(createEventLink).toBeInTheDocument();
+  expect(createEventLink).toHaveAttribute("href", "/my-account");
+
    // Select images by their data-testid attributes
    expect(getByTestId("image1")).toBeInTheDocument();
    expect(getByTestId("image2")).toBeInTheDocument();
