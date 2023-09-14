@@ -5,22 +5,24 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useSearchParams } from 'next/navigation';
 import EventCard from '@/components/EventCard';
-import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
 import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 const AccountPage = () => {
 	const [schedules,setSchedules] = useState([]);
+	const [currentUser,setCurrentUser] = useState(null);
 	const [loading,setLoading] = useState(true);
 	const params = useParams();
-	const currentUser = UseGetCurrentUser();
 	useEffect(()=>{
 		(async()=> {
 			const response = await axios(`/api/scheduling?username=${params?.username}`)
-			setSchedules(response?.data)
-			if(response?.data){
+			const currentUser = await axios(`/api/users/${params?.username}`)
+			if(response?.data && currentUser.data){
+				setSchedules(response?.data)
+				setCurrentUser(currentUser.data)
 				setLoading(false)
 			}
 		})()
 	},[params])
+	console.log(currentUser);
 	console.log(schedules);
 	if(loading || !currentUser){
 		return <LoadingSpinner/>

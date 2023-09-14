@@ -72,7 +72,10 @@
 	border-color: #465af7 !important;
 	@apply border-b-4 outline-none
 }
-
+.subtab .react-tabs ul{
+	margin-top: 0px !important;
+	margin-bottom: 10px !important;
+}
 /* ==================Calender======================  */
 
 .react-datepicker__day,
