@@ -2,14 +2,14 @@ import React from "react";
 import { render } from "@testing-library/react";
 import SolutionsPage from "./SolutionsPage";
 
-test("renders SolutionsPage component correctly", () => {
+test("renders SolutionsPage component", () => {
    const { getByText } = render(<SolutionsPage />);
 
    expect(getByText("SOLUTIONS")).toBeInTheDocument();
    expect(
       getByText("A scheduling automation solution for")
-   ).toBeInTheDocument();
-
+  ).toBeInTheDocument();
+  
    // Select images by their alt attributes
    const solutionsImage1 = document.querySelector(
       'img[alt="Solutions image 1"]'
@@ -23,17 +23,14 @@ test("renders SolutionsPage component correctly", () => {
 });
 
 test("renders SolutionsPage component", () => {
-   const { getByText, getByTestId } = render(<SolutionsPage />);
+   const { getByTestId } = render(<SolutionsPage />);
 
-   expect(getByText("SOLUTIONS")).toBeInTheDocument();
-   expect(
-      getByText("A scheduling automation solution for")
-   ).toBeInTheDocument();
+   // Test for the presence of specific links using data-testid
+   const createEventLink = getByTestId("createEvent");
+   expect(createEventLink).toBeInTheDocument();
+  expect(createEventLink).toHaveAttribute("href", "/my-account");
 
    // Select images by their data-testid attributes
-   const solutionsImage1 = getByTestId("image1");
-   const solutionsImage2 = getByTestId("image2");
-
-   expect(solutionsImage1).toBeInTheDocument();
-   expect(solutionsImage2).toBeInTheDocument();
+   expect(getByTestId("image1")).toBeInTheDocument();
+   expect(getByTestId("image2")).toBeInTheDocument();
 });

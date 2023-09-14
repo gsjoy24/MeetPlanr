@@ -25,6 +25,7 @@ const SolutionsPage = () => {
 
                <Link
                   href="/my-account"
+                  data-testid="createEvent"
                   className="btn bg-[#465AF7] hover:bg-sky-950 text-[16px] text-white rounded-lg mr-5 px-6 capitalize tracking-widest"
                >
                   Create Event
