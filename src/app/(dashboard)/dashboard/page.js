@@ -5,8 +5,8 @@ import UseBlogs from '@/hooks/UseBlogs';
 import UseSchedule from '@/hooks/UseSchedule';
 
 const AdminPage = () => {
-	const allUsers = UseAllUsers();
-	const allBlogs = UseBlogs();
+	const [allUsers] = UseAllUsers();
+	const [allBlogs] = UseBlogs();
 	const allSchedule = UseSchedule();
 	return (
 		<div>
@@ -15,7 +15,7 @@ const AdminPage = () => {
 				<State num={allUsers ? allUsers?.length : false} title="Users" />
 				<State num={allBlogs ? allBlogs?.length : false} title="Blogs" />
 				<State num={allSchedule ? allSchedule?.length : false} title="Schedules" />
-				<State num={'121'} title="Feedbacks" />
+				<State num={'32'} title="Feedbacks" />
 			</div>
 		</div>
 	);
