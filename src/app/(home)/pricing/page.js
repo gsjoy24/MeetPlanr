@@ -3,7 +3,7 @@ import Container from '@/components/container';
 import { GiCheckMark } from 'react-icons/gi';
 import ButtonCheckout from '@/components/PayButton';
 import UseLoadPrice from '@/hooks/UseLoadPrice';
-const Pricing = async() => {
+const Pricing = async () => {
 	const prices = await UseLoadPrice();
 	return (
 		<Container>
@@ -16,11 +16,15 @@ const Pricing = async() => {
 				</div>
 
 				<div className="grid lg:mt-[50px] gap-5 lg:grid-cols-3 md:grid-cols-2 mt-10">
-				{
-					prices?.map(price=>(
-						<div key={price.id} className={`rounded-3xl max-w-[350px] card group w-full hover:bg-[#0B3558] text-[#0B3558] hover:text-white border transition-all shadow-md pb-10 duration-700 mx-auto ${price.nickname === "STANDARD" && "bg-[#0B3558] text-white"}`}>
+					{prices?.map((price) => (
+						<div
+							key={price.id}
+							className={`rounded-3xl max-w-[350px] card group w-full hover:bg-[#0B3558] text-[#0B3558] hover:text-white border transition-all shadow-md pb-10 duration-700 mx-auto ${
+								price.nickname === 'STANDARD' && 'bg-[#0B3558] text-white'
+							}`}
+						>
 							<div className="px-5">
-								<p className="text-[22px] uppercase mt-[30px] font-bold">{ price.nickname}</p>
+								<p className="text-[22px] uppercase mt-[30px] font-bold">{price.nickname}</p>
 								<div className="flex items-center lg:text-[42px] uppercase my-2 font-bold">
 									<span className="text-4xl lg:text-[40px] mt-[5px]">{price.unit_amount / 100}$</span>
 								</div>
@@ -29,56 +33,53 @@ const Pricing = async() => {
 							<hr className="borderBottom my-3" />
 							<div className="Normal px-5 pb-6 font-normal">
 								<p className="Medium mb-3 text-lg font-medium">Basic features</p>
-								
+
 								<ul>
-								{
-									price?.lookup_key ?
-									price?.lookup_key?.split(',').map((feature, index) => (
-										<li key={index} className="flex items-center">
-											<span className="mr-2 text-green-500">
-												<GiCheckMark />
-											</span>
-											<span>{feature.trim()}</span>
-										</li>
-									))
-									: <>
-										<li className="flex items-center">
-											<span className="mr-2 text-green-500">
-												<GiCheckMark />
-											</span>
-											<span>Create two Events</span>
-										</li>
-										<li className="flex items-center">
-											<span className="mr-2 text-green-500">
-												<GiCheckMark />
-											</span>
-											<span>Send reminder email(both invitees and host).</span>
-										</li>
-										<li className="flex items-center">
-											<span className="mr-2 text-green-500">
-												<GiCheckMark />
-											</span>
-											<span>Connect to Google Meet</span>
-										</li>
-										<li className="flex items-center">
-											<span className="mr-2 text-green-500">
-												<GiCheckMark />
-											</span>
-											<span>Send automated event notifications</span>
-										</li>
-										
-									</>
-								}
+									{price?.lookup_key ? (
+										price?.lookup_key?.split(',').map((feature, index) => (
+											<li key={index} className="flex items-center">
+												<span className="mr-2 text-green-500">
+													<GiCheckMark />
+												</span>
+												<span>{feature.trim()}</span>
+											</li>
+										))
+									) : (
+										<>
+											<li className="flex items-center">
+												<span className="mr-2 text-green-500">
+													<GiCheckMark />
+												</span>
+												<span>Create two Events</span>
+											</li>
+											<li className="flex items-center">
+												<span className="mr-2 text-green-500">
+													<GiCheckMark />
+												</span>
+												<span>Send reminder email(both invitees and host).</span>
+											</li>
+											<li className="flex items-center">
+												<span className="mr-2 text-green-500">
+													<GiCheckMark />
+												</span>
+												<span>Connect to Google Meet</span>
+											</li>
+											<li className="flex items-center">
+												<span className="mr-2 text-green-500">
+													<GiCheckMark />
+												</span>
+												<span>Send automated event notifications</span>
+											</li>
+										</>
+									)}
 								</ul>
 							</div>
-							<hr className="borderBottom"/>
+							<hr className="borderBottom" />
 							<div className="px-5 mt-auto">
 								<ButtonCheckout priceName={price.nickname} price={price.unit_amount / 100} priceId={price.id} />
 							</div>
 						</div>
-					
-					))
-				}
+					))}
 				</div>
 			</div>
 		</Container>

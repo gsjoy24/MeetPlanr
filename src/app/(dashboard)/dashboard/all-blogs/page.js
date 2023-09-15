@@ -44,7 +44,7 @@ const AllBlogs = () => {
 		<>
 			<h1 className="md:text-2xl mb-5 text-xl font-bold">All Blogs</h1>
 			<div className="mx-auto overflow-x-auto max-w-[330px] sm:max-w-[620px] md:max-w-[740px] lg:max-w-[830px]">
-				<table className="table min-w-full">
+				<table className="table min-w-full border">
 					{/* head */}
 					<thead>
 						<tr>
@@ -83,9 +83,13 @@ const AllBlogs = () => {
 											>
 												<MdDelete size={25} />
 											</button>
-											<button title="update" className="hover:text-[#465AF7] duration-200">
+											<Link
+												href={`/update-blog/${blog?._id}`}
+												title="update"
+												className="hover:text-[#465AF7] duration-200"
+											>
 												<FaSquarePen size={25} />
-											</button>
+											</Link>
 										</span>
 									</th>
 								</tr>

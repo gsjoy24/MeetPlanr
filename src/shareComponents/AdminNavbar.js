@@ -35,7 +35,9 @@ const AdminNavbar = ({ children }) => {
 			<div className="drawer-side z-50">
 				<label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 				<ul className="menu w-80 text-base-content min-h-full p-4 space-y-3 bg-white">
-					<div className="text-4xl p-4 text-[#465AF7] font-bold border-b border-gray-300">MeetPlanr</div>
+					<div className="text-4xl p-4 text-[#465AF7] font-bold border-b border-gray-300">
+						<Link href="/">MeetPlanr</Link>
+					</div>
 
 					<li>
 						<Link
