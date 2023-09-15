@@ -16,7 +16,7 @@ const AllUser = () => {
 	const changeUserRole = async (role, id) => {
 		setLoading(true);
 		const res = await axios.put('/api/changeRole', { role, id });
-		const data = await res.data;
+		const data = res.data;
 		console.log(data);
 		setLoading(false);
 	};

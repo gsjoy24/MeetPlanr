@@ -15,6 +15,7 @@ import UseGetCurrentUser from "@/hooks/UseGetCurrentUser";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";                    
 import { toast } from "react-hot-toast";
+import addNotification, { Notifications } from "react-push-notification";
 
 const EventsTabs = () => {
    const [actions,setActions] = useState(false);
@@ -129,8 +130,22 @@ const EventsTabs = () => {
 	const past = schedules?.filter(schedule => ((new Date(schedule?.scheduleDate) < today) && (schedule.confirm || (schedule?.inviteeInfo?.length > 0  && schedule?.eventType ==  "Group"))))
 
 
+	const buttonClick = () => {
+		console.log("object");
+		<Notifications />
+        // addNotification({
+        //     title: 'Warning',
+        //     subtitle: 'This is a subtitle',
+        //     message: 'This is a very long message',
+        //     theme: 'darkblue',
+        //     // native: true // when using native, your OS will handle theming.
+        // });
+    };
+
 	return (
 		<div>
+		<Notifications />
+
 			<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
 				<div className="shadow-md">
 					<Container>
@@ -202,6 +217,9 @@ const EventsTabs = () => {
 								}
 							</div>
 						</div>
+						<button onClick={buttonClick} className="btn-primary">
+           Hello world.
+          </button>
 						<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
 							{
 							loading ? 
