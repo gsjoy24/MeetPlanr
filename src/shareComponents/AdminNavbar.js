@@ -58,6 +58,15 @@ const AdminNavbar = ({ children }) => {
 					<li>
 						<Link
 							onClick={closeSideNAv}
+							className={`flex items-center py-3 ${path == '/dashboard/all-blogs' && 'bg-[#465AF7] text-white'}`}
+							href="/dashboard/all-blogs"
+						>
+							<HiUserGroup size={20} /> <span>All Blogs</span>
+						</Link>
+					</li>
+					<li>
+						<Link
+							onClick={closeSideNAv}
 							className={`flex items-center py-3 ${path == '/dashboard/all-schedule' && 'bg-[#465AF7] text-white'}`}
 							href="/dashboard/all-schedule"
 						>
@@ -70,9 +79,10 @@ const AdminNavbar = ({ children }) => {
 							className={`flex items-center py-3 ${path == '/dashboard/all-users' && 'bg-[#465AF7] text-white'}`}
 							href="/dashboard/all-users"
 						>
-							<HiUserGroup size={20} /> <span>All users</span>
+							<HiUserGroup size={20} /> <span>All Users</span>
 						</Link>
 					</li>
+
 					<li className="bottom-4 absolute w-full">
 						<Link onClick={closeSideNAv} className="active:bg-red-300 flex items-center" href="/">
 							<BiArrowFromRight size={20} /> <span>Back to Home</span>
