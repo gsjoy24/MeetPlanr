@@ -30,7 +30,7 @@ const BlogPostForm = () => {
 								icon: 'success',
 								title: '<span class="text-xl">Submitted <br> Have a quick look!</span>',
 								html: `<a class='text-xs'
-											href=${`/blogs/+${response.data.insertedId}`}
+											href=${`/blogs/${response.data.insertedId}`}
 											target="_blank">
 											${`https://meet-planr.vercel.app/blogs/${response.data.insertedId}`}
 											</a>`,
