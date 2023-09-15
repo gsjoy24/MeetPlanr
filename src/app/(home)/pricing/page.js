@@ -66,12 +66,7 @@ const Pricing = async() => {
 											</span>
 											<span>Send automated event notifications</span>
 										</li>
-										<li className="flex items-center">
-											<span className="mr-2 text-green-500">
-												<GiCheckMark />
-											</span>
-											<span>24/7 email support</span>
-										</li>
+										
 									</>
 								}
 								</ul>
