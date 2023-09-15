@@ -20,7 +20,7 @@ const Featured = () => {
 		<section className="" style={{ marginTop: '64px', marginBottom: '64px' }}>
 			<Container>
 				<SectionTitle title={'Features'}></SectionTitle>
-				<div className="md:grid-cols-2 lg:grid-cols-3 grid gap-5">
+				<div className="md:grid-cols-2 lg:grid-cols-3 grid gap-8">
 					{features.map((feature, idx) => (
 						<FeatureCard feature={feature} key={idx}></FeatureCard>
 					))}

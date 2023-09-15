@@ -64,6 +64,7 @@
     "daisyui": "^3.5.1",
     "eslint-plugin-testing-library": "^6.0.1",
     "jest": "^29.7.0",
+    "jest-canvas-mock": "^2.5.2",
     "jest-environment-jsdom": "^29.7.0"
   }
 }

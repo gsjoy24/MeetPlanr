@@ -11,16 +11,17 @@ import Button from '@/common/Button';
 import BlogCard from '@/components/BlogCard';
 import UseBlogs from '@/hooks/UseBlogs';
 import Loading from '@/app/loading';
+import { AiOutlineArrowRight } from 'react-icons/ai';
 
 const Page = () => {
-	const allBlogs = UseBlogs();
+	const [allBlogs] = UseBlogs();
 	let firstBlog = {};
 	let restBlogs = [];
 	let BlogContent;
 
 	// Function to truncate the content to a maximum of 20 words
-	const truncateContent = (text) => {
-		const words = text.split(' ');
+	const truncateContent = (text = ' ') => {
+		const words = text.split(' ') || [];
 		if (words.length > 17) {
 			return words.slice(0, 17).join(' ') + '...';
 		} else {
@@ -41,8 +42,8 @@ const Page = () => {
 						<div className="lg:flex lg:p-8 items-center justify-center p-4 space-y-3">
 							<div className="md:pr-8 flex flex-col items-center">
 								<Image
-									className="w-full"
-									src={firstBlog.image ? firstBlog.image : 'https://i.ibb.co/Ytbhzg4/blank.jpg'}
+									className="w-full min-w-[340px]"
+									src={firstBlog?.image ? firstBlog.image : 'https://i.ibb.co/Ytbhzg4/blank.jpg'}
 									alt="customer"
 									width={500}
 									height={500}
@@ -52,9 +53,10 @@ const Page = () => {
 								<p className="mb-4 text-sm font-thin">{firstBlog?.title && firstBlog?.title}</p>
 								<h1 className="mb-4 text-2xl font-bold">{firstBlog?.title ? firstBlog?.title : 'loading'}</h1>
 								<p>{BlogContent ? BlogContent : 'loading'}</p>
-								<span>
-									<Link className="hover:underline mt-2 text-blue-500" href={`/blogs/${firstBlog?._id}`}>
-										Read article
+
+								<span className="inline-block w-36 mt-3">
+									<Link href={`/blogs/${firstBlog?._id}`} className="group flex items-center gap-2 text-blue-600">
+										<span>Read more</span> <AiOutlineArrowRight className="group-hover:translate-x-1 duration-200" />
 									</Link>
 								</span>
 							</div>

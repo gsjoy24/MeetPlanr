@@ -34,10 +34,10 @@ const SchedulePage = () => {
 									<th>
 										<label>{i + 1}</label>
 									</th>
-									<td className="min-w-[150px] ">
+									<td className="min-w-[200px] ">
 										<span className="flex flex-col gap-2">
 											<span className="flex items-center gap-2">
-												<GiTabletopPlayers size={24} /> {schedule.eventName}
+												<GiTabletopPlayers className='w-8 md:w-auto' size={20} /> {schedule.eventName}
 											</span>
 											<span className="flex items-center gap-2">
 												<BiSolidUser size={17} /> {schedule?.hostName}

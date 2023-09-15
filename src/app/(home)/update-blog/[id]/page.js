@@ -1,55 +1,83 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BiSolidErrorAlt } from 'react-icons/bi';
 import { UploadPicture } from '@/utils/uploadPicture';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
 
-const BlogPostForm = () => {
+const BlogEditForm = ({ params }) => {
+	const [blog, setBlog] = useState({});
+	const [loading, setLoading] = useState(true);
+	const [updating, setUpdating] = useState(false);
+
+	useEffect(() => {
+		async function fetchData() {
+			try {
+				const response = await axios(`/api/blog/${params.id}`);
+				if (response.data) {
+					setBlog(response.data);
+					setLoading(false);
+				}
+			} catch (error) {
+				console.error('Error fetching data:', error);
+			}
+		}
+
+		fetchData();
+	}, [params]);
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		reset
 	} = useForm();
-	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const onSubmit = async (data) => {
-		setIsSubmitting(true);
 		const { image, ...restData } = data;
+		toast.error('This feature is under development!');
 
-		UploadPicture(data.image[0], data.title)
-			.then((data) => {
-				const blogData = { ...restData, timestamp: new Date(), image: data.data.data.url };
-				if (data.data.data.url) {
-					axios
-						.post('/api/blog', blogData)
-						.then((response) => {
-							Swal.fire({
-								icon: 'success',
-								title: '<span class="text-xl">Submitted <br> Have a quick look!</span>',
-								html: `<a class='text-xs'
-											href=${`/blogs/+${response.data.insertedId}`}
-											target="_blank">
-											${`https://meet-planr.vercel.app/blogs/${response.data.insertedId}`}
-											</a>`,
-								showConfirmButton: false,
-								showCloseButton: true
-							});
-							reset();
-							setIsSubmitting(false);
-						})
-						.catch((e) => {
-							console.log(e.message);
-							setIsSubmitting(false);
-						});
-				}
-			})
-			.catch((error) => {
-				console.log(error.message);
-				setIsSubmitting(false);
-			});
+		// if (data.image.length) {
+		// 	console.log('object');
+		// } else {
+		// 	console.log('dsdasd');
+		// }
+
+		// setUpdating(true);
+
+		// UploadPicture(data.image[0], data.title)
+		// 	.then((data) => {
+		// 		const blogData = { ...restData, timestamp: new Date(), image: data.data.data.url };
+		// 		if (data.data.data.url) {
+		// 			axios
+		// 				.post('/api/blog', blogData)
+		// 				.then((response) => {
+		// 					Swal.fire({
+		// 						icon: 'success',
+		// 						title: '<span class="text-xl">Submitted <br> Have a quick look!</span>',
+		// 						html: `<a class='text-xs'
+		// 									href=${`/blogs/${response.data.insertedId}`}
+		// 									target="_blank">
+		// 									${`https://meet-planr.vercel.app/blogs/${response.data.insertedId}`}
+		// 									</a>`,
+		// 						showConfirmButton: false,
+		// 						showCloseButton: true
+		// 					});
+		// 					reset();
+		// 					setUpdating(false);
+		// 				})
+		// 				.catch((e) => {
+		// 					console.log(e.message);
+		// 					setUpdating(false);
+		// 				});
+		// 		}
+		// 	})
+		// 	.catch((error) => {
+		// 		console.log(error.message);
+		// 		setUpdating(false);
+		// 	});
 	};
 
 	return (
@@ -61,24 +89,27 @@ const BlogPostForm = () => {
 					<span className="label-text">Blog Title</span>
 				</label>
 				<input
+					defaultValue={blog?.title}
 					className="mp_input"
 					type="text"
 					placeholder="Title"
 					autoComplete="title"
 					{...register('title', { required: true })}
 				/>
+
 				{errors.title?.type === 'required' && (
 					<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500" role="alert">
 						<BiSolidErrorAlt size={17} /> <span>Title is required!</span>
 					</p>
 				)}
 			</div>
-			{/* sub title */}
+			{/* subtitle */}
 			<div>
 				<label className="label">
 					<span className="label-text">Sub Title</span>
 				</label>
 				<input
+					defaultValue={blog?.subtitle}
 					className="mp_input"
 					type="text"
 					placeholder="Subtitle"
@@ -97,6 +128,7 @@ const BlogPostForm = () => {
 					<span className="label-text">Blog Content</span>
 				</label>
 				<textarea
+					defaultValue={blog?.content}
 					className="mp_input min-h-[130px]"
 					placeholder="Content"
 					{...register('content', { required: true })}
@@ -115,24 +147,18 @@ const BlogPostForm = () => {
 				<input
 					type="file"
 					accept="image/*"
-					{...register('image', { required: true })}
+					{...register('image')}
 					className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600 block w-full text-sm text-gray-500"
 				/>
-				{/* <input type="file" /> */}
-				{errors.image?.type === 'required' && (
-					<p className="flex items-center gap-2 pt-2 ml-1 text-xs text-red-500" role="alert">
-						<BiSolidErrorAlt size={17} /> <span>Image is required!</span>
-					</p>
-				)}
 			</div>
 			<button
 				className="bg-[#465AF7] hover:bg-sky-950 duration-200 text-white py-2 w-full rounded-lg mt-6"
-				type={isSubmitting ? 'button' : 'submit'}
+				type={updating ? 'button' : 'submit'}
 			>
-				{isSubmitting ? 'Submitting' : 'Submit'}
+				{updating ? 'Updating' : 'Update'}
 			</button>
 		</form>
 	);
 };
 
-export default BlogPostForm;
+export default BlogEditForm;
