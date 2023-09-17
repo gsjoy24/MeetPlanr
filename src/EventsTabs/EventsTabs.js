@@ -10,12 +10,11 @@ import Link from "next/link";
 import EventCard from "@/components/EventCard";
 import one_one_one from '../assets/events-tabs/one_on_one.png';
 import group from '../assets/events-tabs/group.png';
-import { FaAngleRight, FaTimesCircle } from "react-icons/fa";
+import { FaAngleRight, FaCopy, FaRegCopy, FaTimesCircle } from "react-icons/fa";
 import UseGetCurrentUser from "@/hooks/UseGetCurrentUser";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";                    
 import { toast } from "react-hot-toast";
-import addNotification, { Notifications } from "react-push-notification";
 
 const EventsTabs = () => {
    const [actions,setActions] = useState(false);
@@ -130,22 +129,9 @@ const EventsTabs = () => {
 	const past = schedules?.filter(schedule => ((new Date(schedule?.scheduleDate) < today) && (schedule.confirm || (schedule?.inviteeInfo?.length > 0  && schedule?.eventType ==  "Group"))))
 
 
-	const buttonClick = () => {
-		console.log("object");
-		<Notifications />
-        // addNotification({
-        //     title: 'Warning',
-        //     subtitle: 'This is a subtitle',
-        //     message: 'This is a very long message',
-        //     theme: 'darkblue',
-        //     // native: true // when using native, your OS will handle theming.
-        // });
-    };
 
 	return (
 		<div>
-		<Notifications />
-
 			<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
 				<div className="shadow-md">
 					<Container>
@@ -162,12 +148,18 @@ const EventsTabs = () => {
 								<Image src={currentUser ? currentUser?.photoURL : img} alt="User Profile" width={50} height={50} className="w-12 h-12 rounded-full border" />
 								<div>
 									<h4>{currentUser ? currentUser?.name : "User Name"}</h4>
-									<button onClick={copyLink} className="text-[#465AF7] hidden sm:block">
-										https://meet-planr.vercel.app/user/{currentUser ? currentUser?.username :'username'}
-									</button>
-									<button onClick={copyLink} className="text-[#465AF7] text-ellipsis w-[270px] block sm:hidden overflow-hidden whitespace-nowrap">
-										https://meet-pla.../user/{currentUser ? currentUser?.username :'username'}
-									</button>
+									<div className=" gap-5 hidden sm:flex">
+										<Link href={`/user/${currentUser?.username}`} className="text-[#465AF7]">
+											https://meet-planr.vercel.app/user/{currentUser ? currentUser?.username :'username'}
+										</Link>
+										<button className="text-xl" onClick={copyLink}><FaRegCopy/></button>
+									</div>
+									<div className="sm:hidden gap-5 flex">
+										<Link href={`/user/${currentUser?.username}`} className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap">
+											https://meet-pla.../user/{currentUser ? currentUser?.username :'username'}
+										</Link>
+										<button className="text-xl" onClick={copyLink}><FaRegCopy/></button>
+									</div>
 								</div>
 							</div>
 
@@ -217,9 +209,6 @@ const EventsTabs = () => {
 								}
 							</div>
 						</div>
-						<button onClick={buttonClick} className="btn-primary">
-           Hello world.
-          </button>
 						<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
 							{
 							loading ? 

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
 import { FaEdit } from "react-icons/fa";
+import { AiTwotoneSetting } from "react-icons/ai";
 
 const EventCard = ({schedule,handleEdit}) => {
     const {eventName,confirm,duration,scheduleLink,path,eventType} = schedule || {};
-    const detailsLink = `${scheduleLink}/details`
+    const detailsLink = `${scheduleLink}/details`;
+    const [action,setAction] = useState(false)
     const copyLink = () => {
     navigator.clipboard.writeText(scheduleLink).then(() => {
             toast.success("Meeting Link coped");
@@ -19,7 +21,14 @@ const EventCard = ({schedule,handleEdit}) => {
             <div className="text-right mt-2 self-end">
                 <button onClick={copyLink} className='px-4 rounded-3xl py-2 border border-[#465AF7]'>Copy Link</button>
             </div>
-            <button onClick={() => handleEdit(path,confirm,eventType)} className="absolute top-1 right-1 bg-white text-2xl text-[#465AF7]"><FaEdit/></button>
+            {/* onClick={() => handleEdit(path,confirm,eventType)} */}
+            <div className="absolute top-2 right-2">
+                <div className={`${action ? "block" : "hidden"}`}>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+                <button onClick={()=> setAction(!action)} className="bg-white text-2xl text-[#465AF7]"><AiTwotoneSetting/></button>
+            </div>
         </div>
     );
 };
