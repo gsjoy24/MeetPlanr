@@ -44,6 +44,7 @@
     "react-id-swiper": "^4.0.0",
     "react-infinite-logo-slider": "^1.0.13",
     "react-player": "^2.12.0",
+    "react-push-notification": "^1.5.3",
     "react-slick": "^0.29.0",
     "react-tabs": "^6.0.2",
     "server-only": "^0.0.1",
