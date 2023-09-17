@@ -8,6 +8,7 @@ const AdminPage = () => {
 	const [allUsers] = UseAllUsers();
 	const [allBlogs] = UseBlogs();
 	const allSchedule = UseSchedule();
+
 	return (
 		<div>
 			<h1 className=" md:text-2xl mb-5 text-xl font-bold">Admin Dashboard</h1>

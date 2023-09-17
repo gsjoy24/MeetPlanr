@@ -1,4 +1,4 @@
-import UseBlogs from '@/hooks/UseBlogs';
+'use client';
 import TimeZoneConverter from '@/shareComponents/TimeZoneConverter';
 import Link from 'next/link';
 import { FaSquarePen } from 'react-icons/fa6';
@@ -41,7 +41,7 @@ const BlogRow = ({ blog, i, refetch, setRefetch }) => {
 	};
 
 	return (
-		<tr>
+		<tr data-aos="fade-left" data-aos-duration="300">
 			<th>
 				<label>{i + 1}</label>
 			</th>

@@ -1,7 +1,6 @@
 import DbConnect from '@/services/DbConnect';
 import { ObjectId } from 'mongodb';
 import { NextResponse } from 'next/server';
-import { ObjectId } from 'mongodb';
 
 export const PUT = async (request) => {
 	if (request.method === 'PUT') {
