@@ -1,44 +1,10 @@
 'use client';
 import Loading from '@/app/loading';
+import BlogRow from '@/components/BlogRow';
 import UseBlogs from '@/hooks/UseBlogs';
-import TimeZoneConverter from '@/shareComponents/TimeZoneConverter';
-import axios from 'axios';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
-import { FaSquarePen } from 'react-icons/fa6';
-import { MdDelete } from 'react-icons/md';
-import Swal from 'sweetalert2';
 
 const AllBlogs = () => {
 	const [allBlogs, refetch, setRefetch] = UseBlogs();
-
-	const deleteBlog = (id) => {
-		Swal.fire({
-			title: 'Are you sure?',
-			text: "You won't be able to revert this!",
-			showCancelButton: true,
-			confirmButtonColor: '#465AF7',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Yes, delete it!'
-		}).then(async (result) => {
-			if (result.isConfirmed) {
-				const res = await axios.delete('/api/delete-blog', { data: { id } });
-				const data = res.data;
-				if (data.deletedCount === 1) {
-					Swal.fire({
-						title: 'Deleted!',
-						text: 'Your blog has been deleted!',
-						timer: 2000,
-						showConfirmButton: false
-					});
-					setRefetch(!refetch);
-				} else {
-					toast.error('Something went wrong! Please try again!');
-				}
-			}
-		});
-	};
 
 	return allBlogs && Array.isArray(allBlogs) ? (
 		<>
@@ -61,38 +27,7 @@ const AllBlogs = () => {
 						{/* row 1 */}
 						{allBlogs &&
 							allBlogs.map((blog, i) => (
-								<tr key={blog?._id}>
-									<th>
-										<label>{i + 1}</label>
-									</th>
-									<td className="min-w-[200px]">
-										<Link target="_blank" href={`/blogs/${blog?._id}`} className="font-bold hover:underline">
-											{blog?.title}
-										</Link>
-									</td>
-									<td className="flex flex-col gap-2">{blog?.subtitle}</td>
-									<td>
-										<TimeZoneConverter inputDate={blog?.timestamp} />
-									</td>
-									<th>
-										<span className="flex justify-center items-center gap-3">
-											<button
-												onClick={() => deleteBlog(blog?._id)}
-												title="delete"
-												className="hover:text-red-500 duration-200"
-											>
-												<MdDelete size={25} />
-											</button>
-											<Link
-												href={`/update-blog/${blog?._id}`}
-												title="update"
-												className="hover:text-[#465AF7] duration-200"
-											>
-												<FaSquarePen size={25} />
-											</Link>
-										</span>
-									</th>
-								</tr>
+								<BlogRow blog={blog} i={i} key={blog._id} setRefetch={setRefetch} refetch={refetch} />
 							))}
 					</tbody>
 					{/* foot */}
