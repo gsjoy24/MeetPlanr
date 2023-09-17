@@ -24,7 +24,7 @@ const UserDocs = () => {
       <section id="works" className="py-20 bg-[#FBFBFB]">
          <Container>
             <h3 className="text-[#00a4f8] font-semibold uppercase text-center mb-6">
-               AN INTRODUCTION TO MeetPlanr
+               AN OVERVIEW OF MEETPLANR
             </h3>
             <SectionTitle title={"How MeetPlanr Works"}></SectionTitle>
             <div className="">

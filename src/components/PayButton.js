@@ -22,9 +22,25 @@ const ButtonCheckout = ({ priceId,price,priceName }) => {
   }
   }
   return (
-    <button disabled={selectedPlan || !currentUser || isDisable || isFree} className={`disabled:cursor-not-allowed font-semibold border border-[#0b3558af] px-8 py-3 rounded-lg mt-6 ${selectedPlan ? "bg-slate-400 text-[#ddd]" : " text-[#0B3558] bg-sky-100" }`} onClick={handleCheckout} >
-    {selectedPlan ?  "Plan Selected" : (!currentUser) ? <span className="loading loading-dots loading-md"></span> :(isFree) ? "Free" :"Choose Plan"}
-    </button>
+     <button
+        disabled={selectedPlan || !currentUser || isDisable || isFree}
+        className={`disabled:cursor-not-allowed border border-[#0b3558af] w-full py-3 rounded-lg mt-6 text-[18px] font-semibold ${
+           selectedPlan
+              ? "bg-slate-400 text-[#ddd]"
+              : " text-[#0B3558] bg-sky-100 hover:bg-[#8cb1d6] duration-200"
+        }`}
+        onClick={handleCheckout}
+     >
+        {selectedPlan ? (
+           "Plan Selected"
+        ) : !currentUser ? (
+           <span className="loading loading-dots loading-md"></span>
+        ) : isFree ? (
+           "Free"
+        ) : (
+           "Choose Plan"
+        )}
+     </button>
   );
 }
 
