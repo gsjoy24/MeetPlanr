@@ -15,4 +15,3 @@ export const GET = async (request, { params }) => {
 		NextResponse.json({ error: 'error for getting data' });
 	}
 };
-

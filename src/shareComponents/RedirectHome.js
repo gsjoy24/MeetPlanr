@@ -4,14 +4,12 @@ import { useEffect } from 'react';
 
 const RedirectHome = () => {
 	const router = useRouter();
-
 	useEffect(() => {
 		// Redirect to the home route after a delay (e.g., 2 seconds)
 		const redirectTimeout = setTimeout(() => {
 			router.push('/');
 		}, 2000);
 
-		// Clear the timeout if the component unmounts before the redirection
 		return () => {
 			clearTimeout(redirectTimeout);
 		};
@@ -20,8 +18,7 @@ const RedirectHome = () => {
 	return (
 		<div className="flex justify-center items-center flex-col min-h-[500px]">
 			<p>Redirecting to the home page...</p>
-			<p>No route here!</p>
-			{/* You can add a loading spinner or other content here */}
+			<p className="text-xl text-red-500">No route here!</p>
 		</div>
 	);
 };

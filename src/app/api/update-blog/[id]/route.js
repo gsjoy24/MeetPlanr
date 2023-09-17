@@ -5,10 +5,10 @@ import { NextResponse } from 'next/server';
 export const PUT = async (request, { params }) => {
 	try {
 		const db = await DbConnect();
-		const { _id } = params;
-		console.log(_id);
+		const { id } = params;
+		console.log(id);
 		const body = await request.json();
-		const query = { _id: new ObjectId(_id) };
+		const query = { _id: new ObjectId(id) };
 		const updateDoc = {
 			$set: { ...body }
 		};
