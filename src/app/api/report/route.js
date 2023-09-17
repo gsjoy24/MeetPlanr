@@ -6,7 +6,7 @@ export const POST = async (request) => {
 		try {
 			const body = await request.json();
 			const db = await DbConnect();
-			const reportsCollection = db.collection('scheduling');
+			const reportsCollection = db.collection('reports');
 			const result = await reportsCollection.insertOne({...body});
 			return NextResponse.json(result);
 		} catch (error) {
