@@ -4,7 +4,6 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 
 const BlogCard = ({ blog, truncateContent }) => {
 	const { content, image, subtitle, title, _id } = blog || {};
-
 	const truncatedContent = truncateContent(content);
 
 	return (

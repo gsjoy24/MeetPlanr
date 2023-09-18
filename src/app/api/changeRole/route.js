@@ -6,7 +6,6 @@ export const PUT = async (request) => {
 	if (request.method === 'PUT') {
 		try {
 			const body = await request.json();
-			console.log(body);
 			const db = await DbConnect();
 			const userCollection = db.collection('users');
 			const filter = { _id: new ObjectId(body.id) };
