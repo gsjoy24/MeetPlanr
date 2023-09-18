@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import img1 from "@/assets/product-image/appointment.png";
+import img1 from "@/assets/solutions/meetings_save.png";
 import Link from 'next/link';
 import Container from '@/components/container';
 
@@ -38,11 +38,11 @@ const SchedulingFeatures = () => {
                </div>
 
                <div
-                  className="mt-16 flex justify-center"
+                  className="mt-16 pb-10 flex justify-center"
                   data-aos="fade-up"
                   data-aos-duration="600"
                >
-                  <Image src={img1} alt="Scheduling image" className='md:w-[950px]'></Image>
+                  <Image src={img1} alt="Scheduling image" className='md:h-[650px]'></Image>
                </div>
             </div>
          </Container>

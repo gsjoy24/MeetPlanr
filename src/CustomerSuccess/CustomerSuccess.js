@@ -9,7 +9,7 @@ import img4 from "@/assets/solutions/stuart.png";
 import img5 from "@/assets/solutions/video-meeting.gif";
 import img6 from "@/assets/solutions/messaki_preview.png";
 import img7 from "@/assets/solutions/reminders.png";
-import img8 from "@/assets/solutions/meetings_save.png";
+import img8 from "@/assets/solutions/meetings-video.png";
 import { PiSealCheck } from "react-icons/pi";
 
 const CustomerSuccess = () => {

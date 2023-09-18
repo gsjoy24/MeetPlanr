@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Banner = () => {
 	return (
-		<div className="bg-gray-800 overflow-hidden w-full max-h-[70vh] flex justify-center items-center relative">
+		<div className="bg-gray-800 overflow-hidden w-full max-h-[100vh] flex justify-center items-center relative">
 			<CldVideoPlayer
 				width="1920"
 				height="1080"
