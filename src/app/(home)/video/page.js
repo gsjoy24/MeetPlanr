@@ -5,7 +5,7 @@ import 'next-cloudinary/dist/cld-video-player.css';
 
 const Ban = () => {
 	return (
-		<div className="bg-red-300 overflow-hidden w-full max-h-[80vh] flex justify-center items-center">
+		<div className="bg-gray-300 overflow-hidden w-full max-h-[70vh] flex justify-center items-center relative">
 			<CldVideoPlayer
 				width="1920"
 				height="1080"
@@ -14,6 +14,9 @@ const Ban = () => {
 				controls={false}
 				loop={true}
 			/>
+			<div className="flex justify-center items-center absolute w-full h-full bg-[#00000076]">
+				<h1 className="text-3xl md:text-5xl font-bold text-center text-white px-3">Join Us on the Path to Effortless Scheduling</h1>
+			</div>
 		</div>
 	);
 };
