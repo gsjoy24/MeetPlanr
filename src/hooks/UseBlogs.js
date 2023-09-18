@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const UseBlogs = () => {
+	const [refetch, setRefetch] = useState(false);
 	const [allBlogs, setAllBlogs] = useState(null);
+
 	useEffect(() => {
 		(async () => {
 			try {
@@ -14,8 +16,8 @@ const UseBlogs = () => {
 				console.error(error);
 			}
 		})();
-	}, []);
-	return allBlogs;
+	}, [refetch]);
+	return [allBlogs, refetch, setRefetch];
 };
 
 export default UseBlogs;

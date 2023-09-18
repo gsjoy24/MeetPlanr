@@ -1,6 +1,6 @@
 import DbConnect from '@/services/DbConnect';
-import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
+import { NextResponse } from 'next/server';
 
 export const PUT = async (request) => {
 	if (request.method === 'PUT') {
@@ -18,7 +18,7 @@ export const PUT = async (request) => {
 
 			// Perform the update
 			const result = await userCollection.updateOne(filter, update, option);
-			return NextResponse.json({ message: 'Role updated successfully', result });
+			return NextResponse.json(result);
 		} catch (error) {
 			return NextResponse.json({ error: 'Failed to update role' });
 		}

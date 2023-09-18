@@ -18,6 +18,7 @@ export const POST = async (request) => {
 	}
 };
 
+
 export const GET = async () => {
 	try {
 		const db = await DbConnect();

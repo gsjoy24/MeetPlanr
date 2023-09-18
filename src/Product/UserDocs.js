@@ -2,7 +2,7 @@
 import SectionTitle from '@/components/SectionTitle';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import img1 from '@/assets/product-image/1.jpg';
+import img1 from "@/assets/product-image/event.png";
 import img2 from '@/assets/product-image/2.jpg';
 import img3 from '@/assets/product-image/3.jpg';
 import img4 from '@/assets/product-image/Note-Software.png';
@@ -24,7 +24,7 @@ const UserDocs = () => {
       <section id="works" className="py-20 bg-[#FBFBFB]">
          <Container>
             <h3 className="text-[#00a4f8] font-semibold uppercase text-center mb-6">
-               AN INTRODUCTION TO MeetPlanr
+               AN OVERVIEW OF MEETPLANR
             </h3>
             <SectionTitle title={"How MeetPlanr Works"}></SectionTitle>
             <div className="">

@@ -148,7 +148,7 @@ const Navbar = () => {
 					</div>
 					<div className="drawer-side">
 						<label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-						<ul className="w-80 min-h-full p-4 space-y-5 text-lg font-semibold text-center duration-200 bg-white">
+						<ul className="w-80 min-h-full py-4 space-y-5 text-lg font-semibold text-center duration-200 bg-white">
 							{/* Sidebar content here */}
 							<div className="text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow lg:hidden pb-3 border-b">
 								<Link className="block" href="/">

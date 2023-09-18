@@ -18,7 +18,6 @@ const AllUser = () => {
 		setLoading(true);
 		const res = await axios.put('/api/changeRole', { role, id });
 		const data = res.data;
-		console.log(data);
 		setLoading(false);
 		if (data.result.matchedCount) {
 			setRefetch(!refetch);

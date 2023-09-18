@@ -1,5 +1,10 @@
+import AdminRoute from '@/components/AdminRoute';
 import AdminNavbar from '@/shareComponents/AdminNavbar';
 
 export default function Layout({ children }) {
-	return <AdminNavbar>{children}</AdminNavbar>;
+	return (
+		<AdminRoute>
+			<AdminNavbar>{children}</AdminNavbar>
+		</AdminRoute>
+	);
 }

@@ -18,5 +18,5 @@ test("renders SchedulingFeatures component", () => {
 test("renders UserDocs component", () => {
   const { getByText } = render(<UserDocs />);
   
-   expect(getByText("AN INTRODUCTION TO MeetPlanr")).toBeInTheDocument();
+  expect(getByText("AN OVERVIEW OF MEETPLANR")).toBeInTheDocument();
 });
