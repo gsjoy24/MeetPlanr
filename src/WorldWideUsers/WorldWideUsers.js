@@ -16,7 +16,7 @@ const WorldWideUsers = () => {
    return (
       <div className="py-24 mt-20 bg-gradient-to-r from-[#f7f8fa] via-[#f4f4f8] to-[#fdfcfc]">
          <Container>
-            <p className="text-3xl sm:text-4xl font-bold text-[#0B3558] lg:w-[680px] mx-auto text-center mb-10 leading-10">
+            <p className="text-xl sm:text-4xl font-bold text-[#0B3558] lg:w-[680px] mx-auto text-center mb-10 leading-10">
                Scheduling automation for more than{" "}
                <span className="text-[#465AF7]">20 million</span> users
                worldwide

@@ -22,11 +22,24 @@ const EventSchedule = ({ params }) => {
 	const [loading, setLoading] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [confirm, setConfirm] = useState(false);
-	const { timeRange, path, hostName, method, eventName, hostEmail, duration,scheduleLink,methodInfo,scheduleDate:selectedDate,eventType,inviteeInfo} = scheduleInfo || {};
-	const detailsLink = `${scheduleLink}/details`
+	const {
+		timeRange,
+		path,
+		hostName,
+		method,
+		eventName,
+		hostEmail,
+		duration,
+		scheduleLink,
+		methodInfo,
+		scheduleDate: selectedDate,
+		eventType,
+		inviteeInfo
+	} = scheduleInfo || {};
+	const detailsLink = `${scheduleLink}/details`;
 	const { startDate, endDate } = timeRange || {};
 	const [scheduleDate, setScheduleDate] = useState(null);
-	const  preSelectedDate = selectedDate ? new Date(selectedDate) : null
+	const preSelectedDate = selectedDate ? new Date(selectedDate) : null;
 	const minDate = new Date(startDate);
 	const maxDate = endDate ? new Date(endDate) : null;
 	useEffect(() => {
@@ -44,11 +57,11 @@ const EventSchedule = ({ params }) => {
 	}, [params]);
 	const onSubmit = async (data) => {
 		inviteeInfo.push(data);
-		console.log(inviteeInfo);	
 		const res = await axios.put(`/api/scheduling/${path}`, {
-		inviteeInfo,
-		scheduleDate: preSelectedDate ? preSelectedDate : scheduleDate, confirm: eventType == "Group" ? false : true 
-	});
+			inviteeInfo,
+			scheduleDate: preSelectedDate ? preSelectedDate : scheduleDate,
+			confirm: eventType == 'Group' ? false : true
+		});
 		if (res?.data?.modifiedCount > 0) {
 			Swal.fire({
 				icon: 'success',
@@ -68,7 +81,7 @@ const EventSchedule = ({ params }) => {
 				detailsLink,
 				methodInfo
 			});
-			const hostEmailSend = await	 axios.post(`/api/sendmailhost`, {
+			const hostEmailSend = await axios.post(`/api/sendmailhost`, {
 				inviteeName: data?.inviteeName,
 				inviteeEmail: data?.inviteeEmail,
 				eventName,
@@ -83,9 +96,7 @@ const EventSchedule = ({ params }) => {
 	};
 
 	if (loading) {
-		return (
-			<LoadingSpinner/>
-		);
+		return <LoadingSpinner />;
 	}
 
 	if (scheduleInfo) {
@@ -120,31 +131,37 @@ const EventSchedule = ({ params }) => {
 						<h3 className="mt-4 text-lg font-bold">location:</h3>
 						<div className=" mt-2">
 							{method == 'Google Meet' ? (
-								<Link target='_blank' href={methodInfo} className="flex items-center text-blue-500 hover:underline gap-2">
-									<Image width={30} height={30} src={meetlogo} alt='icon' />
+								<Link
+									target="_blank"
+									href={methodInfo}
+									className="flex items-center text-blue-500 hover:underline gap-2"
+								>
+									<Image width={30} height={30} src={meetlogo} alt="icon" />
 									<span className="text-lg font-medium">Google Meet</span>
 								</Link>
 							) : method == 'Phone Call' ? (
 								<div className="flex items-center gap-2">
-									<Image width={30} height={30} src={phoneLogo} alt='icon' />
+									<Image width={30} height={30} src={phoneLogo} alt="icon" />
 									<span className="text-lg font-medium">{methodInfo}</span>
 								</div>
 							) : method == 'In Person' ? (
 								<div className="flex items-center gap-2">
-									<Image width={30} height={30} src={locationLogo} alt='icon' />
+									<Image width={30} height={30} src={locationLogo} alt="icon" />
 									<span className="text-lg font-medium">{methodInfo}</span>
 								</div>
 							) : (
 								<p>no location added</p>
 							)}
 						</div>
-						{preSelectedDate ? 
-						<p className="mt-2 font-bold text-red-500">You can't change the date/time. It's a host control Event.</p>
-						: <p className="mt-2 font-bold text-red-500">If not select any time it automatic select 12:00 AM.</p>}
+						{preSelectedDate ? (
+							<p className="mt-2 font-bold text-red-500">You can't change the date/time. It's a host control Event.</p>
+						) : (
+							<p className="mt-2 font-bold text-red-500">If not select any time it automatic select 12:00 AM.</p>
+						)}
 					</div>
 					<div className="">
 						<DatePicker
-							selected={preSelectedDate? preSelectedDate : scheduleDate}
+							selected={preSelectedDate ? preSelectedDate : scheduleDate}
 							showTimeSelect
 							onChange={(date) => setScheduleDate(date)}
 							minDate={preSelectedDate ? preSelectedDate : minDate}
