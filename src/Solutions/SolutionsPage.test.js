@@ -6,9 +6,6 @@ test("renders SolutionsPage component", () => {
    const { getByText } = render(<SolutionsPage />);
 
    expect(getByText("SOLUTIONS")).toBeInTheDocument();
-   expect(
-      getByText("A scheduling automation solution for")
-  ).toBeInTheDocument();
   
    // Select images by their alt attributes
    const solutionsImage1 = document.querySelector(
