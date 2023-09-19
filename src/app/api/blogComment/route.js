@@ -17,12 +17,11 @@ export const POST = async (request) => {
 	}
 };
 export const GET = async (request) => {
-	
 		try {
-			
+			const id = request.nextUrl.searchParams.get('id');
 			const db = await DbConnect();
 			const commentsCollection = db.collection('comments');
-			const result = await commentsCollection.find().toArray();
+			const result = await commentsCollection.find({blogId: id}).toArray();
 			return NextResponse.json(result);
 		} catch (error) {
 			NextResponse.json({ error: 'Failed to insert data' });
