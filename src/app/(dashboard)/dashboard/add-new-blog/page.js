@@ -23,8 +23,7 @@ const BlogPostForm = () => {
 			.then((data) => {
 				const blogData = { ...restData, timestamp: new Date(), image: data.data.data.url };
 				if (data.data.data.url) {
-					axios
-						.post('/api/blog', blogData)
+					axios.post('/api/blog', blogData)
 						.then((response) => {
 							Swal.fire({
 								icon: 'success',
