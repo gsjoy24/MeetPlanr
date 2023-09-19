@@ -1,4 +1,6 @@
 'use client';
+import BarChartPage from '@/Dashboard/BarChart';
+import State from '@/components/State';
 import Stat from '@/components/Stat';
 import UseAllUsers from '@/hooks/UseAllUsers';
 import UseBlogs from '@/hooks/UseBlogs';
@@ -17,6 +19,9 @@ const AdminPage = () => {
 				<Stat num={allBlogs ? allBlogs?.length : false} title="Blogs" />
 				<Stat num={allSchedule ? allSchedule?.length : false} title="Schedules" />
 				<Stat num={'32'} title="Feedbacks" />
+			</div>
+			<div className="">
+				<BarChartPage/>
 			</div>
 		</div>
 	);

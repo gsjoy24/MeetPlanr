@@ -11,6 +11,7 @@ const UseBlogs = () => {
 			try {
 				const response = await axios(`/api/blog`);
 				setAllBlogs(response.data);
+				console.log(response.data);
 			} catch (error) {
 				// Handle error
 				console.error(error);

@@ -17,15 +17,16 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 
 const EventsTabs = () => {
-	const [actions, setActions] = useState(false);
-	const [tabIndex, setTabIndex] = useState(0);
-	const [subTabIndex, setSubTabIndex] = useState(0);
-	const [schedules, setSchedules] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const currentUser = UseGetCurrentUser();
-	const router = useRouter();
-	useEffect(() => {
-		(async () => {
+   const [actions,setActions] = useState(false);
+   const [tabIndex, setTabIndex] = useState(0);
+   const [subTabIndex, setSubTabIndex] = useState(0);
+   const [schedules, setSchedules] = useState([]);
+   const [refetch,setRefetch] = useState(false);
+   const [loading,setLoading] = useState(true)
+   const currentUser = UseGetCurrentUser();
+   const router = useRouter();
+   useEffect(() => {
+    	(async () => {
 			try {
 				const res = await fetch(`/api/scheduling?username=${currentUser?.username}`);
 				const data = await res.json();
@@ -38,13 +39,13 @@ const EventsTabs = () => {
 			} catch (error) {
 				console.error('Error fetching data:', error);
 			}
-		})();
-	}, [currentUser]);
-	const copyLink = () => {
-		navigator.clipboard.writeText(`https://meet-planr.vercel.app/user/${currentUser?.username}`).then(() => {
-			toast.success('User Link coped');
-		});
-	};
+		})()
+   }, [currentUser,refetch]);
+   const copyLink = () => {
+    navigator.clipboard.writeText(`https://meet-planr.vercel.app/user/${currentUser?.username}`).then(() => {
+		toast.success("User Link coped");
+        });
+    };
 	const handleEventType = () => {
 		if (currentUser) {
 			const availableSchedulesQuantity =
@@ -169,19 +170,14 @@ const EventsTabs = () => {
 								<div>
 									<h4>{currentUser ? currentUser?.name : 'User Name'}</h4>
 									<div className=" gap-5 hidden sm:flex">
-										<Link href={`/user/${currentUser?.username}`} className="text-[#465AF7]">
-											https://meet-planr.vercel.app/user/{currentUser ? currentUser?.username : 'username'}
+										<Link target="_blank" href={`/user/${currentUser?.username}`} className="text-[#465AF7]">
+											https://meet-planr.vercel.app/user/{currentUser ? currentUser?.username :'username'}
 										</Link>
-										<button className="text-xl" onClick={copyLink}>
-											<FaRegCopy />
-										</button>
+										<button disabled={!currentUser} className="text-xl disabled:cursor-wait" onClick={copyLink}><FaRegCopy/></button>
 									</div>
 									<div className="sm:hidden gap-5 flex">
-										<Link
-											href={`/user/${currentUser?.username}`}
-											className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap"
-										>
-											https://meet-pla.../user/{currentUser ? currentUser?.username : 'username'}
+										<Link target="_blank" href={`/user/${currentUser?.username}`} className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap">
+											https://meet-pla.../user/{currentUser ? currentUser?.username :'username'}
 										</Link>
 										<button className="text-xl" onClick={copyLink}>
 											<FaRegCopy />
@@ -255,17 +251,15 @@ const EventsTabs = () => {
 							</div>
 						</div>
 						<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
-							{loading ? (
-								<div className="mx-auto sm:col-span-2 lg:col-span-3 py-20">
-									<span className="loading loading-bars loading-lg"></span>
-								</div>
-							) : schedules ? (
-								schedules.map((schedule) => (
-									<EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id}></EventCard>
-								))
-							) : (
-								<span className="col-span-3 text-4xl text-slate-500 font-bold">No Schedule available</span>
-							)}
+							{
+							loading ? 
+							<div className="mx-auto sm:col-span-2 lg:col-span-3 py-20">
+								<span className="loading loading-bars loading-lg"></span>
+							</div> 
+							: schedules ? schedules.map((schedule) => (
+									<EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id} setRefetch={setRefetch}></EventCard>
+								)) : <span className='col-span-3 text-4xl text-slate-500 font-bold'>No Schedule available</span>
+							}
 						</div>
 					</TabPanel>
 					<TabPanel>
