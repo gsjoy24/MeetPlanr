@@ -86,18 +86,6 @@ const DetailsPage = ({ params }) => {
 		fetchSuggestedBlogs();
 	}, [params]);
 
-	// useEffect(() => {
-	// 	async function fetchSuggestedBlogs() {
-	// 		try {
-	// 			const response = await axios.get('/api/blog');
-	// 			if (response.data) {
-	// 				const filteredBlogs = response.data.filter((suggestedBlog) => suggestedBlog.id !== params.id);
-	// 				setSuggestedBlogs(filteredBlogs);
-	// 			}
-	// 		} catch (error) {
-	// 			console.error('Error fetching suggested blogs:', error);
-	// 		}
-	// 	}
 
   useEffect(() => {
     (async() => {
@@ -105,12 +93,6 @@ const DetailsPage = ({ params }) => {
       setComments(response.data)
     })()
   },[commentRefetch,params])
-
-	useEffect(() => {
-		(async () => {
-			const response = await axios('/api/blogComment');
-		})();
-	});
 
   return (
     <Container>
