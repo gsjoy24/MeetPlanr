@@ -19,7 +19,7 @@ const Page = () => {
 	let restBlogs = [];
 	let BlogContent;
 
-	// Function to truncate the content to a maximum of 20 words
+	
 	const truncateContent = (text = ' ') => {
 		const words = text.split(' ') || [];
 		if (words.length > 17) {
