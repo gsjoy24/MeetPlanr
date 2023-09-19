@@ -1,90 +1,149 @@
-'use client';
-import { useEffect, useState } from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import Loading from '@/app/loading';
+import Link from 'next/link';
+import { useForm } from "react-hook-form";
 
 const DetailsPage = ({ params }) => {
-	const [blog, setBlog] = useState({});
-	const [loading, setLoading] = useState(true);
-	const [comment, setComment] = useState('');
-	const [comments, setComments] = useState([]);
+  const [blog, setBlog] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [comment, setComment] = useState('');
+  const [comments, setComments] = useState([]);
+  const [suggestedBlogs, setSuggestedBlogs] = useState([]);
+  
+  
 
-	useEffect(() => {
-		async function fetchData() {
-			try {
-				const response = await axios(`/api/blog/${params.id}`);
-				if (response.data) {
-					setBlog(response.data);
-					setLoading(false);
-				}
-			} catch (error) {
-				console.error('Error fetching data:', error);
-			}
-		}
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit = async (data) => {
+    const timeStamp = new Date()
+    const commentData = {comment: data?.commentText,timeStamp}
+    const response = await axios.post(`/api/blogComment`,commentData);
+    console.log(response.data)
+  }
 
-		fetchData();
-	}, [params]);
 
-	const handleCommentChange = (e) => {
-		setComment(e.target.value);
-	};
+  useEffect(() => {
+    async function fetchBlogData() {
+      try {
+        const response = await axios(`/api/blog/${params.id}`);
+        if (response.data) {
+          setBlog(response.data);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
 
-	const handlePostComment = async () => {
-		try {
-			const response = await axios.post(`/api/blog/${params.id}`, {
-				comment: comment
-			});
+    fetchBlogData();
+  }, [params]);
 
-			if (response.data) {
-				setComments([...comments, response.data]);
-				setComment('');
-			}
-		} catch (error) {
-			console.error('Error posting comment:', error);
-		}
-	};
+ 
+  useEffect(() => {
+    async function fetchSuggestedBlogs() {
+      try {
+        const response = await axios.get('/api/blog'); 
+        if (response.data) {
+          
+          const filteredBlogs = response.data.filter(
+            (suggestedBlog) => suggestedBlog.id !== params.id
+          );
+          setSuggestedBlogs(filteredBlogs);
+        }
+      } catch (error) {
+        console.error('Error fetching suggested blogs:', error);
+      }
+    }
 
-	if (loading) {
-		return <Loading />;
-	}
+    fetchSuggestedBlogs();
+  }, [params.id]);
 
-	return (
-		<div className="min-h-screen py-6">
-			<div className="max-w-2xl p-6 mx-auto">
-				<h2 className="mb-4 text-2xl font-semibold">{blog?.title}</h2>
-				<Image src={blog?.image} alt={blog?.title} className="w-full mb-4 rounded-md" width={1000} height={400} />
-				<p className="text-gray-600">{blog?.subtitle}</p>
-				<p className="mt-2 text-gray-800">{blog?.content}</p>
+  useEffect(() => {
+    (async() => {
+      const response = await axios('/api/blogComment')
+      console.log(response.data)
+    })()
+  })
 
-				<div className="mt-4">
-					<input
-						type="text"
-						placeholder="Add a comment..."
-						value={comment}
-						onChange={handleCommentChange}
-						className="w-full p-2 border rounded"
-					/>
-					<button
-						onClick={handlePostComment}
-						className="hover:bg-blue-600 px-4 py-2 mt-2 text-white bg-blue-500 rounded"
-					>
-						Post Comment
-					</button>
-				</div>
+  if (loading) {
+    return <Loading />;
+  }
 
-				<div className="mt-6">
-					<ul>
-						{comments.map((comment, index) => (
-							<li key={index} className="mt-2">
-								{comment.text}
-							</li>
-						))}
-					</ul>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="min-h-screen py-6 flex justify-center ">
+      <div className="max-w-screen-lg p-6 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div className="col-span-2">
+            <h1 className="text-3xl mb-3 font-semibold">{blog?.title}</h1>
+			<Image src={blog?.image} alt={blog?.title} className="w-full mb-4 rounded-md" width={1000} height={400} />
+            <p className="text-gray-600">{blog?.subtitle}</p>
+            <p className="mt-4 text-gray-800">{blog?.content}</p>
+
+            <div className="mt-6">
+              <h2 className="text-2xl font-semibold">Comments</h2>
+              <ul className="mt-4 space-y-2">
+                {comments.map((comment, index) => (
+                  <li key={index} className="bg-gray-100 p-2 rounded-lg">
+                    {comment.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <input
+              {...register("commentText")} 
+                type="text"
+                placeholder="Add a comment..."
+               
+                
+                className="w-full p-3 border rounded-lg"
+              />
+              <button
+               
+                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              >
+                Post Comment
+              </button>
+            </form>
+          </div>
+
+      
+          <div className="">
+  <h2 className="text-2xl font-semibold mb-4">More Blog Suggestions</h2>
+  {Array.isArray(suggestedBlogs) && suggestedBlogs.length > 0 ? (
+    <ul className="space-y-4">
+      {suggestedBlogs.slice(0, 3).map((suggestedBlog) => (
+        <li key={suggestedBlog.id} className="flex space-x-4">
+          <div className="flex-shrink-0 w-20 h-20">
+            <Image
+              src={suggestedBlog.image}
+              alt={suggestedBlog.title}
+              className="rounded-lg"
+              width={80}
+              height={80}
+            />
+          </div>
+          <div className="flex-1">
+            <Link className="text-blue-600 hover:text-cyan-700" href={`/blogs/${suggestedBlog?._id}`}>
+              {suggestedBlog.title.split(' ').slice(0, 7).join(' ')}
+            </Link>
+          </div>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>No suggested blogs available</p>
+  )}
+</div>
+
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default DetailsPage;
