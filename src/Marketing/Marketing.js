@@ -18,13 +18,13 @@ const Marketing = () => {
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         MARKETING TEAMS
                      </h3>
-                     <h1 className="text-4xl lg:text-5xl text-[#0B3558] md:w-[420px] my-6 font-bold">
-                        Convert leads to meetings – faster
+                     <h1 className="text-4xl lg:text-5xl text-[#0B3558] md:w-[520px] my-6 font-bold leading-10">
+                        Faster changing leads into meetings
                      </h1>
                      <p className="text-[18px] text-[#5A7795] md:w-[465px] mb-10">
-                        Create a better experience for high-value prospects,
-                        automate the handoff to Sales, and fill your pipeline
-                        with quality leads.
+                        Improve the experience for high-value customers,
+                        automate the transfer of the lead to sales, and increase
+                        the quantity of high-quality leads in your pipeline
                      </p>
                      <div className="sm:flex-row sm:justify-start flex flex-col justify-center gap-3">
                         <Link

@@ -19,7 +19,7 @@ const SolutionsPage = () => {
                </h1>
                <p className="text-[21px] text-[#5A7795] md:w-[650px] lg:w-[730px] mx-auto mb-10">
                   Promote progress, one meeting at a time. Teams may concentrate
-                  on producing results by using MeetPlanr's automated
+                  on producing results by using MeetPlanrs automated
                   scheduling.
                </p>
 
