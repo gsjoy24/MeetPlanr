@@ -135,15 +135,13 @@ const DetailsPage = ({ params }) => {
                   </ul>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <input
-                  {...register("commentText")} 
+                <form className='mt-6' onSubmit={handleSubmit(onSubmit)}>
+                  <textarea
+                    {...register("commentText")} 
                     type="text"
                     placeholder="Add a comment..."
-                  
-                    
-                    className="w-full p-3 border rounded-lg"
-                  />
+                    className="mp_input min-h-[120px]"
+                  ></textarea>
                   <button
                     disabled={userLoading}
                     className="disabled:cursor-wait mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
@@ -153,7 +151,7 @@ const DetailsPage = ({ params }) => {
                 </form>
               </div>
       {/*=================== suggetion section =======================*/}
-              <div className="">
+              <div className="sticky top-24 h-fit">
                 <h2 className="text-2xl font-semibold mb-4">More Blog Suggestions</h2>
                 {Array.isArray(suggestedBlogs) && suggestedBlogs.length > 0 ? (
                   <ul className="space-y-4">
@@ -179,34 +177,6 @@ const DetailsPage = ({ params }) => {
                 ) : (
                   <p>No suggested blogs available</p>
                   )}
-              </div>
-
-              <div className="sticky top-24 h-fit">
-                <h2 className="text-2xl font-semibold mb-4">Recent Posts</h2>
-                {Array.isArray(suggestedBlogs) && suggestedBlogs.length > 0 ? (
-                  <ul className="space-y-4">
-                    {suggestedBlogs.slice(0, 3).map((suggestedBlog) => (
-                      <li key={suggestedBlog._id} className="flex space-x-4">
-                        <div className="flex-shrink-0">
-                          <Image
-                            src={suggestedBlog.image}
-                            alt={suggestedBlog.title}
-                            className="rounded-lg"
-                            width={128}
-                            height={128}
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <Link className="text-blue-600 hover:text-cyan-700" href={`/blogs/${suggestedBlog?._id}`}>
-                            {suggestedBlog.title.split(' ').slice(0, 7).join(' ')}
-                          </Link>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>No suggested blogs available</p>
-                )}
               </div>
             </div>
           </div>
