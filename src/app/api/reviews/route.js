@@ -6,7 +6,7 @@ export const GET = async(request) => {
         const db = await DbConnect();
         const reviewsCollections = db.collection('reviews');
         const result = await reviewsCollections.find().toArray();
-        NextResponse.json(result);
+		return NextResponse.json(result);
     }catch (err) {
         console.log(err.message);
     }
@@ -18,7 +18,7 @@ export const POST = async(request) => {
         const reviewsCollections = db.collection('reviews');
         const body = await request.json();
         const result = await reviewsCollections.insertOne({...body});
-        NextResponse.json(result);
+		return NextResponse.json(result);
     }catch (err) {
         console.log(err.message);
     }

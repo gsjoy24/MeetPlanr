@@ -127,23 +127,11 @@ const EventsTabs = () => {
 	//UPCOMING-------------------
 	const today = new Date();
 
-	const upcoming = schedules?.filter(
-		(schedule) =>
-			new Date(schedule?.scheduleDate) > today &&
-			(schedule.confirm || (schedule?.inviteeInfo?.length > 0 && schedule?.eventType == 'Group'))
-	);
+	const upcoming = schedules?.filter((schedule) => new Date(schedule?.scheduleDate) > today && schedule.confirm);
 	//PENDING--------------------
-	const pending = schedules?.filter(
-		(schedule) =>
-			(!schedule?.confirm && schedule?.eventType == 'Single') ||
-			(schedule?.inviteeInfo?.length == 0 && schedule?.eventType == 'Group')
-	);
+	const pending = schedules?.filter((schedule) => (!schedule?.confirm));
 	//PAST----------------------
-	const past = schedules?.filter(
-		(schedule) =>
-			new Date(schedule?.scheduleDate) < today &&
-			(schedule.confirm || (schedule?.inviteeInfo?.length > 0 && schedule?.eventType == 'Group'))
-	);
+	const past = schedules?.filter((schedule) => new Date(schedule?.scheduleDate) < today && schedule.confirm);
 
 	return (
 		<div>

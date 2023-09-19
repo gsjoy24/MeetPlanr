@@ -20,8 +20,21 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { useEffect, useState } from 'react';
+import ReactStarsRating from 'react-awesome-stars-rating';
+import axios from 'axios';	
 
 const Review = () => {
+	const [reviews,SetReviews] = useState([]);
+	useEffect(()=> {
+		(async()=> {
+			const response = await axios('/api/reviews');
+			if(response.data){
+				SetReviews(response.data);
+			}
+		})()
+	},[])
+	console.log(reviews);
 	return (
 		<Container>
 			<div className="" style={{ marginTop: '64px', marginBottom: '64px' }}>
@@ -80,6 +93,30 @@ const Review = () => {
 								</div>
 							</div>
 						</SwiperSlide>
+						{
+							reviews.map(review => 	<SwiperSlide>
+								<div className="card bg-base-100 my-10 border shadow-xl">
+									<figure className="">
+										<Image
+											src={img1}
+											alt="Picture of the author"
+											className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
+										/>
+									</figure>
+									<div className="card-body items-center text-center">
+										<p>
+											Slate helps you see how many more days you need to work to reach your financial goal for the month
+											and year.
+										</p>
+	
+										<ReactStarsRating starGap={10} size={30} className="flex" ise value={4.5} />
+	
+										<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
+										<h2 className="">Banker</h2>
+									</div>
+								</div>
+							</SwiperSlide>)
+						}
 						<SwiperSlide>
 							<div className="card bg-base-100 my-10 border shadow-xl">
 								<figure className="">
