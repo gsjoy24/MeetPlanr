@@ -5,18 +5,20 @@ import Link from 'next/link';
 
 const Banner = () => {
 	return (
-		<div className="bg-gray-800 overflow-hidden w-full max-h-[100vh] flex justify-center items-center relative">
-			<CldVideoPlayer
-				width="1920"
-				height="1080"
-				src="https://res.cloudinary.com/dt04ucbpl/video/upload/v1695045170/bg-video_h4p1qr.mp4"
-				autoPlay="always"
-				controls={false}
-				loop={true}
-				autoPlayMode="always"
-			/>
-			<div className="flex justify-center items-center text-white text-center absolute w-full h-full bg-[#00000076]">
-				<div className="p-4 max-w-[660px] space-y-4">
+		<div className="bg-gray-800 overflow-hidden w-full max-h-[90vh] flex justify-center items-center relative">
+			<div className="blur-sm w-full h-full">
+				<CldVideoPlayer
+					width="1920"
+					height="1080"
+					src="https://res.cloudinary.com/dt04ucbpl/video/upload/v1695125466/bg-2_djmub9.mp4"
+					autoPlay="always"
+					controls={false}
+					loop={true}
+					autoPlayMode="always"
+				/>
+			</div>
+			<div className="flex justify-center items-center text-white text-center absolute w-full h-full bg-[#0000009e]">
+				<div className="p-4 max-w-[700px] space-y-4">
 					<h1 className="text-xl md:text-5xl md:leading-tight font-bold " data-aos="fade-in">
 						Join Us on the Path to Effortless Scheduling
 					</h1>
