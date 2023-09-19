@@ -21,7 +21,7 @@ const EventsTabs = () => {
    const [tabIndex, setTabIndex] = useState(0);
    const [subTabIndex, setSubTabIndex] = useState(0);
    const [schedules, setSchedules] = useState([]);
-   console.log(schedules);
+   const [refetch,setRefetch] = useState(false);
    const [loading,setLoading] = useState(true)
    const currentUser = UseGetCurrentUser();
    const router = useRouter();
@@ -40,7 +40,7 @@ const EventsTabs = () => {
 				console.error('Error fetching data:', error);
 			}
 		})()
-   }, [currentUser]);
+   }, [currentUser,refetch]);
    const copyLink = () => {
     navigator.clipboard.writeText(`https://meet-planr.vercel.app/user/${currentUser?.username}`).then(() => {
 		toast.success("User Link coped");
@@ -149,13 +149,13 @@ const EventsTabs = () => {
 								<div>
 									<h4>{currentUser ? currentUser?.name : "User Name"}</h4>
 									<div className=" gap-5 hidden sm:flex">
-										<Link href={`/user/${currentUser?.username}`} className="text-[#465AF7]">
+										<Link target="_blank" href={`/user/${currentUser?.username}`} className="text-[#465AF7]">
 											https://meet-planr.vercel.app/user/{currentUser ? currentUser?.username :'username'}
 										</Link>
-										<button className="text-xl" onClick={copyLink}><FaRegCopy/></button>
+										<button disabled={!currentUser} className="text-xl disabled:cursor-wait" onClick={copyLink}><FaRegCopy/></button>
 									</div>
 									<div className="sm:hidden gap-5 flex">
-										<Link href={`/user/${currentUser?.username}`} className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap">
+										<Link target="_blank" href={`/user/${currentUser?.username}`} className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap">
 											https://meet-pla.../user/{currentUser ? currentUser?.username :'username'}
 										</Link>
 										<button className="text-xl" onClick={copyLink}><FaRegCopy/></button>
@@ -216,7 +216,7 @@ const EventsTabs = () => {
 								<span className="loading loading-bars loading-lg"></span>
 							</div> 
 							: schedules ? schedules.map((schedule) => (
-									<EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id}></EventCard>
+									<EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id} setRefetch={setRefetch}></EventCard>
 								)) : <span className='col-span-3 text-4xl text-slate-500 font-bold'>No Schedule available</span>
 							}
 						</div>
