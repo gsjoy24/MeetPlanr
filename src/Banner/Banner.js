@@ -1,40 +1,40 @@
 'use client';
-import Container from '@/components/container';
-
-import Lottie from 'lottie-react';
-import animation from '../assets/animation_ll3za900.json';
-import Button from '@/common/Button';
+import { CldVideoPlayer } from 'next-cloudinary';
+import 'next-cloudinary/dist/cld-video-player.css';
 import Link from 'next/link';
 
 const Banner = () => {
 	return (
-      <div className="bg-[#F7FAFF]">
-         <Container>
-            <div className="lg:grid-cols-2 grid items-center gap-8 py-6">
-               <div className="lg:order-1 order-2">
-                  <h1 className="sm:text-6xl text-4xl text-[#0B3558] font-bold !line_height">
-                     MeetPlanr Appointment Scheduling
-                  </h1>
-                  <p className="mt-7 text-[20px] text-[#5A7795] mb-5">
-                     MeetPlanr is the most flexible, comprehensive appointment
-                     scheduling software for professionals, SMEs, and
-                     enterprises.
-                  </p>
-                  <Link
-                     className="mt-5 inline-block text-[16px] font-semibold"
-                     data-testid="createEvent"
-                     href="/my-account"
-                  >
-                     <Button>Create Event</Button>
-                  </Link>
-               </div>
-               <div className="lg:order-2 order-1">
-                  <Lottie animationData={animation} loop={true} />
-               </div>
-            </div>
-         </Container>
-      </div>
-   );
+		<div className="bg-gray-800 overflow-hidden w-full max-h-[100vh] flex justify-center items-center relative">
+			<CldVideoPlayer
+				width="1920"
+				height="1080"
+				src="https://res.cloudinary.com/dt04ucbpl/video/upload/v1695045170/bg-video_h4p1qr.mp4"
+				autoPlay="always"
+				controls={false}
+				loop={true}
+				autoPlayMode="always"
+			/>
+			<div className="flex justify-center items-center text-white text-center absolute w-full h-full bg-[#00000076]">
+				<div className="p-4 max-w-[660px] space-y-4">
+					<h1 className="text-xl md:text-5xl md:leading-tight font-bold " data-aos="fade-in">
+						Join Us on the Path to Effortless Scheduling
+					</h1>
+					<p className="text-xs md:text-base">
+						MeetPlanr is the most flexible, comprehensive appointment scheduling software for professionals, SMEs, and
+						enterprises.
+					</p>
+					<Link
+						className="inline-block bg-[#465AF7] py-2 px-3 hover:bg-sky-950 active:scale-95 duration-200 text-white font-semibold rounded-md text-sm md:text-base"
+						data-testid="createEvent"
+						href="/my-account"
+					>
+						Create Event
+					</Link>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Banner;

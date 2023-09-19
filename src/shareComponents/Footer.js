@@ -7,11 +7,14 @@ const Footer = () => {
 		<div className="border-s-black w-full px-4 py-6 border-t-2">
 			<Container>
 				<footer className="footer footer-center text-base-content p-8 rounded">
-					<div className=" grid grid-flow-col gap-4 font-bold">
+					<div className="grid grid-flow-col gap-4 font-bold">
 						<a className="link link-hover">About us</a>
 						<a className="link link-hover">Contact</a>
 						<a className="link link-hover">Pricing</a>
 						<a className="link link-hover">Blog</a>
+						<a href="/report" className="link link-hover">
+							Report
+						</a>
 					</div>
 					<div>
 						<div className="grid grid-flow-col gap-4">

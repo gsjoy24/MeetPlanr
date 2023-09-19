@@ -1,4 +1,4 @@
-                        import React from "react";
+import React from "react";
 import { render } from "@testing-library/react";
 import SchedulingFeatures from "./SchedulingFeatures";
 import UserDocs from "./UserDocs";
@@ -18,5 +18,5 @@ test("renders SchedulingFeatures component", () => {
 test("renders UserDocs component", () => {
   const { getByText } = render(<UserDocs />);
   
-   expect(getByText("AN INTRODUCTION TO MeetPlanr")).toBeInTheDocument();
+  expect(getByText("AN OVERVIEW OF MEETPLANR")).toBeInTheDocument();
 });

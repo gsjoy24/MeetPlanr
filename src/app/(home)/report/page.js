@@ -25,9 +25,9 @@ const ReportPage = () => {
 				email: data.email,
 				phone: data.mobile,
 				description: data.description,
-				subject
+				subject,
+				timeStamp: new Date()
 			};
-			console.log(report);
 			const response = await axios.post('/api/report', { ...report });
 			if (response?.data?.insertedId) {
 				Swal.fire({

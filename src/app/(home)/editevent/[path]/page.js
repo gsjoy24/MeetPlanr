@@ -32,7 +32,6 @@ const editEventPage = ({params}) => {
       eventType,
       path,
    } = schedule || {};
-   console.log(schedule);
 	const [method, setMethod] = useState(null);
 	const [dateRange, setDateRange] = useState(null);
 	const [action, setAction] = useState(false);
@@ -81,10 +80,10 @@ const editEventPage = ({params}) => {
          }
          const today = new Date();
          const detailsLink = `${scheduleLink}/details`
-         console.log(newInfo);
+      
 			try {
 				const response = await axios.put(`/api/scheduling/${path}`,{...newInfo} );
-            console.log(response);
+            
 				if (response.data.modifiedCount > 0) {
 					Swal.fire({
 						icon: 'success',

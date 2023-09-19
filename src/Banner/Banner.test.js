@@ -8,7 +8,9 @@ describe("Banner Component Rendering", () => {
       const { getByText, getByTestId } = render(<Banner />);
 
       // Replace these assertions with actual test criteria based on your component's behavior
-      expect(getByText("MeetPlanr Appointment Scheduling")).toBeInTheDocument();
+      expect(
+         getByText("Join Us on the Path to Effortless Scheduling")
+      ).toBeInTheDocument();
       expect(
          getByText(
             "MeetPlanr is the most flexible, comprehensive appointment scheduling software for professionals, SMEs, and enterprises."
