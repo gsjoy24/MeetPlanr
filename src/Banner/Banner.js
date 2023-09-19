@@ -6,7 +6,7 @@ import Link from 'next/link';
 const Banner = () => {
 	return (
 		<div className="bg-gray-800 overflow-hidden w-full max-h-[90vh] flex justify-center items-center relative">
-			<div className="blur-sm w-full h-full absolute top-0 right-0 left-0">
+			<div className="blur-sm w-full h-full">
 				<CldVideoPlayer
 					width="1920"
 					height="1080"
@@ -18,7 +18,7 @@ const Banner = () => {
 				/>
 			</div>
 			<div className="flex justify-center items-center text-white text-center absolute w-full h-full bg-[#0000009e]">
-				<div className="p-4 max-w-[660px] space-y-4">
+				<div className="p-4 max-w-[700px] space-y-4">
 					<h1 className="text-xl md:text-5xl md:leading-tight font-bold " data-aos="fade-in">
 						Join Us on the Path to Effortless Scheduling
 					</h1>
