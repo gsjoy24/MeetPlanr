@@ -1,6 +1,5 @@
 'use client';
 import BarChartPage from '@/Dashboard/BarChart';
-import State from '@/components/State';
 import Stat from '@/components/Stat';
 import UseAllUsers from '@/hooks/UseAllUsers';
 import UseBlogs from '@/hooks/UseBlogs';
@@ -21,7 +20,7 @@ const AdminPage = () => {
 				<Stat num={'32'} title="Feedbacks" />
 			</div>
 			<div className="">
-				<BarChartPage/>
+				<BarChartPage />
 			</div>
 		</div>
 	);
