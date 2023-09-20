@@ -1,13 +1,14 @@
 import SectionTitle from "@/components/SectionTitle";
 import Container from "@/components/container";
 import { GiCheckMark } from "react-icons/gi";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 import ButtonCheckout from "@/components/PayButton";
 import UseLoadPrice from "@/hooks/UseLoadPrice";
 
 const Pricing = async () => {
    const prices = await UseLoadPrice();
    return (
-      <div className="py-16 bg-gradient-to-t from-[#F3FAFF] to-[#F3FAFF]">
+      <div className="py-16 bg-gradient-to-t from-[#f7f9fa] to-[#f5f8fa]">
          <Container>
             <div className="text-center">
                <SectionTitle title={"Pricing Plans"}></SectionTitle>
@@ -21,27 +22,33 @@ const Pricing = async () => {
                {prices?.map((price) => (
                   <div
                      key={price.id}
-                     className={`rounded-2xl max-w-[350px] card group w-full bg-[#4a617a] text-[#ebecec] transition-all shadow-sm pb-10 duration-700 mx-auto ${
-                        price.nickname === "STANDARD" &&
-                        "bg-[#0B3558] text-white"
+                     className={`rounded-2xl max-w-[350px] card group w-full bg-white text-[#5A7795] transition-all shadow-sm pb-10 mx-auto border border-[#465bf7a1] hover:shadow-md hover:shadow-[#465bf77e] ${
+                        price.nickname === "Standard" &&
+                        "bg-white text-[#5A7795]"
                      }`}
                   >
                      <div className="px-5 mt-[30px]">
-                        <span className="text-[16px] capitalize font-semibold bg-[#5f7d9c] px-3 py-1 rounded-full">
+                        <span className="text-[15px] capitalize font-semibold text-[#0B3558] bg-[#eaf4fc] border border-[#bed7eb] px-2 py-[2px] rounded-full">
                            {price.nickname}
                         </span>
-                        <div className="flex items-center lg:text-[42px] uppercase my-2 font-bold">
-                           <span className="text-4xl lg:text-[40px] mt-[5px]">
-                              {price.unit_amount / 100}$
+                        {price.nickname === "Standard" && (
+                           <span className="bg-[#0B3558] text-white text-[12px] px-2 py-[2px] rounded-sm absolute -top-3 left-[20px]">
+                              Most Popular
                            </span>
+                        )}
+
+                        <div className="flex items-center mt-5 mb-3">
+                           <p>
+                              <span className="text-4xl text-[#465AF7] lg:text-[40px] uppercase font-bold">
+                                 {price.unit_amount / 100}$
+                              </span>
+                              <span> / month</span>
+                           </p>
                         </div>
-                        <p className="text-[17px] uppercase font-bold">
-                           Yearly
-                        </p>
                      </div>
-                     <hr className="borderBottom my-3" />
-                     <div className="Normal px-5 pb-6 font-normal">
-                        <p className="Medium mb-3 text-[18px] font-medium">
+
+                     <div className="Normal px-5 font-normal">
+                        <p className="mb-2 text-[17px] text-[#0B3558] font-semibold">
                            Basic features
                         </p>
 
@@ -54,44 +61,43 @@ const Pricing = async () => {
                                        key={index}
                                        className="flex items-center"
                                     >
-                                       <span className="mr-2 text-green-500">
-                                          <GiCheckMark />
+                                       <span className="mr-2 text-[14px] text-[#22c55eaf]">
+                                          <BsFillCheckCircleFill />
                                        </span>
-                                       <span>{feature.trim()}</span>
+                                       <span className="text-[15px]">
+                                          {feature.trim()}
+                                       </span>
                                     </li>
                                  ))
                            ) : (
-                              <>
+                              <div className="text-[15px]">
                                  <li className="flex items-center">
-                                    <span className="mr-2 text-green-500">
-                                       <GiCheckMark />
+                                    <span className="mr-2 text-[14px] text-[#22c55eaf]">
+                                       <BsFillCheckCircleFill />
                                     </span>
                                     <span>Create two Events</span>
                                  </li>
                                  <li className="flex items-center">
-                                    <span className="mr-2 text-green-500">
-                                       <GiCheckMark />
+                                    <span className="mr-2 text-[14px] text-[#22c55eaf]">
+                                       <BsFillCheckCircleFill />
                                     </span>
                                     <span>
-                                       Reminder email (invitees and
-                                       host)
+                                       Reminder email (invitees and host)
                                     </span>
                                  </li>
                                  <li className="flex items-center">
-                                    <span className="mr-2 text-green-500">
-                                       <GiCheckMark />
+                                    <span className="mr-2 text-[14px] text-[#22c55eaf]">
+                                       <BsFillCheckCircleFill />
                                     </span>
                                     <span>Connect to Google Meet</span>
                                  </li>
                                  <li className="flex items-center">
-                                    <span className="mr-2 text-green-500">
-                                       <GiCheckMark />
+                                    <span className="mr-2 text-[14px] text-[#22c55eaf]">
+                                       <BsFillCheckCircleFill />
                                     </span>
-                                    <span>
-                                       Send automated event notifications
-                                    </span>
+                                    <span>Automated event notifications</span>
                                  </li>
-                              </>
+                              </div>
                            )}
                         </ul>
                      </div>
