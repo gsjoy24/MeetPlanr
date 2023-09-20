@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
 import Container from '@/components/container';
 
-
 const DetailsPage = ({ params }) => {
 	const {
 		register,
