@@ -110,4 +110,5 @@ const Pricing = async () => {
       </div>
    );
 };
+
 export default Pricing;
