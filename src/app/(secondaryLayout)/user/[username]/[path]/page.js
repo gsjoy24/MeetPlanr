@@ -55,12 +55,14 @@ const EventSchedule = ({ params }) => {
 			setScheduleInfo(data);
 		})();
 	}, [params]);
+
+// Event confirm Function ===============
 	const onSubmit = async (data) => {
 		inviteeInfo.push(data);
 		const res = await axios.put(`/api/scheduling/${path}`, {
 			inviteeInfo,
 			scheduleDate: preSelectedDate ? preSelectedDate : scheduleDate,
-			confirm: eventType == 'Group' ? false : true
+			confirm: true,
 		});
 		if (res?.data?.modifiedCount > 0) {
 			Swal.fire({
@@ -95,12 +97,14 @@ const EventSchedule = ({ params }) => {
 		}
 	};
 
+// if data is not loaded show loading========================
 	if (loading) {
 		return <LoadingSpinner />;
 	}
 
+// checked event status=========================
 	if (scheduleInfo) {
-		if (scheduleInfo.confirm) {
+		if (scheduleInfo.confirm && scheduleInfo?.eventType == "Single") {
 			return (
 				<Container>
 					<p className="text-slate-500 py-40 mt-20 text-5xl font-bold text-center">This Event already Confirmed...</p>

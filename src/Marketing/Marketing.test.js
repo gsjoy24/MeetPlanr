@@ -8,7 +8,7 @@ test("renders Marketing component", () => {
    // Check for text content
    expect(screen.getByText("MARKETING TEAMS")).toBeInTheDocument();
    expect(
-      screen.getByText("Convert leads to meetings – faster")
+      screen.getByText("Faster changing leads into meetings")
    ).toBeInTheDocument();
 
    // Test for the presence of specific links using data-testid

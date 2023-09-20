@@ -8,8 +8,8 @@ import img from '@/assets/events-tabs/placeholder.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
 import EventCard from '@/components/EventCard';
-import one_one_one from '../assets/events-tabs/one_on_one.png';
-import group from '../assets/events-tabs/group.png';
+import one_one_one from '../assets/events-tabs/one_on_one.svg';
+import group from '../assets/events-tabs/group.svg';
 import { FaAngleRight, FaCopy, FaRegCopy, FaTimesCircle } from 'react-icons/fa';
 import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
 import Swal from 'sweetalert2';
@@ -17,15 +17,16 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 
 const EventsTabs = () => {
-	const [actions, setActions] = useState(false);
-	const [tabIndex, setTabIndex] = useState(0);
-	const [subTabIndex, setSubTabIndex] = useState(0);
-	const [schedules, setSchedules] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const currentUser = UseGetCurrentUser();
-	const router = useRouter();
-	useEffect(() => {
-		(async () => {
+   const [actions,setActions] = useState(false);
+   const [tabIndex, setTabIndex] = useState(0);
+   const [subTabIndex, setSubTabIndex] = useState(0);
+   const [schedules, setSchedules] = useState([]);
+   const [refetch,setRefetch] = useState(false);
+   const [loading,setLoading] = useState(true)
+   const currentUser = UseGetCurrentUser();
+   const router = useRouter();
+   useEffect(() => {
+    	(async () => {
 			try {
 				const res = await fetch(`/api/scheduling?username=${currentUser?.username}`);
 				const data = await res.json();
@@ -38,13 +39,13 @@ const EventsTabs = () => {
 			} catch (error) {
 				console.error('Error fetching data:', error);
 			}
-		})();
-	}, [currentUser]);
-	const copyLink = () => {
-		navigator.clipboard.writeText(`https://meet-planr.vercel.app/user/${currentUser?.username}`).then(() => {
-			toast.success('User Link coped');
-		});
-	};
+		})()
+   }, [currentUser,refetch]);
+   const copyLink = () => {
+    navigator.clipboard.writeText(`https://meet-planr.vercel.app/user/${currentUser?.username}`).then(() => {
+		toast.success("User Link coped");
+        });
+    };
 	const handleEventType = () => {
 		if (currentUser) {
 			const availableSchedulesQuantity =
@@ -126,23 +127,11 @@ const EventsTabs = () => {
 	//UPCOMING-------------------
 	const today = new Date();
 
-	const upcoming = schedules?.filter(
-		(schedule) =>
-			new Date(schedule?.scheduleDate) > today &&
-			(schedule.confirm || (schedule?.inviteeInfo?.length > 0 && schedule?.eventType == 'Group'))
-	);
+	const upcoming = schedules?.filter((schedule) => new Date(schedule?.scheduleDate) > today && schedule.confirm);
 	//PENDING--------------------
-	const pending = schedules?.filter(
-		(schedule) =>
-			(!schedule?.confirm && schedule?.eventType == 'Single') ||
-			(schedule?.inviteeInfo?.length == 0 && schedule?.eventType == 'Group')
-	);
+	const pending = schedules?.filter((schedule) => (!schedule?.confirm));
 	//PAST----------------------
-	const past = schedules?.filter(
-		(schedule) =>
-			new Date(schedule?.scheduleDate) < today &&
-			(schedule.confirm || (schedule?.inviteeInfo?.length > 0 && schedule?.eventType == 'Group'))
-	);
+	const past = schedules?.filter((schedule) => new Date(schedule?.scheduleDate) < today && schedule.confirm);
 
 	return (
 		<div>
@@ -169,19 +158,14 @@ const EventsTabs = () => {
 								<div>
 									<h4>{currentUser ? currentUser?.name : 'User Name'}</h4>
 									<div className=" gap-5 hidden sm:flex">
-										<Link href={`/user/${currentUser?.username}`} className="text-[#465AF7]">
-											https://meet-planr.vercel.app/user/{currentUser ? currentUser?.username : 'username'}
+										<Link target="_blank" href={`/user/${currentUser?.username}`} className="text-[#465AF7]">
+											https://meet-planr.vercel.app/user/{currentUser ? currentUser?.username :'username'}
 										</Link>
-										<button className="text-xl" onClick={copyLink}>
-											<FaRegCopy />
-										</button>
+										<button disabled={!currentUser} className="text-xl disabled:cursor-wait" onClick={copyLink}><FaRegCopy/></button>
 									</div>
-									<div className="sm:hidden gap-5 flex">
-										<Link
-											href={`/user/${currentUser?.username}`}
-											className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap"
-										>
-											https://meet-pla.../user/{currentUser ? currentUser?.username : 'username'}
+									<div className="sm:hidden sm:gap-5 flex">
+										<Link target="_blank" href={`/user/${currentUser?.username}`} className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap">
+											https://meet-pla.../{currentUser ? currentUser?.username :'username'}
 										</Link>
 										<button className="text-xl" onClick={copyLink}>
 											<FaRegCopy />
@@ -255,21 +239,19 @@ const EventsTabs = () => {
 							</div>
 						</div>
 						<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
-							{loading ? (
-								<div className="mx-auto sm:col-span-2 lg:col-span-3 py-20">
-									<span className="loading loading-bars loading-lg"></span>
-								</div>
-							) : schedules ? (
-								schedules.map((schedule) => (
-									<EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id}></EventCard>
-								))
-							) : (
-								<span className="col-span-3 text-4xl text-slate-500 font-bold">No Schedule available</span>
-							)}
+							{
+							loading ? 
+							<div className="mx-auto sm:col-span-2 lg:col-span-3 py-20">
+								<span className="loading loading-bars loading-lg"></span>
+							</div> 
+							: schedules ? schedules.map((schedule) => (
+									<EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id} setRefetch={setRefetch}></EventCard>
+								)) : <span className='col-span-3 text-4xl text-slate-500 font-bold'>No Schedule available</span>
+							}
 						</div>
 					</TabPanel>
 					<TabPanel>
-						<div className="rounded-md shadow-lg border my-14 subtab p-5">
+						<div className="rounded-md shadow-lg border my-14 subtab px-2 sm:px-5 py-5">
 							<Tabs selectedIndex={subTabIndex} onSelect={(index) => setSubTabIndex(index)}>
 								<TabList className=" flex space-x-10 mt-10">
 									<Tab className="border-0 cursor-pointer pb-2">Upcoming</Tab>

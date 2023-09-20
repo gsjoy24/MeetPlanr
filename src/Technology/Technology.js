@@ -78,7 +78,7 @@ const TechnologyPage = () => {
                            <p className="text-5xl text-[#465AF7] font-bold">
                               3x
                            </p>
-                           <p className="text-sm text-[#5A7795] mt-5">
+                           <p className="text-lg text-[#5A7795] mt-5">
                               Sales conversion rate
                            </p>
                         </div>
@@ -86,7 +86,7 @@ const TechnologyPage = () => {
                            <p className="text-5xl text-[#465AF7] font-bold">
                               165k
                            </p>
-                           <p className="text-sm text-[#5A7795] mt-5">
+                           <p className="text-lg text-[#5A7795] mt-5">
                               Cost savings
                            </p>
                         </div>
@@ -94,7 +94,7 @@ const TechnologyPage = () => {
                            <p className="text-5xl text-[#465AF7] font-bold">
                               4,510
                            </p>
-                           <p className="text-sm text-[#5A7795] mt-5">
+                           <p className="text-lg text-[#5A7795] mt-5">
                               Hours reclaimed
                            </p>
                         </div>
@@ -137,7 +137,7 @@ const TechnologyPage = () => {
 
                   <div data-aos="fade-up" data-aos-duration="600">
                      <h3 className="text-[#465AF7] font-semibold uppercase">
-                        NEVER MISS A REVENUE OPPORTUNITY
+                        Don't MISS AN OPPORTUNITY FOR REVENUE
                      </h3>
                      <p className="text-3xl lg:text-[30px] text-[#0B3558] md:w-[650px] lg:w-[420px] my-6 font-semibold leading-8">
                         Create a competitive advantage to land more business
@@ -158,7 +158,7 @@ const TechnologyPage = () => {
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16 mt-24">
                   <div data-aos="fade-up" data-aos-duration="600">
                      <h3 className="text-[#465AF7] font-semibold uppercase">
-                        DRIVER EXPANSION AND RETENTION
+                        EXPANSION AND RETENTION OF DRIVERS
                      </h3>
                      <p className="text-3xl lg:text-4xl text-[#0B3558] md:w-[520px] lg:w-[420px] my-6 font-semibold leading-8">
                         Increase the client experience to raise ARR
@@ -206,7 +206,7 @@ const TechnologyPage = () => {
                      className="lg:mt-12"
                   >
                      <h3 className="text-[#465AF7] font-semibold uppercase">
-                        MODERNISE THE HIRING PROCESS
+                        Simplify the selection procedure
                      </h3>
                      <p className="text-3xl lg:text-[30px] text-[#0B3558] md:w-[650px] lg:w-[420px] my-6 font-semibold leading-8">
                         To attract the best IT talent, develop the best hiring

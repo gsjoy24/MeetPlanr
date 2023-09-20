@@ -1,18 +1,5 @@
 'use client';
 import Image from 'next/image';
-import { AiFillStar } from 'react-icons/ai';
-import img1 from '../assets/review-image/img1.jpg';
-import img2 from '../assets/review-image/img2.jpg';
-import img3 from '../assets/review-image/img3.jpg';
-import img4 from '../assets/review-image/img5.jpg';
-import img5 from '../assets/review-image/img6.jpg';
-import img6 from '../assets/review-image/img7.jpg';
-import img7 from '../assets/review-image/img8.jpg';
-import img8 from '../assets/review-image/img9.jpg';
-import img9 from '../assets/review-image/img10.jpg';
-import img10 from '../assets/review-image/img11.jpg';
-import img11 from '../assets/review-image/img12.jpg';
-import img12 from '../assets/review-image/img4.jpg';
 import SectionTitle from '../components/SectionTitle';
 import Container from '@/components/container';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -20,8 +7,21 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { useEffect, useState } from 'react';
+import ReactStarsRating from 'react-awesome-stars-rating';
+import axios from 'axios';
+import moment from 'moment';
 
 const Review = () => {
+	const [reviews, SetReviews] = useState([]);
+	useEffect(() => {
+		(async () => {
+			const response = await axios('/api/reviews');
+			if (response.data) {
+				SetReviews(response.data);
+			}
+		})();
+	}, []);
 	return (
 		<Container>
 			<div className="" style={{ marginTop: '64px', marginBottom: '64px' }}>
@@ -52,342 +52,36 @@ const Review = () => {
 						modules={[Pagination, Autoplay]}
 						className="mySwiper"
 					>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img1}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
+						{reviews.map((review) => (
+							<SwiperSlide key={review?._id}>
+								<div className="card min-h-[300px] md:min-h-[425px] my-10 border shadow-xl">
+									<figure className="">
+										<Image
+											src={review?.photoUrl}
+											alt={review?.name}
+											width={100}
+											height={100}
+											className="h-[100px] w-[100px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
+										/>
+									</figure>
+									<div className="card-body items-center text-center">
+										<p>{review?.reviewText.slice(0, 150)}</p>
 
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
+										<ReactStarsRating
+											isEdit={false}
+											starGap={10}
+											size={26}
+											className="flex"
+											ise
+											value={review?.rating}
+										/>
+
+										<h2 className="card-title text-[#23A6F0]">{review?.name}</h2>
+										<h2 className="">{moment(review?.timestamp).startOf('hour').fromNow()}</h2>
 									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
 								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img2}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img3}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img4}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img5}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img6}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img7}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img8}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img9}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img10}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img11}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide>
-							<div className="card bg-base-100 my-10 border shadow-xl">
-								<figure className="">
-									<Image
-										src={img12}
-										alt="Picture of the author"
-										className="h-[120px] w-[120px] rounded-[50%] mx-auto my-2 object-cover shadow-sm"
-									/>
-								</figure>
-								<div className="card-body items-center text-center">
-									<p>
-										Slate helps you see how many more days you need to work to reach your financial goal for the month
-										and year.
-									</p>
-
-									<div className="flex gap-2 my-2">
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-										<AiFillStar className="w-6 h-6 text-orange-700" />
-									</div>
-
-									<h2 className="card-title text-[#23A6F0]">Regina Miles</h2>
-									<h2 className="">Banker</h2>
-								</div>
-							</div>
-						</SwiperSlide>
+							</SwiperSlide>
+						))}
 					</Swiper>
 				</div>
 			</div>

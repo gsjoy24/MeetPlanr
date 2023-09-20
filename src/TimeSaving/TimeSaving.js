@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Container from "@/components/container";
 import img1 from "@/assets/time-saving/Calendar_connectionss.png";
-import img2 from "@/assets/time-saving/reminder-email.png";
+import img2 from "@/assets/time-saving/confirmations.png";
 import img3 from "@/assets/time-saving/Schedule-date.png";
 import img4 from "@/assets/time-saving/Calender-time.png";
 import img5 from "@/assets/time-saving/scheduled.png";
@@ -57,7 +57,7 @@ const TimeSaving = () => {
                            </p>
                         </div>
                         <div className="rounded-xl">
-                           <Image src={img2} alt="" className="p-6 pt-0 h-64" />
+                           <Image src={img2} alt="" className="px-4 py-3 pt-0 h-64" />
                         </div>
                      </div>
                   </div>

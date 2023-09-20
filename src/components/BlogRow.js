@@ -41,7 +41,7 @@ const BlogRow = ({ blog, i, refetch, setRefetch }) => {
 	};
 
 	return (
-		<tr data-aos="fade-left" data-aos-duration="300">
+		<tr>
 			<th>
 				<label>{i + 1}</label>
 			</th>
