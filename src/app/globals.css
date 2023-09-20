@@ -6,6 +6,9 @@
 * {
 	scroll-behavior: smooth;
 }
+p {
+	font-size: 0.975rem;
+}
 .mp_btn {
 	@apply bg-[#465AF7] text-white px-8 py-4 rounded-lg  cursor-pointer;
 }
@@ -74,7 +77,7 @@
 	border-color: #465af7 !important;
 	@apply border-b-4 outline-none;
 }
-.subtab .react-tabs ul{
+.subtab .react-tabs ul {
 	margin-top: 0px !important;
 	margin-bottom: 10px !important;
 }
