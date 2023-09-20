@@ -1,26 +1,26 @@
-import Container from "@/components/container";
 import { BsArrowRightShort } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
-import img1 from "@/assets/solutions/img1.png";
-import img2 from "@/assets/solutions/img3.png";
-import Button from "@/common/Button";
+import img1 from "@/assets/solutions/image5.png";
+import img2 from "@/assets/solutions/image6.png";
 
 const SolutionsPage = () => {
    return (
       <div>
          <section>
-            <div className="mt-16 text-center md:w-[650px] lg:w-[800px] w-full mx-auto">
+            <div className="mt-16 text-center w-full">
                <h3 className="text-[#465AF7] font-semibold uppercase">
                   SOLUTIONS
                </h3>
-               <h1 className="lg:text-5xl text-sky-950 my-8 text-4xl font-bold">
-                  A scheduling automation solution for{" "}
-                  <span className="text-[#465AF7]">every team</span>
+               <h1 className="lg:text-5xl text-sky-950 my-8 text-2xl font-bold md:w-[650px] lg:w-[900px] mx-auto">
+                  Every team can use an{" "}
+                  <span className="text-[#465AF7]">automation solution</span>{" "}
+                  for scheduling
                </h1>
-               <p className="text-[21px] text-[#5A7795] mb-10">
-                  Drive results, meeting by meeting. MeetPlanr automates
-                  scheduling so teams can focus on delivering results.
+               <p className="text-[21px] text-[#5A7795] md:w-[650px] lg:w-[730px] mx-auto mb-10">
+                  Promote progress, one meeting at a time. Teams may concentrate
+                  on producing results by using MeetPlanrs automated
+                  scheduling.
                </p>
 
                <Link
@@ -35,169 +35,140 @@ const SolutionsPage = () => {
 
          {/* Solutions by role */}
          <section className="bg-[#F7FAFF] rounded-2xl p-5 lg:p-16 mt-16">
-            <div className="text-center">
-               <h3 className="text-[#465AF7] font-semibold uppercase">
-                  SOLUTIONS BY ROLE
-               </h3>
-               <h1 className="lg:text-3xl text-sky-950 my-6 text-3xl font-bold">
-                  Solutions for every role
-               </h1>
-            </div>
-
             <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                <div>
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
+                  <div className="text-center mb-10">
+                     <h3 className="text-[#465AF7] font-semibold uppercase">
+                        SOLUTIONS BY ROLE
+                     </h3>
+                     <h1 className="lg:text-3xl text-[#0B3558] my-6 text-3xl font-bold">
+                        Multiple options for each role
+                     </h1>
+                  </div>
+                  {/* Sales collapse */}
+                  <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
+                     <input type="checkbox" className="peer" />
                      <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Sales
                      </div>
                      <div className="collapse-content">
                         <p className="text-[#5A7795]">
-                           Accelerate success at every stage of your sales cycle
-                           and drive more revenue.
-                        </p>
-                        <p>
-                           <a
-                              href=""
-                              className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
-                           >
-                              <span>Learn more</span>
-                              <span>
-                                 <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
-                              </span>
-                           </a>
+                           By maximizing outbound sales efforts and encouraging
+                           customers to make reservations using your website or
+                           team scheduling page to promote inbound sales, you
+                           can set up more revenue-generating meetings and
+                           establish connections with prospects before a rival
+                           does.
                         </p>
                      </div>
                   </div>
 
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
-                     <div className="collapse-title text-[15px] text-slate-600 font-semibold">
-                        Recruiting
-                     </div>
-                     <div className="collapse-content">
-                        <p className="text-[#5A7795]">
-                           Increase candidate pipeline and hire faster with
-                           easier scheduling.
-                        </p>
-                        <p>
-                           <a
-                              href=""
-                              className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
-                           >
-                              <span>Learn more</span>
-                              <span>
-                                 <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
-                              </span>
-                           </a>
-                        </p>
-                     </div>
-                  </div>
-
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
+                  {/* Customer Success collapse */}
+                  <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
+                     <input type="checkbox" className="peer" />
                      <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Customer Success
                      </div>
                      <div className="collapse-content">
                         <p className="text-[#5A7795]">
-                           Deliver better customer experience to improve
-                           retention and growth.
+                           Improve the customer experience to increase growth
+                           and retention. The process in MeetPlanr can automate,
+                           standardize, and manage pre- and post-meeting
+                           communications. Additionally, you can use our CRM
+                           connectors to automatically update customer
+                           information if a meeting is scheduled.
                         </p>
                         <p>
-                           <a
-                              href=""
+                           <Link
+                              href="/solutions/customer-success"
                               className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
                            >
                               <span>Learn more</span>
                               <span>
                                  <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
                               </span>
-                           </a>
+                           </Link>
                         </p>
                      </div>
                   </div>
 
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
+                  {/* Marketing collapse */}
+                  <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
+                     <input type="checkbox" className="peer" />
                      <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Marketing
                      </div>
                      <div className="collapse-content">
                         <p className="text-[#5A7795]">
-                           Supercharge your lead gen to boost conversion rates
-                           and drive more pipeline.
+                           Improve your lead generation to increase conversions
+                           and generate more pipeline. For instant campaign
+                           reporting and a smooth prospect experience, integrate
+                           with your marketing automation platforms.
                         </p>
                         <p>
-                           <a
-                              href=""
+                           <Link
+                              href="/solutions/marketing"
                               className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
                            >
                               <span>Learn more</span>
                               <span>
                                  <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
                               </span>
-                           </a>
+                           </Link>
                         </p>
                      </div>
                   </div>
 
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
+                  {/* Businesses collapse */}
+                  <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
+                     <input type="checkbox" className="peer" />
                      <div className="collapse-title text-[15px] text-slate-600 font-semibold">
-                        Revenue Operations
+                        Businesses
                      </div>
                      <div className="collapse-content">
                         <p className="text-[#5A7795]">
-                           Integrate best-in-class scheduling to keep every team
-                           and opportunity connected.
+                           Scheduling automation enables everyone to achieve
+                           team goals more quickly, whether they are related to
+                           sales income, the hiring pipeline, or customer
+                           retention.
                         </p>
                         <p>
-                           <a
-                              href=""
+                           <Link
+                              href="/solutions/businesses"
                               className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
                            >
                               <span>Learn more</span>
                               <span>
                                  <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
                               </span>
-                           </a>
+                           </Link>
                         </p>
                      </div>
                   </div>
 
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
+                  {/* Information Technology collapse */}
+                  <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
+                     <input type="checkbox" className="peer" />
                      <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Information Technology
                      </div>
                      <div className="collapse-content">
                         <p className="text-[#5A7795]">
-                           Centralize teams and reduce risk with
-                           enterprise-grade security.
+                           Your IT staff can support scheduling automation
+                           across your organization with MeetPlanr for
+                           Enterprise while upholding governance and adhering to
+                           security standards.
                         </p>
                         <p>
-                           <a
-                              href=""
+                           <Link
+                              href="/solutions/technology"
                               className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
                            >
                               <span>Learn more</span>
                               <span>
                                  <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
                               </span>
-                           </a>
+                           </Link>
                         </p>
                      </div>
                   </div>
@@ -229,117 +200,101 @@ const SolutionsPage = () => {
                </div>
 
                <div>
-                  <div className="text-center">
+                  <div className="text-center text-[#0B3558] mb-10">
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         SOLUTIONS BY INDUSTRY
                      </h3>
                      <h1 className="lg:text-3xl text-sky-950 my-6 text-3xl font-bold">
-                        Solutions for any industry
+                        Versatile Industry Solutions
                      </h1>
                   </div>
 
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
+                  {/* Financial Services collapse */}
+                  <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
+                     <input type="checkbox" className="peer" />
                      <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Financial Services
                      </div>
                      <div className="collapse-content">
                         <p className="text-[#5A7795]">
-                           Modernize your client experience, boost client
-                           engagement, and improve productivity to grow your
-                           business.
-                        </p>
-                        <p>
-                           <a
-                              href=""
-                              className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
-                           >
-                              <span>Learn more</span>
-                              <span>
-                                 <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
-                              </span>
-                           </a>
+                           Take it simple for clients to self-book appointments
+                           so they may discuss market movements, evaluate their
+                           portfolios, or make modifications as their lives
+                           change.
                         </p>
                      </div>
                   </div>
 
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
+                  {/* Education collapse */}
+                  <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
+                     <input type="checkbox" className="peer" />
                      <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Education
                      </div>
                      <div className="collapse-content">
                         <p className="text-[#5A7795]">
-                           Boost student engagement, increase accessibility to
-                           resources, and accelerate the admissions cycle.
-                        </p>
-                        <p>
-                           <a
-                              href=""
-                              className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
-                           >
-                              <span>Learn more</span>
-                              <span>
-                                 <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
-                              </span>
-                           </a>
+                           Making scheduling advising sessions quick and simple
+                           for students while yet allowing teachers and
+                           professors to maintain control over their calendars.
+                           Simplified scheduling will increase student
+                           performance by increasing their access to resources
+                           and services. Give students the option of choosing a
+                           convenient time for an in-person or online meeting.
                         </p>
                      </div>
                   </div>
 
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
+                  {/* Professional Services collapse */}
+                  <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
+                     <input type="checkbox" className="peer" />
                      <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Professional Services
                      </div>
                      <div className="collapse-content">
                         <p className="text-[#5A7795]">
-                           Provide an exceptional client experience, improve
-                           team efficiency, and increase project profitability.
+                           By providing a personalized link to your company's
+                           booking website and establishing a streamlined and
+                           consistent scheduling process, you can make yourself
+                           more available to customers.
                         </p>
                         <p>
-                           <a
-                              href=""
+                           <Link
+                              href="/solutions/professional-services"
                               className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
                            >
                               <span>Learn more</span>
                               <span>
                                  <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
                               </span>
-                           </a>
+                           </Link>
                         </p>
                      </div>
                   </div>
 
-                  <div
-                     tabIndex={0}
-                     className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md"
-                  >
+                  {/* Technology collapse */}
+                  <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
+                     <input type="checkbox" className="peer" />
                      <div className="collapse-title text-[15px] text-slate-600 font-semibold">
                         Technology
                      </div>
                      <div className="collapse-content">
                         <p className="text-[#5A7795]">
-                           Win more deals, increase retention, recruit top
-                           talent, and connect your tech stack to reach your
-                           full potential.
+                           To fill the pipeline with high-value prospects,
+                           schedule meetings immediately from your outreach
+                           email, LinkedIn message, or website. To advance
+                           prospects, then make every encounter and follow-up
+                           simpler.
                         </p>
                         <p>
-                           <a
-                              href=""
+                           <Link
+                              href="/solutions/technology"
                               className="flex items-center text-[#465AF7] hover:text-sky-950 mt-2 group"
                            >
                               <span>Learn more</span>
                               <span>
                                  <BsArrowRightShort className=" text-[22px] group-hover:ml-1 duration-200" />
                               </span>
-                           </a>
+                           </Link>
                         </p>
                      </div>
                   </div>
@@ -351,13 +306,15 @@ const SolutionsPage = () => {
             <div className="text-white bg-[#0B3558] rounded-3xl mb-20">
                <div className="mt-20 text-center sm:w-[500px] md:w-[600px] lg:w-[800px] mx-auto py-14">
                   <p className="lg:text-3xl my-8 text-3xl font-bold tracking-widest">
-                     Scheduling made easy
+                     Scheduling is simple
                   </p>
                   <p className="text-[17px] px-5 mb-10">
-                     Drive more results for your team by optimizing your
-                     scheduling processes, integrating with key tools, and
-                     automating communications so you can connect with the right
-                     people, faster.
+                     Achieve Better Team Outcomes through Enhanced Scheduling,
+                     Integration, and Automated Communication. By doing so, you
+                     will empower your team to efficiently connect with the
+                     right individuals, fostering quicker decision-making,
+                     smoother collaborations, and ultimately, more substantial
+                     achievements.
                   </p>
 
                   <Link
