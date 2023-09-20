@@ -33,7 +33,7 @@ const Pricing = async () => {
                            {price.nickname}
                         </span>
                         {price.nickname === "Standard" && (
-                           <span className="bg-[#0B3558] text-white text-[12px] px-2 py-[2px] rounded-sm absolute -top-3 left-[20px]">
+                           <span className="bg-[#465AF7] text-white text-[12px] px-2 py-[2px] rounded-full absolute -top-3 right-[20px]">
                               Most Popular
                            </span>
                         )}
