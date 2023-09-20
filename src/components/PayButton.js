@@ -23,8 +23,8 @@ const ButtonCheckout = ({ priceId, price, priceName }) => {
       if (data) {
          router.push(data.url);
       }
-  };
-  
+   };
+
    return (
       <button
          disabled={selectedPlan || !currentUser || isDisable || isFree}
