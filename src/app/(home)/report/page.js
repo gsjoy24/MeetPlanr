@@ -1,10 +1,12 @@
 'use client';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
 const ReportPage = () => {
+	const router = useRouter();
 	const {
 		control,
 		handleSubmit,
@@ -34,6 +36,7 @@ const ReportPage = () => {
 			const response = await axios.post('/api/report', { ...report, timestamp });
 			if (response?.data?.insertedId) {
 				reset();
+				router.push('/')
 				Swal.fire({
 					icon: 'success',
 					title: 'Reported success!',
