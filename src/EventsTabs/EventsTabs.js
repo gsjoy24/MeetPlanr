@@ -8,8 +8,8 @@ import img from '@/assets/events-tabs/placeholder.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
 import EventCard from '@/components/EventCard';
-import one_one_one from '../assets/events-tabs/one_on_one.png';
-import group from '../assets/events-tabs/group.png';
+import one_one_one from '../assets/events-tabs/one_on_one.svg';
+import group from '../assets/events-tabs/group.svg';
 import { FaAngleRight, FaCopy, FaRegCopy, FaTimesCircle } from 'react-icons/fa';
 import UseGetCurrentUser from '@/hooks/UseGetCurrentUser';
 import Swal from 'sweetalert2';
@@ -127,23 +127,11 @@ const EventsTabs = () => {
 	//UPCOMING-------------------
 	const today = new Date();
 
-	const upcoming = schedules?.filter(
-		(schedule) =>
-			new Date(schedule?.scheduleDate) > today &&
-			(schedule.confirm || (schedule?.inviteeInfo?.length > 0 && schedule?.eventType == 'Group'))
-	);
+	const upcoming = schedules?.filter((schedule) => new Date(schedule?.scheduleDate) > today && schedule.confirm);
 	//PENDING--------------------
-	const pending = schedules?.filter(
-		(schedule) =>
-			(!schedule?.confirm && schedule?.eventType == 'Single') ||
-			(schedule?.inviteeInfo?.length == 0 && schedule?.eventType == 'Group')
-	);
+	const pending = schedules?.filter((schedule) => (!schedule?.confirm));
 	//PAST----------------------
-	const past = schedules?.filter(
-		(schedule) =>
-			new Date(schedule?.scheduleDate) < today &&
-			(schedule.confirm || (schedule?.inviteeInfo?.length > 0 && schedule?.eventType == 'Group'))
-	);
+	const past = schedules?.filter((schedule) => new Date(schedule?.scheduleDate) < today && schedule.confirm);
 
 	return (
 		<div>
@@ -175,9 +163,9 @@ const EventsTabs = () => {
 										</Link>
 										<button disabled={!currentUser} className="text-xl disabled:cursor-wait" onClick={copyLink}><FaRegCopy/></button>
 									</div>
-									<div className="sm:hidden gap-5 flex">
+									<div className="sm:hidden sm:gap-5 flex">
 										<Link target="_blank" href={`/user/${currentUser?.username}`} className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap">
-											https://meet-pla.../user/{currentUser ? currentUser?.username :'username'}
+											https://meet-pla.../{currentUser ? currentUser?.username :'username'}
 										</Link>
 										<button className="text-xl" onClick={copyLink}>
 											<FaRegCopy />
@@ -263,7 +251,7 @@ const EventsTabs = () => {
 						</div>
 					</TabPanel>
 					<TabPanel>
-						<div className="rounded-md shadow-lg border my-14 subtab p-5">
+						<div className="rounded-md shadow-lg border my-14 subtab px-2 sm:px-5 py-5">
 							<Tabs selectedIndex={subTabIndex} onSelect={(index) => setSubTabIndex(index)}>
 								<TabList className=" flex space-x-10 mt-10">
 									<Tab className="border-0 cursor-pointer pb-2">Upcoming</Tab>
