@@ -65,10 +65,10 @@ const Review = () => {
 										/>
 									</figure>
 									<div className="card-body items-center text-center">
-										<p>{review?.reviewText.slice(0, 150)}</p>
-
-										<ReactStarsRating starGap={10} size={30} className="flex" ise value={review?.rating} />
-
+										<p>{review?.reviewText.slice(0,150)}</p>
+	
+										<ReactStarsRating isEdit={false} starGap={10} size={30} className="flex" ise value={review?.rating} />
+	
 										<h2 className="card-title text-[#23A6F0]">{review?.name}</h2>
 										<h2 className="">{moment(review?.timestamp).startOf('hour').fromNow()}</h2>
 									</div>
