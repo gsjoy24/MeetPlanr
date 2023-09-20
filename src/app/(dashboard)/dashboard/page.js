@@ -8,6 +8,7 @@ import UseSchedule from '@/hooks/UseSchedule';
 const AdminPage = () => {
 	const [allUsers] = UseAllUsers();
 	const [allBlogs] = UseBlogs();
+
 	const allSchedule = UseSchedule();
 
 	return (
@@ -19,7 +20,7 @@ const AdminPage = () => {
 				<Stat num={allSchedule ? allSchedule?.length : false} title="Schedules" />
 				<Stat num={'32'} title="Feedbacks" />
 			</div>
-			<div className="">
+			<div>
 				<BarChartPage />
 			</div>
 		</div>

@@ -6,6 +6,7 @@ import Loading from '@/app/loading';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import Container from '@/components/container';
+import TimeZoneConverter from '@/shareComponents/TimeZoneConverter';
 
 const DetailsPage = ({ params }) => {
 	const [blog, setBlog] = useState({});
@@ -87,6 +88,9 @@ const DetailsPage = ({ params }) => {
 				<div className="col-span-2">
 					<h1 className="text-3xl mb-8 font-semibold">{blog?.title}</h1>
 					<Image src={blog?.image} alt={blog?.title} className="w-full mb-4 rounded-md" width={1000} height={400} />
+					<p>
+						<TimeZoneConverter inputDate={blog?.timestamp} />
+					</p>
 					<p className="text-gray-600">{blog?.subtitle}</p>
 					<p className="mt-4 text-gray-800">{blog?.content}</p>
 
@@ -103,7 +107,7 @@ const DetailsPage = ({ params }) => {
 
 					<form className="max-w-[400px]" onSubmit={handleSubmit(onSubmit)}>
 						<input {...register('commentText')} type="text" placeholder="Add a comment..." className="mp_input" />
-						<button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Post Comment</button>
+						<button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Comment</button>
 					</form>
 				</div>
 
@@ -111,7 +115,7 @@ const DetailsPage = ({ params }) => {
 					<h2 className="text-2xl font-semibold mb-4">Recent Posts</h2>
 					{Array.isArray(suggestedBlogs) && suggestedBlogs.length > 0 ? (
 						<ul className="space-y-4">
-							{suggestedBlogs.slice(0, 3).map((suggestedBlog) => (
+							{suggestedBlogs.slice(0, 5).map((suggestedBlog) => (
 								<li key={suggestedBlog._id} className="flex space-x-4">
 									<div className="flex-shrink-0">
 										<Image

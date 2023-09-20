@@ -41,7 +41,7 @@ const BlogRow = ({ blog, i, refetch, setRefetch }) => {
 	};
 
 	return (
-		<>
+		<tr>
 			<th>
 				<label>{i + 1}</label>
 			</th>
@@ -73,7 +73,7 @@ const BlogRow = ({ blog, i, refetch, setRefetch }) => {
 					</Link>
 				</span>
 			</th>
-		</>
+		</tr>
 	);
 };
 
