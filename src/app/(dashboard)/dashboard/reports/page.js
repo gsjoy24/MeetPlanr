@@ -11,7 +11,7 @@ const Reports = () => {
 			{allReports.length ? (
 				<>
 					<h1 className="md:text-2xl mb-5 text-xl font-bold">All Reports</h1>
-					<div className="mx-auto overflow-x-auto max-w-[330px] sm:max-w-[620px] md:max-w-[740px] lg:max-w-[830px]">
+					<div className="mx-auto overflow-x-auto max-w-[330px] sm:max-w-[620px] md:max-w-[740px] lg:max-w-[830px] overflow-hidden">
 						<table className="table min-w-full border table-zebra">
 							{/* head */}
 							<thead>
@@ -27,10 +27,9 @@ const Reports = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{/* row 1 */}
 								{allReports &&
 									allReports.map((report, i) => (
-										<ReportRow report={report} i={i} refetch={refetch} setRefetch={setRefetch} />
+										<ReportRow key={report?._id} report={report} i={i} refetch={refetch} setRefetch={setRefetch} />
 									))}
 							</tbody>
 							{/* foot */}
@@ -50,11 +49,12 @@ const Reports = () => {
 					</div>
 				</>
 			) : (
+				// this div will show if there will no issue submitted by the users!
 				<div className="flex justify-center items-center flex-col w-full h-[90vh] font-semibold">
 					<h1 className="text-2xl text-[#465AF7]">
 						Congratulations!
 						<br />
-						No issues found!
+						No issue found!
 					</h1>
 				</div>
 			)}

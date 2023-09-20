@@ -23,7 +23,7 @@ const Stat = ({ num, title }) => {
 	}
 	return (
 		<div className="bg-[#465AF7] hover:bg-[#364cf7] duration-200 p-3 sm:p-8 rounded-2xl min-w-[145px] sm:min-w-[170px] flex flex-col justify-center items-center gap-2">
-			<span className="text-5xl font-bold">
+			<span className="text-4xl font-bold">
 				{num ? num : <span className="loading loading-spinner loading-lg">{num}</span>}
 			</span>
 			<span className="flex items-center justify-center gap-2 text-sm">

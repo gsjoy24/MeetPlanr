@@ -3,13 +3,14 @@ import BarChartPage from '@/Dashboard/BarChart';
 import Stat from '@/components/Stat';
 import UseAllUsers from '@/hooks/UseAllUsers';
 import UseBlogs from '@/hooks/UseBlogs';
+import UseReviews from '@/hooks/UseReviews';
 import UseSchedule from '@/hooks/UseSchedule';
 
 const AdminPage = () => {
 	const [allUsers] = UseAllUsers();
 	const [allBlogs] = UseBlogs();
-
 	const allSchedule = UseSchedule();
+	const reviews = UseReviews();
 
 	return (
 		<div>
@@ -18,7 +19,7 @@ const AdminPage = () => {
 				<Stat num={allUsers ? allUsers?.length : false} title="Users" />
 				<Stat num={allBlogs ? allBlogs?.length : false} title="Blogs" />
 				<Stat num={allSchedule ? allSchedule?.length : false} title="Schedules" />
-				<Stat num={'32'} title="Feedbacks" />
+				<Stat num={reviews ? reviews?.length : false} title="Reviews" />
 			</div>
 			<div>
 				<BarChartPage />
