@@ -5,7 +5,7 @@ export const GET = async(request) => {
     try{
         const db = await DbConnect();
         const reviewsCollections = db.collection('reviews');
-        const result = await reviewsCollections.find().toArray();
+        const result = await reviewsCollections.find().sort({timestamp: -1}).toArray();
 		return NextResponse.json(result);
     }catch (err) {
         console.log(err.message);

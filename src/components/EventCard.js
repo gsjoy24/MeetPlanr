@@ -10,7 +10,7 @@ import ReactStarsRating from 'react-awesome-stars-rating';
 import { UserAuth } from "@/providers/AuthProvider";
 const EventCard = ({schedule,handleEdit,setRefetch}) => {
     const {eventName,confirm,duration,scheduleLink,scheduleDate,path,eventType,_id} = schedule || {};
-    const {register,handleSubmit,watch,reset} = useForm()
+    const {register,handleSubmit,watch,reset,formState: { errors }} = useForm()
     const detailsLink = `${scheduleLink}/details`;
     const [action,setAction] = useState(false)
     const [modal,setModal] = useState(false);
@@ -56,19 +56,20 @@ const EventCard = ({schedule,handleEdit,setRefetch}) => {
     const today = new Date();
     const SheduleDate = scheduleDate ? new Date(scheduleDate) : null;
     const isPast = (confirm && (SheduleDate < today));
-    console.log(user);
     const handleReview = async(data) => {
         const reviewData = {
-            Name: user?.displayName,
-            PhotoUrl: user?.photoURL,
+            name: user?.displayName,
+            photoUrl: user?.photoURL,
             reviewText: data?.reviewText,
-            rating
+            rating,
+            timestamp: new Date()
         }
         if(rating){
             const response = await axios.post('/api/reviews',reviewData);
             if(response?.data?.insertedId){
                 setModal(false);
                 reset();
+                setRating(0);
                 Swal.fire({
                     icon: 'success',
                     title: 'Thanks for give Review.',
@@ -86,11 +87,12 @@ const EventCard = ({schedule,handleEdit,setRefetch}) => {
             <p className='my-1'>{duration}mins, One-on-One</p>
             <Link target='_blank' className='my-5 text-blue-500 hover:underline' href={detailsLink}>View more details</Link>
 {/*============= button area================= */}
-            <div className="text-right mt-2 flex justify-between">
-                <button onClick={() => setModal(true)} className="hover:underline text-[#465AF7]">Give Review</button>
+            <div className={`text-right mt-2 flex ${isPast ? "justify-between" : "justify-end"}`}>
+                {
+                    isPast && <button onClick={() => setModal(true)} className="hover:underline text-[#465AF7]">Give Review</button>
+                }
                 <button onClick={copyLink} className='px-4 rounded-3xl py-2 border border-[#465AF7]'>Copy Link</button>
             </div>
-            {/* onClick={() => handleEdit(path,confirm,eventType)} */}
             <div className="absolute top-2 right-2">
                 <div className={`absolute bg-white p-3 shadow-lg border top-0 right-8 text-sm rounded-md w-32 ${action ? "block" : "hidden"}`}>
                     <button onClick={handleEditEvent} className="flex items-center gap-3"><FaPencilAlt/> Edit</button>
@@ -101,11 +103,12 @@ const EventCard = ({schedule,handleEdit,setRefetch}) => {
 {/* ==================== Review Modal ======================*/}
             {
                 modal && <div className="fixed top-0 left-0 z-50 bg-opacity-30 w-full h-screen bg-slate-800 flex justify-center items-center">
-                    <div className="bg-white p-5 w-2/5 rounded-md relative">
+                    <div className="bg-white p-5 w-11/12 sm:w-4/5 md:w-1/2 lg:w-2/5 rounded-md relative">
                         <form className="flex flex-col" onSubmit={handleSubmit(handleReview)}>
                             <h1 className="text-center text-2xl">Give Your Feedback.</h1>
-                            <textarea {...register("reviewText")} className="mp_input w-full my-5 min-h-[100px]" />
-                            <ReactStarsRating starGap={10} size={30} className="flex" onChange={(value) => setRating(value)} value={rating} />
+                            <textarea maxLength={150} {...register("reviewText")} className="mp_input w-full mt-5 min-h-[100px]" />
+                            {watch("reviewText")?.length === 150 && <span className="text-red-500">You cannot write more than 150 letter.</span>}
+                            <ReactStarsRating starGap={10} size={30} className="flex mt-6" onChange={(value) => setRating(value)} value={rating} />
                             <input type="submit" className="bg-[#465af7] text-white px-5 py-2 rounded-md w-fit mx-auto mt-8 cursor-pointer"/>
                         </form>
                         <button onClick={() => setModal(false)} className="absolute -top-2 -right-2 bg-white rounded-full"><FaTimesCircle className="text-red-500 text-3xl"/></button>

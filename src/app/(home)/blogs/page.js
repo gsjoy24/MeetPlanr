@@ -39,7 +39,7 @@ const Page = () => {
 			<Container>
 				{allBlogs && Array.isArray(allBlogs) ? (
 					<>
-						<div className="lg:flex lg:p-8 items-center justify-center p-4 space-y-3">
+						<div className="lg:flex lg:p-8 items-center justify-center sm:p-4 space-y-3">
 							<div className="md:pr-8 flex flex-col items-center">
 								<Image
 									className="w-full min-w-[340px]"
