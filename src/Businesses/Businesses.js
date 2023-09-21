@@ -12,21 +12,25 @@ import { BiRightArrowAlt } from 'react-icons/bi';
 const Businesses = () => {
 	return (
       <div>
+         {/* Section start */}
          <section className="pt-16 pb-8 bg-[#F7FAFF]">
             <Container>
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                   <div className="lg:mt-10">
-                     <h3 className="text-[#465AF7] font-semibold uppercase">
-                        MEETPLANR FOR TEAMS & INDUSTRIES
-                     </h3>
-                     <p className="text-4xl lg:text-5xl text-[#0B3558] md:w-[550px] my-6 font-semibold leading-10">
-                        Enhanced planning for the entire team
-                     </p>
-                     <p className="text-[18px] text-[#5A7795] md:w-[550px] mb-10 leading-8">
-                        Scheduling automation enables everyone to achieve team
-                        goals more quickly, whether they are related to sales
-                        income, the hiring pipeline, or customer retention.
-                     </p>
+                     <div>
+                        <h3 className="text-[#465AF7] font-semibold uppercase">
+                           MEETPLANR FOR TEAMS & INDUSTRIES
+                        </h3>
+                        <p className="text-4xl lg:text-5xl text-[#0B3558] md:w-[550px] my-6 font-semibold leading-10">
+                           Enhanced planning for the entire team
+                        </p>
+                        <p className="text-[18px] text-[#5A7795] md:w-[550px] mb-10 leading-8">
+                           Scheduling automation enables everyone to achieve
+                           team goals more quickly, whether they are related to
+                           sales income, the hiring pipeline, or customer
+                           retention.
+                        </p>
+                     </div>
                      <Link
                         href="/my-account"
                         data-testid="createEvent"
@@ -49,6 +53,7 @@ const Businesses = () => {
          </section>
 
          <Container>
+            {/* Section start */}
             <section className="py-12">
                <div
                   className="pb-14 text-center"
@@ -158,6 +163,7 @@ const Businesses = () => {
             </section>
          </Container>
 
+         {/* Section start */}
          <section className="py-12 bg-[#f8f8f8]">
             <Container>
                <div

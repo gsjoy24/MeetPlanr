@@ -1,31 +1,37 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import Container from '@/components/container';
-import img1 from '@/assets/solutions/img11.png';
-import img2 from '@/assets/solutions/Doordash.png';
-import img3 from '@/assets/solutions/Twilio.png';
-import img4 from '@/assets/solutions/Virtu.png';
-import img5 from '@/assets/solutions/img6.png';
-import img6 from '@/assets/solutions/img2.png';
+import Link from "next/link";
+import Image from "next/image";
+import Container from "@/components/container";
+import img1 from "@/assets/solutions/img11.png";
+import img2 from "@/assets/solutions/Doordash.png";
+import img3 from "@/assets/solutions/Twilio.png";
+import img4 from "@/assets/solutions/Virtu.png";
+import img5 from "@/assets/solutions/img6.png";
+import img6 from "@/assets/solutions/img2.png";
 
 const Marketing = () => {
-	return (
+   return (
       <div>
          <Container>
             <section className="mt-16">
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                   <div>
-                     <h3 className="text-[#465AF7] font-semibold uppercase">
-                        MARKETING TEAMS
-                     </h3>
-                     <h1 className="text-4xl lg:text-5xl text-[#0B3558] md:w-[520px] my-6 font-bold leading-10">
-                        Faster changing leads into meetings
-                     </h1>
-                     <p className="text-[18px] text-[#5A7795] md:w-[465px] mb-10">
-                        Improve the experience for high-value customers,
-                        automate the transfer of the lead to sales, and increase
-                        the quantity of high-quality leads in your pipeline
-                     </p>
+                     {/* Section title */}
+                     <div>
+                        <h3 className="text-[#465AF7] font-semibold uppercase">
+                           MARKETING TEAMS
+                        </h3>
+                        <h1 className="text-4xl lg:text-5xl text-[#0B3558] md:w-[520px] my-6 font-bold leading-10">
+                           Faster changing leads into meetings
+                        </h1>
+                        <p className="text-[18px] text-[#5A7795] md:w-[465px] mb-10">
+                           Improve the experience for high-value customers,
+                           automate the transfer of the lead to sales, and
+                           increase the quantity of high-quality leads in your
+                           pipeline
+                        </p>
+                     </div>
+
+                     {/* Action buttons */}
                      <div className="sm:flex-row sm:justify-start flex flex-col justify-center gap-3">
                         <Link
                            href="/my-account"
@@ -57,7 +63,7 @@ const Marketing = () => {
                         <span className="text-[#465AF7]">50</span>
                         <span className="text-[#0B3558]">%</span>
                      </p>
-                     <p className="text-[21px] text-[#5A7795] lg:w-[260px] pt-3 pb-12">
+                     <p className="text-[21px] text-[#5A7795] lg:w-[260px] pt-3 pb-[50px]">
                         A boost in online sales-qualified opportunities
                      </p>
                      <div className="lg:justify-normal flex justify-center">
@@ -96,8 +102,9 @@ const Marketing = () => {
                   </div>
                </div>
             </section>
-         </Container>
-
+       </Container>
+       
+         {/* Features of marketing teams */}
          <section className="bg-[#F7FAFF] py-20">
             <Container>
                <div className="pb-14 text-center">
