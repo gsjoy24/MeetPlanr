@@ -16,11 +16,13 @@ const EventCard = ({schedule,handleEdit,setRefetch}) => {
     const [modal,setModal] = useState(false);
     const [rating,setRating] = useState(0);
     const {user} = UserAuth();
+// copy event detail link
     const copyLink = () => {
     navigator.clipboard.writeText(scheduleLink).then(() => {
             toast.success("Meeting Link coped");
         });
     };
+
     const handleEditEvent = () => {
         handleEdit();
         setAction(false);
@@ -52,10 +54,12 @@ const EventCard = ({schedule,handleEdit,setRefetch}) => {
           })
 
     }
+
  // Review Funtion ===================
     const today = new Date();
     const SheduleDate = scheduleDate ? new Date(scheduleDate) : null;
     const isPast = (confirm && (SheduleDate < today));
+    // post review in DB
     const handleReview = async(data) => {
         const reviewData = {
             name: user?.displayName,
@@ -93,9 +97,10 @@ const EventCard = ({schedule,handleEdit,setRefetch}) => {
                 }
                 <button onClick={copyLink} className='px-4 rounded-3xl py-2 border border-[#465AF7]'>Copy Link</button>
             </div>
+{/*============= user action btn ================= */}
             <div className="absolute top-2 right-2">
                 <div className={`absolute bg-white p-3 shadow-lg border top-0 right-8 text-sm rounded-md w-32 ${action ? "block" : "hidden"}`}>
-                    <button onClick={handleEditEvent} className="flex items-center gap-3"><FaPencilAlt/> Edit</button>
+                    <button onClick={handleEditEvent} className="flex items-center gap-3"><FaPencilAlt/>Edit</button>
                     <button  onClick={handleDeleteEvent} className="flex items-center gap-3 mt-1"><FaTrashAlt/> Delete</button>
                 </div>
                 <button onClick={()=> setAction(!action)} className={`bg-white text-2xl text-[#465AF7] duration-300 transition-all ${action ? "rotate-90" : "rotate-0"}`}><AiTwotoneSetting/></button>

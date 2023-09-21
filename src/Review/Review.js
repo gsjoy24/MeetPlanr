@@ -13,9 +13,10 @@ import axios from 'axios';
 import moment from 'moment';
 
 const Review = () => {
-	const [reviews, SetReviews] = useState([]);
-	useEffect(() => {
-		(async () => {
+	const [reviews,SetReviews] = useState([]);
+// loaded all review=======
+	useEffect(()=> {
+		(async()=> {
 			const response = await axios('/api/reviews');
 			if (response.data) {
 				SetReviews(response.data);

@@ -1,6 +1,7 @@
 import DbConnect from '@/services/DbConnect';
 import { NextResponse } from 'next/server';
 
+// Post Schedule =====================
 export const POST = async (request) => {
 	if (request.method === 'POST') {
 		try {
@@ -18,11 +19,13 @@ export const POST = async (request) => {
 	}
 };
 
+// Get Scheduled ===================
 export const GET = async (request) => {
 	try {
 		const userName = request.nextUrl.searchParams.get('username');
 		const db = await DbConnect();
 		const schedulingCollection = db.collection('scheduling');
+//If send user name as a query parameter get this user schedule
 		if (userName) {
 			const result = await schedulingCollection.find({ username: userName }).sort({timeStamp: -1}).toArray();
 			return NextResponse.json(result);

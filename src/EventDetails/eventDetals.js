@@ -13,6 +13,8 @@ import phoneLogo from '@/assets/event-form/phone.png';
 const EventDetails = ({ path }) => {
 	const [details, setDetails] = useState(null);
 	const [loading, setLoading] = useState(true);
+
+// Loaded Event details =======
 	useEffect(() => {
 		(async () => {
 			const eventDetails = await axios(`/api/scheduling/${path}`);
@@ -24,12 +26,13 @@ const EventDetails = ({ path }) => {
 			}
 		})();
 	}, [path]);
-	const { description, duration, eventName, hostEmail, hostName, method, scheduleDate, methodInfo, inviteeInfo } =
-		details || {};
+	const { description, duration, eventName, hostEmail, hostName, method, scheduleDate, methodInfo, inviteeInfo } = details || {};
+
 
 	if (loading) {
 		return <LoadingSpinner />;
 	}
+	
 	if (!details) {
 		return (
 			<Container>
