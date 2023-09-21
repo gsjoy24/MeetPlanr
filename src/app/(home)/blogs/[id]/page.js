@@ -1,25 +1,26 @@
-"use client"
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Image from 'next/image';
-import Loading from '@/app/loading';
-import Link from 'next/link';
-import { useForm } from "react-hook-form";
-import { UserAuth } from '@/providers/AuthProvider';
-import Swal from 'sweetalert2';
-import Container from '@/components/container';
-import { formatDistanceToNow } from 'date-fns';
+"use client"; 
+import React, { useEffect, useState } from 'react'; 
+import axios from 'axios'; 
+import Image from 'next/image'; 
+import Loading from '@/app/loading'; 
+import Link from 'next/link'; 
+import { useForm } from "react-hook-form"; 
+import { UserAuth } from '@/providers/AuthProvider'; 
+import Swal from 'sweetalert2'; 
+import Container from '@/components/container'; 
+import { formatDistanceToNow } from 'date-fns'; 
 
+// DetailsPage component definition.
 const DetailsPage = ({ params }) => {
-  const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
-  const [blog, setBlog] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [comments, setComments] = useState([]);
-  const [suggestedBlogs, setSuggestedBlogs] = useState([]);
-  const [commentRefetch, setCommentRefetch] = useState(false);
-  const { user, loading: userLoading } = UserAuth();
-  
+  const { register, reset, handleSubmit, watch, formState: { errors } } = useForm(); 
+  const [blog, setBlog] = useState({}); 
+  const [loading, setLoading] = useState(true); 
+  const [comments, setComments] = useState([]); 
+  const [suggestedBlogs, setSuggestedBlogs] = useState([]); 
+  const [commentRefetch, setCommentRefetch] = useState(false); 
+  const { user, loading: userLoading } = UserAuth(); 
 
+  //  Function to handle form submission.
   const onSubmit = async (data) => {
     if (user) {
       const commentData = {
@@ -29,18 +30,21 @@ const DetailsPage = ({ params }) => {
         userPhoto: user?.photoURL,
         userName: user?.displayName,
       }
-      const response = await axios.post(`/api/blogComment`, commentData);
+      // Sending comment data to the server.
+
+      const response = await axios.post(`/api/blogComment`, commentData); 
       if (response.data.insertedId) {
-        reset();
-        setCommentRefetch(!commentRefetch);
+        reset(); 
+        setCommentRefetch(!commentRefetch); 
         Swal.fire({
           icon: 'success',
-          title: 'comment successful',
+          title: 'Comment successful',
           showConfirmButton: false,
           timer: 1500
         })
       }
     } else {
+      
       Swal.fire({
         title: 'Please Login!',
         text: "You can't login without Login.",
@@ -51,40 +55,44 @@ const DetailsPage = ({ params }) => {
         confirmButtonText: 'Login Now.'
       }).then((result) => {
         if (result.isConfirmed) {
-          router.push('/login');
+          // Redirecting to the login page.
+          router.push('/login'); 
         }
       })
     }
   }
 
+  // fetch blog data.
   useEffect(() => {
     async function fetchBlogData() {
       try {
         const response = await axios(`/api/blog/${params.id}`);
         if (response.data) {
-          setBlog(response.data);
-          setLoading(false);
+          setBlog(response.data); 
+          setLoading(false); 
         }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
-    fetchBlogData();
+    fetchBlogData(); 
+    
     async function fetchSuggestedBlogs() {
       try {
         const response = await axios.get('/api/blog');
         if (response.data) {
           const filteredBlogs = response.data.filter((suggestedBlog) => suggestedBlog.id !== params.id);
-          setSuggestedBlogs(filteredBlogs);
+          setSuggestedBlogs(filteredBlogs); 
         }
       } catch (error) {
         console.error('Error fetching suggested blogs:', error);
       }
     }
 
-    fetchSuggestedBlogs();
-  }, [params]);
+    fetchSuggestedBlogs(); 
+  }, [params]); 
 
+  // Effect to fetch and format comments.
   useEffect(() => {
     (async () => {
       const response = await axios(`/api/blogComment?id=${params?.id}`);
@@ -92,13 +100,12 @@ const DetailsPage = ({ params }) => {
         ...comment,
         relativeTime: formatDistanceToNow(new Date(comment.timeStamp), { addSuffix: true }),
       }));
-      setComments(commentsWithRelativeTime);
+      setComments(commentsWithRelativeTime); 
     })();
-  }, [commentRefetch, params]);
-  
+  }, [commentRefetch, params]); 
 
   return (
-    <Container>
+    <Container> 
       <div className="min-h-screen py-6 flex justify-center ">
         <div className="max-w-screen-lg p-6 ">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -112,28 +119,29 @@ const DetailsPage = ({ params }) => {
               <div className="mt-6">
                 <h2 className="text-2xl font-semibold">Comments {comments?.length}</h2>
                 <ul className="mt-4 space-y-2">
-  {comments.map((comment) => (
-    <li key={comment._id} className="bg-gray-100 p-2 rounded-lg">
-      <div className="flex items-center space-x-2">
-        <div className="w-10 h-10">
-          <Image
-            src={comment.userPhoto}
-            alt={comment.userName}
-            className="rounded-full"
-            width={40}
-            height={40}
-          />
-        </div>
-        <div>
-          <p className="font-semibold">{comment.userName}</p>
-          <p className="text-sm text-gray-500">{comment.relativeTime}</p> 
-        </div>
-      </div>
-      <p className='ml-12 mt-3'>{comment.comment}</p>
-    </li>
-  ))}
-</ul>
 
+                  {/*  Mapping through comments to display them */}
+                  {comments.map((comment) => (
+                    <li key={comment._id} className="bg-gray-100 p-2 rounded-lg">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-10 h-10">
+                          <Image
+                            src={comment.userPhoto}
+                            alt={comment.userName}
+                            className="rounded-full"
+                            width={40}
+                            height={40}
+                          />
+                        </div>
+                        <div>
+                          <p className="font-semibold">{comment.userName}</p>
+                          <p className="text-sm text-gray-500">{comment.relativeTime}</p> 
+                        </div>
+                      </div>
+                      <p className='ml-12 mt-3'>{comment.comment}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <form className='mt-6' onSubmit={handleSubmit(onSubmit)}>
@@ -156,7 +164,9 @@ const DetailsPage = ({ params }) => {
               <h2 className="text-2xl font-semibold mb-4">More Blog Suggestions</h2>
               {Array.isArray(suggestedBlogs) && suggestedBlogs.length > 0 ? (
                 <ul className="space-y-4">
-                  {suggestedBlogs.slice(0, 3).map((suggestedBlog) => (
+
+                  {/* Mapping through suggested blogs */}
+                  {suggestedBlogs.slice(0, 5).map((suggestedBlog) => (
                     <li key={suggestedBlog.id} className="flex space-x-4">
                       <div className="flex-shrink-0 w-20 h-20">
                         <Image
@@ -168,6 +178,8 @@ const DetailsPage = ({ params }) => {
                         />
                       </div>
                       <div className="flex-1">
+                        
+                        {/*  Creating links to suggested blogs */}
                         <Link className="text-blue-600 hover:text-cyan-700" href={`/blogs/${suggestedBlog?._id}`}>
                           {suggestedBlog.title.split(' ').slice(0, 7).join(' ')}
                         </Link>

@@ -11,15 +11,21 @@ const ReportPage = () => {
 		formState: { errors },
 		register
 	} = useForm();
+
+	// State variable to store the selected subject
 	const [selectedSubject, setSelectedSubject] = useState('');
 
+	// Function to handle subject selection change
 	const handleSubjectChange = (e) => {
 		setSelectedSubject(e.target.value);
 	};
 
+	// Function to handle form submission
 	const onSubmit = async (data) => {
 		if (selectedSubject) {
 			const subject = selectedSubject === 'others' ? data?.otherSubject : selectedSubject;
+			
+			// Create a report object with form data and a timestamp
 			const report = {
 				name: data.name,
 				email: data.email,
@@ -28,6 +34,7 @@ const ReportPage = () => {
 				subject,
 				timeStamp: new Date()
 			};
+			// Send a POST request to '/api/report' with the report data
 			const response = await axios.post('/api/report', { ...report });
 			if (response?.data?.insertedId) {
 				Swal.fire({
@@ -37,6 +44,7 @@ const ReportPage = () => {
 					timer: 1500
 				});
 			}
+			// Display an alert if no subject is selected
 		} else {
 			alert('Please select a Issue subject!');
 		}

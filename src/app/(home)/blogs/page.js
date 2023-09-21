@@ -1,3 +1,4 @@
+
 'use client';
 import Image from 'next/image';
 import customer from '../../../assets/Untitled-design-6.jpg';
@@ -13,13 +14,16 @@ import UseBlogs from '@/hooks/UseBlogs';
 import Loading from '@/app/loading';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
+
 const Page = () => {
 	const [allBlogs] = UseBlogs();
+	
+    // Initialize variables for the first and rest of the blogs
 	let firstBlog = {};
 	let restBlogs = [];
 	let BlogContent;
 
-	
+    // Function to truncate content
 	const truncateContent = (text = ' ') => {
 		const words = text.split(' ') || [];
 		if (words.length > 17) {
@@ -29,6 +33,7 @@ const Page = () => {
 		}
 	};
 
+    // Check if the blog data is an array and set firstBlog and BlogContent
 	if (Array.isArray(allBlogs)) {
 		[firstBlog, ...restBlogs] = allBlogs;
 		BlogContent = truncateContent(firstBlog?.content);
@@ -36,9 +41,11 @@ const Page = () => {
 
 	return (
 		<section>
+             {/* Container for the page */}
 			<Container>
 				{allBlogs && Array.isArray(allBlogs) ? (
 					<>
+                        {/* Main content section */}
 						<div className="lg:flex lg:p-8 items-center justify-center p-4 space-y-3">
 							<div className="md:pr-8 flex flex-col items-center">
 								<Image
@@ -55,13 +62,15 @@ const Page = () => {
 								<p>{BlogContent ? BlogContent : 'loading'}</p>
 
 								<span className="inline-block w-36 mt-3">
+                                    {/* Link to read more */}
 									<Link href={`/blogs/${firstBlog?._id}`} className="group flex items-center gap-2 text-blue-600">
 										<span>Read more</span> <AiOutlineArrowRight className="group-hover:translate-x-1 duration-200" />
 									</Link>
 								</span>
 							</div>
 						</div>
-						{/* card section  */}
+
+                        {/* Card section */}
 						<div className="md:grid-cols-2 lg:grid-cols-3 mt-14 grid grid-cols-1 gap-12">
 							{restBlogs ? (
 								restBlogs.map((blog) => (
@@ -72,6 +81,7 @@ const Page = () => {
 							)}
 						</div>
 
+                        {/* Learn more button */}
 						<div className="flex justify-center m-12">
 							<Button>Learn more</Button>
 						</div>
@@ -80,6 +90,7 @@ const Page = () => {
 					<Loading />
 				)}
 
+                {/* Section for mobile app information */}
 				<div className="md:flex-row-reverse md:mb-0 flex flex-col items-center justify-center gap-5 mb-8">
 					<div className="flex flex-col items-center">
 						<Image src={mobile} alt="" width={500} height={500} />
@@ -91,6 +102,7 @@ const Page = () => {
 							device. Your<br></br>appointments are just a tap away.
 						</p>
 						<div className="flex mt-5">
+                            {/* Buttons for iOS and Android */}
 							<button className="hover:bg-slate-300 hover:text-white flex items-center justify-center px-4 py-2 mr-2 font-thin text-blue-500 border border-blue-500 rounded">
 								<Image src={ios} alt="iOS Icon" className="w-4 h-5 mb-1 mr-2" /> iOS
 							</button>
@@ -101,10 +113,13 @@ const Page = () => {
 					</div>
 				</div>
 
+                {/* Image section with people image */}
 				<div className=" flex items-center justify-center">
 					<Image width="1440" height="280" src={people} alt="" loading="lazy" />
 				</div>
 			</Container>
+
+            {/*  sign up button */}
 			<div className="blue-section h-96 flex flex-col items-center justify-center w-full mb-10 text-white bg-blue-500">
 				<p className="md:text-4xl max-w-xl px-2 mb-8 text-2xl font-bold leading-tight text-center">
 					Make the magic happen, we’ll make sure it happens on time.

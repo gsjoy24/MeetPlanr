@@ -1,7 +1,9 @@
 import DbConnect from '@/services/DbConnect';
 import { NextResponse } from 'next/server';
 
+// Handle HTTP POST requests
 export const POST = async (request) => {
+	
 	if (request.method === 'POST') {
 		try {
 			const body = await request.json();
@@ -10,6 +12,7 @@ export const POST = async (request) => {
 			const result = await blogCollection.insertOne(body);
 			return NextResponse.json(result);
 		} catch (error) {
+
 			console.error('Error inserting new blog!', error);
 			return NextResponse.json({ error: error.message || 'Failed to insert data' });
 		}
@@ -18,9 +21,10 @@ export const POST = async (request) => {
 	}
 };
 
-
+// Handle HTTP GET requests
 export const GET = async () => {
 	try {
+		
 		const db = await DbConnect();
 		const blogCollection = db.collection('blogs');
 		const result = await blogCollection.find().sort({ timestamp: -1 }).toArray();
