@@ -7,12 +7,12 @@ describe("Businesses Component", () => {
       const { getByText, getByTestId } = render(<Businesses />);
 
       // Test for the presence of specific text
-      expect(getByText("MeetPlanr FOR TEAMS & COMPANIES")).toBeInTheDocument();
+      expect(getByText("MEETPLANR FOR TEAMS & INDUSTRIES")).toBeInTheDocument();
       expect(
          getByText("Enhanced planning for the entire team")
       ).toBeInTheDocument();
       expect(
-         getByText("The leader in collaborative scheduling")
+         getByText("The innovator in group scheduling")
       ).toBeInTheDocument();
 
       // Test for the presence of specific links using data-testid

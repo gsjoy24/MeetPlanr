@@ -8,7 +8,7 @@ test("renders ProfessionalServices component", () => {
    // Check for specific text content
    expect(getByText("MeetPlanr for professional services")).toBeInTheDocument();
    expect(
-      getByText("Premium customer service for your clients")
+      getByText("Provide premium customer service for your clients")
    ).toBeInTheDocument();
    expect(
       getByText(
