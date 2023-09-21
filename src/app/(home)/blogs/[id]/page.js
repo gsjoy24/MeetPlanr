@@ -19,7 +19,6 @@ const DetailsPage = ({ params }) => {
 	const [commentRefetch, setCommentRefetch] = useState(false);
 	const { user, loading: userLoading } = UserAuth();
 	const router = useRouter();
-	console.log(comments);
 
 	const onSubmit = async (data) => {
 		if (user) {

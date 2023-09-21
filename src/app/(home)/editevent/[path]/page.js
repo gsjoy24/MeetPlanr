@@ -107,7 +107,6 @@ const editEventPage = ({params}) => {
                         methodInfo,
                         hostName
                      })
-                     console.log(sendMail);
                   })
                }
 

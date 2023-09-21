@@ -7,7 +7,6 @@ import UseLoadPrice from "@/hooks/UseLoadPrice";
 
 const Pricing = async () => {
    const prices = await UseLoadPrice();
-   console.log(prices); 
    return (
       <div className="py-16 bg-gradient-to-t from-[#f7f9fa] to-[#f5f8fa]">
          <Container>

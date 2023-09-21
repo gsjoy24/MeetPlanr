@@ -18,7 +18,6 @@ const Page = () => {
 	const [allBlogs] = UseBlogs();
 	const [showAll,setShowAll] = useState(false);
 	const [allBlog,setAllBlog] = useState(null);
-	console.log(allBlog);
 	let firstBlog = {};
 	let restBlogs = [];
 	let BlogContent;
