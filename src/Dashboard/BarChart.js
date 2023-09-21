@@ -83,7 +83,7 @@ const BarChartPage = () => {
 	return (
 		<>
 			{allBlogs && (
-				<div className="w-[94%] mx-auto" data-aos="zoom-out" data-aos-duration="300">
+				<div className="w-[94%] min-w-[340px] mx-auto" data-aos="zoom-out" data-aos-duration="300">
 					<Bar options={options} data={data} />
 				</div>
 			)}
