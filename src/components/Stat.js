@@ -5,6 +5,8 @@ import { BsFillCalendar2WeekFill } from 'react-icons/bs';
 
 const Stat = ({ num, title }) => {
 	let statIcon;
+
+	// changing the icon for different use case
 	switch (title) {
 		case 'Users':
 			statIcon = <FaUsers size={18} />;

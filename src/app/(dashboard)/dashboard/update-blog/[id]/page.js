@@ -14,6 +14,7 @@ const BlogEditForm = ({ params }) => {
 	const [updating, setUpdating] = useState(false);
 
 	useEffect(() => {
+		// fetching the data from database
 		async function fetchData() {
 			try {
 				const response = await axios(`/api/blog/${params.id}`);
@@ -36,6 +37,7 @@ const BlogEditForm = ({ params }) => {
 	} = useForm();
 
 	const onSubmit = async (data) => {
+		// destructuring  to grab the image
 		const { image, ...restData } = data;
 		setUpdating(true);
 		if (data.image.length) {
@@ -153,7 +155,7 @@ const BlogEditForm = ({ params }) => {
 			{/* Image */}
 			<div>
 				<label className="label">
-					<span className="label-text">Add Photo</span>
+					<span className="label-text">Choose a photo if you want to replace the current one</span>
 				</label>
 				<input
 					type="file"

@@ -31,6 +31,7 @@ const SignUp = () => {
 	const onSubmit = async (formData) => {
 		const { name, email, password, image } = formData;
 
+		// uploading user profile picture on imgbb
 		UploadPicture(image[0], name)
 			.then((data) => {
 				const photoURL = data.data.data.url;
