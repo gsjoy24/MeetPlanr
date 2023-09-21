@@ -6,7 +6,6 @@ const TimeZoneConverter = ({ inputDate }) => {
 	useEffect(() => {
 		const timeZoneName = Intl.DateTimeFormat().resolvedOptions().timeZone;
 		const inputDateObject = new Date(inputDate);
-
 		const formatter = new Intl.DateTimeFormat('en-US', {
 			timeZone: timeZoneName,
 			year: 'numeric',

@@ -14,6 +14,7 @@ const AllUser = () => {
 	const [loading, setLoading] = useState(false);
 	const [allUsers, refetch, setRefetch] = UseAllUsers();
 
+	// this function will change the user role on the database. the the role is user, it will make it admin, if it is user, he/she will be an admin.
 	const changeUserRole = async (role, id) => {
 		setLoading(true);
 		const res = await axios.put('/api/changeRole', { role, id });

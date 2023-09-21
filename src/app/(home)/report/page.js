@@ -23,7 +23,6 @@ const ReportPage = () => {
 	const onSubmit = async (data) => {
 		const date = new Date();
 		const timestamp = date.toISOString().replace('Z', '+00:00');
-		console.log(timestamp);
 		if (selectedSubject) {
 			const subject = selectedSubject === 'others' ? data?.otherSubject : selectedSubject;
 			const report = {

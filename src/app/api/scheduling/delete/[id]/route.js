@@ -1,15 +1,14 @@
-import DbConnect from "@/services/DbConnect";
-import { ObjectId } from "mongodb";
-import { NextResponse } from "next/server";
+import DbConnect from '@/services/DbConnect';
+import { ObjectId } from 'mongodb';
+import { NextResponse } from 'next/server';
 
 
 // Delete the schedule by id===============
 export const DELETE = async (request,{params}) => {
 	try {
-        console.log(params);
 		const db = await DbConnect();
 		const schedulingCollection = db.collection('scheduling');
-        const filter = {_id: new ObjectId(params?.id)}
+		const filter = { _id: new ObjectId(params?.id) };
 		const result = await schedulingCollection.deleteOne(filter);
 		return NextResponse.json(result);
 	} catch (error) {
