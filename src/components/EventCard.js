@@ -24,7 +24,7 @@ const EventCard = ({schedule,handleEdit,setRefetch}) => {
     };
 
     const handleEditEvent = () => {
-        handleEdit();
+        handleEdit(path,confirm,eventType);
         setAction(false);
     }
     const handleDeleteEvent = () => {
