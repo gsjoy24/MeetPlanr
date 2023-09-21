@@ -5,7 +5,7 @@ const Footer = () => {
 		<div>
 			<footer className="footer p-10 bg-base-200 text-base-content">
 				<aside>
-					<div className="w-16 h-16 rounded-lg flex justify-center items-center text-3xl bg-[#465AF7] text-white font-bold">
+					<div className="w-16 h-16 rounded-lg flex justify-center items-center text-3xl bg-[#465AF7] text-white font-bold select-none">
 						MP
 					</div>
 					<p>
