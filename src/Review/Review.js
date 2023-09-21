@@ -14,6 +14,7 @@ import moment from 'moment';
 
 const Review = () => {
 	const [reviews,SetReviews] = useState([]);
+// loaded all review=======
 	useEffect(()=> {
 		(async()=> {
 			const response = await axios('/api/reviews');

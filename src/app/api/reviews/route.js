@@ -1,6 +1,7 @@
 import DbConnect from "@/services/DbConnect"
 import { NextResponse } from "next/server";
 
+// Get Reviews=============
 export const GET = async(request) => {
     try{
         const db = await DbConnect();
@@ -12,6 +13,7 @@ export const GET = async(request) => {
     }
 }
 
+// Post Reviews=============
 export const POST = async(request) => {
     try{
         const db = await DbConnect();
