@@ -2,7 +2,7 @@
 import { UserAuth } from '@/providers/AuthProvider';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import {  useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import Container from '@/components/container';

@@ -8,7 +8,7 @@ const FeatureCard = ({ feature }) => {
 				<Image width={60} height={60} src={icon} alt={name} />
 			</div>
 			<h3 className="mt-4 text-xl font-semibold text-center">{name}</h3>
-			<p className=" group-hover:scale-100 absolute bottom-0 flex items-center justify-center w-full h-full p-4 py-5 overflow-hidden text-sm text-center duration-200 scale-0 bg-blue-200 rounded-lg">
+			<p className="group-hover:scale-100 absolute bottom-0 flex items-center justify-center w-full h-full p-4 py-5 overflow-hidden text-sm text-center duration-200 scale-0 bg-blue-200 rounded-lg">
 				{description}
 			</p>
 		</div>

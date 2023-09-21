@@ -27,7 +27,6 @@ const SignUp = () => {
 	} = useForm();
 
 	const { loading, setLoading, createUser, updateUserProfile, verifyEmail } = UserAuth();
-
 	const onSubmit = async (formData) => {
 		const { name, email, password, image } = formData;
 

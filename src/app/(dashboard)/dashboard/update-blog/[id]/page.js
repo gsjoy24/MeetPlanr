@@ -165,8 +165,6 @@ const BlogEditForm = ({ params }) => {
 				/>
 			</div>
 			<button
-				data-aos="zoom-in"
-				data-aos-delay="200"
 				className="bg-[#465AF7] hover:bg-sky-950 duration-200 text-white py-2 w-full rounded-lg mt-6"
 				type={updating ? 'button' : 'submit'}
 			>
