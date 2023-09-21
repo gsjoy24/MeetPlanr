@@ -22,26 +22,16 @@ const EventSchedule = ({ params }) => {
 	const [loading, setLoading] = useState(true);
 	const [showModal, setShowModal] = useState(false);
 	const [confirm, setConfirm] = useState(false);
-	const {
-		timeRange,
-		path,
-		hostName,
-		method,
-		eventName,
-		hostEmail,
-		duration,
-		scheduleLink,
-		methodInfo,
-		scheduleDate: selectedDate,
-		eventType,
-		inviteeInfo
-	} = scheduleInfo || {};
+// Schedule info==================================
+	const {timeRange,path,hostName,method,eventName,hostEmail,duration,scheduleLink,methodInfo,scheduleDate: selectedDate,eventType,inviteeInfo} = scheduleInfo || {};
 	const detailsLink = `${scheduleLink}/details`;
 	const { startDate, endDate } = timeRange || {};
 	const [scheduleDate, setScheduleDate] = useState(null);
 	const preSelectedDate = selectedDate ? new Date(selectedDate) : null;
 	const minDate = new Date(startDate);
 	const maxDate = endDate ? new Date(endDate) : null;
+
+// Loaded this specific specific Scheduled by uniq path name
 	useEffect(() => {
 		(async () => {
 			const res = await axios(`/api/scheduling/${params?.path}`);
@@ -55,12 +45,14 @@ const EventSchedule = ({ params }) => {
 			setScheduleInfo(data);
 		})();
 	}, [params]);
+
+// Event confirm Function ===============
 	const onSubmit = async (data) => {
 		inviteeInfo.push(data);
 		const res = await axios.put(`/api/scheduling/${path}`, {
 			inviteeInfo,
 			scheduleDate: preSelectedDate ? preSelectedDate : scheduleDate,
-			confirm: eventType == 'Group' ? false : true
+			confirm: true,
 		});
 		if (res?.data?.modifiedCount > 0) {
 			Swal.fire({
@@ -95,12 +87,14 @@ const EventSchedule = ({ params }) => {
 		}
 	};
 
+// if data is not loaded show loading========================
 	if (loading) {
 		return <LoadingSpinner />;
 	}
 
+// checked event status=========================
 	if (scheduleInfo) {
-		if (scheduleInfo.confirm) {
+		if (scheduleInfo.confirm && scheduleInfo?.eventType == "Single") {
 			return (
 				<Container>
 					<p className="text-slate-500 py-40 mt-20 text-5xl font-bold text-center">This Event already Confirmed...</p>
@@ -118,6 +112,7 @@ const EventSchedule = ({ params }) => {
 		<Container>
 			<div className="pt-10 my-10">
 				<div className="flex flex-wrap items-center justify-center gap-5">
+{/*=============== Event details ===================*/}
 					<div className="w-full sm:w-[515px] lg:w-[40%] border rounded-md p-5">
 						<h3 className="text-lg font-bold">Invitee:</h3>
 						<p className="mt-1 text-xl font-medium">{hostName}</p>
@@ -178,12 +173,13 @@ const EventSchedule = ({ params }) => {
 					</div>
 				)}
 			</div>
-			{/*===================== Model =================== */}
+{/*===================== confirm massage =================== */}
 			{confirm && (
 				<div className="bg-slate-800 bg-opacity-30 fixed top-0 left-0 z-50 flex items-center justify-center w-full h-screen">
 					<p className="text_shadow text-5xl font-bold text-center">Confirmed</p>
 				</div>
 			)}
+{/* =========== modal for confirm event form============= */}
 			{showModal && (
 				<div className="bg-slate-800 bg-opacity-40 fixed top-0 left-0 z-40 flex items-center justify-center w-full h-screen">
 					<div className="w-fit h-fit relative p-10 text-center bg-white rounded-lg">

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { FaCalendarTimes } from 'react-icons/fa';
-import { MdEditDocument } from 'react-icons/md';
+import { MdEditDocument, MdReportProblem } from 'react-icons/md';
 import { BiArrowFromRight, BiSolidBarChartSquare } from 'react-icons/bi';
 import { HiUserGroup } from 'react-icons/hi';
 import { usePathname } from 'next/navigation';
@@ -82,6 +82,15 @@ const AdminNavbar = ({ children }) => {
 							href="/dashboard/all-users"
 						>
 							<HiUserGroup size={20} /> <span>All Users</span>
+						</Link>
+					</li>
+					<li>
+						<Link
+							onClick={closeSideNAv}
+							className={`flex items-center py-3 ${path == '/dashboard/reports' && 'bg-[#465AF7] text-white'}`}
+							href="/dashboard/reports"
+						>
+							<MdReportProblem size={20} /> <span>Reports</span>
 						</Link>
 					</li>
 

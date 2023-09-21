@@ -19,7 +19,7 @@ const AllUser = () => {
 		const res = await axios.put('/api/changeRole', { role, id });
 		const data = res.data;
 		setLoading(false);
-		if (data.result.matchedCount) {
+		if (data && data?.modifiedCount) {
 			setRefetch(!refetch);
 			toast.success(`The ${role} is ${role === 'admin' ? 'a user' : 'an admin'} now!`);
 		} else {

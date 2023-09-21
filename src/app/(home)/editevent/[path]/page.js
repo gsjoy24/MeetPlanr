@@ -17,6 +17,7 @@ import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 const editEventPage = ({params}) => {
    const { register, handleSubmit,reset,watch,setValue } = useForm();
    const [schedule,setSchedule] = useState(null);
+// current schedule data ==================
    const {
       duration: preDuration,
       eventName: preEventName,
@@ -32,12 +33,18 @@ const editEventPage = ({params}) => {
       eventType,
       path,
    } = schedule || {};
+
 	const [method, setMethod] = useState(null);
 	const [dateRange, setDateRange] = useState(null);
 	const [action, setAction] = useState(false);
 	const router = useRouter();
 	const user = UseGetCurrentUser();
-   const placeholderText = (method === "Google Meet") ? "Enter google meet link ..." : method === "Phone Call" ? "Enter phone number...." :(method === "In Person") ? "Enter location name.." : "enter method info...";
+// conditional Placeholder text for Method info=====================
+   const placeholderText = 
+   (method === "Google Meet") ? "Enter google meet link ..." 
+   : method === "Phone Call" ? "Enter phone number...." 
+   :(method === "In Person") ? "Enter location name.." 
+   : "enter method info...";
    
    const [scheduleDate,setScheduleDate] = useState(null);
 	const [startDate, setStartDate] = useState(new Date());
@@ -48,23 +55,28 @@ const editEventPage = ({params}) => {
 		setEndDate(end);
 	};
 	const timeRange = { startDate, endDate };
+
 	const clearDateRange = () => {
       setDateRange(null);
 		setStartDate(new Date());
 		setEndDate(null);
 	};
+
    const liveDuration = watch("duration");
    useEffect(()=> {
       setMethod(preMethod);
       setEndDate(preTimeRange?.endDate);
-
    },[schedule])
-    useEffect(()=> {
+
+// loaded current schedule data ==================================
+   useEffect(()=> {
         (async()=>{
          const response = await axios(`/api/scheduling/${params?.path}`)
          setSchedule(response.data)
         })()
     },[params])
+
+// Update schedule function===================== 
     const onSubmit = async (data) => {
       if (method) {
       const { eventName, description, duration,methodInfo } = data;
@@ -83,7 +95,6 @@ const editEventPage = ({params}) => {
       
 			try {
 				const response = await axios.put(`/api/scheduling/${path}`,{...newInfo} );
-            
 				if (response.data.modifiedCount > 0) {
 					Swal.fire({
 						icon: 'success',
@@ -93,20 +104,10 @@ const editEventPage = ({params}) => {
 					});
 					router.push("/my-account");
 					reset();
-
+// Send all invitee mail about Schedule update===============
                if((new Date(preScheduleDate) > today) && (eventType === "Group") && inviteeInfo?.length > 0){
                   inviteeInfo.map(async(invitee) => {
-                     const sendMail = await axios.post('/api/sendUpdateMail',{
-                        inviteeName: invitee?.inviteeName,
-                        inviteeEmail: invitee?.inviteeEmail,
-                        eventName,
-                        hostEmail,
-                        scheduleDate: newScheduleDate,
-                        method,
-                        detailsLink,
-                        methodInfo,
-                        hostName
-                     })
+                     const sendMail = await axios.post('/api/sendUpdateMail',{inviteeName: invitee?.inviteeName,inviteeEmail: invitee?.inviteeEmail,eventName,hostEmail,scheduleDate: newScheduleDate,method,detailsLink,methodInfo,hostName})
                      console.log(sendMail);
                   })
                }
@@ -119,6 +120,7 @@ const editEventPage = ({params}) => {
 			alert('Please select a method!');
 		}
 	};
+
    if(!schedule){
       return <LoadingSpinner/>
    }
@@ -132,7 +134,7 @@ const editEventPage = ({params}) => {
               </button>
            </div>
 
-           {/*================= Event Form ====================== =*/}
+      {/*================= Event Form ====================== =*/}
            <div className="md:w-4/5 mx-auto border-2 border-[#d7e3f0] rounded-xl shadow-md">
               <h2 className="w-full py-5 text-3xl text-[#0B3558] font-medium text-center border-b">
                  Event update form
@@ -153,7 +155,9 @@ const editEventPage = ({params}) => {
                     <label className="mt-8 mb-3 text-[#3e5063]" >
                        Event Method:*
                     </label>
+                    {/* Show method in dropdown*/}
                     <InputOption setValue={setValue} method={method} setMethod={setMethod}/>
+
                     {
                        method && <input 
                        placeholder={placeholderText} defaultValue={preMethodInfo} type={method === "Google Meet" ? "url" : "text"} required className="input_field mt-2" {...register("methodInfo")} />
@@ -191,6 +195,7 @@ const editEventPage = ({params}) => {
                        <option value="60">60</option>
                     </select>
 
+    {/*============ Select data range functionality===================== */}
                     {
                        !preScheduleDate 
                        ? <><label className="mt-8 mb-3 text-[#3e5063]">
@@ -199,12 +204,7 @@ const editEventPage = ({params}) => {
 
                        <div
                           className={`rounded-md p-3 w-full relative 
-                          ${
-                             action
-                                ? "border-2 border-[#00a4f8]"
-                                : "border border-[#9ab2cc]"
-                          }`}
-                       >
+                          ${action? "border-2 border-[#00a4f8]": "border border-[#9ab2cc]"}`}>
                           { (dateRange === "Select Range" || endDate) ? (
                              <div className="relative flex gap-3">
                                 <DatePicker
@@ -284,19 +284,11 @@ const editEventPage = ({params}) => {
                        <label className="font-medium" htmlFor="eventLink">
                           /{user ? user?.username : "username364"}/
                        </label>
-                       <input
-                          placeholder="Link path..."
-                          required
-                          disabled
-                          value={path}
-                          className="outline-none w-full disabled:cursor-not-allowed"
-                          id="eventLink"
-                          {...register("eventLink")}
-                          title='You cannot change the link path'
-                       />
+                       <input  placeholder="Link path..." disabled value={path} className="outline-none w-full disabled:cursor-not-allowed" id="eventLink" {...register("eventLink")} title='You cannot change the link path' />
                     </div>
                  </div>
 
+               {/* Submit button  */}
                  <div className="p-3 text-right border-t">
                     <input
                        className="border border-[#465AF7] py-2 px-4 rounded-full cursor-pointer text-[15px] text-[#465AF7] hover:text-white hover:border-sky-950 hover:bg-sky-950 duration-300"

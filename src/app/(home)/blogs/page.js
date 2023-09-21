@@ -13,17 +13,32 @@ import BlogCard from '@/components/BlogCard';
 import UseBlogs from '@/hooks/UseBlogs';
 import Loading from '@/app/loading';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { useEffect, useState } from 'react';
 
 
 const Page = () => {
 	const [allBlogs] = UseBlogs();
-	
-    // Initialize variables for the first and rest of the blogs
+	const [showAll,setShowAll] = useState(false);
+	const [allBlog,setAllBlog] = useState(null);
+	console.log(allBlog);
 	let firstBlog = {};
 	let restBlogs = [];
 	let BlogContent;
 
-    // Function to truncate content
+	// useEffect(()=> {
+	// 	if(allBlogs){
+	// 		setAllBlog(allBlogs.slice(0,7));
+	// 	}
+	// },[allBlogs])
+
+	useEffect(()=> {
+		if(showAll){
+			setAllBlog(allBlogs);
+		}else{
+			setAllBlog(allBlogs?.slice(0,7))
+		}
+	},[showAll,allBlogs])
+	
 	const truncateContent = (text = ' ') => {
 		const words = text.split(' ') || [];
 		if (words.length > 17) {
@@ -33,9 +48,8 @@ const Page = () => {
 		}
 	};
 
-    // Check if the blog data is an array and set firstBlog and BlogContent
-	if (Array.isArray(allBlogs)) {
-		[firstBlog, ...restBlogs] = allBlogs;
+	if (Array.isArray(allBlog)) {
+		[firstBlog, ...restBlogs] = allBlog;
 		BlogContent = truncateContent(firstBlog?.content);
 	}
 
@@ -43,10 +57,9 @@ const Page = () => {
 		<section>
              {/* Container for the page */}
 			<Container>
-				{allBlogs && Array.isArray(allBlogs) ? (
+				{allBlog && Array.isArray(allBlog) ? (
 					<>
-                        {/* Main content section */}
-						<div className="lg:flex lg:p-8 items-center justify-center p-4 space-y-3">
+						<div className="lg:flex lg:p-8 items-center justify-center sm:p-4 space-y-3">
 							<div className="md:pr-8 flex flex-col items-center">
 								<Image
 									className="w-full min-w-[340px]"
@@ -81,9 +94,8 @@ const Page = () => {
 							)}
 						</div>
 
-                        {/* Learn more button */}
-						<div className="flex justify-center m-12">
-							<Button>Learn more</Button>
+						<div onClick={()=> setShowAll(!showAll)} className="flex justify-center m-12">
+							<Button>{showAll ? "Show less" : "Show more"}</Button>
 						</div>
 					</>
 				) : (

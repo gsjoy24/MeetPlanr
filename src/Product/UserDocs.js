@@ -1,26 +1,26 @@
-'use client';
-import SectionTitle from '@/components/SectionTitle';
-import Image from 'next/image';
-import { useEffect } from 'react';
+"use client";
+import SectionTitle from "@/components/SectionTitle";
+import Image from "next/image";
+import { useEffect } from "react";
 import img1 from "@/assets/product-image/event.png";
 import img2 from "@/assets/product-image/Note-Software.png";
 import img3 from "@/assets/product-image/open-notification.png";
 import img4 from "@/assets/product-image/image3.png";
-import Aos from 'aos';
-import 'aos/dist/aos.css';
-import Container from '@/components/container';
+import Aos from "aos";
+import "aos/dist/aos.css";
+import Container from "@/components/container";
 
 const UserDocs = () => {
-	useEffect(() => {
-		Aos.init({
-			offset: 200,
-			duration: 300,
-			easing: 'linear',
-			delay: 100
-		});
-	}, []);
+   useEffect(() => {
+      Aos.init({
+         offset: 200,
+         duration: 300,
+         easing: "linear",
+         delay: 100,
+      });
+   }, []);
 
-	return (
+   return (
       <section id="works" className="py-20 bg-[#FBFBFB]">
          <Container>
             <h3 className="text-[#00a4f8] font-semibold uppercase text-center mb-6">
@@ -48,6 +48,7 @@ const UserDocs = () => {
                      <Image src={img1} alt="docs image"></Image>
                   </div>
                </div>
+
                <div className="md:grid-cols-2 grid items-center gap-16 my-10">
                   <div className=" md:order-2">
                      <h3 className="text-[#00a4f8] font-semibold uppercase">

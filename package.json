@@ -39,6 +39,7 @@
     "nodemailer-mailgun-transport": "^2.1.5",
     "postcss": "8.4.27",
     "react": "18.2.0",
+    "react-awesome-stars-rating": "^0.14.0",
     "react-chartjs-2": "^5.2.0",
     "react-countup": "^6.4.2",
     "react-datepicker": "^4.16.0",

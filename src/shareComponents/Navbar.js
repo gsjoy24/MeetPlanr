@@ -49,11 +49,6 @@ const Navbar = () => {
 									<div className="text-2xl md:text-3xl font-bold text-[#465AF7] text-blue-e jm-shadow lg:hidden">
 										<Link href="/">MeetPlanr</Link>
 									</div>
-									{userData?.role === 'admin' && (
-										<li>
-											<BlockLink route={'dashboard'} />
-										</li>
-									)}
 									<li>
 										<Link
 											className={`py-1 capitalize hover:text-[#465AF7] rounded-lg duration-200 ${
@@ -64,7 +59,11 @@ const Navbar = () => {
 											Home
 										</Link>
 									</li>
-
+									{userData?.role === 'admin' && (
+										<li>
+											<BlockLink route={'dashboard'} />
+										</li>
+									)}
 									<li>
 										<BlockLink route={'product'} />
 									</li>

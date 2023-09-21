@@ -2,6 +2,8 @@ import DbConnect from "@/services/DbConnect";
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
+
+// Delete the schedule by id===============
 export const DELETE = async (request,{params}) => {
 	try {
         console.log(params);

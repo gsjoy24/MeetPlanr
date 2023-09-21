@@ -1,15 +1,18 @@
 'use client';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
 const ReportPage = () => {
+	const router = useRouter();
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-		register
+		register,
+		reset
 	} = useForm();
 
 	// State variable to store the selected subject
@@ -22,6 +25,9 @@ const ReportPage = () => {
 
 	// Function to handle form submission
 	const onSubmit = async (data) => {
+		const date = new Date();
+		const timestamp = date.toISOString().replace('Z', '+00:00');
+		console.log(timestamp);
 		if (selectedSubject) {
 			const subject = selectedSubject === 'others' ? data?.otherSubject : selectedSubject;
 			
@@ -31,12 +37,12 @@ const ReportPage = () => {
 				email: data.email,
 				phone: data.mobile,
 				description: data.description,
-				subject,
-				timeStamp: new Date()
+				subject
 			};
-			// Send a POST request to '/api/report' with the report data
-			const response = await axios.post('/api/report', { ...report });
+			const response = await axios.post('/api/report', { ...report, timestamp });
 			if (response?.data?.insertedId) {
+				reset();
+				router.push('/')
 				Swal.fire({
 					icon: 'success',
 					title: 'Reported success!',
