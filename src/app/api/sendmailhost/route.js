@@ -5,11 +5,13 @@ const api_key = process.env.SEND_GRID_KEY;
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(api_key)
 
-
+// Send Mail the host about Schedule confirm message
 export const POST = async(request)=>  {
     if (request.method === "POST") {
       const body =await request.json();
       const {inviteeName,inviteeEmail,eventName,hostEmail,scheduleDate,method,hostName,detailsLink,methodInfo} = body || {};
+
+  // Email massage==================
       const msg = {
         to: `${hostEmail}`, // Change to your recipient
         from: 'meetplanr@gmail.com', // Change to your verified sender

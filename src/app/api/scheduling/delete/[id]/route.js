@@ -2,7 +2,9 @@ import DbConnect from '@/services/DbConnect';
 import { ObjectId } from 'mongodb';
 import { NextResponse } from 'next/server';
 
-export const DELETE = async (request, { params }) => {
+
+// Delete the schedule by id===============
+export const DELETE = async (request,{params}) => {
 	try {
 		const db = await DbConnect();
 		const schedulingCollection = db.collection('scheduling');
