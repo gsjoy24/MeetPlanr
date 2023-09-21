@@ -30,7 +30,7 @@ const AdminNavbar = ({ children }) => {
 						<FaBarsStaggered />
 					</label>
 				</div>
-				<div className="lg:p-10 p-4">{children}</div>
+				<div className="lg:p-7 p-2">{children}</div>
 			</div>
 			<div className="drawer-side z-50">
 				<label htmlFor="my-drawer-2" className="drawer-overlay"></label>
