@@ -6,18 +6,19 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(api_key);
 
 // Send confirmation email about events update
-export const POST = async(request)=>  {
-    if (request.method === "POST") {
-      const body =await request.json();
-      const {inviteeName,inviteeEmail,eventName,hostEmail,scheduleDate,method,detailsLink,methodInfo,hostName} = body || {};
+export const POST = async (request) => {
+	if (request.method === 'POST') {
+		const body = await request.json();
+		const { inviteeName, inviteeEmail, eventName, hostEmail, scheduleDate, method, detailsLink, methodInfo, hostName } =
+			body || {};
 
-  // Email massage==================
-      const msg = {
-        to: `${inviteeEmail}`, // Change to your recipient
-        from: 'meetplanr@gmail.com', // Change to your verified sender
-        subject: `Your event scheduled with ${hostName} is Changed.`,
-        text: 'and easy to do anywhere, even with Node.js',
-        html: `<div style="max-width: 500px; width: 96%; border: 1px solid #777; padding: 20px; background: rgba(0, 0, 255, 0.1); font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; border-radius: 10px;">
+		// Email massage==================
+		const msg = {
+			to: `${inviteeEmail}`, // Change to your recipient
+			from: 'meetplanr@gmail.com', // Change to your verified sender
+			subject: `Your event scheduled with ${hostName} is Changed.`,
+			text: 'and easy to do anywhere, even with Node.js',
+			html: `<div style="max-width: 500px; width: 96%; border: 1px solid #777; padding: 20px; background: rgba(0, 0, 255, 0.1); font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; border-radius: 10px;">
         <p>Hi ${inviteeName},</p>
         <p  style=" margin: 0;"> Your Event Schedule is Update.</p>
         <h4 style="margin-bottom: 5px;">Event Name:</h4>

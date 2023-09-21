@@ -108,13 +108,22 @@ const editEventPage = ({ params }) => {
 					router.push('/my-account');
 					reset();
 
-               if((new Date(preScheduleDate) > today) && (eventType === "Group") && inviteeInfo?.length > 0){
-                  inviteeInfo.map(async(invitee) => {
-                     const sendMail = await axios.post('/api/sendUpdateMail',{inviteeName: invitee?.inviteeName,inviteeEmail: invitee?.inviteeEmail,eventName,hostEmail,scheduleDate: newScheduleDate,method,detailsLink,methodInfo,hostName})
-                     console.log(sendMail);
-                  })
-               }
-
+					if (new Date(preScheduleDate) > today && eventType === 'Group' && inviteeInfo?.length > 0) {
+						inviteeInfo.map(async (invitee) => {
+							const sendMail = await axios.post('/api/sendUpdateMail', {
+								inviteeName: invitee?.inviteeName,
+								inviteeEmail: invitee?.inviteeEmail,
+								eventName,
+								hostEmail,
+								scheduleDate: newScheduleDate,
+								method,
+								detailsLink,
+								methodInfo,
+								hostName
+							});
+							console.log(sendMail);
+						});
+					}
 				}
 			} catch (error) {
 				console.error('Error submitting form:', error);
