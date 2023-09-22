@@ -82,9 +82,13 @@ const BarChartPage = () => {
 
 	return (
 		<>
-			{allBlogs && (
-				<div className="w-[95%] min-h-[320px] min-w-[340px] mx-auto" data-aos="zoom-in" data-aos-duration="300">
+			{allBlogs ? (
+				<div className="w-[95%] min-h-[320px] min-w-[340px] mx-auto" data-aos="zoom-in-up" data-aos-duration="200">
 					<Bar options={options} data={data} />
+				</div>
+			) : (
+				<div className="w-full h-56 flex justify-center items-center">
+					<span className="loading loading-bars loading-lg"></span>
 				</div>
 			)}
 		</>
