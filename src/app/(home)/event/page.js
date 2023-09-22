@@ -1,5 +1,5 @@
-const page = () => {
+const EventHomePage = () => {
 	return <div></div>;
 };
 
-export default page;
+export default EventHomePage;
