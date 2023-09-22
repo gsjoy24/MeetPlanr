@@ -28,7 +28,6 @@ const EventDetails = ({ path }) => {
 	}, [path]);
 	const { description, duration, eventName, hostEmail, hostName, method, scheduleDate, methodInfo, inviteeInfo } = details || {};
 
-
 	if (loading) {
 		return <LoadingSpinner />;
 	}
