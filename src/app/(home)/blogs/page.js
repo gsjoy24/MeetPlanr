@@ -128,9 +128,12 @@ const BlogsPage = () => {
 					Make the magic happen, we’ll make sure it happens on time.
 				</p>
 				<div className="mt-4">
-					<button className=" hover:bg-slate-300 hover: flex items-center justify-center px-4 py-2 font-thin text-blue-500 bg-white rounded">
+					<Link
+						href={'/sign-up'}
+						className=" hover:bg-slate-300 hover: flex items-center justify-center px-4 py-2 font-thin text-blue-500 bg-white rounded"
+					>
 						Sign Up
-					</button>
+					</Link>
 				</div>
 			</div>
 		</section>

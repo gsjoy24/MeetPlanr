@@ -83,7 +83,7 @@ const BarChartPage = () => {
 	return (
 		<>
 			{allBlogs ? (
-				<div className="w-[95%] min-h-[320px] min-w-[340px] mx-auto" data-aos="zoom-in-up" data-aos-duration="200">
+				<div className="w-[95%] min-h-[320px] min-w-[340px] mx-auto p-3" data-aos="zoom-in-up" data-aos-duration="200">
 					<Bar options={options} data={data} />
 				</div>
 			) : (
