@@ -47,7 +47,7 @@ const BarChartPage = () => {
 					);
 					return quantity?.length;
 				}),
-				backgroundColor: 'rgba(255, 99, 132, 0.5)'
+				backgroundColor: 'rgba(65, 105, 225, 0.8)'
 			},
 			{
 				label: 'Users',
@@ -55,7 +55,7 @@ const BarChartPage = () => {
 					const quantity = allUsers?.filter((user) => new Date(user.timestamp).getDate() == new Date(date).getDate());
 					return quantity?.length;
 				}),
-				backgroundColor: 'rgba(53, 162, 235, 0.5)'
+				backgroundColor: 'rgba(0, 0, 139, 0.7)'
 			},
 			{
 				label: 'Blogs',
@@ -63,7 +63,7 @@ const BarChartPage = () => {
 					const quantity = allBlogs?.filter((blog) => new Date(blog.timestamp).getDate() == new Date(date).getDate());
 					return quantity?.length;
 				}),
-				backgroundColor: 'rgba(45, 120, 185, 0.5)'
+				backgroundColor: 'rgba(0, 127, 255, 0.8)'
 			}
 		]
 	};
@@ -82,9 +82,13 @@ const BarChartPage = () => {
 
 	return (
 		<>
-			{allBlogs && (
-				<div className="w-[94%] mx-auto" data-aos="zoom-out" data-aos-duration="300">
+			{allBlogs ? (
+				<div className="w-[95%] min-h-[320px] min-w-[340px] mx-auto" data-aos="zoom-in-up" data-aos-duration="200">
 					<Bar options={options} data={data} />
+				</div>
+			) : (
+				<div className="w-full h-56 flex justify-center items-center">
+					<span className="loading loading-bars loading-lg"></span>
 				</div>
 			)}
 		</>

@@ -1,6 +1,7 @@
 import DbConnect from '@/services/DbConnect';
 import { NextResponse } from 'next/server';
 
+// Get the specific Schedule by unic path 
 export const GET = async (request, { params }) => {
 	try {
 		const db = await DbConnect();
@@ -15,6 +16,7 @@ export const GET = async (request, { params }) => {
 	}
 };
 
+// Update the Schedule ===============
 export const PUT = async (request, { params }) => {
 	try {
 		const db = await DbConnect();

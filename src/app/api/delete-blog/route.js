@@ -5,7 +5,6 @@ import { NextResponse } from 'next/server';
 export const DELETE = async (request) => {
 	try {
 		const body = await request.json();
-	
 		const query = { _id: new ObjectId(body.id) };
 		const db = await DbConnect();
 		const blogCollection = db.collection('blogs');

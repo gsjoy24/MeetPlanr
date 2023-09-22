@@ -24,7 +24,7 @@ const AllBlogs = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{/* row 1 */}
+						{/* rows */}
 						{allBlogs &&
 							allBlogs.map((blog, i) => (
 								<BlogRow blog={blog} i={i} key={blog._id} setRefetch={setRefetch} refetch={refetch} />

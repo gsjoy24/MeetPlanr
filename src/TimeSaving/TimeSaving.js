@@ -11,6 +11,7 @@ const TimeSaving = () => {
    return (
       <div className="bg-[#F8F8F8] pt-12 pb-16">
          <Container>
+            {/*Section title */}
             <div className="text-center mb-14">
                <h1 className="md:text-4xl lg:text-5xl text-[#0B3558] lg:w-[760px] mx-auto my-8 text-3xl font-bold">
                   Discover time-saving solutions to boost team output
@@ -20,6 +21,7 @@ const TimeSaving = () => {
                </p>
             </div>
 
+            {/* Time saving solutions cards */}
             <div>
                <div className="md:grid-cols-2 lg:grid-cols-3 grid gap-5">
                   <div>
@@ -57,7 +59,11 @@ const TimeSaving = () => {
                            </p>
                         </div>
                         <div className="rounded-xl">
-                           <Image src={img2} alt="" className="px-4 py-3 pt-0 h-64" />
+                           <Image
+                              src={img2}
+                              alt=""
+                              className="px-4 py-3 pt-0 h-64"
+                           />
                         </div>
                      </div>
                   </div>
