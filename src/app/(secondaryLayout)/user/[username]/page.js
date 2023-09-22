@@ -1,9 +1,8 @@
 'use client';
 import Image from 'next/image';
-import image from '../../../../assets/review-image/img1.jpg';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import EventCard from '@/components/EventCard';
 import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 const AccountPage = () => {
