@@ -1,11 +1,7 @@
-import React from 'react';
+import RedirectHome from '@/shareComponents/RedirectHome';
 
 const SecondaryPage = () => {
-    return (
-        <div>
-            SecondaryPage
-        </div>
-    );
+	return <RedirectHome />;
 };
 
 export default SecondaryPage;
