@@ -19,8 +19,7 @@ const SolutionsPage = () => {
                </h1>
                <p className="text-[21px] text-[#5A7795] md:w-[650px] lg:w-[730px] mx-auto mb-10">
                   Promote progress, one meeting at a time. Teams may concentrate
-                  on producing results by using MeetPlanrs automated
-                  scheduling.
+                  on producing results by using MeetPlanrs automated scheduling.
                </p>
 
                <Link
@@ -45,6 +44,7 @@ const SolutionsPage = () => {
                         Multiple options for each role
                      </h1>
                   </div>
+
                   {/* Sales collapse */}
                   <div className="collapse collapse-plus border-base-300 mt-2 bg-white border rounded-md">
                      <input type="checkbox" className="peer" />

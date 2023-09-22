@@ -1,28 +1,29 @@
-'use client';
-import Link from 'next/link';
-import Image from 'next/image';
-import Container from '@/components/container';
-import Slider from 'react-infinite-logo-slider';
-import img1 from '@/assets/solutions/virtual_meeting.jpg';
-import img2 from '@/assets/solutions/gardaworld.png';
-import img3 from '@/assets/solutions/no-padding.png';
-import img4 from '@/assets/solutions/thoughtworks.png';
-import img5 from '@/assets/solutions/Culture-Amp.png';
-import img6 from '@/assets/solutions/new_relic.png';
-import img7 from '@/assets/solutions/stuart.png';
-import img8 from '@/assets/solutions/Twilio.png';
-import img9 from '@/assets/solutions/Virtu.png';
-import img10 from '@/assets/solutions/Doordash.png';
-import img11 from '@/assets/solutions/meeting-phone.png';
-import img12 from '@/assets/solutions/Sharing.png';
-import img13 from '@/assets/solutions/cloud-based.png';
-import img14 from '@/assets/solutions/person.jpeg';
-import img15 from '@/assets/solutions/Luat.png';
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import Container from "@/components/container";
+import Slider from "react-infinite-logo-slider";
+import img1 from "@/assets/solutions/virtual_meeting.jpg";
+import img2 from "@/assets/solutions/gardaworld.png";
+import img3 from "@/assets/solutions/no-padding.png";
+import img4 from "@/assets/solutions/thoughtworks.png";
+import img5 from "@/assets/solutions/Culture-Amp.png";
+import img6 from "@/assets/solutions/new_relic.png";
+import img7 from "@/assets/solutions/stuart.png";
+import img8 from "@/assets/solutions/Twilio.png";
+import img9 from "@/assets/solutions/Virtu.png";
+import img10 from "@/assets/solutions/Doordash.png";
+import img11 from "@/assets/solutions/meeting-phone.png";
+import img12 from "@/assets/solutions/Sharing.png";
+import img13 from "@/assets/solutions/cloud-based.png";
+import img14 from "@/assets/solutions/person.jpeg";
+import img15 from "@/assets/solutions/Luat.png";
 
 const ProfessionalServices = () => {
-	return (
+   return (
       <div>
          <Container>
+            {/* Section start */}
             <section className="mt-16">
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                   <div className="lg:mt-10">
@@ -56,6 +57,7 @@ const ProfessionalServices = () => {
                </div>
             </section>
 
+            {/* Section start */}
             <section>
                <div className="my-16">
                   <Slider
@@ -100,6 +102,7 @@ const ProfessionalServices = () => {
             </section>
          </Container>
 
+         {/* Section start */}
          <section className="pt-14 pb-16 bg-[#FBFBFB]">
             <Container>
                <div
@@ -211,6 +214,7 @@ const ProfessionalServices = () => {
             </Container>
          </section>
 
+         {/* Section start */}
          <section className="py-14 bg-[#f4f7fd]">
             <Container>
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
@@ -260,6 +264,7 @@ const ProfessionalServices = () => {
             </Container>
          </section>
 
+         {/* Section start */}
          <section className="pt-16 pb-2 bg-[#fcf9f9]">
             <Container>
                <div

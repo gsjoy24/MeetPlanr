@@ -17,13 +17,16 @@ const BlogPostForm = () => {
 
 	const onSubmit = async (data) => {
 		setIsSubmitting(true);
+		// destructuring  to grab the image
 		const { image, ...restData } = data;
 
+		// uploading image to imgbb
 		UploadPicture(data.image[0], data.title)
 			.then((data) => {
 				const blogData = { ...restData, timestamp: new Date(), image: data.data.data.url };
 				if (data.data.data.url) {
-					axios.post('/api/blog', blogData)
+					axios
+						.post('/api/blog', blogData)
 						.then((response) => {
 							Swal.fire({
 								icon: 'success',
@@ -109,7 +112,7 @@ const BlogPostForm = () => {
 			{/* Image */}
 			<div>
 				<label className="label">
-					<span className="label-text">Add Photo</span>
+					<span className="label-text">Upload Photo (640*320)</span>
 				</label>
 				<input
 					type="file"

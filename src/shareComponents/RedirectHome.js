@@ -17,8 +17,8 @@ const RedirectHome = () => {
 
 	return (
 		<div className="flex justify-center items-center flex-col min-h-[500px]">
-			<p>Redirecting to the home page...</p>
 			<p className="text-xl text-red-500">No route here!</p>
+			<p>Redirecting to the home page...</p>
 		</div>
 	);
 };

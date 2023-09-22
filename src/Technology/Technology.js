@@ -13,7 +13,8 @@ const TechnologyPage = () => {
       <div>
          <Container>
             <section className="mt-16">
-               <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
+          <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
+            {/* Section title */}
                   <div>
                      <h3 className="text-[#465AF7] font-semibold uppercase">
                         MeetPlanr FOR TECH Industry

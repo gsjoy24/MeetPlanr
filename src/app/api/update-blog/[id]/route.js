@@ -6,7 +6,6 @@ export const PUT = async (request, { params }) => {
 	try {
 		const db = await DbConnect();
 		const { id } = params;
-		console.log(id);
 		const body = await request.json();
 		const query = { _id: new ObjectId(id) };
 		const updateDoc = {

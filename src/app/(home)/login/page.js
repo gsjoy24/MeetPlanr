@@ -28,6 +28,7 @@ const LoginPage = () => {
 
 	const { loading, setLoading, loginWithEmail, resetPass } = UserAuth();
 
+	// handling the user login
 	const handleLogin = (formData) => {
 		const { email, password } = formData;
 		loginWithEmail(email, password)
@@ -45,6 +46,7 @@ const LoginPage = () => {
 			});
 	};
 
+	// handing password reset system
 	const resetPassEmail = watch('email');
 	const handleResetPass = () => {
 		// validating email format
@@ -130,7 +132,7 @@ const LoginPage = () => {
 							type={loading ? 'button' : 'submit'}
 						>
 							{loading ? (
-								<p className='flex items-center justify-center gap-2'>
+								<p className="flex items-center justify-center gap-2">
 									<MdFrontHand />
 									<span>Have Patients...</span>
 								</p>

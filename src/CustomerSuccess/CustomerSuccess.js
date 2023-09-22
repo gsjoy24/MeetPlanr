@@ -16,22 +16,25 @@ const CustomerSuccess = () => {
    return (
       <div>
          <Container>
+            {/* Section start */}
             <section className="mt-28">
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
                   <div className="lg:mt-10">
-                     <h3 className="text-[#465AF7] font-semibold uppercase">
-                        CUSTOMER SUCCESS STORIES
-                     </h3>
-                     <p className="text-4xl lg:text-[39px] text-[#0B3558] md:w-[550px] my-6 font-bold leading-10">
-                        Customer success is our success
-                     </p>
-                     <p className="text-[18px] text-[#5A7795] md:w-[550px] mb-10">
-                        Discover how businesses like yours use Intercom to
-                        acquire, engage, and support customers. Ensure customers
-                        can reach you and stay connected at every stage of their
-                        journey to improve their experience and increase
-                        satisfaction.
-                     </p>
+                     <div>
+                        <h3 className="text-[#465AF7] font-semibold uppercase">
+                           CUSTOMER SUCCESS STORIES
+                        </h3>
+                        <p className="text-4xl lg:text-[39px] text-[#0B3558] md:w-[550px] my-6 font-bold leading-10">
+                           Customer success is our success
+                        </p>
+                        <p className="text-[18px] text-[#5A7795] md:w-[550px] mb-10">
+                           Discover how businesses like yours use Intercom to
+                           acquire, engage, and support customers. Ensure
+                           customers can reach you and stay connected at every
+                           stage of their journey to improve their experience
+                           and increase satisfaction.
+                        </p>
+                     </div>
                      <Link
                         href="/my-account"
                         data-testid="createEvent"
@@ -52,6 +55,7 @@ const CustomerSuccess = () => {
                </div>
             </section>
 
+            {/* Section start */}
             <section className="mt-40 mb-16">
                <div className="lg:grid-cols-3 lg:text-start grid grid-cols-1 gap-16 text-center">
                   <div className="lg:pb-0 lg:border-r-2 lg:border-b-transparent pb-16 border-b-2">
@@ -91,7 +95,7 @@ const CustomerSuccess = () => {
                      </div>
                   </div>
 
-                  <div className="">
+                  <div>
                      <p className="text-5xl font-semibold">
                         <span className="text-[#465AF7]">57</span>
                         <span className="text-[#0B3558]">%</span>
@@ -112,6 +116,7 @@ const CustomerSuccess = () => {
             </section>
          </Container>
 
+         {/* Section start */}
          <section className="py-16 mt-24 bg-[#FBFBFB]">
             <Container>
                <div className="lg:grid-cols-2 grid grid-cols-1 gap-16">
@@ -142,6 +147,7 @@ const CustomerSuccess = () => {
             </Container>
          </section>
 
+         {/* Section start */}
          <section className="bg-[#F7FAFF] py-20">
             <Container>
                <div
@@ -249,6 +255,7 @@ const CustomerSuccess = () => {
             </Container>
          </section>
 
+         {/* Section start */}
          <section className="my-10">
             <Container>
                <div
