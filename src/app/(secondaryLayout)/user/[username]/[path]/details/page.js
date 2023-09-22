@@ -1,7 +1,7 @@
 import EventDetails from '@/EventDetails/eventDetals';
 import React from 'react';
 
-const Page = ({params}) => {
+const EventDetailsPage = ({params}) => {
     return (
         <div>
             <EventDetails path={params?.path}></EventDetails>
@@ -9,4 +9,4 @@ const Page = ({params}) => {
     );
 };
 
-export default Page;
+export default EventDetailsPage;

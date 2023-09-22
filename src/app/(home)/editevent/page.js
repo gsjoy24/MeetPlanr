@@ -1,6 +1,6 @@
 import React from 'react';
 
-const page = () => {
+const EventPage = () => {
    return (
       <div>
          this is event edit page
@@ -8,4 +8,4 @@ const page = () => {
    );
 };
 
-export default page;
+export default EventPage;

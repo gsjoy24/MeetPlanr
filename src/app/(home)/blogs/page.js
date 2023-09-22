@@ -14,7 +14,7 @@ import Loading from '@/app/loading';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 
-const Page = () => {
+const BlogsPage = () => {
 	const [allBlogs] = UseBlogs();
 	const [showAll, setShowAll] = useState(false);
 	const [allBlog, setAllBlog] = useState(null);
@@ -137,4 +137,4 @@ const Page = () => {
 	);
 };
 
-export default Page;
+export default BlogsPage;
