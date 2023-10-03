@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import bgVideo from '../assets/bg-video.mp4';
 
 const Banner = () => {
 	return (
-		<div className="bg-gray-800 overflow-hidden w-full max-h-[90vh] flex justify-center items-center relative">
-			<div className="blur-sm w-full h-[90vh]">
+		<div className="bg-gray-800 overflow-hidden w-full max-h-[95vh] flex justify-center items-center relative">
+			<div className="blur-sm w-full h-[95vh]">
 				<video
 					className="w-full h-full object-cover"
 					muted

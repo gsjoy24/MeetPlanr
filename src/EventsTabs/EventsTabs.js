@@ -17,19 +17,18 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 
 const EventsTabs = () => {
-   const [actions,setActions] = useState(false);
-   const [tabIndex, setTabIndex] = useState(0);
-   const [subTabIndex, setSubTabIndex] = useState(0);
-   const [schedules, setSchedules] = useState([]);
-   const [refetch,setRefetch] = useState(false);
-   const [loading,setLoading] = useState(true)
-   const currentUser = UseGetCurrentUser();
-   const router = useRouter();
+	const [actions, setActions] = useState(false);
+	const [tabIndex, setTabIndex] = useState(0);
+	const [subTabIndex, setSubTabIndex] = useState(0);
+	const [schedules, setSchedules] = useState([]);
+	const [refetch, setRefetch] = useState(false);
+	const [loading, setLoading] = useState(true);
+	const currentUser = UseGetCurrentUser();
+	const router = useRouter();
 
-
-// Load all user Schedule===============
-   useEffect(() => {
-    	(async () => {
+	// Load all user Schedule===============
+	useEffect(() => {
+		(async () => {
 			try {
 				const res = await fetch(`/api/scheduling?username=${currentUser?.username}`);
 				const data = await res.json();
@@ -42,17 +41,17 @@ const EventsTabs = () => {
 			} catch (error) {
 				console.error('Error fetching data:', error);
 			}
-		})()
-   }, [currentUser,refetch]);
+		})();
+	}, [currentUser, refetch]);
 
-// copy the user Link =============
-   const copyLink = () => {
-    navigator.clipboard.writeText(`https://meet-planr.vercel.app/user/${currentUser?.username}`).then(() => {
-		toast.success("User Link coped");
-        });
-    };
+	// copy the user Link =============
+	const copyLink = () => {
+		navigator.clipboard.writeText(`https://meetplanr.vercel.app/user/${currentUser?.username}`).then(() => {
+			toast.success('User Link coped');
+		});
+	};
 
-// Identify the user plane base on payment and provide service conditionally.
+	// Identify the user plane base on payment and provide service conditionally.
 	const handleEventType = () => {
 		if (currentUser) {
 			const availableSchedulesQuantity =
@@ -80,7 +79,7 @@ const EventsTabs = () => {
 			}
 		}
 	};
-// Check validity for create Group Event
+	// Check validity for create Group Event
 	const handleGroupEvent = () => {
 		if (currentUser) {
 			if (currentUser?.plan === 'Basic') {
@@ -103,7 +102,7 @@ const EventsTabs = () => {
 			}
 		}
 	};
-// Check validity for Edit Event
+	// Check validity for Edit Event
 	const handleEdit = (path, confirm, eventType) => {
 		if (currentUser?.plan === 'Premium') {
 			if (!(eventType == 'Single' && confirm)) {
@@ -140,7 +139,7 @@ const EventsTabs = () => {
 	const upcoming = schedules?.filter((schedule) => new Date(schedule?.scheduleDate) > today && schedule.confirm);
 
 	//PENDING--------------------
-	const pending = schedules?.filter((schedule) => (!schedule?.confirm));
+	const pending = schedules?.filter((schedule) => !schedule?.confirm);
 
 	//PAST----------------------
 	const past = schedules?.filter((schedule) => new Date(schedule?.scheduleDate) < today && schedule.confirm);
@@ -157,10 +156,10 @@ const EventsTabs = () => {
 					</Container>
 				</div>
 				<Container>
-{/*================== user Dashboard home page ===================*/}
+					{/*================== user Dashboard home page ===================*/}
 					<TabPanel>
 						<div className="my-8 md:flex lg:flex justify-between items-center">
-		{/*================ User information  ===================*/}
+							{/*================ User information  ===================*/}
 							<div className="flex items-center gap-2 sm:gap-5">
 								<Image
 									src={currentUser ? currentUser?.photoURL : img}
@@ -171,16 +170,22 @@ const EventsTabs = () => {
 								/>
 								<div>
 									<h4>{currentUser ? currentUser?.name : 'User Name'}</h4>
-							{/* show use lick base on mobile and desktop display size */}
+									{/* show use lick base on mobile and desktop display size */}
 									<div className=" gap-5 hidden sm:flex">
 										<Link target="_blank" href={`/user/${currentUser?.username}`} className="text-[#465AF7]">
-											https://meet-planr.vercel.app/user/{currentUser ? currentUser?.username :'username'}
+											https://meetplanr.vercel.app/user/{currentUser ? currentUser?.username : 'username'}
 										</Link>
-										<button disabled={!currentUser} className="text-xl disabled:cursor-wait" onClick={copyLink}><FaRegCopy/></button>
+										<button disabled={!currentUser} className="text-xl disabled:cursor-wait" onClick={copyLink}>
+											<FaRegCopy />
+										</button>
 									</div>
 									<div className="sm:hidden sm:gap-5 flex">
-										<Link target="_blank" href={`/user/${currentUser?.username}`} className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap">
-											https://meet-pla.../{currentUser ? currentUser?.username :'username'}
+										<Link
+											target="_blank"
+											href={`/user/${currentUser?.username}`}
+											className="text-[#465AF7] text-ellipsis w-[270px] overflow-hidden whitespace-nowrap"
+										>
+											https://meet-pla.../{currentUser ? currentUser?.username : 'username'}
 										</Link>
 										<button className="text-xl" onClick={copyLink}>
 											<FaRegCopy />
@@ -202,7 +207,10 @@ const EventsTabs = () => {
 									<div className="w-full h-screen bg-slate-800 bg-opacity-10 fixed top-0 left-0 z-50 flex items-center justify-center">
 										<div className="w-fit max-w-[95%] flex flex-col relative">
 											{/* modal close btn */}
-											<button className="absolute -top-2 -right-2 text-3xl text-red-500 bg-white rounded-full" onClick={() => setActions(false)} >
+											<button
+												className="absolute -top-2 -right-2 text-3xl text-red-500 bg-white rounded-full"
+												onClick={() => setActions(false)}
+											>
 												<FaTimesCircle />
 											</button>
 											{/* one by one event type */}
@@ -254,18 +262,25 @@ const EventsTabs = () => {
 						</div>
 						<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
 							{/* Show all created Schedule */}
-							{
-							loading ? 
-							<div className="mx-auto sm:col-span-2 lg:col-span-3 py-20">
-								<span className="loading loading-bars loading-lg"></span>
-							</div> 
-							: schedules ? schedules.map((schedule) => (
-									<EventCard handleEdit={handleEdit} schedule={schedule} key={schedule?._id} setRefetch={setRefetch}></EventCard>
-								)) : <span className='col-span-3 text-4xl text-slate-500 font-bold'>No Schedule available</span>
-							}
+							{loading ? (
+								<div className="mx-auto sm:col-span-2 lg:col-span-3 py-20">
+									<span className="loading loading-bars loading-lg"></span>
+								</div>
+							) : schedules ? (
+								schedules.map((schedule) => (
+									<EventCard
+										handleEdit={handleEdit}
+										schedule={schedule}
+										key={schedule?._id}
+										setRefetch={setRefetch}
+									></EventCard>
+								))
+							) : (
+								<span className="col-span-3 text-4xl text-slate-500 font-bold">No Schedule available</span>
+							)}
 						</div>
 					</TabPanel>
-{/*================== User Event history page================ */}
+					{/*================== User Event history page================ */}
 					<TabPanel>
 						<div className="rounded-md shadow-lg border my-14 subtab px-2 sm:px-5 py-5">
 							<Tabs selectedIndex={subTabIndex} onSelect={(index) => setSubTabIndex(index)}>
@@ -275,7 +290,7 @@ const EventsTabs = () => {
 									<Tab className="border-0 cursor-pointer pb-2">Past</Tab>
 								</TabList>
 
-					{/*========= Show use all upcoming events=========== */}
+								{/*========= Show use all upcoming events=========== */}
 								<TabPanel>
 									<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
 										{loading ? (
@@ -290,7 +305,7 @@ const EventsTabs = () => {
 									</div>
 								</TabPanel>
 
-					{/*========= Show use all pending events=========== */}
+								{/*========= Show use all pending events=========== */}
 								<TabPanel>
 									<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
 										{loading ? (
@@ -304,8 +319,8 @@ const EventsTabs = () => {
 										)}
 									</div>
 								</TabPanel>
-								
-					{/*========= Show use all Past events=========== */}
+
+								{/*========= Show use all Past events=========== */}
 								<TabPanel>
 									<div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 my-8 justify-center sm:justify-evenly lg:justify-start">
 										{loading ? (

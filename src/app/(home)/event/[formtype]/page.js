@@ -23,7 +23,7 @@ const EventPage = ({ params }) => {
 	const router = useRouter();
 	const user = UseGetCurrentUser();
 
-// conditional Placeholder text for Method info=====================
+	// conditional Placeholder text for Method info=====================
 	const placeholderText =
 		method === 'Google Meet'
 			? 'Enter google meet link ...'
@@ -50,7 +50,7 @@ const EventPage = ({ params }) => {
 	const livePath = watch('eventName') ? watch('eventName')?.replace(/\s+/g, '-') : '';
 	const liveDuration = watch('duration');
 
-// Create event function===================
+	// Create event function===================
 	const onSubmit = async (data) => {
 		if (method) {
 			const { eventName, description, duration, eventLink, methodInfo } = data;
@@ -59,8 +59,8 @@ const EventPage = ({ params }) => {
 			const random = Math.round(Math.random() * 1000000);
 			const EventLink = eventLink?.replace(/\s+/g, '-') || livePath;
 			const path = EventLink.toLowerCase() + '-' + random;
-			const scheduleLink = `https://meet-planr.vercel.app/user/${user?.username}/${path}`;
-		// Schedule information============
+			const scheduleLink = `https://meetplanr.vercel.app/user/${user?.username}/${path}`;
+			// Schedule information============
 			const schedule = {
 				eventName,
 				description,
@@ -117,7 +117,7 @@ const EventPage = ({ params }) => {
 
 					{/*================= Event Form ====================== =*/}
 					<div className="md:w-4/5 mx-auto border-2 border-[#d7e3f0] rounded-xl shadow-md">
-					{/* Change able form title base on form type */}
+						{/* Change able form title base on form type */}
 						<h2 className="w-full py-5 text-3xl text-[#0B3558] font-medium text-center border-b">
 							Add{' '}
 							{eventType == 'oneOnOne'
@@ -176,14 +176,16 @@ const EventPage = ({ params }) => {
 									<option value="60">60</option>
 								</select>
 
-{/*=========== Conditionally select Date and date range ==============*/}
+								{/*=========== Conditionally select Date and date range ==============*/}
 								{eventType === 'oneOnOne' ? (
 									<>
 										<label className="mt-8 mb-3 text-[#3e5063]">Date Range:*</label>
 
-										<div className={`rounded-md p-3 w-full relative 
-                              ${action ? 'border-2 border-[#00a4f8]' : 'border border-[#9ab2cc]'}`} >
-					{/*============= select date range ==================*/}
+										<div
+											className={`rounded-md p-3 w-full relative 
+                              ${action ? 'border-2 border-[#00a4f8]' : 'border border-[#9ab2cc]'}`}
+										>
+											{/*============= select date range ==================*/}
 											{dateRange === 'Select Range' ? (
 												<div className="relative flex gap-3">
 													<DatePicker
@@ -241,7 +243,7 @@ const EventPage = ({ params }) => {
 									Event Link:*
 								</label>
 								<label className="my-2 text-[15px] text-[#768ba1]" htmlFor="eventLink">
-									https://meet-planr.vercel.app/user
+									https://meetplanr.vercel.app/user
 								</label>
 								{/* show path name base on event name */}
 								<div className="input_field flex gap-1 overflow-hidden">
