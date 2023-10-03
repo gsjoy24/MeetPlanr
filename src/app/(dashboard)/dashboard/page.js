@@ -15,7 +15,7 @@ const AdminPage = () => {
 	const [allReports] = UseReports();
 
 	return (
-		<div className="h-[90vh] w-full overflow-hidden">
+		<div className="min-h-[90vh] w-full overflow-hidden">
 			<h1 className=" md:text-2xl mb-5 text-xl font-bold">Admin Dashboard</h1>
 			<div className="flex flex-wrap items-center justify-center gap-5 text-white">
 				<Stat num={allUsers ? allUsers?.length : false} title="Users" />

@@ -1,9 +1,8 @@
 'use client';
 import Image from 'next/image';
-import image from '../../../../assets/review-image/img1.jpg';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import EventCard from '@/components/EventCard';
 import LoadingSpinner from '@/shareComponents/LoadingSpinner';
 const AccountPage = () => {
@@ -11,7 +10,7 @@ const AccountPage = () => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const params = useParams();
-// Loaded user info and user all Schedule================================
+	// Loaded user info and user all Schedule================================
 	useEffect(() => {
 		(async () => {
 			const response = await axios(`/api/scheduling?username=${params?.username}`);
@@ -28,7 +27,7 @@ const AccountPage = () => {
 	}
 	return (
 		<div className="w-4/5 p-5 mx-auto my-10 border-2 shadow-xl">
-{/*================ User Details ==================*/}
+			{/*================ User Details ==================*/}
 			<div className="text-center">
 				<Image
 					src={currentUser?.photoURL}
@@ -45,7 +44,7 @@ const AccountPage = () => {
 					<b>Email: </b> {currentUser?.email}
 				</h2>
 			</div>
-{/*============ user Schedule =============*/}
+			{/*============ user Schedule =============*/}
 			<div className="grid grid-cols-3 gap-5 my-8">
 				{schedules ? (
 					schedules.map((schedule) => <EventCard schedule={schedule} key={schedule?._id}></EventCard>)

@@ -1,28 +1,24 @@
-'use client';
-import { CldVideoPlayer } from 'next-cloudinary';
-import 'next-cloudinary/dist/cld-video-player.css';
 import Link from 'next/link';
+import bgVideo from '../assets/bg-video.mp4';
 
 const Banner = () => {
 	return (
 		<div className="bg-gray-800 overflow-hidden w-full max-h-[90vh] flex justify-center items-center relative">
-			<div className="blur-sm w-full h-full">
-				<CldVideoPlayer
-					width="1920"
-					height="1080"
-					src="https://res.cloudinary.com/dt04ucbpl/video/upload/v1695125466/bg-2_djmub9.mp4"
-					autoPlay="always"
-					controls={false}
-					loop={true}
-					autoPlayMode="always"
-				/>
+			<div className="blur-sm w-full h-[90vh]">
+				<video
+					className="w-full h-full object-cover"
+					muted
+					autoPlay
+					loop
+					src="https://res.cloudinary.com/dt04ucbpl/video/upload/v1696311399/bg-video_zhyurh.mp4"
+				></video>
 			</div>
 			<div className="flex justify-center items-center text-white text-center absolute w-full h-full bg-[#0000009e]">
 				<div className="p-4 max-w-[700px] space-y-4">
-					<h1 className="text-xl md:text-5xl md:leading-tight font-bold " data-aos="fade-in">
+					<h1 className="text-4xl md:text-5xl md:leading-tight font-bold " data-aos="fade-in">
 						Join Us on the Path to Effortless Scheduling
 					</h1>
-					<p className="text-xs md:text-base">
+					<p>
 						MeetPlanr is the most flexible, comprehensive appointment scheduling software for professionals, SMEs, and
 						enterprises.
 					</p>

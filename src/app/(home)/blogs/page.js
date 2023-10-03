@@ -14,7 +14,7 @@ import Loading from '@/app/loading';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 
-const Page = () => {
+const BlogsPage = () => {
 	const [allBlogs] = UseBlogs();
 	const [showAll, setShowAll] = useState(false);
 	const [allBlog, setAllBlog] = useState(null);
@@ -128,13 +128,16 @@ const Page = () => {
 					Make the magic happen, we’ll make sure it happens on time.
 				</p>
 				<div className="mt-4">
-					<button className=" hover:bg-slate-300 hover: flex items-center justify-center px-4 py-2 font-thin text-blue-500 bg-white rounded">
+					<Link
+						href={'/sign-up'}
+						className=" hover:bg-slate-300 hover: flex items-center justify-center px-4 py-2 font-thin text-blue-500 bg-white rounded"
+					>
 						Sign Up
-					</button>
+					</Link>
 				</div>
 			</div>
 		</section>
 	);
 };
 
-export default Page;
+export default BlogsPage;
