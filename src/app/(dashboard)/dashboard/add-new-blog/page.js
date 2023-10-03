@@ -34,7 +34,7 @@ const BlogPostForm = () => {
 								html: `<a class='text-xs'
 											href=${`/blogs/${response.data.insertedId}`}
 											target="_blank">
-											${`https://meet-planr.vercel.app/blogs/${response.data.insertedId}`}
+											${`https://meetplanr.vercel.app/blogs/${response.data.insertedId}`}
 											</a>`,
 								showConfirmButton: false,
 								showCloseButton: true

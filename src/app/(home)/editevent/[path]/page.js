@@ -269,7 +269,7 @@ const editEventPage = ({ params }) => {
 								Event Link:*
 							</label>
 							<label className="my-2 text-[15px] text-[#768ba1]" htmlFor="eventLink">
-								https://meet-planr.vercel.app/user
+								https://meetplanr.vercel.app/user
 							</label>
 							<div className="input_field flex gap-1 overflow-hidden">
 								<label className="font-medium" htmlFor="eventLink">
