@@ -1,8 +1,9 @@
+import Container from '@/components/container';
 import Link from 'next/link';
 
 const Footer = () => {
 	return (
-		<div>
+		<>
 			<footer className="footer p-10 bg-base-200 text-base-content">
 				<aside>
 					<div className="w-16 h-16 rounded-lg flex justify-center items-center text-3xl bg-[#465AF7] text-white font-bold select-none">
@@ -65,7 +66,7 @@ const Footer = () => {
 				</nav>
 			</footer>
 			<div className="p-2 text-center text-sm">Copyright © 2023 - All rights reserved by MeetPlanr</div>
-		</div>
+		</>
 	);
 };
 
