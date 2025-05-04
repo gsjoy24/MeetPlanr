@@ -8,13 +8,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { useEffect, useState } from 'react';
-import ReactStarsRating from 'react-awesome-stars-rating';
+import ReactStarsRating from 'react-awesome-stars-rating'; 
 import axios from 'axios';
 import moment from 'moment';
 
 const Review = () => {
 	const [reviews,SetReviews] = useState([]);
-// loaded all review=======
+// loaded all review=============
 	useEffect(()=> {
 		(async()=> {
 			const response = await axios('/api/reviews');
@@ -73,7 +73,6 @@ const Review = () => {
 											starGap={10}
 											size={26}
 											className="flex"
-											ise
 											value={review?.rating}
 										/>
 
