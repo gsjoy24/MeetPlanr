@@ -1,24 +1,26 @@
 'use client';
 import { useContext, createContext, useState, useEffect } from 'react';
-import {
-	getAuth,
-	createUserWithEmailAndPassword,
-	updateProfile,
-	onAuthStateChanged,
-	GoogleAuthProvider,
-	GithubAuthProvider,
-	signInWithPopup,
-	signInWithEmailAndPassword,
-	signOut,
-	sendPasswordResetEmail,
-	sendEmailVerification
-} from 'firebase/auth';
 import app from '@/firebase/firebase.config';
 
-// Handle case where Firebase is not initialized (e.g., during build)
-const auth = app ? getAuth(app) : null;
-const googleProvider = app ? new GoogleAuthProvider() : null;
-const githubProvider = app ? new GithubAuthProvider() : null;
+// Lazy import Firebase auth functions to prevent SSR issues
+let auth = null;
+let googleProvider = null;
+let githubProvider = null;
+let firebaseAuth = null;
+
+// Only import Firebase auth in browser environment
+if (typeof window !== 'undefined' && app) {
+	const {
+		getAuth,
+		GoogleAuthProvider,
+		GithubAuthProvider,
+	} = require('firebase/auth');
+	auth = getAuth(app);
+	googleProvider = new GoogleAuthProvider();
+	githubProvider = new GithubAuthProvider();
+	firebaseAuth = require('firebase/auth');
+}
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -27,43 +29,43 @@ export const AuthProvider = ({ children }) => {
 
 	// create a new user
 	const createUser = (email, password) => {
-		if (!auth) return Promise.reject(new Error('Firebase not initialized'));
+		if (!auth || !firebaseAuth) return Promise.reject(new Error('Firebase not initialized'));
 		setLoading(true);
-		return createUserWithEmailAndPassword(auth, email, password);
+		return firebaseAuth.createUserWithEmailAndPassword(auth, email, password);
 	};
 
 	// sign in user with google
 	const continueWithGoogle = () => {
-		if (!auth || !googleProvider) return Promise.reject(new Error('Firebase not initialized'));
+		if (!auth || !googleProvider || !firebaseAuth) return Promise.reject(new Error('Firebase not initialized'));
 		setLoading(true);
-		return signInWithPopup(auth, googleProvider);
+		return firebaseAuth.signInWithPopup(auth, googleProvider);
 	};
 
 	// sign in user with github
 	const continueWithGithub = () => {
-		if (!auth || !githubProvider) return Promise.reject(new Error('Firebase not initialized'));
+		if (!auth || !githubProvider || !firebaseAuth) return Promise.reject(new Error('Firebase not initialized'));
 		setLoading(true);
-		return signInWithPopup(auth, githubProvider);
+		return firebaseAuth.signInWithPopup(auth, githubProvider);
 	};
 
 	// login user with email and password
 	const loginWithEmail = (email, password) => {
-		if (!auth) return Promise.reject(new Error('Firebase not initialized'));
+		if (!auth || !firebaseAuth) return Promise.reject(new Error('Firebase not initialized'));
 		setLoading(true);
-		return signInWithEmailAndPassword(auth, email, password);
+		return firebaseAuth.signInWithEmailAndPassword(auth, email, password);
 	};
 
 	// logout the user
 	const logOutUser = () => {
-		if (!auth) return Promise.reject(new Error('Firebase not initialized'));
-		return signOut(auth);
+		if (!auth || !firebaseAuth) return Promise.reject(new Error('Firebase not initialized'));
+		return firebaseAuth.signOut(auth);
 	};
 
 	// update the user profile with name and photo
 	const updateUserProfile = (name, photo) => {
-		if (!auth) return Promise.reject(new Error('Firebase not initialized'));
+		if (!auth || !firebaseAuth) return Promise.reject(new Error('Firebase not initialized'));
 		setLoading(true);
-		return updateProfile(auth.currentUser, {
+		return firebaseAuth.updateProfile(auth.currentUser, {
 			displayName: name,
 			photoURL: photo
 		});
@@ -71,23 +73,23 @@ export const AuthProvider = ({ children }) => {
 
 	// sent reset password email.
 	const resetPass = (email) => {
-		if (!auth) return Promise.reject(new Error('Firebase not initialized'));
-		return sendPasswordResetEmail(auth, email);
+		if (!auth || !firebaseAuth) return Promise.reject(new Error('Firebase not initialized'));
+		return firebaseAuth.sendPasswordResetEmail(auth, email);
 	};
 
 	// verify user email address
 	const verifyEmail = () => {
-		if (!auth) return Promise.reject(new Error('Firebase not initialized'));
-		return sendEmailVerification(auth.currentUser);
+		if (!auth || !firebaseAuth) return Promise.reject(new Error('Firebase not initialized'));
+		return firebaseAuth.sendEmailVerification(auth.currentUser);
 	};
 
 	// observing the user state
 	useEffect(() => {
-		if (!auth) {
+		if (!auth || !firebaseAuth) {
 			setLoading(false);
 			return;
 		}
-		const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+		const unsubscribe = firebaseAuth.onAuthStateChanged(auth, async (currentUser) => {
 			setUser(currentUser);
 			setLoading(false);
 		});
