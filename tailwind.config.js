@@ -15,7 +15,7 @@ module.exports = {
          },
          fontFamily: {
             sans: ['Poppins', 'sans-serif'],
-            display: ['Bebas Neue', 'cursive'],
+            display: ['Bebas Neue', 'sans-serif'],
          },
       },
    },
