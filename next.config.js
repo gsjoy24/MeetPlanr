@@ -13,17 +13,11 @@ const nextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
-	typescript: {
-		ignoreBuildErrors: true,
-	},
 	experimental: {
 		missingSuspenseWithCSRBailout: false,
 	},
-	// Allow the build to succeed even with prerendering errors
+	// Allow builds to complete with static page generation timeouts
 	staticPageGenerationTimeout: 60,
-	onDemandEntries: {
-		maxInactiveAge: 60 * 1000,
-	},
 	webpack: (config) => {
 		config.module.rules.push({
 			test: /\.(mp4|webm)$/,
