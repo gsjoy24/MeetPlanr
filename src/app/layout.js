@@ -1,8 +1,14 @@
 import './globals.css';
 import Script from 'next/script';
 import { poppins } from '@/utils/fonts';
-import { AuthProvider } from '@/providers/AuthProvider';
 import { Toaster } from 'react-hot-toast';
+import dynamic from 'next/dynamic';
+
+// Dynamically import AuthProvider to prevent SSR issues with Firebase
+const AuthProvider = dynamic(
+  () => import('@/providers/AuthProvider').then((mod) => ({ default: mod.AuthProvider })),
+  { ssr: false }
+);
 
 export const metadata = {
   title: 'MeetPlanr',

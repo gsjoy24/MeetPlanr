@@ -9,5 +9,19 @@ const firebaseConfig = {
    appId: process.env.NEXT_PUBLIC_APPID,
 };
 
-const app = initializeApp(firebaseConfig);
+// Only initialize Firebase if we have valid configuration
+// This prevents build errors when environment variables are not set
+let app;
+try {
+   if (firebaseConfig.apiKey && firebaseConfig.apiKey !== 'undefined') {
+      app = initializeApp(firebaseConfig);
+   } else {
+      console.warn('Firebase config not found, using dummy app for build compatibility');
+      app = null;
+   }
+} catch (error) {
+   console.warn('Failed to initialize Firebase:', error.message);
+   app = null;
+}
+
 export default app;

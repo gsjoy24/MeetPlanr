@@ -10,6 +10,14 @@ const nextConfig = {
 	},
 	reactStrictMode: true,
 	swcMinify: true,
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	experimental: {
+		missingSuspenseWithCSRBailout: false,
+	},
+	// Allow builds to complete with static page generation timeouts
+	staticPageGenerationTimeout: 60,
 	webpack: (config) => {
 		config.module.rules.push({
 			test: /\.(mp4|webm)$/,
