@@ -2,8 +2,6 @@
 import Button from '@/common/Button';
 import Link from 'next/link';
 
-export const dynamic = 'force-dynamic';
-
 const Error = () => {
 	return (
 		<div className="w-full bg-[#F2F2F2] h-[100vh] flex justify-center items-center">
