@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import DbConnect from '@/services/DbConnect';
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async () => {
 	try {
 		const db = await DbConnect();

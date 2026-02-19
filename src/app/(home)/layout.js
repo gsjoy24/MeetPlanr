@@ -8,6 +8,8 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from '@/shareComponents/Navbar';
 import Footer from '@/shareComponents/Footer';
 
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({ children }) {
 	return (
 		<div>
